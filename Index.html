@@ -1,0 +1,292 @@
+Great! Let's enhance the UI, add error handling, and then I'll guide you on deploying it to Vercel.
+
+Step 1: Improve UI
+
+I'll add some styles for a cleaner look, hover effects, icons, and better layout.
+
+Step 2: Handle Errors
+
+We'll add try-catch blocks for fetch errors and display user-friendly messages.
+
+Step 3: Deployment on Vercel
+
+I'll give you step-by-step instructions.
+
+Complete Improved Code
+
+Here's the full code with improved UI and error handling:
+
+`html
+
+
+
+
+
+M3U Player
+
+
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #222;
+    color: #fff;
+  }
+
+  /* Sidebar styles */
+  #sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: #333;
+    padding-top: 60px;
+    transition: 0.3s;
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(-250px);
+  }
+  #sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Hamburger menu */
+  #menuBtn {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+  }
+
+  /* Content styles */
+  #content {
+    margin-left: 0;
+    padding: 10px;
+    margin-top: 60px;
+    transition: margin-left 0.3s;
+  }
+  #content.shift {
+    margin-left: 250px;
+  }
+
+  /* Header */
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Search box */
+  #search {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 15px;
+  }
+
+  /* Buttons in sidebar */
+  #sidebar button {
+    display: block;
+    width: calc(100% - 30px);
+    margin: 10px 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #555;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  #sidebar button:hover {
+    background-color: #777;
+  }
+
+  /* Channel list styles */
+  #channelList {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #2b2b2b;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .channel {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    transition: background 0.2s;
+  }
+  .channel:hover {
+    background-color: #444;
+  }
+  .channel img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  /* Video container */
+  #playerContainer {
+    margin-top: 20px;
+  }
+  video {
+    width: 100%;
+    max-height: 500px;
+    border-radius: 4px;
+    background-color: black;
+  }
+
+  /* Error message */
+  #errorMsg {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+
+
+
+
+  Menu
+   Full Screen
+   Toggle Auto Play
+   Show Favorites
+   Show All
+
+
+
+
+   M3U Media Player
+
+
+// Elements
+const sidebar = document.getElementById('sidebar');
+const menuBtn = document.getElementById('menuBtn');
+const content = document.getElementById('content');
+const searchInput = document.getElementById('search');
+const channelListDiv = document.getElementById('channelList');
+const videoPlayer = document.getElementById('videoPlayer');
+const errorMsgDiv = document.getElementById('errorMsg');
+
+const fullScreenBtn = document.getElementById('fullScreenBtn');
+const autoPlayBtn = document.getElementById('autoPlayBtn');
+const showFavoritesBtn = document.getElementById('showFavoritesBtn');
+const showAllBtn = document.getElementById('showAllBtn');
+
+// State
+let channels = [];
+let filteredChannels = [];
+let favorites = new Set();
+let showFavoritesOnly = false;
+let autoPlay = false;
+
+// Toggle sidebar
+document.getElementById('menuBtn').onclick = () => {
+  sidebar.classList.toggle('active');
+  content.classList.toggle('shift');
+};
+
+// Load and parse M3U playlist with error handling
+async function loadM3U(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(HTTP error! status: ${response.status});
+    const text = await response.text();
+    parseM3U(text);
+  } catch (error) {
+    showError(Failed to load playlist: ${error.message});
+  }
+}
+
+function showError(msg) {
+  errorMsgDiv.textContent = msg;
+}
+
+function clearError() {
+  errorMsgDiv.textContent = '';
+}
+
+function parseM3U(data) {
+  channels = [];
+  const lines = data.split('\n');
+  let currentChannel = {};
+  lines.forEach(line => {
+    line = line.trim();
+    if (line.startsWith('#EXTINF')) {
+      // Parse info line
+      const infoParts = line.match(/#EXTINF:-1.?,(.)$/);
+      currentChannel = { name: infoParts ? infoParts[1] : 'Unknown', logo: '', url: '' };
+    } else if (line && !line.startsWith('#')) {
+      // URL line
+      currentChannel.url = line;
+      channels.push({ ...currentChannel });
+    }
+  });
+  clearError();
+  displayChannels();
+}
+
+// Display channels with UI improvements
+function displayChannels() {
+  channelListDiv.innerHTML = '';
+  let listToShow = showFavoritesOnly ? channels.filter(c => favorites.has(c.name)) : channels;
+  listToShow.filter(c => c.name.toLowerCase().includes(searchInput.value.toLowerCase()))
+    .forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'channel';
+      div.innerHTML = `
+                       ${c.name}`;
+
+      // Play on click
+      div.onclick = () => {
+        videoPlayer.src = c.url;
+        if(autoPlay) videoPlayer.play();
+      };
+
+      // Right-click to add/remove favorites
+      div.oncontextmenu = (e) => {
+        e.preventDefault();
+        if(favorites.has(c.name)){
+          favorites.delete(c.name);
+        } else {
+          favorites.add(c.name);
+        }
+        displayChannels();
+      };
+
+      // Double click to remove
+      div.ondblclick = () => {
+        channels = channels.filter(ch => ch.name !== c.name);
+        displayChannels();
+      };
+
+      channelListDiv.appendChild(div);
+    });
+}
+
+// Search input
+searchInput.oninput = () => {
+  displayChannels();
+};
+
+// Load playlist
+loadM3U('https://raw.githubusercontent.com/Shakzz890/henyom3u/main/test.m3u');
+
+// Full screen
+document.getElementById('fullScreenBtn').onclick = () => {
+  if (
