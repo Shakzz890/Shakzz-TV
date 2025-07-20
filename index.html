@@ -1,296 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
-  <title>Shakzz TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+    <title>Shakzz TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
+    <!-- Disable DevTools -->
+    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
 
-  <!-- JW Player -->
-  <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
+    <!-- JW Player -->
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
+    <script>
+      jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
+    </script>
 
-  <!-- Font Awesome for Social Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #111;
-      font-family: "Segoe UI", sans-serif;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .top-nav {
-      width: 100%;
-      background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
-    }
-
-    .nav-logo img {
-      height: 40px;
-      width: auto;
-      max-width: 120px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: #3a3a3a;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #b74b4b;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      width: 100%;
-    }
-
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 10px;
-    }
-
-    h1 {
-      margin: 20px;
-      font-size: 2em;
-      color: #b74b4b;
-    }
-
-    #video {
-      width: 100%;
-      max-width: 800px;
-      border: 4px solid #2f2f2f;
-      border-radius: 16px;
-      box-shadow: 0 0 20px #2f2f2f;
-      aspect-ratio: 16 / 9;
-    }
-
-    .sidebar {
-      width: 300px;
-      background-color: #222;
-      border-left: 2px solid #2f2f2f;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      max-height: 100vh;
-    }
-
-    .sidebar input {
-      padding: 8px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-      border: 1px solid #2f2f2f;
-      background-color: #111;
-      color: white;
-    }
-
-    .channel-list {
-      overflow-y: auto;
-      flex-grow: 1;
-    }
-
-    .channel-button {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      background-color: #333;
-      border: 1px solid #2f2f2f;
-      border-radius: 8px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .channel-button:hover {
-      background-color: #45010c22;
-    }
-
-    .channel-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 6px;
-      background-color: white;
-    }
-
-    .sidebar::-webkit-scrollbar,
-    .channel-list::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .sidebar::-webkit-scrollbar-thumb,
-    .channel-list::-webkit-scrollbar-thumb {
-      background: #2f2f2f;
-      border-radius: 4px;
-    }
-
-    footer.coded {
-      margin: 20px;
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .contact-footer {
-      background-color: #000;
-      padding: 20px;
-      color: #ccc;
-      text-align: center;
-      border-top: 2px solid #2f2f2f;
-      width: 100%;
-      margin-top: auto;
-    }
-
-    .contact-footer .contact-content {
-      margin-bottom: 10px;
-      font-size: 1em;
-    }
-
-    .contact-footer .social-link {
-      margin: 0 10px;
-      color: #ccc;
-      font-size: 1.4em;
-      transition: color 0.3s;
-    }
-
-    .contact-footer .social-link:hover {
-      color: #b74b4b;
-    }
-
-    .contact-footer .rights {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    @media (max-width: 1024px) {
-      main {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #111;
+        font-family: "Segoe UI", sans-serif;
+        color: white;
+        min-height: 100vh;
+        display: flex;
         flex-direction: column;
       }
 
-      .main, .sidebar {
-        width: 100%;
-      }
-
-      .sidebar {
-        border-left: none;
-        border-top: 2px solid #333;
-        max-height: 50vh;
-      }
-    }
-
-    @media (max-width: 600px) {
       .top-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        width: 100%;
+        background-color: #000;
+        border-bottom: 2px solid #3a3a3a;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        flex-wrap: wrap;
       }
 
       .nav-logo img {
-        height: 30px;
-        max-width: 90px;
+        height: 40px;
+        width: auto;
+        max-width: 120px;
       }
 
       .nav-links {
-        flex-direction: row;
-        gap: 12px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
       }
 
       .nav-links a {
-        font-size: 0.9em;
+        color: #3a3a3a;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #b74b4b;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+      }
+
+      h1 {
+        margin: 20px;
+        font-size: 2em;
+        color: #b74b4b;
       }
 
       #video {
-        border-width: 2px;
-        border-radius: 8px;
+        width: 100%;
+        max-width: 800px;
+        border: 4px solid #2f2f2f;
+        border-radius: 16px;
+        box-shadow: 0 0 20px #2f2f2f;
+        aspect-ratio: 16 / 9;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <nav class="top-nav">
-    <div class="nav-logo">
-      <img src="Jinwoo.png" alt="Logo" />
-    </div>
-    <div class="nav-links">
-      <a href="gen.html" target="_blank">Want the channels for OTT?</a>
-    </div>
-  </nav>
+      .sidebar {
+        width: 300px;
+        background-color: #222;
+        border-left: 2px solid #2f2f2f;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        max-height: 100vh;
+      }
 
-  <main>
-    <div class="main">
-      <h1>Shakzz TV</h1>
-      <div id="channelInfo"></div>
-      <div id="video"></div>
-      <footer class="coded">Coded by Cutie</footer>
-    </div>
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-    <div class="sidebar">
-      <input type="text" id="search" placeholder="Search channel..." />
-      <div class="channel-list" id="channelList"></div>
-    </div>
-  </main>
+      .search-container input {
+        padding: 8px 30px 8px 8px;
+        border-radius: 6px;
+        border: 1px solid #2f2f2f;
+        background-color: #111;
+        color: white;
+        width: 100%;
+      }
 
-  <footer class="contact-footer">
-    <div class="contact-content">
-      Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
-    </div>
-    <div class="rights">© All rights reserved 2025</div>
-  </footer>
+      .clear-btn {
+        position: absolute;
+        right: 10px;
+        color: #999;
+        font-size: 1.2em;
+        cursor: pointer;
+        display: none;
+        user-select: none;
+      }
 
-  <script src="cutie.js"></script>
-</body>
+      .channel-list {
+        overflow-y: auto;
+        flex-grow: 1;
+      }
+
+      .channel-button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #333;
+        border: 1px solid #2f2f2f;
+        border-radius: 8px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .channel-button:hover {
+        background-color: #45010c22;
+      }
+
+      .channel-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 6px;
+        background-color: white;
+      }
+
+      .sidebar::-webkit-scrollbar,
+      .channel-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb,
+      .channel-list::-webkit-scrollbar-thumb {
+        background: #2f2f2f;
+        border-radius: 4px;
+      }
+
+      footer.coded {
+        margin: 20px;
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .contact-footer {
+        background-color: #000;
+        padding: 20px;
+        color: #ccc;
+        text-align: center;
+        border-top: 2px solid #2f2f2f;
+        width: 100%;
+      }
+
+      .contact-footer .contact-content {
+        margin-bottom: 10px;
+        font-size: 1em;
+      }
+
+      .contact-footer .social-link {
+        margin: 0 10px;
+        color: #ccc;
+        font-size: 1.4em;
+        transition: color 0.3s;
+      }
+
+      .contact-footer .social-link:hover {
+        color: #b74b4b;
+      }
+
+      .contact-footer .rights {
+        font-size: 0.9em;
+        color: #555;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          flex-direction: column;
+        }
+
+        .main {
+          width: 100%;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid #333;
+          max-height: 50vh;
+        }
+
+        .top-nav {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 10px;
+        }
+
+        .nav-logo img {
+          height: 30px;
+          max-width: 90px;
+        }
+
+        .nav-links {
+          gap: 12px;
+        }
+
+        .nav-links a {
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="top-nav">
+      <div class="nav-logo">
+        <img src="Jinwoo.png" alt="Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="gen.html" target="_blank">Want the channels for OTT?</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="main">
+        <h1>Shakzz TV</h1>
+        <div id="channelInfo"></div>
+        <div id="video"></div>
+        <footer class="coded">Coded by Cutie</footer>
+      </div>
+
+      <div class="sidebar">
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Search channel..." />
+          <span id="clearSearch" class="clear-btn">&times;</span>
+        </div>
+        <div class="channel-list" id="channelList"></div>
+      </div>
+    </main>
+
+    <footer class="contact-footer">
+      <div class="contact-content">
+        Contact Me:
+        <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="rights">© All rights reserved 2025</div>
+    </footer>
+
+    <!-- Your custom logic -->
+    <script src="cutie.js"></script>
+
+    <!-- Search clear functionality -->
+    <script>
+      const searchInput = document.getElementById('search');
+      const clearBtn = document.getElementById('clearSearch');
+
+      searchInput.addEventListener('input', () => {
+        clearBtn.style.display = searchInput.value ? 'block' : 'none';
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        searchInput.dispatchEvent(new Event('input')); // trigger search logic
+      });
+    </script>
+  </body>
 </html>
