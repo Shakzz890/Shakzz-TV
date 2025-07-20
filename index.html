@@ -25,62 +25,14 @@
       * {
         box-sizing: border-box;
       }
-
-      html, body {
+      body {
         margin: 0;
-        padding: 0;
         background-color: #111;
         font-family: "Segoe UI", sans-serif;
         color: white;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
-      }
-
-      .top-nav {
-        width: 100%;
-        background-color: #000;
-        border-bottom: 2px solid #3a3a3a;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        flex-wrap: wrap;
-      }
-
-      .nav-logo img {
-        height: 40px;
-        width: auto;
-        max-width: 120px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .nav-links a {
-        color: #3a3a3a;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1em;
-        transition: color 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: #b74b4b;
-      }
-
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
+        min-height: 100vh;
       }
 
       .main {
@@ -105,6 +57,12 @@
         border-radius: 16px;
         box-shadow: 0 0 20px #2f2f2f;
         aspect-ratio: 16 / 9;
+      }
+
+      footer {
+        margin: 20px;
+        color: #666;
+        font-size: 0.9em;
       }
 
       .sidebar {
@@ -169,19 +127,92 @@
         border-radius: 4px;
       }
 
-      footer.coded {
-        margin: 20px;
-        color: #666;
-        font-size: 0.9em;
+      .top-nav {
+        width: 100%;
+        background-color: #000;
+        border-bottom: 2px solid #3a3a3a;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        flex-wrap: wrap;
       }
 
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+        max-width: 120px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: #3a3a3a;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #b74b4b;
+      }
+
+      .content-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: calc(100vh - 60px);
+      }
+
+      @media (max-width: 768px) {
+        .main {
+          width: 100%;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid #333333;
+          max-height: 50vh;
+          overflow-y: auto;
+        }
+
+        .top-nav {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 10px;
+        }
+
+        .nav-logo img {
+          height: 30px;
+          max-width: 90px;
+        }
+
+        .nav-links {
+          gap: 12px;
+        }
+
+        .nav-links a {
+          font-size: 0.9em;
+        }
+      }
+
+      /* Contact Footer */
       .contact-footer {
         background-color: #000;
         padding: 20px;
         color: #ccc;
         text-align: center;
         border-top: 2px solid #2f2f2f;
-        width: 100%;
       }
 
       .contact-footer .contact-content {
@@ -204,42 +235,6 @@
         font-size: 0.9em;
         color: #555;
       }
-
-      @media (max-width: 768px) {
-        main {
-          flex-direction: column;
-        }
-
-        .main {
-          width: 100%;
-        }
-
-        .sidebar {
-          width: 100%;
-          border-left: none;
-          border-top: 2px solid #333;
-          max-height: 50vh;
-        }
-
-        .top-nav {
-          flex-direction: row;
-          justify-content: space-between;
-          padding: 10px;
-        }
-
-        .nav-logo img {
-          height: 30px;
-          max-width: 90px;
-        }
-
-        .nav-links {
-          gap: 12px;
-        }
-
-        .nav-links a {
-          font-size: 0.9em;
-        }
-      }
     </style>
   </head>
 
@@ -253,28 +248,28 @@
       </div>
     </nav>
 
-    <main>
+    <div class="content-container">
       <div class="main">
         <h1>Shakzz TV</h1>
         <div id="channelInfo"></div>
         <div id="video"></div>
-        <footer class="coded">Coded by Cutie</footer>
+        <footer>Coded by Cutie</footer>
       </div>
 
       <div class="sidebar">
         <input type="text" id="search" placeholder="Search channel..." />
         <div class="channel-list" id="channelList"></div>
       </div>
-    </main>
+    </div>
 
     <!-- Contact Footer -->
     <footer class="contact-footer">
       <div class="contact-content">
         Contact Me:
-        <a href="https://www.facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link">
+        <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
+        <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
           <i class="fab fa-youtube"></i>
         </a>
       </div>
