@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+    <title>Shakzz TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!--Use the specified version-->
+    <script
+      disable-devtool-auto
+      src="https://cdn.jsdelivr.net/npm/disable-devtool@x.x.x"
+    ></script>
+    <!--Use latest version-->
+    <script
+      disable-devtool-auto
+      src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"
+    ></script>
+    <script>
+      (function () {
+        const closeSite = () => {
+          document.documentElement.innerHTML = "";
+          window.stop();
+          location.replace("about:blank");
+        };
+
+        const detectDevToolsSize = () => {
+          const threshold = 160;
+          const widthDiff = window.outerWidth - window.innerWidth;
+          const heightDiff = window.outerHeight - window.innerHeight;
+          if (
+            widthDiff > threshold ||
+            heightDiff > threshold ||
+            navigator.webdriver
+          ) {
+            closeSite();
+          }
+        };
+
+        const detectConsoleToStringOverride = () => {
+          if (console.log.toString().indexOf("[native code]") === -1) {
+            closeSite();
+          }
+        };
+
+        // Key & mouse protections
+        window.addEventListener("keydown", (e) => {
+          if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+            (e.ctrlKey && e.key === "U")
+          ) {
+            e.preventDefault();
+            closeSite();
+          }
+        });
+
+        window.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        // On load
+        detectDevToolsSize();
+        detectConsoleToStringOverride();
+
+        // Check continuously
+        setInterval(() => {
+          detectDevToolsSize();
+          detectConsoleToStringOverride();
+        }, 300);
+
+        // Prevent back button
+        history.pushState(null, "", location.href);
+        window.onpopstate = function () {
+          history.pushState(null, "", location.href);
+          closeSite();
+        };
+
+        window.addEventListener("beforeunload", () => {
+          location.replace("about:blank");
+        });
+      })();
+    </script>
+
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
+    <script>
+      jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
+    </script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background-color: #111;
+        font-family: "Segoe UI", sans-serif;
+        color: white;
+      }
+
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+      }
+
+      h1 {
+        margin: 20px;
+        font-size: 2em;
+        color: #b74b4b;
+      }
+
+      #video {
+        width: 100%;
+        max-width: 800px;
+        border: 4px solid #2f2f2f;
+        border-radius: 16px;
+        box-shadow: 0 0 20px #2f2f2f;
+        aspect-ratio: 16 / 9;
+      }
+
+      footer {
+        margin: 20px;
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .sidebar {
+        width: 300px;
+        background-color: #222;
+        border-left: 2px solid #2f2f2f;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        max-height: 100vh;
+      }
+
+      .sidebar input {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        border: 1px solid #2f2f2f;
+        background-color: #111;
+        color: white;
+      }
+
+      .channel-list {
+        overflow-y: auto;
+        flex-grow: 1;
+      }
+
+      .channel-button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #333;
+        border: 1px solid #2f2f2f;
+        border-radius: 8px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .channel-button:hover {
+        background-color: #45010c22;
+      }
+
+      .channel-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 6px;
+        background-color: white;
+      }
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #2f2f2f;
+        border-radius: 4px;
+      }
+
+      .channel-list::-webkit-scrollbar {
+        width: 6px;
+      }
+      .channel-list::-webkit-scrollbar-thumb {
+        background: #2f2f2f;
+        border-radius: 4px;
+      }
+
+      /*NAV*/
+      .top-nav {
+        width: 100%;
+        background-color: #000;
+        border-bottom: 2px solid #3a3a3a;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        flex-wrap: wrap;
+      }
+
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+        max-width: 120px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: #3a3a3a;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #3a3a3a;
+      }
+
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+      }
+
+      .content-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: calc(100vh - 60px); /* subtract nav height */
+      }
+
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+          height: auto;
+          overflow: auto;
+        }
+
+        .main {
+          width: 100%;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-left: none;
+          border-top: 2px solid #333333;
+          max-height: 50vh;
+          overflow-y: auto;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .top-nav {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+        }
+
+        .nav-logo img {
+          height: 30px;
+          max-width: 90px;
+        }
+
+        .nav-links {
+          gap: 12px;
+        }
+
+        .nav-links a {
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="nav-logo">
+        <img src="Jinwoo.png" alt="Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="gen.html" target="_blank">Want the channels for OTT?</a>
+      </div>
+    </nav>
+
+    <div class="content-container">
+      <div class="main">
+        <h1>Shakzz TV</h1>
+
+        <!-- Placeholder for the channel name display -->
+        <div id="channelInfo"></div>
+
+        <div id="video"></div>
+        <footer>Coded by Cutie</footer>
+      </div>
+
+      <div class="sidebar">
+        <input type="text" id="search" placeholder="Search channel..." />
+        <div class="channel-list" id="channelList"></div>
+      </div>
+    </div>
+
+    <script src="cutie.js"></script>
+  </body>
+</html>
