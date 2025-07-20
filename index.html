@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+    <span class="logo-text">Shakzz TV</span>
     <title>Shakzz TV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
@@ -51,11 +52,17 @@
         flex-wrap: wrap;
       }
 
-      .nav-logo img {
-        height: 40px;
-        width: auto;
-        max-width: 120px;
-      }
+      .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-size: 1.5em;
+  color: royalblue;
+  font-weight: bold;
+}
 
       .nav-links {
         display: flex;
@@ -116,32 +123,37 @@
         padding: 10px;
         max-height: 100vh;
       }
+      
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  min-height: 38px;
+}
 
-      .search-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-      }
+.search-container input {
+  flex: 1;
+  padding: 8px 30px 8px 8px;
+  border-radius: 6px;
+  border: 1px solid #2f2f2f;
+  background-color: #111;
+  color: white;
+  width: 100%;
+}
 
-      .search-container input {
-        padding: 8px 30px 8px 8px;
-        border-radius: 6px;
-        border: 1px solid #2f2f2f;
-        background-color: #111;
-        color: white;
-        width: 100%;
-      }
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+  user-select: none;
+}
 
-      .clear-btn {
-        position: absolute;
-        right: 10px;
-        color: #999;
-        font-size: 1.2em;
-        cursor: pointer;
-        display: none;
-        user-select: none;
-      }
 
       .channel-list {
         overflow-y: auto;
@@ -266,7 +278,7 @@
         <img src="Jinwoo.png" alt="Logo" />
       </div>
       <div class="nav-links">
-        <a href="gen.html" target="_blank">Want the channels for OTT?</a>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
       </div>
     </nav>
 
@@ -319,4 +331,4 @@
       });
     </script>
   </body>
-</html>
+</html> 
