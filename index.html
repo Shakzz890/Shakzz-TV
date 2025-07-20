@@ -5,84 +5,101 @@
     <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
     <title>Shakzz TV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, max-age=0"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
+    <!--Use the specified version-->
+    <script
+      disable-devtool-auto
+      src="https://cdn.jsdelivr.net/npm/disable-devtool@x.x.x"
+    ></script>
+    <!--Use latest version-->
+    <script
+      disable-devtool-auto
+      src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"
+    ></script>
+    <script>
+      (function () {
+        const closeSite = () => {
+          document.documentElement.innerHTML = "";
+          window.stop();
+          location.replace("about:blank");
+        };
 
-    <!-- Disable DevTools -->
-    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
+        const detectDevToolsSize = () => {
+          const threshold = 160;
+          const widthDiff = window.outerWidth - window.innerWidth;
+          const heightDiff = window.outerHeight - window.innerHeight;
+          if (
+            widthDiff > threshold ||
+            heightDiff > threshold ||
+            navigator.webdriver
+          ) {
+            closeSite();
+          }
+        };
 
-    <!-- JW Player -->
+        const detectConsoleToStringOverride = () => {
+          if (console.log.toString().indexOf("[native code]") === -1) {
+            closeSite();
+          }
+        };
+
+        // Key & mouse protections
+        window.addEventListener("keydown", (e) => {
+          if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+            (e.ctrlKey && e.key === "U")
+          ) {
+            e.preventDefault();
+            closeSite();
+          }
+        });
+
+        window.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        // On load
+        detectDevToolsSize();
+        detectConsoleToStringOverride();
+
+        // Check continuously
+        setInterval(() => {
+          detectDevToolsSize();
+          detectConsoleToStringOverride();
+        }, 300);
+
+        // Prevent back button
+        history.pushState(null, "", location.href);
+        window.onpopstate = function () {
+          history.pushState(null, "", location.href);
+          closeSite();
+        };
+
+        window.addEventListener("beforeunload", () => {
+          location.replace("about:blank");
+        });
+      })();
+    </script>
+
     <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
     <script>
       jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
     </script>
 
-    <!-- Font Awesome for Social Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <style>
       * {
         box-sizing: border-box;
       }
-
-      html, body {
+      body {
         margin: 0;
-        padding: 0;
         background-color: #111;
         font-family: "Segoe UI", sans-serif;
         color: white;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .top-nav {
-        width: 100%;
-        background-color: #000;
-        border-bottom: 2px solid #3a3a3a;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        flex-wrap: wrap;
-      }
-
-      .nav-logo img {
-        height: 40px;
-        width: auto;
-        max-width: 120px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .nav-links a {
-        color: #3a3a3a;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1em;
-        transition: color 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: #b74b4b;
-      }
-
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
       }
 
       .main {
@@ -107,6 +124,12 @@
         border-radius: 16px;
         box-shadow: 0 0 20px #2f2f2f;
         aspect-ratio: 16 / 9;
+      }
+
+      footer {
+        margin: 20px;
+        color: #666;
+        font-size: 0.9em;
       }
 
       .sidebar {
@@ -159,57 +182,79 @@
         border-radius: 6px;
         background-color: white;
       }
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #2f2f2f;
+        border-radius: 4px;
+      }
 
-      .sidebar::-webkit-scrollbar,
       .channel-list::-webkit-scrollbar {
         width: 6px;
       }
-
-      .sidebar::-webkit-scrollbar-thumb,
       .channel-list::-webkit-scrollbar-thumb {
         background: #2f2f2f;
         border-radius: 4px;
       }
 
-      footer.coded {
-        margin: 20px;
-        color: #666;
-        font-size: 0.9em;
-      }
-
-      .contact-footer {
-        background-color: #000;
-        padding: 20px;
-        color: #ccc;
-        text-align: center;
-        border-top: 2px solid #2f2f2f;
+      /*NAV*/
+      .top-nav {
         width: 100%;
+        background-color: #000;
+        border-bottom: 2px solid #3a3a3a;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        flex-wrap: wrap;
       }
 
-      .contact-footer .contact-content {
-        margin-bottom: 10px;
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+        max-width: 120px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: #3a3a3a;
+        text-decoration: none;
+        font-weight: bold;
         font-size: 1em;
-      }
-
-      .contact-footer .social-link {
-        margin: 0 10px;
-        color: #ccc;
-        font-size: 1.4em;
         transition: color 0.3s;
       }
 
-      .contact-footer .social-link:hover {
-        color: #b74b4b;
+      .nav-links a:hover {
+        color: #3a3a3a;
       }
 
-      .contact-footer .rights {
-        font-size: 0.9em;
-        color: #555;
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+      }
+
+      .content-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: calc(100vh - 60px); /* subtract nav height */
       }
 
       @media (max-width: 768px) {
-        main {
+        body {
           flex-direction: column;
+          height: auto;
+          overflow: auto;
         }
 
         .main {
@@ -219,13 +264,17 @@
         .sidebar {
           width: 100%;
           border-left: none;
-          border-top: 2px solid #333;
+          border-top: 2px solid #333333;
           max-height: 50vh;
+          overflow-y: auto;
         }
+      }
 
+      @media (max-width: 768px) {
         .top-nav {
           flex-direction: row;
           justify-content: space-between;
+          align-items: center;
           padding: 10px;
         }
 
@@ -241,74 +290,35 @@
         .nav-links a {
           font-size: 0.9em;
         }
-        
-        .social-link i {
-          vertical-align: middle;
-          font-size: 1.4em;
-          line-height: 1;
-       }.     
       }
     </style>
   </head>
-
   <body>
     <nav class="top-nav">
       <div class="nav-logo">
         <img src="Jinwoo.png" alt="Logo" />
       </div>
       <div class="nav-links">
+        <a href="gen.html" target="_blank">Want the channels for OTT?</a>
       </div>
     </nav>
 
-    <main>
+    <div class="content-container">
       <div class="main">
         <h1>Shakzz TV</h1>
+
+        <!-- Placeholder for the channel name display -->
         <div id="channelInfo"></div>
+
         <div id="video"></div>
-        <footer class="coded">Coded by Cutie</footer>
+        <footer>Coded by Cutie</footer>
       </div>
 
       <div class="sidebar">
         <input type="text" id="search" placeholder="Search channel..." />
         <div class="channel-list" id="channelList"></div>
       </div>
-    </main>
-
-   <!-- Font Awesome CDN (for icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Footer -->
-<footer style="text-align: center; background-color: black; padding: 20px;">
-  <p style="color: white; font-family: sans-serif;">Contact Me:</p>
-
-  <!-- Social icons -->
-  <a href="https://facebook.com" target="_blank" class="social-icon" style="margin: 0 10px;">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="https://youtube.com" target="_blank" class="social-icon" style="margin: 0 10px;">
-    <i class="fab fa-youtube"></i>
-  </a>
-
-  <p style="color: grey; font-family: sans-serif; margin-top: 15px;">© All rights reserved 2025</p>
-</footer>
-
-<!-- Custom styles for social icons -->
-<style>
-  a.social-icon {
-    text-decoration: none;
-  }
-
-  a.social-icon i {
-    font-size: 24px;
-    color: white;
-    vertical-align: middle;
-  }
-
-  a.social-icon:hover i {
-    color: #ccc;
-  }
-</style>
-
+    </div>
 
     <script src="cutie.js"></script>
   </body>
