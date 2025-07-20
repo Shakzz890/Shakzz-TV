@@ -2,49 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shakzz TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
-
-  <!-- JW Player -->
-  <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>
-    jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
-  </script>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg-color: #111;
+      --text-color: #fff;
+      --nav-color: #000;
+      --accent-color: royalblue;
     }
 
-    html, body {
+    body.light-mode {
+      --bg-color: #f4f4f4;
+      --text-color: #111;
+      --nav-color: #fff;
+      --accent-color: royalblue;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      background-color: #111;
       font-family: "Segoe UI", sans-serif;
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     .top-nav {
-      width: 100%;
-      background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: var(--nav-color);
+      padding: 10px 20px;
+      border-bottom: 2px solid #3a3a3a;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -58,24 +52,23 @@
     }
 
     .nav-logo img {
-      height: 40px;
-      width: auto;
+      height: 36px;
     }
 
     .logo-text {
       font-size: 1.5em;
-      color: royalblue;
       font-weight: bold;
+      color: var(--accent-color);
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #3a3a3a;
+      color: var(--text-color);
       text-decoration: none;
       font-weight: bold;
       font-size: 1em;
@@ -86,9 +79,22 @@
       color: #b74b4b;
     }
 
+    .toggle-mode-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4em;
+      color: var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-mode-btn:hover {
+      transform: rotate(20deg);
+    }
+
     main {
-      flex: 1;
       display: flex;
+      flex: 1;
       flex-direction: row;
       flex-wrap: wrap;
       width: 100%;
@@ -96,11 +102,10 @@
 
     .main {
       flex: 1;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 10px;
     }
 
     #video {
@@ -120,6 +125,12 @@
       flex-direction: column;
       padding: 10px;
       max-height: 100vh;
+    }
+
+    .sidebar-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .search-container {
@@ -149,7 +160,6 @@
       font-size: 1.2em;
       cursor: pointer;
       display: none;
-      user-select: none;
     }
 
     .channel-list {
@@ -184,17 +194,6 @@
       background-color: white;
     }
 
-    .sidebar::-webkit-scrollbar,
-    .channel-list::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .sidebar::-webkit-scrollbar-thumb,
-    .channel-list::-webkit-scrollbar-thumb {
-      background: #2f2f2f;
-      border-radius: 4px;
-    }
-
     footer.coded {
       margin: 20px;
       color: #666;
@@ -202,9 +201,9 @@
     }
 
     .contact-footer {
-      background-color: #000;
+      background-color: var(--nav-color);
       padding: 20px;
-      color: #ccc;
+      color: var(--text-color);
       text-align: center;
       border-top: 2px solid #2f2f2f;
       width: 100%;
@@ -217,7 +216,7 @@
 
     .contact-footer .social-link {
       margin: 0 10px;
-      color: #ccc;
+      color: var(--text-color);
       font-size: 1.4em;
       transition: color 0.3s;
       text-decoration: none;
@@ -229,22 +228,12 @@
 
     .contact-footer .rights {
       font-size: 0.9em;
-      color: #555;
+      color: #888;
     }
 
     @media (max-width: 768px) {
       main {
         flex-direction: column;
-      }
-
-      .main {
-        width: 100%;
-      }
-
-      #video {
-        max-width: 100%;
-        width: 100%;
-        height: auto;
       }
 
       .sidebar {
@@ -254,23 +243,9 @@
         max-height: 50vh;
       }
 
-      .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
-      }
-
-      .nav-logo img {
-        height: 30px;
-        max-width: 90px;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.9em;
+      #video {
+        width: 100%;
+        max-width: 100%;
       }
     }
   </style>
@@ -283,42 +258,48 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
+      <button class="toggle-mode-btn" onclick="toggleMode()" id="toggleIcon">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
   </nav>
 
   <main>
     <div class="main">
-      <div id="channelInfo"></div>
-      <div id="video"></div>
-      <footer class="coded">Coded by Cutie</footer>
+      <video id="video" controls>
+        <source src="your-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
 
-    <div class="sidebar">
-      <div class="search-container">
-        <input type="text" id="search" placeholder="Search channel..." />
-        <span id="clearSearch" class="clear-btn">&times;</span>
+    <aside class="sidebar">
+      <div class="sidebar-content">
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Search channel..." />
+          <span class="clear-btn" id="clearSearch">&times;</span>
+        </div>
+        <div class="channel-list">
+          <div class="channel-button">
+            <img class="channel-logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" />
+            <span>Facebook Live</span>
+          </div>
+          <!-- Add more channel buttons here -->
+        </div>
       </div>
-      <div class="channel-list" id="channelList"></div>
-    </div>
+    </aside>
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-content">
-      Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
-    </div>
-    <div class="rights">© All rights reserved 2025</div>
+    <div class="contact-content">Contact us on social media</div>
+    <a class="social-link" href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <div class="rights">© 2025 Shakzz TV. All rights reserved.</div>
   </footer>
 
-  <script src="cutie.js"></script>
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
+    const toggleBtn = document.getElementById('toggleIcon');
+    const icon = toggleBtn.querySelector('i');
 
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
@@ -329,6 +310,15 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
+
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+    }
   </script>
 </body>
 </html>
