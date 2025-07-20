@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <nav class="top-nav">
-  <div class="nav-logo">
-    <img src="Jinwoo.png" alt="Logo" style="height: 40px;" />
-    <span class="logo-text">Shakzz TV</span>
-  </div>
-  <div class="nav-links">
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-  </div>
-</nav>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+    <title>Shakzz TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
     <!-- Disable DevTools -->
     <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
@@ -53,17 +51,11 @@
         flex-wrap: wrap;
       }
 
-      .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-text {
-  font-size: 1.5em;
-  color: royalblue;
-  font-weight: bold;
-}
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+        max-width: 120px;
+      }
 
       .nav-links {
         display: flex;
@@ -124,37 +116,32 @@
         padding: 10px;
         max-height: 100vh;
       }
-      
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  min-height: 38px;
-}
 
-.search-container input {
-  flex: 1;
-  padding: 8px 30px 8px 8px;
-  border-radius: 6px;
-  border: 1px solid #2f2f2f;
-  background-color: #111;
-  color: white;
-  width: 100%;
-}
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-.clear-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  font-size: 1.2em;
-  cursor: pointer;
-  display: none;
-  user-select: none;
-}
+      .search-container input {
+        padding: 8px 30px 8px 8px;
+        border-radius: 6px;
+        border: 1px solid #2f2f2f;
+        background-color: #111;
+        color: white;
+        width: 100%;
+      }
 
+      .clear-btn {
+        position: absolute;
+        right: 10px;
+        color: #999;
+        font-size: 1.2em;
+        cursor: pointer;
+        display: none;
+        user-select: none;
+      }
 
       .channel-list {
         overflow-y: auto;
@@ -274,8 +261,18 @@
   </head>
 
   <body>
+    <nav class="top-nav">
+      <div class="nav-logo">
+        <img src="Jinwoo.png" alt="Logo" />
       </div>
+      <div class="nav-links">
+        <a href="gen.html" target="_blank">Want the channels for OTT?</a>
+      </div>
+    </nav>
 
+    <main>
+      <div class="main">
+        <h1>Shakzz TV</h1>
         <div id="channelInfo"></div>
         <div id="video"></div>
         <footer class="coded">Coded by Cutie</footer>
