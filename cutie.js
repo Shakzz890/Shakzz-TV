@@ -1,4 +1,13 @@
 const channels = {
+dreamworks_tagalized: {
+  name: "DreamWorks (Tagalized)",
+  type: "clearkey",
+  manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_dreamworktag.mpd",
+  keyId: "564b3b1c781043c19242c66e348699c5",
+  key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
+  logo: "https://i.imgur.com/cgfKSDP.png",
+  group: "Cignal"
+},
   tv5: {
     name: "TV 5",
     type: "clearkey",
