@@ -326,15 +326,6 @@ const channels = {
     key: "1e3e0ca32d421fbfec86feced0efefda",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/OneSportsPlus_logo.svg/300px-OneSportsPlus_logo.svg.png",
   },
-
-  pbarushhd: {
-    name: "PBA Rush",
-    type: "hls",
-    manifestUri:
-      "https://ott.athenatv.net/stream/phcathenatv/pbarush/master.m3u8?u=phc-free&p=8c43211c3fe7f44b1af3deedb89d50ecef2ee4c97eb987071fd3fea18a7b0af7",
-    logo: "https://th.bing.com/th/id/R.743cd8b9fc154d6ae88ad250cbda5f5d?rik=pXna8%2bXXTgQNXQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2flogopedia%2fimages%2fc%2fcd%2fPBA_Rush_logo.png%2frevision%2flatest%3fcb%3d20161115101642&ehk=o2xvROtRxUDG9q%2beLGFUpfS2%2bcbtn%2fphEqWCsyPHnNM%3d&risl=&pid=ImgRaw&r=0",
-  },
-
   nbaph: {
     name: "NBA TV PH",
     type: "clearkey",
@@ -642,14 +633,6 @@ const channels = {
     key: "b2d0dce5c486891997c1c92ddaca2cd2",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxvjeBIthYiEaZHeVeYpDicIlOTdv3G6lzoal3VM2xVzWu_J7XxM657oz&s=10"
   },
-  tvn_movies_pinoy: {
-    name: "tvN Movies Pinoy",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_tvnmovie.mpd",
-    keyId: "2e53f8d8a5e94bca8f9a1e16ce67df33",
-    key: "3471b2464b5c7b033a03bb8307d9fa35",
-    logo: "https://static.wikia.nocookie.net/russel/images/e/e3/TvN_Movies_Pinoy_Logo_2023.png"
-  },
   pbo: {
     name: "PBO",
     type: "clearkey",
@@ -849,14 +832,7 @@ one_sports_plus: {
     keyId: "dac605bc197e442c93f4f08595a95100",
     key: "975e27ffc1b7949721ee3ccb4b7fd3e5",
     logo: "https://i.imgur.com/YeqyD9W.png"
-  },
-  tvn_premium: {
-    name: "tvN Premium",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_tvnpre.mpd",
-    keyId: "e1bde543e8a140b38d3f84ace746553e",
-    key: "b712c4ec307300043333a6899a402c10",
-    logo: "https://i.imgur.com/eE9IBhJ.png"
+  
   },
   history: {
     name: "History",
