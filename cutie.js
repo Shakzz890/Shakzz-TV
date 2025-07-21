@@ -166,10 +166,10 @@ dreamworks_tagalized: {
   },
 
   crunchyroll: {
-    name: "Crunchyroll",
+    name: "Crunchyroll PH",
     type: "hls",
     manifestUri:
-      "https://stitcher.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?deviceType=web&servertSideAds=false&deviceMake=safari&deviceVersion=1&deviceId=spencer&appVersion=1&deviceDNT=0&deviceModel=web&sid=6780419e-1ba9-11f0-a1fd-4e04716c5414",
+      "https://bit.ly/Crunchyroll-ph",
     logo: "https://logos-world.net/wp-content/uploads/2021/02/Crunchyroll-Logo-2012-present.jpg",
   },
 
