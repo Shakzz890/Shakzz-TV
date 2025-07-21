@@ -976,7 +976,7 @@ one_sports_plus: {
     manifestUri:
       "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
     logo:
-      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png",
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png/v1/fill/w_1192,h_670/cartoon_channel_ph_logo__2020___present__by_kierariel_de71xo3-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYjU4YmJjODgtMDAzMC00NDQ3LWI5OWUtMTllN2RiYzUxYjE0XC9kZTcxeG8zLTI2NjQ2OWE0LTNiZDUtNGJkNy04OTBlLTE5MmM3Nzk4ZTBiYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2FyUXQBaLF5j9GldZMJAM1ltGPFq7pMwwr6V7wyGpFs",
   },
 };
 
