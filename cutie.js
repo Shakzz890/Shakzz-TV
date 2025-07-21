@@ -646,14 +646,6 @@ const channels = {
     key: "c3f2aa420b8908ab8761571c01899460",
     logo: "https://i.imgur.com/3RVA5mV.png"
   },
-  hbo: {
-    name: "HBO",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbohd.mpd",
-    keyId: "d47ebabf7a21430b83a8c4b82d9ef6b1",
-    key: "54c213b2b5f885f1e0290ee4131d425b",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg"
-  },
   disneyxdd: {
     name: "Disney XD",
     type: "clearkey",
@@ -662,14 +654,6 @@ const channels = {
     keyId: "39cebece8b36640f9ba3f248ecfdf86a",
     key: "fad936249e036830aa5bef41bec05326",
     logo: "https://logos-world.net/wp-content/uploads/2023/06/Disney-XD-Logo-2009.png",
-  },
-hbo_hits: {
-  name: "HBO Hits",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_hbohits.mpd",
-  keyId: "b04ae8017b5b4601a5a0c9060f6d5b7d",
-  key: "a8795f3bdb8a4778b7e888ee484cc7a1",
-  logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/449_144.png"
 },
 
 dreamworks_tagalized: {
@@ -774,14 +758,6 @@ one_sports_plus: {
     key: "472aa631b1e671070a4bf198f43da0c7",
     logo: "https://i.imgur.com/Zd5zm7C.png"
   },
-  hbo_signature: {
-    name: "HBO Signature",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_hbosign.mpd",
-    keyId: "a06ca6c275744151895762e0346380f5",
-    key: "559da1b63eec77b5a942018f14d3f56f",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/af/HBO_Signature_Asia.png"
-  },
   tap_action_flix: {
     name: "Tap Action Flix",
     type: "clearkey",
@@ -854,14 +830,6 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/tvmaria_prd.mpd",
     keyId: "fa3998b9a4de40659725ebc5151250d6",
     key: "998f1294b122bbf1a96c1ddc0cbb229f"
-  },
-  hbofamily: {
-    name: "HBO Family",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/450_144.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbofam.mpd",
-    keyId: "872910c843294319800d85f9a0940607",
-    key: "f79fd895b79c590708cf5e8b5c6263be"
   },
   rockentertainment: {
     name: "Rock Entertainment",
