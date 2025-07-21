@@ -5,6 +5,9 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
   <!-- Disable DevTools -->
   <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
@@ -19,17 +22,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    :root {
-      --bg-color: #111;
-      --text-color: #fff;
-      --accent: royalblue;
-    }
-
-    [data-theme="light"] {
-      --bg-color: #f9f9f9;
-      --text-color: #111;
-    }
-
     * {
       box-sizing: border-box;
     }
@@ -37,16 +29,17 @@
     html, body {
       margin: 0;
       padding: 0;
+      background-color: #111;
       font-family: "Segoe UI", sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
+      color: white;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     .top-nav {
-      background: #000;
+      width: 100%;
+      background-color: #000;
       border-bottom: 2px solid #3a3a3a;
       padding: 10px 20px;
       display: flex;
@@ -55,6 +48,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      flex-wrap: wrap;
     }
 
     .nav-logo {
@@ -65,6 +59,7 @@
 
     .nav-logo img {
       height: 40px;
+      width: auto;
     }
 
     .logo-text {
@@ -75,23 +70,26 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 15px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
+      color: #3a3a3a;
       text-decoration: none;
-      color: #aaa;
-      transition: 0.3s;
+      font-weight: bold;
+      font-size: 1em;
+      transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: royalblue;
+      color: #b74b4b;
     }
 
     main {
       flex: 1;
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       width: 100%;
     }
@@ -101,23 +99,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       padding: 10px;
     }
 
     #video {
       width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16/9;
-      border-radius: 16px;
-      overflow: hidden;
+      max-width: 800px;
       border: 4px solid #2f2f2f;
+      border-radius: 16px;
       box-shadow: 0 0 20px #2f2f2f;
+      aspect-ratio: 16 / 9;
     }
 
     .sidebar {
       width: 300px;
-      background: #222;
-      border-left: 2px solid #333;
+      background-color: #222;
+      border-left: 2px solid #2f2f2f;
       display: flex;
       flex-direction: column;
       padding: 10px;
@@ -126,16 +124,20 @@
 
     .search-container {
       position: relative;
+      display: flex;
+      align-items: center;
       margin-bottom: 10px;
+      min-height: 38px;
     }
 
     .search-container input {
-      width: 100%;
+      flex: 1;
       padding: 8px 30px 8px 8px;
       border-radius: 6px;
       border: 1px solid #2f2f2f;
       background-color: #111;
       color: white;
+      width: 100%;
     }
 
     .clear-btn {
@@ -143,9 +145,11 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
+      color: #999;
+      font-size: 1.2em;
       cursor: pointer;
-      color: #aaa;
       display: none;
+      user-select: none;
     }
 
     .channel-list {
@@ -154,74 +158,83 @@
     }
 
     .channel-button {
+      width: 100%;
       padding: 10px;
       margin: 5px 0;
-      background: #333;
+      background-color: #333;
       border: 1px solid #2f2f2f;
-      color: white;
       border-radius: 8px;
+      color: white;
       display: flex;
-      gap: 10px;
       align-items: center;
+      gap: 15px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .channel-button:hover {
+      background-color: #45010c22;
     }
 
     .channel-logo {
       width: 50px;
       height: 50px;
       object-fit: contain;
-      background: white;
       border-radius: 6px;
+      background-color: white;
+    }
+
+    .sidebar::-webkit-scrollbar,
+    .channel-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb,
+    .channel-list::-webkit-scrollbar-thumb {
+      background: #2f2f2f;
+      border-radius: 4px;
     }
 
     footer.coded {
-      margin-top: auto;
-      padding: 10px;
+      margin: 20px;
+      color: #666;
       font-size: 0.9em;
-      color: #888;
-      text-align: center;
     }
 
     .contact-footer {
-      background: #000;
+      background-color: #000;
       padding: 20px;
-      border-top: 2px solid #2f2f2f;
-      text-align: center;
       color: #ccc;
+      text-align: center;
+      border-top: 2px solid #2f2f2f;
+      width: 100%;
     }
 
-    .social-link {
-      color: #ccc;
+    .contact-footer .contact-content {
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+
+    .contact-footer .social-link {
       margin: 0 10px;
+      color: #ccc;
       font-size: 1.4em;
+      transition: color 0.3s;
       text-decoration: none;
     }
 
-    .social-link:hover {
-      color: royalblue;
+    .contact-footer .social-link:hover {
+      color: #b74b4b;
     }
 
-    .rights {
+    .contact-footer .rights {
       font-size: 0.9em;
       color: #555;
-    }
-
-    #themeToggle {
-      cursor: pointer;
-      color: #888;
-      font-size: 1.2em;
     }
 
     @media (max-width: 768px) {
       main {
         flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        max-height: 50vh;
-        border-left: none;
-        border-top: 2px solid #2f2f2f;
       }
 
       .main {
@@ -230,11 +243,39 @@
 
       #video {
         max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-left: none;
+        border-top: 2px solid #333;
+        max-height: 50vh;
+      }
+
+      .top-nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      .nav-logo img {
+        height: 30px;
+        max-width: 90px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.9em;
       }
     }
   </style>
 </head>
-<body data-theme="dark">
+<body>
   <nav class="top-nav">
     <div class="nav-logo">
       <img src="Jinwoo.png" alt="Logo" />
@@ -242,7 +283,6 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-      <span id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-adjust"></i></span>
     </div>
   </nav>
 
@@ -265,15 +305,18 @@
   <footer class="contact-footer">
     <div class="contact-content">
       Contact Me:
-      <a href="https://www.facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
-      <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
+        <i class="fab fa-youtube"></i>
+      </a>
     </div>
     <div class="rights">© All rights reserved 2025</div>
   </footer>
 
   <script src="cutie.js"></script>
   <script>
-    // Clear button for search
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
 
@@ -285,12 +328,6 @@
       searchInput.value = '';
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
-    });
-
-    // Toggle Dark/Light Theme
-    const toggle = document.getElementById('themeToggle');
-    toggle.addEventListener('click', () => {
-      document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
     });
   </script>
 </body>
