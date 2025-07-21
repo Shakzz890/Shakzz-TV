@@ -66,17 +66,10 @@
       font-weight: bold;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
     .nav-links a {
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
     }
 
     .nav-links a:hover {
@@ -104,19 +97,16 @@
 
     .search-container {
       position: relative;
-      display: flex;
-      align-items: center;
       margin-bottom: 10px;
     }
 
     .search-container input {
-      flex: 1;
+      width: 100%;
       padding: 8px 30px 8px 8px;
       border-radius: 6px;
       border: 1px solid #2f2f2f;
       background-color: var(--bg-color);
       color: var(--text-color);
-      width: 100%;
     }
 
     .clear-btn {
@@ -128,7 +118,6 @@
       font-size: 1.2em;
       cursor: pointer;
       display: none;
-      user-select: none;
     }
 
     .channel-list {
@@ -148,7 +137,6 @@
       align-items: center;
       gap: 15px;
       cursor: pointer;
-      transition: background 0.3s;
     }
 
     .channel-button:hover {
@@ -168,65 +156,89 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    #channelInfo {
-      display: none;
+      padding: 10px;
     }
 
     #video {
       width: 100%;
-      height: auto;
-      aspect-ratio: 16/9;
-      max-width: 100%;
+      aspect-ratio: 16 / 9;
       margin: 0;
       padding: 0;
-      flex-grow: 1;
     }
 
     .jwplayer {
+      width: 100% !important;
+      height: 100% !important;
       margin: 0 !important;
-      padding: 0 !important;
     }
 
     .contact-footer {
       background-color: #000;
-      padding: 10px 20px;
+      padding: 5px 20px;
       color: #ccc;
       border-top: 2px solid #2f2f2f;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.85em;
+      font-size: 0.7em;
+      text-align: center;
     }
 
-    .contact-footer .contact-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 1.5em;
-    }
-
-    .social-link {
-      margin: 0 5px;
+    .contact-footer .social-link {
+      margin: 0 10px;
       color: #ccc;
       font-size: 1.2em;
-      text-decoration: none !important;
     }
 
-    .social-link:hover {
+    .contact-footer .social-link:hover {
       color: var(--accent-color);
     }
 
-    .rights {
-      font-size: 1.5em;
-      color: #555;
+    .chat-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 250px;
+      background-color: #222;
+      border: 1px solid #444;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      z-index: 1000;
+    }
+
+    .chat-header {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 8px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-body {
+      max-height: 150px;
+      overflow-y: auto;
+      padding: 8px;
+      font-size: 0.9em;
+      color: #ddd;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #444;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 8px;
+      background: #111;
+      color: white;
+    }
+
+    .chat-input button {
+      background: var(--accent-color);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
     }
 
     @media (max-width: 768px) {
@@ -255,6 +267,12 @@
       .nav-logo img {
         height: 30px;
       }
+
+      .chat-box {
+        width: 90%;
+        bottom: 10px;
+        right: 5%;
+      }
     }
   </style>
 </head>
@@ -279,23 +297,26 @@
     </div>
 
     <div class="main">
-      <div id="channelInfo"></div>
       <div id="video"></div>
     </div>
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-content">
-      Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
-    </div>
-    <div class="rights">© All rights reserved 2025</div>
+    Contact Me:
+    <a href="https://facebook.com/yourprofile" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+    <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a><br>
+    © All rights reserved 2025
   </footer>
+
+  <!-- Simple Chat Box -->
+  <div class="chat-box">
+    <div class="chat-header">Chat with us</div>
+    <div class="chat-body" id="chatBody">Hello! How can we help you?</div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
   <script src="cutie.js"></script>
   <script>
@@ -311,6 +332,18 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
+
+    // Simple Chat Functionality
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (message) {
+        const body = document.getElementById('chatBody');
+        body.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+        input.value = '';
+        body.scrollTop = body.scrollHeight;
+      }
+    }
   </script>
 </body>
 </html>
