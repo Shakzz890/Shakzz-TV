@@ -83,20 +83,22 @@
       color: var(--accent-color);
     }
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      width: 100%;
-    }
+  main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start; /* NEW: Prevents unnecessary stretching */
+}
 
-    .main {
+.main {
+  background: red;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px;
   gap: 5px;
+  width: 100%;
 }
 
     #video {
