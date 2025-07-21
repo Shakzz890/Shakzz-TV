@@ -3,230 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shakzz TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- JW Player -->
-  <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwplayer@8.28.1/jwplayer.js"></script>
+  <script>jwplayer.key = "YOUR_JWPLAYER_KEY";</script>
 
   <style>
-    :root {
-      --bg-color: #111;
-      --text-color: white;
-      --accent-color: royalblue;
-    }
+    @import url("https://fonts.googleapis.com/css2?family=Century+Gothic:wght@400;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
     * {
       box-sizing: border-box;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    html, body {
       margin: 0;
       padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: "Segoe UI", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    .top-nav {
-      width: 100%;
-      background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
+    body {
+      font-family: 'Century Gothic', sans-serif;
+      background-color: var(--bg-color, #000);
+      color: var(--text-color, #fff);
+    }
+
+    header {
       padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-logo img {
-      height: 40px;
-    }
-
-    .logo-text {
-      font-size: 1.5em;
-      color: var(--accent-color);
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-color);
+      font-size: 1.8rem;
+      background: #111;
+      font-family: 'Audiowide', cursive;
+      color: royalblue;
     }
 
     main {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       width: 100%;
-      flex-grow: 1;
-      height: 100%;
+      align-items: flex-start;
     }
 
     .sidebar {
-      width: 300px;
-      background-color: #222;
-      border-right: 2px solid #2f2f2f;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      max-height: 100vh;
+      width: 280px;
+      background-color: #111;
+      padding: 15px;
+      min-height: 100vh;
       overflow-y: auto;
-    }
-
-    .search-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .search-container input {
-      flex: 1;
-      padding: 8px 30px 8px 8px;
-      border-radius: 6px;
-      border: 1px solid #2f2f2f;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      width: 100%;
-    }
-
-    .clear-btn {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      font-size: 1.2em;
-      cursor: pointer;
-      display: none;
-      user-select: none;
-    }
-
-    .channel-list {
-      overflow-y: auto;
-      flex-grow: 1;
-    }
-
-    .channel-button {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      background-color: #333;
-      border: 1px solid #2f2f2f;
-      border-radius: 8px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .channel-button:hover {
-      background-color: #45010c22;
-    }
-
-    .channel-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 6px;
-      background-color: white;
+      border-right: 2px solid #222;
     }
 
     .main {
       flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    #channelInfo {
-      display: none;
+      padding: 10px;
     }
 
     #video {
       width: 100%;
-      height: auto;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16 / 9;
       max-width: 100%;
-      margin: 0;
-      padding: 0;
-      flex-grow: 1;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .jwplayer {
       margin: 0 !important;
       padding: 0 !important;
+      display: block;
     }
 
-    .contact-footer {
+    .channel-list {
+      margin-top: 15px;
+    }
+
+    .channel {
+      cursor: pointer;
+      padding: 10px;
+      background: #222;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .channel:hover {
+      background: royalblue;
+      color: #fff;
+    }
+
+    .search-container {
+      position: relative;
+    }
+
+    #search {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    footer.contact-footer {
       background-color: #000;
-      padding: 10px 20px;
+      padding: 8px 20px;
       color: #ccc;
       border-top: 2px solid #2f2f2f;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.85em;
+      font-size: 0.75em;
     }
 
-    .contact-footer .contact-content {
+    .footer-wrapper {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .contact-left {
+      display: flex;
       align-items: center;
-      margin-bottom: 8px;
-      font-size: 1.5em;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rights-left {
+      color: #555;
     }
 
     .social-link {
-      margin: 0 5px;
       color: #ccc;
       font-size: 1.2em;
-      text-decoration: none !important;
+      text-decoration: none;
     }
 
     .social-link:hover {
-      color: var(--accent-color);
-    }
-
-    .rights {
-      font-size: 1.5em;
-      color: #555;
+      color: royalblue;
     }
 
     @media (max-width: 768px) {
@@ -237,39 +151,31 @@
       .sidebar {
         width: 100%;
         border-right: none;
-        border-bottom: 2px solid #333;
-        max-height: 50vh;
+        border-bottom: 2px solid #222;
       }
 
-      .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
+      .footer-wrapper {
+        align-items: center;
+        text-align: center;
       }
 
-      .nav-links {
-        flex-direction: row;
-        gap: 15px;
+      .contact-left {
+        justify-content: center;
       }
 
-      .nav-logo img {
-        height: 30px;
+      .rights-left {
+        text-align: center;
+        width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
-  <nav class="top-nav">
-    <div class="nav-logo">
-      <img src="Jinwoo.png" alt="Logo" />
-      <span class="logo-text">Shakzz TV</span>
-    </div>
-    <div class="nav-links">
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-    </div>
-  </nav>
+  <header>Shakzz TV</header>
 
   <main>
+    <!-- Sidebar -->
     <div class="sidebar">
       <div class="search-container">
         <input type="text" id="search" placeholder="Search channel..." />
@@ -278,6 +184,7 @@
       <div class="channel-list" id="channelList"></div>
     </div>
 
+    <!-- Main Player -->
     <div class="main">
       <div id="channelInfo"></div>
       <div id="video"></div>
@@ -285,32 +192,80 @@
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-content">
-      Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
+    <div class="footer-wrapper">
+      <div class="contact-left">
+        <span>Contact Me:</span>
+        <a href="mailto:your@email.com" class="social-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://facebook.com/yourprofile" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="rights-left">© All rights reserved 2025</div>
     </div>
-    <div class="rights">© All rights reserved 2025</div>
   </footer>
 
-  <script src="cutie.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
-    const searchInput = document.getElementById('search');
-    const clearBtn = document.getElementById('clearSearch');
+    const m3uUrl = 'https://raw.githubusercontent.com/Shakzz890/Shakzzcutie/main/playlist.m3u';
 
-    searchInput.addEventListener('input', () => {
-      clearBtn.style.display = searchInput.value ? 'block' : 'none';
-    });
+    async function fetchM3U(url) {
+      const res = await fetch(url);
+      const text = await res.text();
+      return parseM3U(text);
+    }
 
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      clearBtn.style.display = 'none';
-      searchInput.dispatchEvent(new Event('input'));
-    });
+    function parseM3U(data) {
+      const lines = data.split('\n');
+      const channels = [];
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith('#EXTINF')) {
+          const title = lines[i].split(',')[1];
+          const url = lines[i + 1];
+          if (url && url.startsWith('http')) {
+            channels.push({ title, url });
+          }
+        }
+      }
+      return channels;
+    }
+
+    function displayChannels(channels) {
+      const container = document.getElementById('channelList');
+      container.innerHTML = '';
+      channels.forEach(channel => {
+        const div = document.createElement('div');
+        div.className = 'channel';
+        div.textContent = channel.title;
+        div.onclick = () => loadChannel(channel);
+        container.appendChild(div);
+      });
+    }
+
+    function loadChannel(channel) {
+      document.getElementById('channelInfo').innerHTML = `<h2>${channel.title}</h2>`;
+      jwplayer("video").setup({
+        file: channel.url,
+        width: "100%",
+        aspectratio: "16:9",
+        autostart: true
+      });
+    }
+
+    document.getElementById("clearSearch").onclick = () => {
+      document.getElementById("search").value = "";
+      displayChannels(window.allChannels);
+    };
+
+    document.getElementById("search").oninput = function () {
+      const query = this.value.toLowerCase();
+      const filtered = window.allChannels.filter(c => c.title.toLowerCase().includes(query));
+      displayChannels(filtered);
+    };
+
+    (async () => {
+      const channels = await fetchM3U(m3uUrl);
+      window.allChannels = channels;
+      displayChannels(channels);
+    })();
   </script>
 </body>
 </html>
