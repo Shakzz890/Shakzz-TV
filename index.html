@@ -5,9 +5,6 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
 
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
@@ -69,6 +66,12 @@
       font-weight: bold;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .nav-links a {
       color: #ccc;
       text-decoration: none;
@@ -100,7 +103,7 @@
     #video {
       width: 100%;
       aspect-ratio: 16 / 9;
-      border: none;
+      max-width: 100%;
     }
 
     .sidebar {
@@ -175,67 +178,64 @@
     }
 
     footer.coded {
-      font-size: 0.7em;
-      color: #777;
-      margin-top: 5px;
+      margin: 10px 0;
+      color: #888;
+      font-size: 0.8em;
     }
 
     .contact-footer {
       background-color: #000;
-      padding: 20px;
+      padding: 10px 20px;
       color: #ccc;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
       border-top: 2px solid #2f2f2f;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.85em;
     }
 
-    .contact-left {
-      flex: 1;
-      min-width: 200px;
-      margin-bottom: 10px;
+    .contact-footer .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.85em;
     }
 
-    .contact-left .social-link {
-      margin-right: 10px;
+    .social-link {
+      margin: 0 5px;
       color: #ccc;
-      font-size: 1.4em;
-      transition: color 0.3s;
+      font-size: 1.2em;
+      text-decoration: none !important;
     }
 
-    .contact-left .social-link:hover {
+    .social-link:hover {
       color: var(--accent-color);
     }
 
-    .contact-form {
-      flex: 1;
-      min-width: 200px;
+    .rights {
+      font-size: 0.75em;
+      color: #555;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      border: 1px solid #444;
-      border-radius: 5px;
-      background-color: #111;
-      color: white;
-    }
+    @media (min-width: 768px) {
+      .contact-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .contact-form button {
-      padding: 8px 16px;
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      .contact-footer .contact-content {
+        margin-bottom: 0;
+        justify-content: flex-start;
+      }
 
-    .contact-form button:hover {
-      background-color: #2b59d3;
+      .contact-footer .rights {
+        text-align: right;
+      }
     }
 
     @media (max-width: 768px) {
@@ -259,10 +259,19 @@
         max-height: 50vh;
       }
 
-      .contact-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+      .top-nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        gap: 15px;
+      }
+
+      .nav-logo img {
+        height: 30px;
       }
     }
   </style>
@@ -295,7 +304,7 @@
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-left">
+    <div class="contact-content">
       Contact Me:
       <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
         <i class="fab fa-facebook"></i>
@@ -304,14 +313,7 @@
         <i class="fab fa-youtube"></i>
       </a>
     </div>
-    <div class="contact-form">
-      <form action="mailto:your@email.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <div class="rights">© All rights reserved 2025</div>
   </footer>
 
   <script src="cutie.js"></script>
@@ -319,10 +321,12 @@
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
 
+    // Show clear button on input
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
 
+    // Clear search
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
       clearBtn.style.display = 'none';
