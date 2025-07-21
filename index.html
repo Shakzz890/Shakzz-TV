@@ -5,45 +5,41 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>
-    jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
-  </script>
+  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     :root {
-      --bg: #111;
-      --text: #fff;
-      --accent: royalblue;
-      --input-bg: #222;
-      --border: #2f2f2f;
+      --bg-color: #111;
+      --text-color: white;
+      --accent-color: royalblue;
     }
 
-    body.light {
-      --bg: #f9f9f9;
-      --text: #000;
-      --input-bg: #fff;
-      --border: #ccc;
+    [data-theme='light'] {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent-color: royalblue;
     }
 
     * {
       box-sizing: border-box;
+      transition: background 0.3s, color 0.3s;
     }
 
     html, body {
       margin: 0;
       padding: 0;
-      background-color: var(--bg);
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: "Segoe UI", sans-serif;
-      color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -52,7 +48,7 @@
     .top-nav {
       width: 100%;
       background-color: #000;
-      border-bottom: 2px solid var(--border);
+      border-bottom: 2px solid #3a3a3a;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -75,7 +71,7 @@
 
     .logo-text {
       font-size: 1.5em;
-      color: var(--accent);
+      color: var(--accent-color);
       font-weight: bold;
     }
 
@@ -86,18 +82,20 @@
     }
 
     .nav-links a {
-      color: var(--text);
+      color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1em;
+      transition: color 0.3s;
     }
 
-    .toggle-btn {
-      border: none;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 1.2em;
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .theme-toggle {
       cursor: pointer;
+      font-size: 1.3em;
+      color: var(--accent-color);
     }
 
     main {
@@ -113,22 +111,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       padding: 10px;
     }
 
     #video {
       width: 100%;
-      max-width: 1000px;
-      aspect-ratio: 16 / 9;
-      border: 4px solid var(--border);
+      border: 4px solid #2f2f2f;
       border-radius: 16px;
-      box-shadow: 0 0 20px var(--border);
+      box-shadow: 0 0 20px #2f2f2f;
+      aspect-ratio: 16 / 9;
+      max-width: 100%;
     }
 
     .sidebar {
       width: 300px;
-      background-color: var(--input-bg);
-      border-left: 2px solid var(--border);
+      background-color: #222;
+      border-left: 2px solid #2f2f2f;
       display: flex;
       flex-direction: column;
       padding: 10px;
@@ -146,9 +145,10 @@
       flex: 1;
       padding: 8px 30px 8px 8px;
       border-radius: 6px;
-      border: 1px solid var(--border);
-      background-color: var(--bg);
-      color: var(--text);
+      border: 1px solid #2f2f2f;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      width: 100%;
     }
 
     .clear-btn {
@@ -156,10 +156,11 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
+      color: #999;
       font-size: 1.2em;
       cursor: pointer;
-      color: #aaa;
       display: none;
+      user-select: none;
     }
 
     .channel-list {
@@ -168,23 +169,30 @@
     }
 
     .channel-button {
+      width: 100%;
       padding: 10px;
       margin: 5px 0;
       background-color: #333;
-      border: 1px solid var(--border);
+      border: 1px solid #2f2f2f;
       border-radius: 8px;
+      color: white;
       display: flex;
       align-items: center;
       gap: 15px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .channel-button:hover {
+      background-color: #45010c22;
     }
 
     .channel-logo {
       width: 50px;
       height: 50px;
       object-fit: contain;
-      background-color: #fff;
       border-radius: 6px;
+      background-color: white;
     }
 
     footer.coded {
@@ -198,11 +206,16 @@
       padding: 20px;
       color: #ccc;
       text-align: center;
-      border-top: 2px solid var(--border);
+      border-top: 2px solid #2f2f2f;
       width: 100%;
     }
 
-    .social-link {
+    .contact-footer .contact-content {
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+
+    .contact-footer .social-link {
       margin: 0 10px;
       color: #ccc;
       font-size: 1.4em;
@@ -210,8 +223,13 @@
       text-decoration: none;
     }
 
-    .social-link:hover {
-      color: #b74b4b;
+    .contact-footer .social-link:hover {
+      color: var(--accent-color);
+    }
+
+    .contact-footer .rights {
+      font-size: 0.9em;
+      color: #555;
     }
 
     @media (max-width: 768px) {
@@ -219,18 +237,31 @@
         flex-direction: column;
       }
 
-      .sidebar {
+      .main {
         width: 100%;
-        max-height: 50vh;
-        border-left: none;
-        border-top: 2px solid var(--border);
       }
 
-      .nav-links {
-        margin-top: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+      #video {
+        max-width: 100%;
         width: 100%;
+        height: auto;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-left: none;
+        border-top: 2px solid #333;
+        max-height: 50vh;
+      }
+
+      .top-nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      .nav-logo img {
+        height: 30px;
       }
     }
   </style>
@@ -243,9 +274,7 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-      <button class="toggle-btn" onclick="toggleTheme()">
-        <i class="fas fa-adjust"></i>
-      </button>
+      <i class="fas fa-adjust theme-toggle" title="Toggle Dark/Light"></i>
     </div>
   </nav>
 
@@ -266,9 +295,14 @@
   </main>
 
   <footer class="contact-footer">
-    <div>Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
-      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+    <div class="contact-content">
+      Contact Me:
+      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link" style="text-decoration: none;">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
+        <i class="fab fa-youtube"></i>
+      </a>
     </div>
     <div class="rights">© All rights reserved 2025</div>
   </footer>
@@ -277,7 +311,9 @@
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
+    const toggleBtn = document.querySelector('.theme-toggle');
 
+    // Search input clear button logic
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
@@ -288,9 +324,14 @@
       searchInput.dispatchEvent(new Event('input'));
     });
 
-    function toggleTheme() {
-      document.body.classList.toggle("light");
-    }
+    // Toggle theme logic
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+    });
+
+    // Set default dark theme
+    document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </body>
 </html>
