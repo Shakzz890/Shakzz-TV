@@ -496,191 +496,29 @@ one_sports_plus: {
     key: "da315cca7f2902b4de23199718ed7e90",
     logo: "https://i.imgur.com/JOg1GGl.png"
   },
-// Converge Stream
-  kapamilya_sd: {
-    name: "Kapamilya Channel",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001248/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Kapamilya_Channel_Logo_2020.svg/2560px-Kapamilya_Channel_Logo_2020.svg.png"
-  },
-  kapamilya_hd: {
-    name: "Kapamilya Channel HD",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001286/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Kapamilya_Channel_Logo_2020.svg/2560px-Kapamilya_Channel_Logo_2020.svg.png"
-  },
-  pbo: {
-    name: "PBO",
-    type: "widevine",
-    manifestUri: "http://143.44.136.113:6910/001/2/ch00000090990000001078/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Pinoy_Box_Office_logo.svg/1200px-Pinoy_Box_Office_logo.svg.png"
-  },
-  dzmm: {
-    name: "DZMM Teleradyo",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001249/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/DZMM_TeleRadyo.svg/1200px-DZMM_TeleRadyo.svg.png"
-  },
-  anc: {
-    name: "ANC",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001274/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/Bcu69bU.png"
-  },
-  myx: {
-    name: "MYX Philippines",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001252/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/CIPTNnT.png"
-  },
-  gma7: {
-    name: "GMA 7",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001093/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/Cu1tAY8.png"
-  },
-  gtv: {
-    name: "GTV",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001143/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/geuq18u.png"
-  },
-  all_tv: {
-    name: "ALL TV",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001179/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://brandlogo.org/wp-content/uploads/2024/05/All-TV-Logo-300x300.png.webp"
-  },
-  bilyonaryo: {
-    name: "Bilyonaryo Channel",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001124/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxvjeBIthYiEaZHeVeYpDicIlOTdv3G6lzoal3VM2xVzWu_J7XxM657oz&s=10"
-  },
-  tv5: {
-    name: "TV5",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001088/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/russel/images/7/7a/TV5_HD_Logo_2024.png/revision/latest/scale-to-width-down/290?cb=20240202141126"
-  },
-  a2z: {
-    name: "A2Z",
-    type: "widevine",
-    manifestUri: "http://143.44.136.113:6910/001/2/ch00000090990000001087/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/russel/images/8/85/A2Z_Channel_11_without_Channel_11_3D_Logo_2020.png/revision/latest?cb=20231101144828"
-  },
-  net25: {
-    name: "NET 25",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001090/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/pPPubX5.png"
-  },
-  ibc13: {
-    name: "IBC 13",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001089/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/f/f5/IBC_13_Logo_2012.png/revision/latest?cb=20170830080345"
-  },
-  untv: {
-    name: "UNTV",
-    type: "widevine",
-    manifestUri: "http://143.44.136.111:6910/001/2/ch00000090990000001091/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/99/UNTV-Logo-2016.svg/300px-UNTV-Logo-2016.svg.png"
-  },
-  ptv4: {
-    name: "PTV4",
-    type: "widevine",
-    manifestUri: "http://143.44.136.113:6910/001/2/ch00000090990000001086/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/russel/images/d/dc/PTV_4_Para_Sa_Bayan_Alternative_Logo_June_2017.png/revision/latest?cb=20171019065428"
-  },
-  dzrh: {
-    name: "DZRH TV",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001174/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/russel/images/6/62/DZRH_TV_Logo_November_2021.png/revision/latest?cb=20211215134648"
-  },
-  knowledge_channel: {
-    name: "Knowledge Channel",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001340/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/UIqEr2y.png"
-  },
-  aliw_channel: {
-    name: "Aliw Channel",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001109/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/en/b/b9/Aliw_Channel_23_logo.png"
-  },
-  cltv36: {
-    name: "CLTV 36",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001314/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/4/48/Cl_tv_36_ph.png/revision/latest?cb=20130823135759"
-  },
-  rjtv: {
-    name: "RJTV",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001338/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/russel/images/8/82/DZRJ_810_AM_TV_Logo_2022.png/revision/latest/scale-to-width-down/300?cb=20250102143126"
-  },
-  rjtv29: {
-    name: "RJTV 29",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001159/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/5/59/Screenshot_2019-08-30_at_5.25.09_PM.png"
-  },
-  gnn: {
-    name: "GNN",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001234/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/27/GNN_Logo_2025.png"
-  }
 
 };
 
 
-
-let currentChannelKey = Object.keys(channels)[0]; // Default to the first channel
+let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
   list.innerHTML = "";
 
   Object.entries(channels).forEach(([key, channel]) => {
+    // ✅ Apply filter logic here
     if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
 
     const btn = document.createElement("button");
     btn.className = "channel-button";
-    btn.innerHTML = `
+    btn.innerHTML = 
       <img src="${channel.logo}" class="channel-logo" alt="${channel.name} logo">
       <span>${channel.name}</span>
-    `;
+    ;
 
     if (currentChannelKey === key) {
-      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold;">Now Playing...</span>`;
+      btn.innerHTML += <span style="color: #00FF00; font-weight: bold;">Now Playing...</span>;
     }
 
     btn.onclick = () => loadChannel(key);
@@ -694,12 +532,12 @@ function loadChannel(key) {
   renderChannelButtons();
 
   const channelInfo = document.getElementById("channelInfo");
-  channelInfo.textContent = `${channel.name} is playing...`;
+  channelInfo.textContent = ${channel.name} is playing...;
   channelInfo.style.color = "#00FF00";
 
   const drmConfig = {};
   if (channel.type === "widevine") {
-    drmConfig.widevine = { url: channel.licenseServer };
+    drmConfig.widevine = { url: channel.licenseServerUri };
   } else if (channel.type === "clearkey") {
     drmConfig.clearkey = {
       keyId: channel.keyId,
@@ -708,20 +546,23 @@ function loadChannel(key) {
   }
 
   const player = jwplayer("video");
-  player.setup({
-    file: channel.manifestUri,
-    type: channel.type === "hls" ? "hls" : "dash",
-    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-    autostart: true,
-    width: "100%",
-    height: "100%",
-    stretching: "exactfit"
-  });
 
+ player.setup({
+  file: channel.manifestUri,
+  type: channel.type === "hls" ? "hls" : "dash",
+  drm: Object.keys(drmConfig).length ? drmConfig : undefined,
+  autostart: true,
+  width: "100%",
+  height: "100%",
+  stretching: "exactfit"  // or "exactfit" if you want no black bars at all
+});
+
+  
+  // Handle error (e.g., failed to load stream)
   player.on("error", function (err) {
-    channelInfo.textContent = `${channel.name} is Unavailable...`;
+    channelInfo.textContent = ${channel.name} is Unavailable...;
     channelInfo.style.color = "#FF3333";
-    console.error(`Error playing ${channel.name}:`, err.message || err);
+    console.error(Error playing ${channel.name}:, err.message || err);
   });
 }
 
@@ -729,5 +570,6 @@ document.getElementById("search").addEventListener("input", function () {
   renderChannelButtons(this.value);
 });
 
+// Render the channel buttons and load the default channel
 renderChannelButtons();
-loadChannel(currentChannelKey);
+loadChannel(currentChannelKey); // Load the default channel automatically
