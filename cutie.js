@@ -36,7 +36,7 @@ const channels = {
       "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbofam.mpd",
     keyId: "872910c843294319800d85f9a0940607",
     key: "f79fd895b79c590708cf5e8b5c6263be",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/HBO_Family_logo.png",
+    logo: "https://www.pikpng.com/pngl/m/41-419283_hbo-family-logo-hbo-family-logo-png-clipart.png",
   },
 
   hbohits: {
@@ -1024,7 +1024,7 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_cnnhd.mpd",
     keyId: "900c43f0e02742dd854148b7a75abbec",
     key: "da315cca7f2902b4de23199718ed7e90",
-    logo: "https://i.imgur.com/JOg1GGl.png"
+    logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png"
   },
 };
 
