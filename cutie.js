@@ -618,7 +618,7 @@ function loadChannel(key) {
   autostart: true,
   width: "100%",
   height: "100%",
-  stretching: "uniform"  // or "exactfit" if you want no black bars at all
+  stretching: "exactfit"  // or "exactfit" if you want no black bars at all
 });
 
   
