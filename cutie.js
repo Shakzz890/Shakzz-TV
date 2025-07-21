@@ -664,17 +664,13 @@ const widevineChannels = {
 
 
 
-
-
-
-let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
+let currentChannelKey = Object.keys(channels)[0]; // Default to the first channel
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
   list.innerHTML = "";
 
   Object.entries(channels).forEach(([key, channel]) => {
-    // ✅ Apply filter logic here
     if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
 
     const btn = document.createElement("button");
@@ -713,19 +709,16 @@ function loadChannel(key) {
   }
 
   const player = jwplayer("video");
+  player.setup({
+    file: channel.manifestUri,
+    type: channel.type === "hls" ? "hls" : "dash",
+    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
+    autostart: true,
+    width: "100%",
+    height: "100%",
+    stretching: "exactfit"
+  });
 
- player.setup({
-  file: channel.manifestUri,
-  type: channel.type === "hls" ? "hls" : "dash",
-  drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-  autostart: true,
-  width: "100%",
-  height: "100%",
-  stretching: "exactfit"  // or "exactfit" if you want no black bars at all
-});
-
-  
-  // Handle error (e.g., failed to load stream)
   player.on("error", function (err) {
     channelInfo.textContent = `${channel.name} is Unavailable...`;
     channelInfo.style.color = "#FF3333";
@@ -737,6 +730,5 @@ document.getElementById("search").addEventListener("input", function () {
   renderChannelButtons(this.value);
 });
 
-// Render the channel buttons and load the default channel
 renderChannelButtons();
-loadChannel(currentChannelKey); // Load the default channel automatically
+loadChannel(currentChannelKey);
