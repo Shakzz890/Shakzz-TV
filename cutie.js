@@ -980,7 +980,7 @@ one_sports_plus: {
   },
 };
 
-let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
+let currentChannelKey = "kapamilya"; // Set default channel (you can change it to any other channel key)
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
