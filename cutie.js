@@ -1142,9 +1142,9 @@ one_sports_plus: {
     keyId: "cbb673fb120882354735ed57eeb05b4c",
     key: "fe003f7aeec40eb65d20b14edfda2a86",
     logo: "https://static.wikia.nocookie.net/logopedia/images/c/c2/Unifi_Sports_2023.png/revision/latest?cb=20230616051349"
-  }
-
-};
+  },
+  
+},
 
 let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
 
