@@ -165,13 +165,12 @@ dreamworks_tagalized: {
     logo: "https://www.pinpng.com/pngs/m/418-4182937_disney-junior-tv-logo-hd-png-download.png",
   },
 
-  crunchyroll: {
-    name: "Crunchyroll PH",
-    type: "hls",
-    manifestUri:
-      "https://bit.ly/Crunchyroll-ph",
-    logo: "https://logos-world.net/wp-content/uploads/2021/02/Crunchyroll-Logo-2012-present.jpg",
-  },
+ crunchyroll_en: {
+  name: "CRUNCHYROLL | EN AUDIO",
+  type: "hls",
+  manifestUri: "https://bit.ly/Crunchyroll-ph",
+  logo: "https://i.imgur.com/ZG9pqFw.png"
+},
 
   tfcasia: {
     name: "TFC Asia",
