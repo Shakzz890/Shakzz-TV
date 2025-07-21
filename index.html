@@ -197,36 +197,36 @@
       color: #ccc;
       border-top: 2px solid #2f2f2f;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       font-size: 0.85em;
     }
 
-    .contact-footer .contact-content {
+    .footer-content {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
-      font-size: 1.5em;
+      flex-wrap: wrap;
+    }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2em;
+      flex-wrap: wrap;
+    }
+
+    .right-section {
+      font-size: 0.9em;
+      color: #555;
     }
 
     .social-link {
-      margin: 0 5px;
       color: #ccc;
-      font-size: 1.2em;
       text-decoration: none !important;
     }
 
     .social-link:hover {
       color: var(--accent-color);
-    }
-
-    .rights {
-      font-size: 1.5em;
-      color: #555;
     }
 
     @media (max-width: 768px) {
@@ -254,6 +254,17 @@
 
       .nav-logo img {
         height: 30px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .left-section, .right-section {
+        justify-content: center;
       }
     }
   </style>
@@ -285,16 +296,21 @@
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-content">
-      Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
+    <div class="footer-content">
+      <div class="left-section">
+        Contact Me:
+        <a href="mailto:youremail@example.com" target="_blank" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="right-section">© All rights reserved 2025</div>
     </div>
-    <div class="rights">© All rights reserved 2025</div>
   </footer>
 
   <script src="cutie.js"></script>
