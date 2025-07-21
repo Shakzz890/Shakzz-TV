@@ -966,6 +966,184 @@ one_sports_plus: {
     key: "da315cca7f2902b4de23199718ed7e90",
     logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png"
   },
+  cartoonChannelPH: {
+    name: "Cartoon Channel PH (10 AM - 8 PM)",
+    type: "hls",
+    manifestUri:
+      "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
+    logo:
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png",
+  },
+  treehouse: {
+    name: "Treehouse",
+    type: "clearkey",
+    manifestUri:
+      "https://a79aivottlinear-a.akamaihd.net/OTTB/pdx-nitro/live/clients/dash/enc/ghf7y1plnj/out/v1/0c87bd17ab474015b77c0f3028190f78/cenc.mpd",
+    keyId: "de9b995d2aba32bae1c5dbe38a46f2d9",
+    key: "a2d94fdff16e9c332164a73f8b170bd3",
+    logo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Treehouse_TV_logo.svg/1920px-Treehouse_TV_logo.svg.png",
+  },
+  pbskidsasia: {
+    name: "PBS KIDS ASIA",
+    type: "hls",
+    manifestUri:
+      "https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8",
+    logo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/PBS_Kids_logo_(2022).svg/1200px-PBS_Kids_logo_(2022).svg.png",
+  },
+  zoomooasia: {
+    name: "ZOO MOO ASIA",
+    type: "hls",
+    manifestUri: "https://zoomoo-samsungau.amagi.tv/playlist.m3u8",
+    logo:
+      "https://ia803207.us.archive.org/32/items/zoo-moo-kids-2020_202006/ZooMoo-Kids-2020.png",
+  },
+  babysharktv: {
+    name: "Baby Shark TV",
+    type: "hls",
+    manifestUri:
+      "https://newidco-babysharktv-1-eu.rakuten.wurl.tv/playlist.m3u8",
+    logo:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZYsXFqofA9yrEHWjtaq2_0bdkIy4zY2-nIqEYa6lwYDiw0C4UeZMkpW7TYmCeAwYW4I-GideXBIuMrVxBi3PzcIFpLYQb4-5BMQYuESt7mO2-V4gY2yaxjhfafRDijOtM6rHp7PVu84sFoJjDxCT62UMdGznoq4tZrnDb8I9gslTCMl5ecwgK/w640-h456/image02_Pinkfong%20Surpassing%201B%20Streams%20on%20Spotify.jpg",
+  },
+  onepiece: {
+    name: "One Piece",
+    type: "hls",
+    manifestUri: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
+    logo: "https://i.ibb.co/qm2Qz2b/945-9451491-one-piece-official-logo.png",
+  },
+  spongebob: {
+    name: "SpongeBob SquarePants",
+    logo: "https://images.pluto.tv/channels/63f87d057533d80008ab9549/colorLogoPNG.png",
+    url: "https://jmp2.uk/plu-63f87d057533d80008ab9549.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+  avatar: {
+    name: "Avatar",
+    logo: "https://images.pluto.tv/channels/656df599c0fc8800089c75ab/colorLogoPNG.png",
+    url: "https://jmp2.uk/plu-656df599c0fc8800089c75ab.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ garfield: {
+    name: "Garfield and Friends",
+    logo: "http://images.pluto.tv/channels/60faf9ddfcc1f200070a5932/colorLogoPNG.png",
+    url: "http://service-stitcher.clusters.pluto.tv/stitch/hls/channel/60faf9ddfcc1f200070a5932/master.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ mrbean: {
+    name: "MR BEAN",
+    logo: "https://i.imgur.com/zKGnFe4.png",
+    url: "https://amg00627-amg00627c30-rakuten-es-3990.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanescc-rakutenes/playlist.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ naruto: {
+    name: "Naruto",
+    logo: "https://i.ibb.co/k89NQ92/Naruto-logo-svg.png",
+    url: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5da0c85bd2c9c10009370984/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ animeallday: {
+    name: "Anime All Day",
+    logo: "https://i.ibb.co/Y78QGb2/USAJ3504502-A-20240520-T214506-SQUARE-removebg-preview.png",
+    url: "https://jmp2.uk/sam-USAJ3504502A.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ transformers: {
+    name: "Transformers TV",
+    logo: "https://www.pngarts.com/files/10/Bumble-Bee-Logo-Transformer-Transparent.png",
+    url: "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60fb053712f22a0007ff14d2/master.m3u8",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ onepiece: {
+    name: "One Piece",
+    logo: "https://i.ibb.co/qm2Qz2b/945-9451491-one-piece-official-logo.png",
+    url: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
+    group: "CARTOONS AND ANIMATIONS",
+  },
+ crunchyroll: {
+    name: "CRUNCHYROLL | EN AUDIO",
+    logo: "https://i.imgur.com/ZG9pqFw.png",
+    url: "https://bit.
+ },
+  eurosport: {
+    name: "Eurosport HD",
+    type: "clearkey",
+    manifestUri: "https://atemeshield1-voe.sysln.id/live/eds/EUROSPORTHD/mpd/EUROSPORTHD.mpd",
+    keyId: "47c03f29f04747d2a298c0ad63f3b2c1",
+    key: "8b48b2cb2743b91d5f20cf2622067f3a",
+    logo: "https://linear-poster.astro.com.my/prod/logo/logo_1701_v3.png"
+  },
+  beinsports3: {
+    name: "beIN Sports 3 HD",
+    type: "clearkey",
+    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2705/default_ott.mpd",
+    keyId: "IMiE747Saydi+LGnjy0ZEA",
+    key: "BCohvyNspymx40PtbgpjNw",
+    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/313_144.png"
+  },
+  beinsports: {
+    name: "Bein Sports HD",
+    type: "clearkey",
+    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/408/default_ott.mpd",
+    keyId: "GmVRiatcSesjUwjCsannEA",
+    key: "PEUIrzSIRBB/XgJqT9axbg",
+    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/236_144.png"
+  },
+  wsport: {
+    name: "W-Sport",
+    type: "clearkey",
+    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default_ott.mpd",
+    keyId: "AQy7nPGgHq04Bwcw04vHEA",
+    key: "nNXA0eVMIuA12I3Twd/ITA",
+    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/503_144.png"
+  },
+  astroarena: {
+    name: "Astro Arena",
+    type: "clearkey",
+    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default_ott.mpd",
+    keyId: "79pkfa1yNWO2Jb6MBe5hEA",
+    key: "Z3aYWTizMhZLl7gf5WajSg",
+    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/92_144.png"
+  },
+  nbc4: {
+    name: "NBC4",
+    type: "clearkey",
+    manifestUri: "https://fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(knbc)/master.mpd",
+    keyId: "0045a118e231f1326bcdb45350b1ceaa",
+    key: "8c13afbfa54ea37a368b8b859021f6e3",
+    logo: "https://vignette.wikia.nocookie.net/dreamlogos/images/f/f6/KNBS_95.png/revision/latest/zoom-crop/width/480/height/480?cb=20191126221915"
+  },
+  motorvision: {
+    name: "MOTOR VISION+",
+    type: "widevine",
+    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001245/manifest.mpd?virtualDomain=001.live_hls.zte.com",
+    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
+    logo: "https://i.imgur.com/as4ns30.png"
+  },
+  nbcsports: {
+    name: "NBC SPORTS",
+    type: "clearkey",
+    manifestUri: "https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s/Live/channel(vc122ycnuy)/master.mpd",
+    keyId: "0020d88a6713159839743f655c5da7de",
+    key: "ba9f34226301f69a4f0f13f65a1f92ec",
+    logo: "https://i.ibb.co/PN0fjNF/90-removebg-preview.png"
+  },
+  ufcfightpass: {
+    name: "UFC Fight Pass",
+    type: "hls",
+    manifestUri: "http://fl1.moveonjoy.com/UFC/index.m3u8",
+    logo: ""
+  },
+  unifisports: {
+    name: "UNIFI SPORTS",
+    type: "clearkey",
+    manifestUri: "https://unifi-live07.secureswiftcontent.com/UnifiHD/live11.mpd",
+    keyId: "cbb673fb120882354735ed57eeb05b4c",
+    key: "fe003f7aeec40eb65d20b14edfda2a86",
+    logo: "https://static.wikia.nocookie.net/logopedia/images/c/c2/Unifi_Sports_2023.png/revision/latest?cb=20230616051349"
+  }
+
 };
 
 let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
