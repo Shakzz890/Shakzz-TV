@@ -396,15 +396,6 @@ const channels = {
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/BBC_Earth.svg",
   },
 
- fashiontv: {
-  name: "Fashion TV",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
-  keyId: "971ebbe2d887476398e97c37e0c5c591",
-  key: "472aa631b1e671070a4bf198f43da0c7",
-  logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Fashion_TV_logo.svg/1200px-Fashion_TV_logo.svg.png",
-},
-
   rckentr: {
     name: "Rock Entertainment",
     type: "clearkey",
@@ -756,7 +747,7 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
     keyId: "971ebbe2d887476398e97c37e0c5c591",
     key: "472aa631b1e671070a4bf198f43da0c7",
-    logo: "https://i.imgur.com/Zd5zm7C.png"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fashion_TV_logo_2017.svg/1200px-Fashion_TV_logo_2017.svg.png"
   },
   tap_action_flix: {
     name: "Tap Action Flix",
