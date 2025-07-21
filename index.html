@@ -9,29 +9,37 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
-
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>
-    jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";
-  </script>
+  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
+    :root {
+      --bg-color: #111;
+      --text-color: white;
+      --accent-color: royalblue;
+    }
+
+    [data-theme='light'] {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent-color: royalblue;
+    }
+
     * {
       box-sizing: border-box;
+      transition: background 0.3s, color 0.3s;
     }
 
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #111;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: "Segoe UI", sans-serif;
-      color: white;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -59,31 +67,35 @@
 
     .nav-logo img {
       height: 40px;
-      width: auto;
     }
 
     .logo-text {
       font-size: 1.5em;
-      color: royalblue;
+      color: var(--accent-color);
       font-weight: bold;
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #3a3a3a;
+      color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1em;
       transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: #b74b4b;
+      color: var(--accent-color);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.3em;
+      color: var(--accent-color);
     }
 
     main {
@@ -105,11 +117,11 @@
 
     #video {
       width: 100%;
-      max-width: 800px;
       border: 4px solid #2f2f2f;
       border-radius: 16px;
       box-shadow: 0 0 20px #2f2f2f;
       aspect-ratio: 16 / 9;
+      max-width: 100%;
     }
 
     .sidebar {
@@ -127,7 +139,6 @@
       display: flex;
       align-items: center;
       margin-bottom: 10px;
-      min-height: 38px;
     }
 
     .search-container input {
@@ -135,8 +146,8 @@
       padding: 8px 30px 8px 8px;
       border-radius: 6px;
       border: 1px solid #2f2f2f;
-      background-color: #111;
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       width: 100%;
     }
 
@@ -184,17 +195,6 @@
       background-color: white;
     }
 
-    .sidebar::-webkit-scrollbar,
-    .channel-list::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .sidebar::-webkit-scrollbar-thumb,
-    .channel-list::-webkit-scrollbar-thumb {
-      background: #2f2f2f;
-      border-radius: 4px;
-    }
-
     footer.coded {
       margin: 20px;
       color: #666;
@@ -224,7 +224,7 @@
     }
 
     .contact-footer .social-link:hover {
-      color: #b74b4b;
+      color: var(--accent-color);
     }
 
     .contact-footer .rights {
@@ -262,15 +262,6 @@
 
       .nav-logo img {
         height: 30px;
-        max-width: 90px;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.9em;
       }
     }
   </style>
@@ -283,6 +274,7 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
+      <i class="fas fa-adjust theme-toggle" title="Toggle Dark/Light"></i>
     </div>
   </nav>
 
@@ -305,7 +297,7 @@
   <footer class="contact-footer">
     <div class="contact-content">
       Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
+      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link" style="text-decoration: none;">
         <i class="fab fa-facebook"></i>
       </a>
       <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
@@ -319,7 +311,9 @@
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
+    const toggleBtn = document.querySelector('.theme-toggle');
 
+    // Search input clear button logic
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
@@ -329,6 +323,15 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
+
+    // Toggle theme logic
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+    });
+
+    // Set default dark theme
+    document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </body>
 </html>
