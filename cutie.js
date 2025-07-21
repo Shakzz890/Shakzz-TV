@@ -5,8 +5,7 @@ dreamworks_tagalized: {
   manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_dreamworktag.mpd",
   keyId: "564b3b1c781043c19242c66e348699c5",
   key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
-  logo: "https://i.imgur.com/cgfKSDP.png",
-  group: "Cignal"
+  logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png",
 },
   tv5: {
     name: "TV 5",
@@ -167,7 +166,7 @@ dreamworks_tagalized: {
 
  crunchyroll_en: {
   name: "CRUNCHYROLL | EN AUDIO",
-  type: "hls",
+  type: "drm",
   manifestUri: "https://bit.ly/Crunchyroll-ph",
   logo: "https://i.imgur.com/ZG9pqFw.png"
 },
