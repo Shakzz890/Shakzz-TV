@@ -497,6 +497,7 @@ one_sports_plus: {
     logo: "https://i.imgur.com/JOg1GGl.png"
   },
 // Converge Stream
+const widevineChannels = {
   kapamilya_sd: {
     name: "Kapamilya Channel",
     type: "widevine",
