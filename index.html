@@ -23,12 +23,6 @@
       --accent-color: royalblue;
     }
 
-    [data-theme='light'] {
-      --bg-color: #fff;
-      --text-color: #000;
-      --accent-color: royalblue;
-    }
-
     * {
       box-sizing: border-box;
       transition: background 0.3s, color 0.3s;
@@ -75,12 +69,6 @@
       font-weight: bold;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
     .nav-links a {
       color: #ccc;
       text-decoration: none;
@@ -89,12 +77,6 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 1.3em;
       color: var(--accent-color);
     }
 
@@ -117,11 +99,8 @@
 
     #video {
       width: 100%;
-      height: 100%;
-      max-width: 100%;
+      aspect-ratio: 16 / 9;
       border: none;
-      border-radius: 0;
-      box-shadow: none;
     }
 
     .sidebar {
@@ -196,39 +175,67 @@
     }
 
     footer.coded {
-      margin: 20px;
-      color: #666;
-      font-size: 0.9em;
+      font-size: 0.7em;
+      color: #777;
+      margin-top: 5px;
     }
 
     .contact-footer {
       background-color: #000;
       padding: 20px;
       color: #ccc;
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
       border-top: 2px solid #2f2f2f;
       width: 100%;
     }
 
-    .contact-footer .contact-content {
+    .contact-left {
+      flex: 1;
+      min-width: 200px;
       margin-bottom: 10px;
-      font-size: 1em;
     }
 
-    .contact-footer .social-link {
-      margin: 0 10px;
+    .contact-left .social-link {
+      margin-right: 10px;
       color: #ccc;
       font-size: 1.4em;
       transition: color 0.3s;
     }
 
-    .contact-footer .social-link:hover {
+    .contact-left .social-link:hover {
       color: var(--accent-color);
     }
 
-    .contact-footer .rights {
-      font-size: 0.9em;
-      color: #555;
+    .contact-form {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #111;
+      color: white;
+    }
+
+    .contact-form button {
+      padding: 8px 16px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #2b59d3;
     }
 
     @media (max-width: 768px) {
@@ -252,19 +259,10 @@
         max-height: 50vh;
       }
 
-      .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
-      }
-
-      .nav-links {
-        flex-direction: row;
-        gap: 15px;
-      }
-
-      .nav-logo img {
-        height: 30px;
+      .contact-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
     }
   </style>
@@ -277,7 +275,6 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-      <i class="fas fa-adjust theme-toggle" title="Toggle Dark/Light"></i>
     </div>
   </nav>
 
@@ -298,7 +295,7 @@
   </main>
 
   <footer class="contact-footer">
-    <div class="contact-content">
+    <div class="contact-left">
       Contact Me:
       <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
         <i class="fab fa-facebook"></i>
@@ -307,16 +304,21 @@
         <i class="fab fa-youtube"></i>
       </a>
     </div>
-    <div class="rights">© All rights reserved 2025</div>
+    <div class="contact-form">
+      <form action="mailto:your@email.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </footer>
 
   <script src="cutie.js"></script>
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
-    const toggleBtn = document.querySelector('.theme-toggle');
 
-    // Search input clear button logic
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
@@ -326,15 +328,6 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
-
-    // Toggle theme logic
-    toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-    });
-
-    // Set default dark theme
-    document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </body>
 </html>
