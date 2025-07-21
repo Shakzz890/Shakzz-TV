@@ -5,13 +5,10 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
 
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
+  <script>jwplayer.key = "YOUR_JWPLAYER_KEY";</script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -26,12 +23,11 @@
     [data-theme='light'] {
       --bg-color: #fff;
       --text-color: #000;
-      --accent-color: royalblue;
     }
 
     * {
       box-sizing: border-box;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.3s ease;
     }
 
     html, body {
@@ -40,23 +36,20 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: "Segoe UI", sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      height: 100%;
+      overflow-x: hidden;
     }
 
     .top-nav {
-      width: 100%;
-      background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 10px 20px;
+      background: #000;
+      border-bottom: 2px solid #333;
       position: sticky;
       top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
+      z-index: 999;
     }
 
     .nav-logo {
@@ -70,22 +63,22 @@
     }
 
     .logo-text {
-      font-size: 1.5em;
-      color: var(--accent-color);
+      font-size: 1.5rem;
       font-weight: bold;
+      color: var(--accent-color);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #ccc;
       text-decoration: none;
+      color: #ccc;
       font-weight: bold;
-      transition: color 0.3s;
     }
 
     .nav-links a:hover {
@@ -93,62 +86,52 @@
     }
 
     .theme-toggle {
+      font-size: 1.4em;
       cursor: pointer;
-      font-size: 1.3em;
       color: var(--accent-color);
     }
 
     main {
-      flex: 1;
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
-      width: 100%;
+      min-height: 100vh;
     }
 
     .main {
       flex: 1;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 10px;
     }
 
     #video {
       width: 100%;
-      height: 100%;
       max-width: 100%;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
+      height: 100%;
     }
 
     .sidebar {
       width: 300px;
-      background-color: #222;
-      border-left: 2px solid #2f2f2f;
+      background: #222;
+      border-left: 2px solid #333;
       display: flex;
       flex-direction: column;
       padding: 10px;
-      max-height: 100vh;
     }
 
     .search-container {
       position: relative;
-      display: flex;
-      align-items: center;
       margin-bottom: 10px;
     }
 
     .search-container input {
-      flex: 1;
-      padding: 8px 30px 8px 8px;
-      border-radius: 6px;
-      border: 1px solid #2f2f2f;
-      background-color: var(--bg-color);
-      color: var(--text-color);
       width: 100%;
+      padding: 8px 30px 8px 10px;
+      border-radius: 6px;
+      background-color: var(--bg-color);
+      border: 1px solid #444;
+      color: var(--text-color);
     }
 
     .clear-btn {
@@ -156,35 +139,33 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #999;
-      font-size: 1.2em;
       cursor: pointer;
+      font-size: 1.2em;
+      color: #aaa;
       display: none;
-      user-select: none;
     }
 
     .channel-list {
       overflow-y: auto;
-      flex-grow: 1;
+      flex: 1;
     }
 
     .channel-button {
-      width: 100%;
       padding: 10px;
       margin: 5px 0;
       background-color: #333;
-      border: 1px solid #2f2f2f;
+      border: 1px solid #444;
       border-radius: 8px;
       color: white;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       cursor: pointer;
       transition: background 0.3s;
     }
 
     .channel-button:hover {
-      background-color: #45010c22;
+      background-color: #222;
     }
 
     .channel-logo {
@@ -197,38 +178,32 @@
 
     footer.coded {
       margin: 20px;
-      color: #666;
       font-size: 0.9em;
+      color: #888;
     }
 
     .contact-footer {
       background-color: #000;
+      color: #ccc;
       padding: 20px;
-      color: #ccc;
       text-align: center;
-      border-top: 2px solid #2f2f2f;
-      width: 100%;
+      border-top: 2px solid #333;
     }
 
-    .contact-footer .contact-content {
-      margin-bottom: 10px;
-      font-size: 1em;
-    }
-
-    .contact-footer .social-link {
+    .contact-footer a {
+      text-decoration: none;
       margin: 0 10px;
-      color: #ccc;
       font-size: 1.4em;
-      transition: color 0.3s;
+      color: #ccc;
     }
 
-    .contact-footer .social-link:hover {
+    .contact-footer a:hover {
       color: var(--accent-color);
     }
 
     .contact-footer .rights {
       font-size: 0.9em;
-      color: #555;
+      color: #666;
     }
 
     @media (max-width: 768px) {
@@ -236,35 +211,27 @@
         flex-direction: column;
       }
 
+      .sidebar {
+        width: 100%;
+        max-height: 45vh;
+        border-left: none;
+        border-top: 2px solid #333;
+      }
+
       .main {
         width: 100%;
       }
 
-      #video {
-        width: 100%;
-        height: auto;
-      }
-
-      .sidebar {
-        width: 100%;
-        border-left: none;
-        border-top: 2px solid #333;
-        max-height: 50vh;
+      .nav-links {
+        flex-direction: row;
       }
 
       .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
+        flex-wrap: wrap;
       }
 
-      .nav-links {
-        flex-direction: row;
-        gap: 15px;
-      }
-
-      .nav-logo img {
-        height: 30px;
+      #video {
+        height: auto;
       }
     }
   </style>
@@ -277,7 +244,7 @@
     </div>
     <div class="nav-links">
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-      <i class="fas fa-adjust theme-toggle" title="Toggle Dark/Light"></i>
+      <i class="fas fa-adjust theme-toggle" title="Toggle Dark/Light Mode"></i>
     </div>
   </nav>
 
@@ -300,23 +267,26 @@
   <footer class="contact-footer">
     <div class="contact-content">
       Contact Me:
-      <a href="https://facebook.com/yourprofile" target="_blank" class="social-link">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://youtube.com/yourchannel" target="_blank" class="social-link">
-        <i class="fab fa-youtube"></i>
-      </a>
+      <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://youtube.com/yourchannel" target="_blank"><i class="fab fa-youtube"></i></a>
     </div>
     <div class="rights">© All rights reserved 2025</div>
   </footer>
 
   <script src="cutie.js"></script>
   <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const root = document.documentElement;
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
-    const toggleBtn = document.querySelector('.theme-toggle');
 
-    // Search input clear button logic
+    themeToggle.addEventListener('click', () => {
+      const theme = root.getAttribute('data-theme');
+      root.setAttribute('data-theme', theme === 'light' ? 'dark' : 'light');
+    });
+
+    root.setAttribute('data-theme', 'dark');
+
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
@@ -326,15 +296,6 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
-
-    // Toggle theme logic
-    toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-    });
-
-    // Set default dark theme
-    document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </body>
 </html>
