@@ -100,7 +100,7 @@
       display: flex;
       flex-direction: column;
       padding: 10px;
-      overflow: hidden;
+      overflow-y: auto;
     }
 
     .search-container {
@@ -162,7 +162,7 @@
       height: 50px;
       object-fit: contain;
       border-radius: 6px;
-      background-color: white;
+      background-color: black; /* Changed from white to black */
     }
 
     .main {
@@ -239,6 +239,17 @@
         border-right: none;
         border-bottom: 2px solid #333;
         max-height: 50vh;
+        overflow-y: auto;
+      }
+
+      .main {
+        flex-grow: 1;
+        padding: 10px;
+      }
+
+      .channel-list {
+        max-height: calc(50vh - 60px);
+        overflow-y: auto;
       }
 
       .top-nav {
@@ -312,7 +323,7 @@
         <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="shakzz05.business@gmail.com" target="_blank" class="social-link">
+        <a href="mailto:shakzz05.business@gmail.com" target="_blank" class="social-link">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
