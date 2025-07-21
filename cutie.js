@@ -19,7 +19,7 @@ dreamworks_tagalized: {
   },
 
   kapamilya: {
-    name: "Kapamilya Channel",
+    name: "Kapamilya Channel HD",
     type: "clearkey",
     manifestUri:
       "https://d1uf7s78uqso1e.cloudfront.net/out/v1/efa01372657648be830e7c23ff68bea2/index.mpd",
