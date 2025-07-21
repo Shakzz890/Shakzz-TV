@@ -396,14 +396,14 @@ const channels = {
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/BBC_Earth.svg",
   },
 
-  fashiontv: {
-    name: "Fashion TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
-    keyId: "971ebbe2d887476398e97c37e0c5c591",
-    key: "472aa631b1e671070a4bf198f43da0c7",
-    logo: "https://cpng.pikpng.com/pngl/s/43-434337_fashion-tv-logo-fashion-tv-clipart.png",
-  },
+ fashiontv: {
+  name: "Fashion TV",
+  type: "clearkey",
+  manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
+  keyId: "971ebbe2d887476398e97c37e0c5c591",
+  key: "472aa631b1e671070a4bf198f43da0c7",
+  logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Fashion_TV_logo.svg/1200px-Fashion_TV_logo.svg.png",
+},
 
   rckentr: {
     name: "Rock Entertainment",
@@ -652,7 +652,7 @@ const channels = {
     manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbohd.mpd",
     keyId: "d47ebabf7a21430b83a8c4b82d9ef6b1",
     key: "54c213b2b5f885f1e0290ee4131d425b",
-    logo: "https://images.now-tv.com/shares/channelPreview/img/en_hk/color/ch115_170_122"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg"
   },
   disneyxdd: {
     name: "Disney XD",
