@@ -611,15 +611,16 @@ function loadChannel(key) {
 
   const player = jwplayer("video");
 
-  player.setup({
+ player.setup({
   file: channel.manifestUri,
   type: channel.type === "hls" ? "hls" : "dash",
   drm: Object.keys(drmConfig).length ? drmConfig : undefined,
   autostart: true,
   width: "100%",
-  aspectratio: "16:9",
-  stretching: "fill"
+  height: "100%",
+  stretching: "uniform"  // or "exactfit" if you want no black bars at all
 });
+
   
   // Handle error (e.g., failed to load stream)
   player.on("error", function (err) {
