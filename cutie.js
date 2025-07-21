@@ -26,7 +26,7 @@ const channels = {
       "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbohd.mpd",
     keyId: "d47ebabf7a21430b83a8c4b82d9ef6b1",
     key: "54c213b2b5f885f1e0290ee4131d425b",
-    logo: "https://www.citypng.com/public/uploads/preview/hbo-black-logo-hd-png-701751694708063rlui2esfmw.png?v=2025060707",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg",
   },
 
   hbofam: {
