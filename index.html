@@ -86,45 +86,19 @@
     main {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
       width: 100%;
-      align-items: flex-start;
-    }
-
-    .main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5px;
-      gap: 5px;
-      width: 100%;
-      flex-grow: 0;
-      flex-shrink: 0;
-    }
-
-    #video {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      max-width: 100%;
-      margin: 0 !important;
-      padding: 0 !important;
-      display: block;
-    }
-
-    .jwplayer {
-      margin: 0 !important;
-      padding: 0 !important;
-      display: block;
+      flex-grow: 1;
     }
 
     .sidebar {
       width: 300px;
       background-color: #222;
-      border-left: 2px solid #2f2f2f;
+      border-right: 2px solid #2f2f2f;
       display: flex;
       flex-direction: column;
       padding: 10px;
       max-height: 100vh;
+      overflow-y: auto;
     }
 
     .search-container {
@@ -188,9 +162,31 @@
       background-color: white;
     }
 
-    footer.coded {
+    .main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    #video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-width: 100%;
       margin: 0;
-      padding: 5px 0 0 0;
+      padding: 0;
+      display: block;
+    }
+
+    .jwplayer {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block;
+    }
+
+    footer.coded {
+      margin-top: 10px;
       color: #888;
       font-size: 0.95em;
       text-align: center;
@@ -235,41 +231,15 @@
       color: #555;
     }
 
-    @media (min-width: 768px) {
-      .contact-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .contact-footer .contact-content {
-        margin-bottom: 0;
-        justify-content: flex-start;
-      }
-
-      .contact-footer .rights {
-        text-align: right;
-      }
-    }
-
     @media (max-width: 768px) {
       main {
         flex-direction: column;
       }
 
-      .main {
-        width: 100%;
-      }
-
-      #video {
-        width: 100%;
-        height: auto;
-      }
-
       .sidebar {
         width: 100%;
-        border-left: none;
-        border-top: 2px solid #333;
+        border-right: none;
+        border-bottom: 2px solid #333;
         max-height: 50vh;
       }
 
@@ -302,18 +272,18 @@
   </nav>
 
   <main>
-    <div class="main">
-      <div id="channelInfo"></div>
-      <div id="video"></div>
-      <footer class="coded">Coded by Cutie</footer>
-    </div>
-
     <div class="sidebar">
       <div class="search-container">
         <input type="text" id="search" placeholder="Search channel..." />
         <span id="clearSearch" class="clear-btn">&times;</span>
       </div>
       <div class="channel-list" id="channelList"></div>
+    </div>
+
+    <div class="main">
+      <div id="channelInfo"></div>
+      <div id="video"></div>
+      <footer class="coded">Coded by Cutie</footer>
     </div>
   </main>
 
@@ -335,12 +305,10 @@
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
 
-    // Show clear button on input
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
     });
 
-    // Clear search
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
       clearBtn.style.display = 'none';
