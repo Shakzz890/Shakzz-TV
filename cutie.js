@@ -399,8 +399,7 @@ const channels = {
   fashiontv: {
     name: "Fashion TV",
     type: "clearkey",
-    manifestUri:
-      "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
+    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
     keyId: "971ebbe2d887476398e97c37e0c5c591",
     key: "472aa631b1e671070a4bf198f43da0c7",
     logo: "https://cpng.pikpng.com/pngl/s/43-434337_fashion-tv-logo-fashion-tv-clipart.png",
