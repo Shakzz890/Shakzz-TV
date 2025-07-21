@@ -562,7 +562,6 @@ const channels = {
     key: "22f964a6d6927ccdba482e775cdff190",
     logo: "https://tse3.mm.bing.net/th/id/OIP.lMLVpSGutDFitqvokkgp6AHaHT?w=774&h=764&rs=1&pid=ImgDetMain&o=7&rm=3",
   },
-const channels = {
   one_ph: {
     name: "One PH",
     type: "clearkey",
@@ -717,16 +716,7 @@ dreamworks_tagalized: {
   key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
   logo: "https://i.imgur.com/cgfKSDP.png"
 },
-
-pba_rush: {
-  name: "PBA RUSH",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_pbarush_hd1.mpd",
-  keyId: "76dc29dd87a244aeab9e8b7c5da1e5f3",
-  key: "95b2f2ffd4e14073620506213b62ac82",
-  logo: "https://i.imgur.com/F2npB7o.png"
-},
-
+  
 one_sports_plus: {
   name: "One Sports+",
   type: "clearkey",
