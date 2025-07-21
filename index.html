@@ -168,24 +168,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 10px;
-      max-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+    #channelInfo {
+      display: none;
     }
 
     #video {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: auto;
+      aspect-ratio: 16/9;
       max-width: 100%;
       margin: 0;
       padding: 0;
-      display: block;
       flex-grow: 1;
     }
 
     .jwplayer {
       margin: 0 !important;
       padding: 0 !important;
-      display: block;
     }
 
     .contact-footer {
