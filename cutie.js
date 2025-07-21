@@ -699,7 +699,7 @@ function loadChannel(key) {
 
   const drmConfig = {};
   if (channel.type === "widevine") {
-    drmConfig.widevine = { url: channel.licenseServerUri };
+    drmConfig.widevine = { url: channel.licenseServer };
   } else if (channel.type === "clearkey") {
     drmConfig.clearkey = {
       keyId: channel.keyId,
