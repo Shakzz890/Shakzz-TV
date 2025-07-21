@@ -1,6 +1,6 @@
 const channels = {
   tv5: {
-    name: "TV 5 HD",
+    name: "TV 5",
     type: "clearkey",
     manifestUri:
       "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/tv5_hd.mpd",
@@ -10,7 +10,7 @@ const channels = {
   },
 
   kapamilya: {
-    name: "Kapamilya Channel HD",
+    name: "Kapamilya Channel",
     type: "clearkey",
     manifestUri:
       "https://d1uf7s78uqso1e.cloudfront.net/out/v1/efa01372657648be830e7c23ff68bea2/index.mpd",
@@ -26,7 +26,7 @@ const channels = {
       "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbohd.mpd",
     keyId: "d47ebabf7a21430b83a8c4b82d9ef6b1",
     key: "54c213b2b5f885f1e0290ee4131d425b",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg",
+    logo: "https://th.bing.com/th/id/R.8925f5849290a9960eb12fa00ca894e1?rik=s1vT%2fE0LZG7oTg&riu=http%3a%2f%2flogospng.org%2fwp-content%2fuploads%2fhbo.png&ehk=NP7D5D15ytSZ6thM%2f3W94Q1Up35oljMrIYvyafZqLLU%3d&risl=&pid=ImgRaw&r=0",
   },
 
   hbofam: {
@@ -36,7 +36,7 @@ const channels = {
       "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbofam.mpd",
     keyId: "872910c843294319800d85f9a0940607",
     key: "f79fd895b79c590708cf5e8b5c6263be",
-    logo: "https://www.pikpng.com/pngl/m/41-419283_hbo-family-logo-hbo-family-logo-png-clipart.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/HBO_Family_logo.png",
   },
 
   hbohits: {
@@ -156,6 +156,14 @@ const channels = {
     logo: "https://www.pinpng.com/pngs/m/418-4182937_disney-junior-tv-logo-hd-png-download.png",
   },
 
+  crunchyroll: {
+    name: "Crunchyroll",
+    type: "hls",
+    manifestUri:
+      "https://stitcher.pluto.tv/stitch/hls/channel/65652f7fc0fc88000883537a/master.m3u8?deviceType=web&servertSideAds=false&deviceMake=safari&deviceVersion=1&deviceId=spencer&appVersion=1&deviceDNT=0&deviceModel=web&sid=6780419e-1ba9-11f0-a1fd-4e04716c5414",
+    logo: "https://logos-world.net/wp-content/uploads/2021/02/Crunchyroll-Logo-2012-present.jpg",
+  },
+
   tfcasia: {
     name: "TFC Asia",
     type: "clearkey",
@@ -193,7 +201,7 @@ const channels = {
       "https://linearjitp-playback.astro.com.my/dash-wv/linear/2303/default_ott.mpd",
     keyId: "c24a7811d9ab46b48b746a0e7e269210",
     key: "c321afe1689b07d5b7e55bd025c483ce",
-    logo: "https://icon2.cleanpng.com/20180702/pfc/kisspng-axn-television-channel-sony-channel-television-sho-axn-5b3a0ac39f5e85.1062681315305304996528.jpg",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/d/d0/AXN_Logo_2015.png",
   },
 
   onenews: {
@@ -318,6 +326,15 @@ const channels = {
     key: "1e3e0ca32d421fbfec86feced0efefda",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/OneSportsPlus_logo.svg/300px-OneSportsPlus_logo.svg.png",
   },
+
+  pbarushhd: {
+    name: "PBA Rush",
+    type: "hls",
+    manifestUri:
+      "https://ott.athenatv.net/stream/phcathenatv/pbarush/master.m3u8?u=phc-free&p=8c43211c3fe7f44b1af3deedb89d50ecef2ee4c97eb987071fd3fea18a7b0af7",
+    logo: "https://th.bing.com/th/id/R.743cd8b9fc154d6ae88ad250cbda5f5d?rik=pXna8%2bXXTgQNXQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2flogopedia%2fimages%2fc%2fcd%2fPBA_Rush_logo.png%2frevision%2flatest%3fcb%3d20161115101642&ehk=o2xvROtRxUDG9q%2beLGFUpfS2%2bcbtn%2fphEqWCsyPHnNM%3d&risl=&pid=ImgRaw&r=0",
+  },
+
   nbaph: {
     name: "NBA TV PH",
     type: "clearkey",
@@ -393,7 +410,27 @@ const channels = {
       "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_bbcearth_hd1.mpd",
     keyId: "34ce95b60c424e169619816c5181aded",
     key: "0e2a2117d705613542618f58bf26fc8e",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/BBC_Earth.svg",
+    logo: "https://tse1.mm.bing.net/th/id/OIP.wKX3V5khbu3Ssplnq3cE0AHaEF?rs=1&pid=ImgDetMain&o=7&rm=3",
+  },
+
+  dreamworks: {
+    name: "Dreamworks HD",
+    type: "clearkey",
+    manifestUri:
+      "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/cg_dreamworks_hd1.mpd",
+    keyId: "4ab9645a2a0a47edbd65e8479c2b9669",
+    key: "8cb209f1828431ce9b50b593d1f44079",
+    logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png",
+  },
+
+  fashiontv: {
+    name: "Fashion TV",
+    type: "clearkey",
+    manifestUri:
+      "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
+    keyId: "971ebbe2d887476398e97c37e0c5c591",
+    key: "472aa631b1e671070a4bf198f43da0c7",
+    logo: "https://logodix.com/logo/1610684.png",
   },
 
   rckentr: {
@@ -525,623 +562,7 @@ const channels = {
     key: "22f964a6d6927ccdba482e775cdff190",
     logo: "https://tse3.mm.bing.net/th/id/OIP.lMLVpSGutDFitqvokkgp6AHaHT?w=774&h=764&rs=1&pid=ImgDetMain&o=7&rm=3",
   },
-  one_ph: {
-    name: "One PH",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/oneph_sd.mpd",
-    keyId: "92834ab4a7e1499b90886c5d49220e46",
-    key: "a7108d9a6cfcc1b7939eb111daf09ab3",
-    logo: "https://i.imgur.com/gkluDe9.png",
-  },
-  buko: {
-    name: "BuKO",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_buko_sd.mpd",
-    keyId: "d273c085f2ab4a248e7bfc375229007d",
-    key: "7932354c3a84f7fc1b80efa6bcea0615",
-    logo: "https://i.imgur.com/Wv0K5Yc.png",
-  },
-  sari_sari: {
-    name: "SARI‑SARI",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_sari_sari_sd.mpd",
-    keyId: "0a7ab3612f434335aa6e895016d8cd2d",
-    key: "b21654621230ae21714a5cab52daeb9d",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sari-Sari_Channel_logo.svg/1200px-Sari-Sari_Channel_logo.svg.png",
-  },
-  ptv4: {
-    name: "PTV4",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/cg_ptv4_sd.mpd",
-    keyId: "71a130a851b9484bb47141c8966fb4a3",
-    key: "ad1f003b4f0b31b75ea4593844435600",
-    logo: "https://static.wikia.nocookie.net/russel/images/d/dc/PTV_4_Para_Sa_Bayan_Alternative_Logo_June_2017.png",
-  },
-  one_sports: {
-    name: "One Sports",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_onesports_hd.mpd",
-    keyId: "53c3bf2eba574f639aa21f2d4409ff11",
-    key: "3de28411cf08a64ea935b9578f6d0edd",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/One_Sports_logo.svg/2560px-One_Sports_logo.svg.png",
-  },
-  one_news: {
-    name: "One News",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/onenews_hd1.mpd",
-    keyId: "d39eb201ae494a0b98583df4d110e8dd",
-    key: "6797066880d344422abd3f5eda41f45f",
-    logo: "https://i.imgur.com/bpRiu54.png",
-  },
-  rptv: {
-    name: "RPTV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cnn_rptv_prod_hd.mpd",
-    keyId: "1917f4caf2364e6d9b1507326a85ead6",
-    key: "a1340a251a5aa63a9b0ea5d9d7f67595",
-    logo: "https://static.wikia.nocookie.net/russel/images/f/fb/RPTV_Alternative_Logo_2024.png",
-  },
-  tv5: {
-    name: "TV5",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/tv5_hd.mpd",
-    keyId: "2615129ef2c846a9bbd43a641c7303ef",
-    key: "07c7f996b1734ea288641a68e1cfdc4d",
-    logo: "https://static.wikia.nocookie.net/russel/images/7/7a/TV5_HD_Logo_2024.png",
-  },
-  a2z: {
-    name: "A2Z",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/cg_a2z.mpd",
-    keyId: "f703e4c8ec9041eeb5028ab4248fa094",
-    key: "c22f2162e176eee6273a5d0b68d19530",
-    logo: "https://static.wikia.nocookie.net/russel/images/8/85/A2Z_Channel_11_without_Channel_11_3D_Logo_2020.png",
-  },
-  bilyonaryo: {
-    name: "Bilyonaryo Channel",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-05-prod.akamaized.net/out/u/bilyonaryoch.mpd",
-    keyId: "227ffaf09bec4a889e0e0988704d52a2",
-    key: "b2d0dce5c486891997c1c92ddaca2cd2",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxvjeBIthYiEaZHeVeYpDicIlOTdv3G6lzoal3VM2xVzWu_J7XxM657oz&s=10",
-  },
-  pbo: {
-    name: "PBO",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/pbo_sd.mpd",
-    keyId: "dcbdaaa6662d4188bdf97f9f0ca5e830",
-    key: "31e752b441bd2972f2b98a4b1bc1c7a1",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Pinoy_Box_Office_logo.svg/1200px-Pinoy_Box_Office_logo.svg.png",
-  },
-  viva_cinema: {
-    name: "Viva Cinema",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/viva_sd.mpd",
-    keyId: "07aa813bf2c147748046edd930f7736e",
-    key: "3bd6688b8b44e96201e753224adfc8fb",
-    logo: "https://static.wikia.nocookie.net/russel/images/2/2f/Viva_Cinema_%282021-.n.v.%29.png",
-  },
-  tmc: {
-    name: "TMC",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_tagalogmovie.mpd",
-    keyId: "96701d297d1241e492d41c397631d857",
-    key: "ca2931211c1a261f082a3a2c4fd9f91b",
-    logo: "https://upload.wikimedia.org/wikipedia/en/2/27/Tmc2021logo.png",
-  },
-  tap_movies: {
-    name: "Tap Movies",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_tapmovies_hd1.mpd",
-    keyId: "71cbdf02b595468bb77398222e1ade09",
-    key: "c3f2aa420b8908ab8761571c01899460",
-    logo: "https://i.imgur.com/3RVA5mV.png",
-  },
-  disneyxdd: {
-    name: "Disney XD",
-    type: "clearkey",
-    manifestUri:
-      "https://a53aivottepl-a.akamaihd.net/pdx-nitro/live/clients/dash/enc/jts4tzzv1k/out/v1/8a5b29f7068c415aa371ea95743382e6/cenc.mpd",
-    keyId: "39cebece8b36640f9ba3f248ecfdf86a",
-    key: "fad936249e036830aa5bef41bec05326",
-    logo: "https://logos-world.net/wp-content/uploads/2023/06/Disney-XD-Logo-2009.png",
-},
-
-dreamworks_tagalized: {
-  name: "DreamWorks (Tagalized)",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_dreamworktag.mpd",
-  keyId: "564b3b1c781043c19242c66e348699c5",
-  key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
-  logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png",
-},
-  
-one_sports_plus: {
-  name: "One Sports+",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_onesportsplus_hd1.mpd",
-  keyId: "322d06e9326f4753a7ec0908030c13d8",
-  key: "1e3e0ca32d421fbfec86feced0efefda",
-  logo: "https://i.imgur.com/D33wRIq.png",
-},
-
-  disneyjr: {
-    name: "Disney Jr.",
-    type: "clearkey",
-    manifestUri:
-      "https://uselector.cdn.intigral-ott.net/DJR/DJR.isml/manifest.mpd",
-    keyId: "f5df57914a0922d5d5ed6b0a4af6290a",
-    key: "c62b10a180d1770a355b3c4cb6506ca0",
-    logo: "https://www.pinpng.com/pngs/m/418-4182937_disney-junior-tv-logo-hd-png-download.png",
-  },
-  
-  crave1: {
-    name: "Crave 1",
-    type: "clearkey",
-    manifestUri:
-      "https://live-crave.video.9c9media.com/137c6e2e72e1bf67b82614c7c9b216d6f3a8c8281748505659713/fe/f/crave/crave1/manifest.mpd",
-    keyId: "4a107945066f45a9af2c32ea88be60f4",
-    key: "df97e849d68479ec16e395feda7627d0",
-    logo: "https://the-bithub.com/crave1",
-  },
-  
-  crave2: {
-    name: "Crave 2",
-    type: "clearkey",
-    manifestUri:
-      "https://live-crave.video.9c9media.com/ab4332c60e19b6629129eeb38a2a6ac6db5df2571721750022187/fe/f/crave/crave2/manifest.mpd",
-    keyId: "4ac6eaaf0e5e4f94987cbb5b243b54e8",
-    key: "8bb3f2f421f6afd025fa46c784944ad6",
-    logo: "https://the-bithub.com/crave",
-  },  
-  
-  tap_sports: {
-    name: "Tap Sports",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_tapsports.mpd",
-    keyId: "eabd2d95c89e42f2b0b0b40ce4179ea0",
-    key: "0e7e35a07e2c12822316c0dc4873903f",
-    logo: "https://i.imgur.com/ZsWDiRF.png",
-  },
-  
-  tvup: {
-    name: "TVUP!",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/tvup_prd.mpd",
-    keyId: "83e813ccd4ca4837afd611037af02f63",
-    key: "a97c515dbcb5dcbc432bbd09d15afd41",
-    logo: "https://cms.cignal.tv/Upload/Images/TVUP%20Logo%20.png",
-  },
-  
-  rock_action: {
-    name: "Rock Action",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_rockextreme.mpd",
-    keyId: "0f852fb8412b11edb8780242ac120002",
-    key: "4cbc004d8c444f9f996db42059ce8178",
-    logo: "https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png",
-  },
-  tap_tv: {
-    name: "Tap TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_taptv_sd.mpd",
-    keyId: "f6804251e90b4966889b7df94fdc621e",
-    key: "55c3c014f2bd12d6bd62349658f24566",
-    logo: "https://i.imgur.com/KJaSftF.png"
-  },
-  knowledge_channel: {
-    name: "Knowledge Channel",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_knowledgechannel.mpd",
-    keyId: "0f856fa0412b11edb8780242ac120002",
-    key: "783374273ef97ad3bc992c1d63e091e7",
-    logo: "https://i.imgur.com/UIqEr2y.png",
-  },
-  deped_tv: {
-    name: "DepEd TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/depedch_sd.mpd",
-    keyId: "0f853706412b11edb8780242ac120002",
-    key: "2157d6529d80a760f60a8b5350dbc4df",
-    logo: "https://static.wikia.nocookie.net/russel/images/f/f3/DepEd_TV_Logo_2020.png",
-  },
-  
-  fashion_tv: {
-    name: "Fashion TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
-    keyId: "971ebbe2d887476398e97c37e0c5c591",
-    key: "472aa631b1e671070a4bf198f43da0c7",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fashion_TV_logo_2017.svg/1200px-Fashion_TV_logo_2017.svg.png",
-  },
-  tap_action_flix: {
-    name: "Tap Action Flix",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_tapactionflix_hd1.mpd",
-    keyId: "bee1066160c0424696d9bf99ca0645e3",
-    key: "f5b72bf3b89b9848de5616f37de040b7",
-    logo: "https://i.ibb.co/wgjPKFW/IMG-20241029-111906.png",
-  },
-  kix: {
-    name: "KIX",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/kix_hd1.mpd",
-    keyId: "a8d5712967cd495ca80fdc425bc61d6b",
-    key: "f248c29525ed4c40cc39baeee9634735",
-    logo: "https://i.imgur.com/B8Fmzer.png",
-  },
-  warner_tv: {
-    name: "Warner TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_warnertvhd.mpd",
-    keyId: "4503cf86bca3494ab95a77ed913619a0",
-    key: "afc9c8f627fb3fb255dee8e3b0fe1d71",
-    logo: "https://i.imgur.com/vGEL2Ne.png",
-  },
-  hits: {
-    name: "HITS",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/hits_hd1.mpd",
-    keyId: "dac605bc197e442c93f4f08595a95100",
-    key: "975e27ffc1b7949721ee3ccb4b7fd3e5",
-    logo: "https://i.imgur.com/YeqyD9W.png",
-  },
-  history: {
-    name: "History",
-    logo: "https://cantseeus.com/wp-content/uploads/2023/10/History_28201529.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_historyhd.mpd",
-    keyId: "a7724b7ca2604c33bb2e963a0319968a",
-    key: "6f97e3e2eb2bade626e0281ec01d3675",
-  },
-  bbcearth: {
-    name: "BBC Earth",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/BBC_Earth_2023.svg/1200px-BBC_Earth_2023.svg.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_bbcearth_hd1.mpd",
-    keyId: "34ce95b60c424e169619816c5181aded",
-    key: "0e2a2117d705613542618f58bf26fc8e",
-  },
-  uaap: {
-    name: "UAAP Varsity Channel",
-    logo: "https://i.imgur.com/V0sxXci.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/cg_uaap_cplay_sd.mpd",
-    keyId: "95588338ee37423e99358a6d431324b9",
-    key: "6e0f50a12f36599a55073868f814e81e",
-  },
-  truefm: {
-    name: "TrueFM TV",
-    logo: "https://upload.wikimedia.org/wikipedia/en/4/40/Radyo5truefmlogo.webp",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-08-prod.akamaized.net/out/u/truefm_tv.mpd",
-    keyId: "0559c95496d44fadb94105b9176c3579",
-    key: "40d8bb2a46ffd03540e0c6210ece57ce",
-  },
-  tvMaria: {
-    name: "TV Maria",
-    logo: "https://upload.wikimedia.org/wikipedia/en/c/c1/TV_MARIA_logo.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/tvmaria_prd.mpd",
-    keyId: "fa3998b9a4de40659725ebc5151250d6",
-    key: "998f1294b122bbf1a96c1ddc0cbb229f",
-  },
-  rockentertainment: {
-    name: "Rock Entertainment",
-    logo: "https://i.imgur.com/fx1Y2Eh.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_rockentertainment.mpd",
-    keyId: "e4ee0cf8ca9746f99af402ca6eed8dc7",
-    key: "be2a096403346bc1d0bb0f812822bb62",
-  },
-  spotv: {
-    name: "SPOTV",
-    logo: "https://ownassetsmysky.blob.core.windows.net/assetsmysky/production/media-upload/1634257286_thumb-spotv.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_spotvhd.mpd",
-    keyId: "ec7ee27d83764e4b845c48cca31c8eef",
-    key: "9c0e4191203fccb0fde34ee29999129e",
-  },
-  spotv2: {
-    name: "SPOTV2",
-    logo: "https://ownassetsmysky.blob.core.windows.net/assetsmysky/production/media-upload/1634257305_thumb-spotv-2.png",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_spotv2hd.mpd",
-    keyId: "7eea72d6075245a99ee3255603d58853",
-    key: "6848ef60575579bf4d415db1032153ed",
-  },
-  premierSports2: {
-    name: "Premier Sports 2",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_premiertennishd.mpd",
-    keyId: "59454adb530b4e0784eae62735f9d850",
-    key: "61100d0b8c4dd13e4eb8b4851ba192cc",
-    logo: "https://ownassetsmysky.blob.core.windows.net/assetsmysky/production/plans-and-bundles/1641949301_premier-sports-2.png",
-  },
-  nbaTvPh: {
-    name: "NBA TV Philippines",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/pl_nba.mpd",
-    keyId: "f36eed9e95f140fabbc88a08abbeafff",
-    key: "0125600d0eb13359c28bdab4a2ebe75a",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/NBA_TV.svg/1200px-NBA_TV.svg.png",
-  },
-  cinemax: {
-    name: "Cinemax",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_cinemax.mpd",
-    keyId: "b207c44332844523a3a3b0469e5652d7",
-    key: "fe71aea346db08f8c6fbf0592209f955",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/337_144.png",
-  },
-  lifetime: {
-    name: "Lifetime",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_lifetime.mpd",
-    keyId: "cf861d26e7834166807c324d57df5119",
-    key: "64a81e30f6e5b7547e3516bbf8c647d0",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Logo_Lifetime_2020.svg/2560px-Logo_Lifetime_2020.svg.png",
-  },
-  foodNetwork: {
-    name: "Food Network",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_foodnetwork_hd1.mpd",
-    keyId: "b7299ea0af8945479cd2f287ee7d530e",
-    key: "b8ae7679cf18e7261303313b18ba7a14",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Food_Network_logo.svg/1200px-Food_Network_logo.svg.png",
-  },
-  axn: {
-    name: "AXN",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_axn_sd.mpd",
-    keyId: "fd5d928f5d974ca4983f6e9295dfe410",
-    key: "3aaa001ddc142fedbb9d5557be43792f",
-    logo: "https://img.favpng.com/5/15/4/axn-high-definition-television-logo-sony-pictures-png-favpng-n8hVJ8SzbcUmyNWN9RzpJMhfg.jpg",
-  },
-  abcAustralia: {
-    name: "ABC Australia",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-10-prod.akamaized.net/out/u/dr_abc_aus.mpd",
-    keyId: "389497f9f8584a57b234e27e430e04b7",
-    key: "3b85594c7f88604adf004e45c03511c0",
-    logo: "https://i.pinimg.com/736x/5a/66/65/5a666508bc5851a6a9c1151e7eefff3d.jpg",
-  },
-  travelChannel: {
-    name: "Travel Channel",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-08-prod.akamaized.net/out/u/travel_channel_sd.mpd",
-    keyId: "f3047fc13d454dacb6db4207ee79d3d3",
-    key: "bdbd38748f51fc26932e96c9a2020839",
-    logo: "https://i.imgur.com/ZCYeUV2.png",
-  },
-  bloomberg: {
-    name: "Bloomberg",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/bloomberg_sd.mpd",
-    keyId: "ef7d9dcfb99b406cb79fb9f675cba426",
-    key: "b24094f6ca136af25600e44df5987af4",
-    logo: "https://thumbs.dreamstime.com/b/bloomberg-logo-editorial-illustrative-white-background-logo-icon-vector-logos-icons-set-social-media-flat-banner-vectors-svg-210442338.jpg",
-  },
-  bbc_news: {
-    name: "BBC News",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/bbcworld_news_sd.mpd",
-    keyId: "f59650be475e4c34a844d4e2062f71f3",
-    key: "119639e849ddee96c4cec2f2b6b09b40",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/BBC_News_2022_%28Alt%29.svg/1200px-BBC_News_2022_%28Alt%29.svg.png",
-  },
-  cartoon_network: {
-    name: "Cartoon Network",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/dr_cartoonnetworkhd.mpd",
-    keyId: "a2d1f552ff9541558b3296b5a932136b",
-    key: "cdd48fa884dc0c3a3f85aeebca13d444",
-    logo: "https://poster.starhubgo.com/Linear_channels2/316_1920x1080_HTV.png",
-  },
-  dreamworks: {
-    name: "DreamWorks HD",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/cg_dreamworks_hd1.mpd",
-    keyId: "4ab9645a2a0a47edbd65e8479c2b9669",
-    key: "8cb209f1828431ce9b50b593d1f44079",
-    logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png",
-  },
-  hits_now: {
-    name: "HITS Now",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_hitsnow.mpd",
-    keyId: "14439a1b7afc4527bb0ebc51cf11cbc1",
-    key: "92b0287c7042f271b266cc11ab7541f1",
-    logo: "https://i.imgur.com/YeqyD9W.png",
-  },
-  moonbug_kids: {
-    name: "Moonbug",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_moonbug_kids_sd.mpd",
-    keyId: "0bf00921bec94a65a124fba1ef52b1cd",
-    key: "0f1488487cbe05e2badc3db53ae0f29f",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Moonbug2ndLogo.png",
-  },
-  cnn_ph: {
-    name: "CNN Philippines",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_cnnhd.mpd",
-    keyId: "900c43f0e02742dd854148b7a75abbec",
-    key: "da315cca7f2902b4de23199718ed7e90",
-    logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png",
-  },
-  cartoonChannelPH: {
-    name: "Cartoon Channel PH (10 AM - 8 PM)",
-    type: "hls",
-    manifestUri:
-      "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
-    logo:
-      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png",
-  },
-  treehouse: {
-    name: "Treehouse",
-    type: "clearkey",
-    manifestUri:
-      "https://a79aivottlinear-a.akamaihd.net/OTTB/pdx-nitro/live/clients/dash/enc/ghf7y1plnj/out/v1/0c87bd17ab474015b77c0f3028190f78/cenc.mpd",
-    keyId: "de9b995d2aba32bae1c5dbe38a46f2d9",
-    key: "a2d94fdff16e9c332164a73f8b170bd3",
-    logo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Treehouse_TV_logo.svg/1920px-Treehouse_TV_logo.svg.png",
-  },
-  pbskidsasia: {
-    name: "PBS KIDS ASIA",
-    type: "hls",
-    manifestUri:
-      "https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8",
-    logo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/PBS_Kids_logo_(2022).svg/1200px-PBS_Kids_logo_(2022).svg.png",
-  },
-  zoomooasia: {
-    name: "ZOO MOO ASIA",
-    type: "hls",
-    manifestUri: "https://zoomoo-samsungau.amagi.tv/playlist.m3u8",
-    logo:
-      "https://ia803207.us.archive.org/32/items/zoo-moo-kids-2020_202006/ZooMoo-Kids-2020.png",
-  },
-  babysharktv: {
-    name: "Baby Shark TV",
-    type: "hls",
-    manifestUri:
-      "https://newidco-babysharktv-1-eu.rakuten.wurl.tv/playlist.m3u8",
-    logo:
-      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZYsXFqofA9yrEHWjtaq2_0bdkIy4zY2-nIqEYa6lwYDiw0C4UeZMkpW7TYmCeAwYW4I-GideXBIuMrVxBi3PzcIFpLYQb4-5BMQYuESt7mO2-V4gY2yaxjhfafRDijOtM6rHp7PVu84sFoJjDxCT62UMdGznoq4tZrnDb8I9gslTCMl5ecwgK/w640-h456/image02_Pinkfong%20Surpassing%201B%20Streams%20on%20Spotify.jpg",
-  },
-  onepiece: {
-    name: "One Piece",
-    type: "hls",
-    manifestUri: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
-    logo: "https://i.ibb.co/qm2Qz2b/945-9451491-one-piece-official-logo.png",
-  },
-  spongebob: {
-    name: "SpongeBob SquarePants",
-    type: "hls",
-    logo: "https://images.pluto.tv/channels/63f87d057533d80008ab9549/colorLogoPNG.png",
-    url: "https://jmp2.uk/plu-63f87d057533d80008ab9549.m3u8",
-  },
-  avatar: {
-    name: "Avatar",
-    type: "hls",
-    logo: "https://images.pluto.tv/channels/656df599c0fc8800089c75ab/colorLogoPNG.png",
-    url: "https://jmp2.uk/plu-656df599c0fc8800089c75ab.m3u8",
-    
-  },
- garfield: {
-    name: "Garfield and Friends",
-   type: "hls",
-    logo: "http://images.pluto.tv/channels/60faf9ddfcc1f200070a5932/colorLogoPNG.png",
-    url: "http://service-stitcher.clusters.pluto.tv/stitch/hls/channel/60faf9ddfcc1f200070a5932/master.m3u8",
-    
-  },
- mrbean: {
-    name: "MR BEAN",
-   type: "hls",
-    logo: "https://i.imgur.com/zKGnFe4.png",
-    url: "https://amg00627-amg00627c30-rakuten-es-3990.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanescc-rakutenes/playlist.m3u8",
-    
-  },
- naruto: {
-    name: "Naruto",
-   type: "hls",
-    logo: "https://i.ibb.co/k89NQ92/Naruto-logo-svg.png",
-    url: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5da0c85bd2c9c10009370984/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
-    
-  },
- animeallday: {
-    name: "Anime All Day",
-   type: "hls",
-    logo: "https://i.ibb.co/Y78QGb2/USAJ3504502-A-20240520-T214506-SQUARE-removebg-preview.png",
-    url: "https://jmp2.uk/sam-USAJ3504502A.m3u8",
-  },
- transformers: {
-    name: "Transformers TV",
-   type: "hls",
-    logo: "https://www.pngarts.com/files/10/Bumble-Bee-Logo-Transformer-Transparent.png",
-    url: "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60fb053712f22a0007ff14d2/master.m3u8",
-  },
- onepiece: {
-    name: "One Piece",
-   type: "hls",
-    logo: "https://i.ibb.co/qm2Qz2b/945-9451491-one-piece-official-logo.png",
-    url: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
-  },
-  eurosport: {
-    name: "Eurosport HD",
-    type: "clearkey",
-    manifestUri: "https://atemeshield1-voe.sysln.id/live/eds/EUROSPORTHD/mpd/EUROSPORTHD.mpd",
-    keyId: "47c03f29f04747d2a298c0ad63f3b2c1",
-    key: "8b48b2cb2743b91d5f20cf2622067f3a",
-    logo: "https://linear-poster.astro.com.my/prod/logo/logo_1701_v3.png",
-  },
-  beinsports3: {
-    name: "beIN Sports 3 HD",
-    type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2705/default_ott.mpd",
-    keyId: "IMiE747Saydi+LGnjy0ZEA",
-    key: "BCohvyNspymx40PtbgpjNw",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/313_144.png",
-  },
-  beinsports: {
-    name: "Bein Sports HD",
-    type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/408/default_ott.mpd",
-    keyId: "GmVRiatcSesjUwjCsannEA",
-    key: "PEUIrzSIRBB/XgJqT9axbg",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/236_144.png",
-  },
-  wsport: {
-    name: "W-Sport",
-    type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default_ott.mpd",
-    keyId: "AQy7nPGgHq04Bwcw04vHEA",
-    key: "nNXA0eVMIuA12I3Twd/ITA",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/503_144.png",
-  },
-  astroarena: {
-    name: "Astro Arena",
-    type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default_ott.mpd",
-    keyId: "79pkfa1yNWO2Jb6MBe5hEA",
-    key: "Z3aYWTizMhZLl7gf5WajSg",
-    logo: "https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/92_144.png",
-  },
-  nbc4: {
-    name: "NBC4",
-    type: "clearkey",
-    manifestUri: "https://fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(knbc)/master.mpd",
-    keyId: "0045a118e231f1326bcdb45350b1ceaa",
-    key: "8c13afbfa54ea37a368b8b859021f6e3",
-    logo: "https://vignette.wikia.nocookie.net/dreamlogos/images/f/f6/KNBS_95.png/revision/latest/zoom-crop/width/480/height/480?cb=20191126221915",
-  },
-  motorvision: {
-    name: "MOTOR VISION+",
-    type: "widevine",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001245/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
-    logo: "https://i.imgur.com/as4ns30.png",
-  },
-  nbcsports: {
-    name: "NBC SPORTS",
-    type: "clearkey",
-    manifestUri: "https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s/Live/channel(vc122ycnuy)/master.mpd",
-    keyId: "0020d88a6713159839743f655c5da7de",
-    key: "ba9f34226301f69a4f0f13f65a1f92ec",
-    logo: "https://i.ibb.co/PN0fjNF/90-removebg-preview.png",
-  },
-  unifisports: {
-    name: "UNIFI SPORTS",
-    type: "clearkey",
-    manifestUri: "https://unifi-live07.secureswiftcontent.com/UnifiHD/live11.mpd",
-    keyId: "cbb673fb120882354735ed57eeb05b4c",
-    key: "fe003f7aeec40eb65d20b14edfda2a86",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/c/c2/Unifi_Sports_2023.png/revision/latest?cb=20230616051349",
-  },
-},
-
+};
 
 let currentChannelKey = "cnn"; // Set default channel (you can change it to any other channel key)
 
