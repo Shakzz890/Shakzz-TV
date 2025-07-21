@@ -617,10 +617,10 @@ function loadChannel(key) {
   drm: Object.keys(drmConfig).length ? drmConfig : undefined,
   autostart: true,
   width: "100%",
-  aspectratio: "16:9", // Keep if you want aspect-ratio on resizes
-  stretching: "fill"   // Add this to remove black bars
+  aspectratio: "16:9",
+  stretching: "fill"
 });
-
+  
   // Handle error (e.g., failed to load stream)
   player.on("error", function (err) {
     channelInfo.textContent = `${channel.name} is Unavailable...`;
