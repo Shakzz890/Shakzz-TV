@@ -1,339 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
+  <meta charset="UTF-8">
   <title>Shakzz TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- JW Player -->
-  <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
-  <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
   <style>
-    :root {
-      --bg-color: #111;
-      --text-color: white;
-      --accent-color: royalblue;
-    }
-
-    * {
-      box-sizing: border-box;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: "Segoe UI", sans-serif;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    body {
-      overflow: hidden;
-    }
-
-    .top-nav {
-      width: 100%;
-      background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-logo img {
-      height: 40px;
-    }
-
-    .logo-text {
-      font-size: 1.5em;
-      color: var(--accent-color);
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-color);
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 300px;
-      background-color: #222;
-      border-right: 2px solid #2f2f2f;
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .search-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .search-container input {
-      flex: 1;
-      padding: 8px 30px 8px 8px;
-      border-radius: 6px;
-      border: 1px solid #2f2f2f;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      width: 100%;
-    }
-
-    .clear-btn {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      font-size: 1.2em;
-      cursor: pointer;
-      display: none;
-      user-select: none;
-    }
-
-    .channel-list {
-      overflow-y: auto;
-      flex-grow: 1;
-      padding-bottom: 10px;
-    }
-
-    .channel-button {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      background-color: #333;
-      border: 1px solid #2f2f2f;
-      border-radius: 8px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .channel-button:hover {
-      background-color: #45010c22;
-    }
-
-    .channel-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      border-radius: 6px;
-      background-color: white;
-    }
-
-    .main {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    #channelInfo {
-      display: none;
-    }
-
-    #video {
-      width: 100%;
-      height: 100%;
-    }
-
-    .jwplayer {
-      width: 100% !important;
-      height: 100% !important;
-      aspect-ratio: unset !important;
-      object-fit: fill !important;
-    }
-
-    .contact-footer {
-      background-color: #000;
-      padding: 10px 20px;
-      color: #ccc;
-      border-top: 2px solid #2f2f2f;
-      width: 100%;
-      font-size: 0.85em;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .left-section {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.2em;
-      flex-wrap: wrap;
-    }
-
-    .right-section {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    .social-link {
-      color: #ccc;
-      text-decoration: none !important;
-    }
-
-    .social-link:hover {
-      color: var(--accent-color);
-    }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 2px solid #333;
-        max-height: 50vh;
-      }
-
-      .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
-      }
-
-      .nav-links {
-        flex-direction: row;
-        gap: 15px;
-      }
-
-      .nav-logo img {
-        height: 30px;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .left-section, .right-section {
-        justify-content: center;
-      }
-
-      #video {
-        order: -1;
-        width: 100%;
-        max-height: 300px;
-        aspect-ratio: 16 / 9;
-      }
-    }
+    body { background: #000; color: #fff; font-family: sans-serif; margin: 0; }
+    #video-container { width: 100%; height: 100vh; position: relative; }
+    video { width: 100%; height: 100%; background: black; }
+    #channelList { padding: 1em; display: flex; gap: 10px; overflow-x: auto; }
+    .channel-button img { width: 50px; height: 50px; vertical-align: middle; }
+    .channel-button { background: #222; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 6px; }
   </style>
 </head>
 <body>
-  <nav class="top-nav">
-    <div class="nav-logo">
-      <img src="Jinwoo.png" alt="Logo" />
-      <span class="logo-text">Shakzz TV</span>
-    </div>
-    <div class="nav-links">
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want the channels for OTT?</a>
-    </div>
-  </nav>
 
-  <main>
-    <div class="main">
-      <div id="video"></div>
-      <div id="channelInfo"></div>
-    </div>
+<div id="channelList"></div>
+<div id="video-container">
+  <video id="video" autoplay controls></video>
+</div>
 
-    <div class="sidebar">
-      <div class="search-container">
-        <input type="text" id="search" placeholder="Search channel..." />
-        <span id="clearSearch" class="clear-btn">&times;</span>
-      </div>
-      <div class="channel-list" id="channelList"></div>
-    </div>
-  </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.8.0/shaka-player.compiled.js"></script>
+<script>
+  const channels = {
+    one_ph: {
+      name: "One PH",
+      type: "clearkey",
+      manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/oneph_sd.mpd",
+      keyId: "92834ab4a7e1499b90886c5d49220e46",
+      key: "a7108d9a6cfcc1b7939eb111daf09ab3",
+      logo: "https://i.imgur.com/gkluDe9.png"
+    },
+    kapamilya_sd: {
+      name: "Kapamilya Channel",
+      type: "widevine",
+      manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001248/manifest.mpd?virtualDomain=001.live_hls.zte.com",
+      licenseServer: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Kapamilya_Channel_Logo_2020.svg/2560px-Kapamilya_Channel_Logo_2020.svg.png"
+    }
+  };
 
-  <footer class="contact-footer">
-    <div class="footer-content">
-      <div class="left-section">
-        Contact Me:
-        <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="shakzz05.business@gmail.com" target="_blank" class="social-link">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-      <div class="right-section">© All rights reserved 2025</div>
-    </div>
-  </footer>
+  const video = document.getElementById('video');
+  const channelList = document.getElementById('channelList');
+  const player = new shaka.Player(video);
 
-  <script src="cutie.js"></script>
-  <script>
-    const searchInput = document.getElementById('search');
-    const clearBtn = document.getElementById('clearSearch');
+  shaka.polyfill.installAll();
 
-    searchInput.addEventListener('input', () => {
-      clearBtn.style.display = searchInput.value ? 'block' : 'none';
+  if (!shaka.Player.isBrowserSupported()) {
+    alert("Shaka Player not supported in this browser.");
+  }
+
+  function loadChannel(key) {
+    const channel = channels[key];
+    const drmConfig = {};
+
+    if (channel.type === 'widevine') {
+      drmConfig.servers = {
+        'com.widevine.alpha': channel.licenseServer
+      };
+    } else if (channel.type === 'clearkey') {
+      drmConfig.clearKeys = {
+        [channel.keyId]: channel.key
+      };
+    }
+
+    player.configure({ drm: drmConfig });
+
+    player.load(channel.manifestUri).then(() => {
+      console.log(`Now playing: ${channel.name}`);
+    }).catch(e => {
+      console.error(`Error playing ${channel.name}:`, e);
+      alert(`Error playing ${channel.name}`);
     });
+  }
 
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      clearBtn.style.display = 'none';
-      searchInput.dispatchEvent(new Event('input'));
-    });
-  </script>
+  for (const [key, ch] of Object.entries(channels)) {
+    const btn = document.createElement('button');
+    btn.className = 'channel-button';
+    btn.innerHTML = `<img src="${ch.logo}" alt="${ch.name}" /> ${ch.name}`;
+    btn.onclick = () => loadChannel(key);
+    channelList.appendChild(btn);
+  }
+
+  // Auto-play first channel
+  loadChannel(Object.keys(channels)[0]);
+</script>
+
 </body>
 </html>
