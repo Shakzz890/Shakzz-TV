@@ -403,7 +403,7 @@ const channels = {
       "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_fashiontvhd.mpd",
     keyId: "971ebbe2d887476398e97c37e0c5c591",
     key: "472aa631b1e671070a4bf198f43da0c7",
-    logo: "https://logodix.com/logo/1610684.png",
+    logo: "https://cpng.pikpng.com/pngl/s/43-434337_fashion-tv-logo-fashion-tv-clipart.png",
   },
 
   rckentr: {
@@ -557,7 +557,7 @@ const channels = {
     manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_sari_sari_sd.mpd",
     keyId: "0a7ab3612f434335aa6e895016d8cd2d",
     key: "b21654621230ae21714a5cab52daeb9d",
-    logo: "https://static.wikia.nocookie.net/russel/images/e/ec/Sari‑Sari_Channel_2D_Logo_2016.png"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sari-Sari_Channel_logo.svg/1200px-Sari-Sari_Channel_logo.svg.png"
   },
   ptv4: {
     name: "PTV4",
@@ -637,7 +637,7 @@ const channels = {
     manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_tagalogmovie.mpd",
     keyId: "96701d297d1241e492d41c397631d857",
     key: "ca2931211c1a261f082a3a2c4fd9f91b",
-    logo: "https://i.imgur.com/6mNCite.png"
+    logo: "https://upload.wikimedia.org/wikipedia/en/2/27/Tmc2021logo.png"
   },
   tap_movies: {
     name: "Tap Movies",
@@ -679,7 +679,7 @@ dreamworks_tagalized: {
   manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_dreamworktag.mpd",
   keyId: "564b3b1c781043c19242c66e348699c5",
   key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
-  logo: "https://i.imgur.com/cgfKSDP.png"
+  logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png"
 },
   
 one_sports_plus: {
@@ -781,7 +781,7 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-01-prod.akamaized.net/out/u/cg_hbosign.mpd",
     keyId: "a06ca6c275744151895762e0346380f5",
     key: "559da1b63eec77b5a942018f14d3f56f",
-    logo: "https://i.imgur.com/t4HF5va.png"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/af/HBO_Signature_Asia.png"
   },
   tap_action_flix: {
     name: "Tap Action Flix",
@@ -826,7 +826,7 @@ one_sports_plus: {
   },
   bbcearth: {
     name: "BBC Earth",
-    logo: "https://imgur.com/QMB9sFW.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/BBC_Earth_2023.svg/1200px-BBC_Earth_2023.svg.png",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_bbcearth_hd1.mpd",
     keyId: "34ce95b60c424e169619816c5181aded",
@@ -850,7 +850,7 @@ one_sports_plus: {
   },
   tvMaria: {
     name: "TV Maria",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/c/cd/TV_MARIA_PH.png/revision/latest?cb=20200421061144",
+    logo: "https://upload.wikimedia.org/wikipedia/en/c/c1/TV_MARIA_logo.png",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/tvmaria_prd.mpd",
     keyId: "fa3998b9a4de40659725ebc5151250d6",
@@ -934,7 +934,7 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_axn_sd.mpd",
     keyId: "fd5d928f5d974ca4983f6e9295dfe410",
     key: "3aaa001ddc142fedbb9d5557be43792f",
-    logo: "http://linear-poster.astro.com.my/prod/logo/AXN_v1.png"
+    logo: "https://img.favpng.com/5/15/4/axn-high-definition-television-logo-sony-pictures-png-favpng-n8hVJ8SzbcUmyNWN9RzpJMhfg.jpg"
   },
   abcAustralia: {
     name: "ABC Australia",
@@ -990,7 +990,7 @@ one_sports_plus: {
     manifestUri: "https://qp-pldt-live-grp-09-prod.akamaized.net/out/u/cg_hitsnow.mpd",
     keyId: "14439a1b7afc4527bb0ebc51cf11cbc1",
     key: "92b0287c7042f271b266cc11ab7541f1",
-    logo: "https://static.wikia.nocookie.net/logopedia/images/e/e9/Hits_%28Southeast_Asia%29.svg/revision/latest?cb=20240506054820"
+    logo: "https://i.imgur.com/YeqyD9W.png"
   },
   moonbug_kids: {
     name: "Moonbug",
