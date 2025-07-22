@@ -379,5 +379,35 @@
       searchInput.dispatchEvent(new Event('input'));
     });
   </script>
+<script>
+// Disable right-click
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+// Disable certain key combinations
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "F12" ||                            // F12
+    (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
+    (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
+    (e.ctrlKey && e.key === "U") ||               // Ctrl+U (view source)
+    (e.ctrlKey && e.shiftKey && e.key === "C")    // Ctrl+Shift+C (inspect)
+  ) {
+    e.preventDefault();
+  }
+});
+
+// Optional: Check if DevTools is open (detection method)
+(function detectDevTools() {
+  const threshold = 160;
+  setInterval(() => {
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+      document.body.innerHTML = "<h1>Dev Tools Detected. Access Blocked.</h1>";
+    }
+  }, 1000);
+})();
+</script>
+
 </body>
 </html>
