@@ -944,6 +944,36 @@ dreamworks_tagalized: {
     manifestUri: "https://jungotvstream.chanall.tv/jungotv/jungopinoytv/stream.m3u8",
     logo: "https://yt3.googleusercontent.com/oT4LFcdusmWboxy8ZC9c6NS0riqRi6_96U-gXLT7C-NarXKKFjLDbyko6iFJVfr743e4eTnv=s900-c-k-c0x00ffffff-no-rj",
 },
+  hallypop: {
+    name: "Hallypop",
+    type: "hls",
+    manifestUri: "https://jungotvstream.chanall.tv/jungotv/hallypop/stream.m3u8",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/GMA_HALLYPOP_LOGO_2020.jpg", 
+  },
+  screamflix: {
+    name: "ScreamFlix",
+    type: "hls",
+    manifestUri: "https://jungotvstream.chanall.tv/jungotv/screamflix/stream.m3u8",
+    logo: "https://static.wikia.nocookie.net/logopedia/images/f/fb/Scream_Flix_Logo_2022.png/revision/latest/scale-to-width-down/1200?cb=20250419020619", 
+  },
+  frontrow: {
+    name: "Front Row",
+    type: "hls",
+    manifestUri: "https://jungotvstream.chanall.tv/jungotv/frontrow/stream.m3u8",
+    logo: "https://play-lh.googleusercontent.com/9sC0YMjRkOGf5pY6RCZzSx08SKGCdH_gI6cwqxD6plb_E-rhyoSDd5KDfQfHV8ldsdA", 
+  },
+  combatgo: {
+    name: "Combat Go",
+    type: "hls",
+    manifestUri: "https://jungotvstream.chanall.tv/jungotv/combatgo/stream.m3u8",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYm23zkJn2ZVrGTMUfLULxPtcAycgK-zb96A&s", 
+  },
+  jungoWorld: {
+    name: "Jungo TV (Amagi)",
+    type: "hls",
+    manifestUri: "https://amg02188-amg02188c2-jungotv-northamerica-5717.playouts.now.amagi.tv/playlist.m3u8",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/JungoTV_logo.png/320px-JungoTV_logo.png", 
+  },
 
  };
  
