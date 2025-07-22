@@ -44,7 +44,7 @@
     .top-nav {
       width: 100%;
       background-color: #000;
-      border-bottom: 2px solid white; /* White line */
+      border-bottom: none; /* White line */
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -206,7 +206,7 @@
       background-color: #000;
       padding: 10px 20px;
       color: #ccc;
-      border-top: 2px solid white; /* White line */
+      border-top: none; /* White line */
       width: 100%;
       font-size: 0.85em;
     }
@@ -264,10 +264,11 @@
       100% { color: magenta; }
     }
 
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
+   @media (max-width: 768px) {
+  .top-nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
       .sidebar {
         width: 100%;
@@ -282,10 +283,12 @@
         padding: 10px;
       }
 
-      .nav-links {
-        flex-direction: row;
-        gap: 15px;
-      }
+     .nav-links {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
 
       .nav-logo img {
         height: 30px;
@@ -308,6 +311,29 @@
         max-height: 300px;
         aspect-ratio: 16 / 9;
       }
+body.light {
+  --bg-color: #f9f9f9;
+  --text-color: #111;
+  --accent-color: #0077cc;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.light .channel-button {
+  background-color: #ddd;
+  color: #111;
+}
+
+body.light .channel-button:hover {
+  background-color: #ccc;
+}
+
+body.light .sidebar,
+body.light .top-nav,
+body.light .contact-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
     }
   </style>
 </head>
@@ -379,35 +405,14 @@
       searchInput.dispatchEvent(new Event('input'));
     });
   </script>
-<script>
-// Disable right-click
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-// Disable certain key combinations
-document.addEventListener("keydown", function (e) {
-  if (
-    e.key === "F12" ||                            // F12
-    (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
-    (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
-    (e.ctrlKey && e.key === "U") ||               // Ctrl+U (view source)
-    (e.ctrlKey && e.shiftKey && e.key === "C")    // Ctrl+Shift+C (inspect)
-  ) {
-    e.preventDefault();
-  }
+<script> document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("light");
 });
-
-// Optional: Check if DevTools is open (detection method)
-(function detectDevTools() {
-  const threshold = 160;
-  setInterval(() => {
-    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    if (widthThreshold || heightThreshold) {
-      document.body.innerHTML = "<h1>Dev Tools Detected. Access Blocked.</h1>";
-    }
-  }, 1000);
-})();
 </script>
+<button id="themeToggle" style="margin-left: 20px;">🌙</button>
+<button id="scrollTopBtn" title="Go to top" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; display: none; background: var(--accent-color); color: white; border: none; border-radius: 4px; padding: 10px 15px; cursor: pointer;">
+  ↑
+</button>
 
 </body>
 </html>
