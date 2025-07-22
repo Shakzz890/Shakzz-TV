@@ -195,17 +195,6 @@ const channels = {
     key: "c321afe1689b07d5b7e55bd025c483ce",
     logo: "https://icon2.cleanpng.com/20180702/pfc/kisspng-axn-television-channel-sony-channel-television-sho-axn-5b3a0ac39f5e85.1062681315305304996528.jpg",
   },
-
-  onenews: {
-    name: "One News",
-    type: "clearkey",
-    manifestUri:
-      "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/onenews_hd1.mpd",
-    keyId: "d39eb201ae494a0b98583df4d110e8dd",
-    key: "6797066880d344422abd3f5eda41f45f",
-    logo: "https://logowik.com/content/uploads/images/one-news9489.jpg",
-  },
-
   crave1: {
     name: "Crave 1",
     type: "clearkey",
@@ -629,14 +618,6 @@ const channels = {
     key: "ca2931211c1a261f082a3a2c4fd9f91b",
     logo: "https://upload.wikimedia.org/wikipedia/en/2/27/Tmc2021logo.png",
   },
-  tap_movies: {
-    name: "Tap Movies",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_tapmovies_hd1.mpd",
-    keyId: "71cbdf02b595468bb77398222e1ade09",
-    key: "c3f2aa420b8908ab8761571c01899460",
-    logo: "https://i.imgur.com/3RVA5mV.png",
-  },
   disneyxdd: {
     name: "Disney XD",
     type: "clearkey",
@@ -654,15 +635,6 @@ dreamworks_tagalized: {
   keyId: "564b3b1c781043c19242c66e348699c5",
   key: "d3ad27d7fe1f14fb1a2cd5688549fbab",
   logo: "https://toppng.com/uploads/preview/dreamworks-logo-dreamworks-animation-logo-11563201748udwkzchrdf.png",
-},
-  
-one_sports_plus: {
-  name: "One Sports+",
-  type: "clearkey",
-  manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_onesportsplus_hd1.mpd",
-  keyId: "322d06e9326f4753a7ec0908030c13d8",
-  key: "1e3e0ca32d421fbfec86feced0efefda",
-  logo: "https://i.imgur.com/D33wRIq.png",
 },
 
   disneyjr: {
@@ -754,14 +726,6 @@ one_sports_plus: {
     key: "472aa631b1e671070a4bf198f43da0c7",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fashion_TV_logo_2017.svg/1200px-Fashion_TV_logo_2017.svg.png",
   },
-  tap_action_flix: {
-    name: "Tap Action Flix",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_tapactionflix_hd1.mpd",
-    keyId: "bee1066160c0424696d9bf99ca0645e3",
-    key: "f5b72bf3b89b9848de5616f37de040b7",
-    logo: "https://i.ibb.co/wgjPKFW/IMG-20241029-111906.png",
-  },
   kix: {
     name: "KIX",
     type: "clearkey",
@@ -769,14 +733,6 @@ one_sports_plus: {
     keyId: "a8d5712967cd495ca80fdc425bc61d6b",
     key: "f248c29525ed4c40cc39baeee9634735",
     logo: "https://i.imgur.com/B8Fmzer.png",
-  },
-  warner_tv: {
-    name: "Warner TV",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_warnertvhd.mpd",
-    keyId: "4503cf86bca3494ab95a77ed913619a0",
-    key: "afc9c8f627fb3fb255dee8e3b0fe1d71",
-    logo: "https://i.imgur.com/vGEL2Ne.png",
   },
   hits: {
     name: "HITS",
@@ -1044,14 +1000,15 @@ function loadChannel(key) {
 
   const player = jwplayer("video");
 
-  player.setup({
-    file: channel.manifestUri,
-    type: channel.type === "hls" ? "hls" : "dash",
-    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-    autostart: true,
-    width: "100%",
-    aspectratio: "16:9",
-  });
+ player.setup({
+  file: channel.manifestUri,
+  type: channel.type === "hls" ? "hls" : "dash",
+  drm: Object.keys(drmConfig).length ? drmConfig : undefined,
+  autostart: true,
+  width: "100%",
+  aspectratio: "16:9",
+  stretching: "fill", // 🔥 Forces video to fill container
+});
 
   player.on("error", function (err) {
     channelInfo.textContent = `${channel.name} is Unavailable...`;
