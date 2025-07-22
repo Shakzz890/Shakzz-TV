@@ -944,10 +944,8 @@ let currentChannelKey = "kapamilya"; // Default channel key
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
-  const countDisplay = document.getElementById("channelCount"); // <- new
   list.innerHTML = "";
 
-  // ✅ Sort channels alphabetically by name
   const sortedChannels = Object.entries(channels).sort(([, a], [, b]) =>
     a.name.localeCompare(b.name)
   );
@@ -955,7 +953,6 @@ function renderChannelButtons(filter = "") {
   let shownCount = 0;
 
   sortedChannels.forEach(([key, channel]) => {
-    // ✅ Filter based on search input
     if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
 
     const btn = document.createElement("button");
@@ -971,11 +968,11 @@ function renderChannelButtons(filter = "") {
 
     btn.onclick = () => loadChannel(key);
     list.appendChild(btn);
-
     shownCount++;
   });
 
-  // ✅ Show channel count
+  // ✅ Update channel count with RGB animation
+  const countDisplay = document.getElementById("channelCountText");
   if (countDisplay) {
     countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
   }
@@ -1009,7 +1006,7 @@ function loadChannel(key) {
     autostart: true,
     width: "100%",
     aspectratio: "16:9",
-    stretching: "fill", // ✅ Remove side black bars
+    stretching: "fill", // ✅ Removes side black bars
   });
 
   player.on("error", function (err) {
@@ -1019,14 +1016,10 @@ function loadChannel(key) {
   });
 }
 
-// ✅ Handle search input
 document.getElementById("search").addEventListener("input", function () {
   renderChannelButtons(this.value);
 });
 
-// ✅ Clear search input on page reload
 document.getElementById("search").value = "";
-
-// ✅ Initial render
 renderChannelButtons();
 loadChannel(currentChannelKey);
