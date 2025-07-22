@@ -938,6 +938,11 @@ dreamworks_tagalized: {
     manifestUri: "https://jmp2.uk/sam-GBBD5100001HL.m3u8",
     logo: "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD5100001HL_20241030T142601SQUARE.png",
   },
+ jungopinoytv: {
+    name: "Jungo Pinoy TV",
+    type: "hls",
+    manifestUri: "https://jungotvstream.chanall.tv/jungotv/jungopinoytv/stream.m3u8",
+    logo: "https://yt3.googleusercontent.com/oT4LFcdusmWboxy8ZC9c6NS0riqRi6_96U-gXLT7C-NarXKKFjLDbyko6iFJVfr743e4eTnv=s900-c-k-c0x00ffffff-no-rj",
 };
 
 let currentChannelKey = "kapamilya"; // Default channel key
