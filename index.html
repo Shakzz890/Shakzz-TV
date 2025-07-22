@@ -274,17 +274,21 @@
         aspect-ratio: 16 / 9;
       }
 #channelCount {
-  margin-top: 8px;
-  font-size: 1rem;
-  font-weight: bold;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
-  justify-content: center;
+  margin: 1.5rem auto;
+  font-weight: bold;
+}
+
+#channelCountText {
   animation: rgbText 3s linear infinite;
+  font-size: 1.1rem;
 }
 
 #channelCount i {
+  animation: rgbText 3s linear infinite;
   font-size: 1.2rem;
 }
 
@@ -319,13 +323,12 @@
       <div class="search-container">
         <input type="text" id="search" placeholder="Search channel..." />
         <span id="clearSearch" class="clear-btn">&times;</span>
+<div id="channelCount">
+  <i class="fas fa-tv"></i>
+  <span id="channelCountText">0 channels found</span>
+</div>
       </div>
       <div class="channel-list" id="channelList"></div>
-      <div id="channelCount">
-  <i class="fas fa-tv"></i>
-  <span id="channelCountText"></span>
-</div>
-    </div>
   </main>
 
   <footer class="contact-footer">
