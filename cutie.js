@@ -940,19 +940,19 @@ dreamworks_tagalized: {
   },
 };
 
+let currentChannelKey = "kapamilya"; // Default channel key
+
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
-  const countDisplay = document.getElementById("channelCount");
   list.innerHTML = "";
 
-  // Sort alphabetically
+  // ✅ Sort channels alphabetically by name
   const sortedChannels = Object.entries(channels).sort(([, a], [, b]) =>
     a.name.localeCompare(b.name)
   );
 
-  let visibleCount = 0;
-
   sortedChannels.forEach(([key, channel]) => {
+    // ✅ Filter based on search input
     if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
 
     const btn = document.createElement("button");
@@ -968,10 +968,55 @@ function renderChannelButtons(filter = "") {
 
     btn.onclick = () => loadChannel(key);
     list.appendChild(btn);
+  });
+}
 
-    visibleCount++; // Count how many buttons are added
+function loadChannel(key) {
+  const channel = channels[key];
+  currentChannelKey = key;
+  renderChannelButtons();
+
+  const channelInfo = document.getElementById("channelInfo");
+  channelInfo.textContent = `${channel.name} is playing...`;
+  channelInfo.style.color = "#00FF00";
+
+  const drmConfig = {};
+  if (channel.type === "widevine") {
+    drmConfig.widevine = { url: channel.licenseServerUri };
+  } else if (channel.type === "clearkey") {
+    drmConfig.clearkey = {
+      keyId: channel.keyId,
+      key: channel.key,
+    };
+  }
+
+  const player = jwplayer("video");
+
+  player.setup({
+    file: channel.manifestUri,
+    type: channel.type === "hls" ? "hls" : "dash",
+    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
+    autostart: true,
+    width: "100%",
+    aspectratio: "16:9",
+    stretching: "fill", // ✅ Remove side black bars
   });
 
-  // ✅ Show the number of visible channels
-  countDisplay.textContent = `Channels: ${visibleCount}`;
+  player.on("error", function (err) {
+    channelInfo.textContent = `${channel.name} is Unavailable...`;
+    channelInfo.style.color = "#FF3333";
+    console.error(`Error playing ${channel.name}:`, err.message || err);
+  });
 }
+
+// ✅ Handle search input
+document.getElementById("search").addEventListener("input", function () {
+  renderChannelButtons(this.value);
+});
+
+// ✅ Clear search input on page reload
+document.getElementById("search").value = "";
+
+// ✅ Initial render
+renderChannelButtons();
+loadChannel(currentChannelKey);
