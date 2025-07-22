@@ -78,7 +78,14 @@ const channels = {
     key: "d68f41b59649676788889e19fb10d22c",
     logo: "https://download.logo.wine/logo/Cinema_One/Cinema_One-Logo.wine.png",
   },
-
+cartoonnetworkhd: {
+  name: "Cartoon Network HD",
+  type: "clearkey",
+  manifestUri: "https://live-atv-cdn.izzigo.tv/4/out/u/dash/CARTOONNETWORKHD/default.mpd",
+  keyId: "85d06ba283f3b18bb14f9f8d59b8fb82",
+  key: "6659fed472544289adee986c1d33fa79",
+  logo: "https://download.logo.wine/logo/Cinema_One/Cinema_One-Logo.wine.png",
+},
   cartoonnetwork: {
     name: "Cartoon Network",
     type: "clearkey",
