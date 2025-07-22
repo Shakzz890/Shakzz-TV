@@ -278,15 +278,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin: 1.5rem auto;
+  margin-top: 1rem;
   font-weight: bold;
 }
 
-#channelCountText {
-  animation: rgbText 3s linear infinite;
-  font-size: 1.1rem;
-}
-
+#channelCountText,
 #channelCount i {
   animation: rgbText 3s linear infinite;
   font-size: 1.2rem;
@@ -323,12 +319,13 @@
       <div class="search-container">
         <input type="text" id="search" placeholder="Search channel..." />
         <span id="clearSearch" class="clear-btn">&times;</span>
+      </div>
+      <div class="channel-list" id="channelList"></div>
+      
 <div id="channelCount">
   <i class="fas fa-tv"></i>
   <span id="channelCountText">0 channels found</span>
 </div>
-      </div>
-      <div class="channel-list" id="channelList"></div>
   </main>
 
   <footer class="contact-footer">
