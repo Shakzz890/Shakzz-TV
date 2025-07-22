@@ -886,14 +886,6 @@ dreamworks_tagalized: {
     key: "119639e849ddee96c4cec2f2b6b09b40",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/BBC_News_2022_%28Alt%29.svg/1200px-BBC_News_2022_%28Alt%29.svg.png",
   },
-  cartoon_network: {
-    name: "Cartoon Network",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-12-prod.akamaized.net/out/u/dr_cartoonnetworkhd.mpd",
-    keyId: "a2d1f552ff9541558b3296b5a932136b",
-    key: "cdd48fa884dc0c3a3f85aeebca13d444",
-    logo: "https://poster.starhubgo.com/Linear_channels2/316_1920x1080_HTV.png",
-  },
   dreamworks: {
     name: "DreamWorks HD",
     type: "clearkey",
