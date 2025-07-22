@@ -1,14 +1,4 @@
 const channels = {
-gma7: {
-    name: "GMA 7",
-    type: "dash",
-    manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001093/manifest.mpd?virtualDomain=001.live_hls.zte.com",
-    logo: "https://i.imgur.com/Cu1tAY8.png",
-    group: "Converge",
-    drm: {
-      type: "widevine",
-      licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00"
-    },
   tv5: {
     name: "TV 5 HD",
     type: "clearkey",
@@ -1043,38 +1033,14 @@ function loadChannel(key) {
   channelInfo.style.color = "#00FF00";
 
   const drmConfig = {};
-
-  if (channel.drm) {
-    if (channel.drm.type === "widevine") {
-      drmConfig.widevine = { url: channel.drm.licenseUri };
-    } else if (channel.drm.type === "clearkey") {
-      drmConfig.clearkey = {
-        keyId: channel.drm.keyId,
-        key: channel.drm.key,
-      };
-    }
+  if (channel.type === "widevine") {
+    drmConfig.widevine = { url: channel.licenseServerUri };
+  } else if (channel.type === "clearkey") {
+    drmConfig.clearkey = {
+      keyId: channel.keyId,
+      key: channel.key,
+    };
   }
-
-  const streamType = (channel.type === "hls" ? "hls" : "dash");
-
-  const player = jwplayer("video");
-
-  player.setup({
-    file: channel.manifestUri,
-    type: streamType,
-    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-    autostart: true,
-    width: "100%",
-    aspectratio: "16:9",
-    stretching: "fill"
-  });
-
-  player.on("error", function (err) {
-    channelInfo.textContent = `${channel.name} is Unavailable...`;
-    channelInfo.style.color = "#FF3333";
-    console.error(`Error playing ${channel.name}:`, err.message || err);
-  });
-}
 
   const player = jwplayer("video");
 
