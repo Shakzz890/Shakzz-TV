@@ -34,16 +34,17 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     body {
-      overflow: hidden;
+      overflow-y: hidden;
     }
 
     .top-nav {
       width: 100%;
       background-color: #000;
-      border-bottom: 2px solid #3a3a3a;
+      border-bottom: 2px solid white; /* White line */
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -135,7 +136,8 @@
     .channel-list {
       overflow-y: auto;
       flex-grow: 1;
-      padding-bottom: 10px;
+      padding: 0;
+      margin: 0;
     }
 
     .channel-button {
@@ -178,15 +180,15 @@
     #channelInfo {
       display: none;
     }
-#channelList {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
 
-#channelCount {
-  margin-top: 0.5rem; /* or 0 if you want them really tight together */
-}
+    #channelList {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
+    #channelCount {
+      margin-top: 0;
+    }
 
     #video {
       width: 100%;
@@ -204,7 +206,7 @@
       background-color: #000;
       padding: 10px 20px;
       color: #ccc;
-      border-top: 2px solid #2f2f2f;
+      border-top: 2px solid white; /* White line */
       width: 100%;
       font-size: 0.85em;
     }
@@ -236,6 +238,30 @@
 
     .social-link:hover {
       color: var(--accent-color);
+    }
+
+    #channelCount {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #channelCountText,
+    #channelCount i {
+      animation: rgbText 3s linear infinite;
+      font-size: 1.2rem;
+    }
+
+    @keyframes rgbText {
+      0% { color: red; }
+      25% { color: orange; }
+      50% { color: lime; }
+      75% { color: cyan; }
+      100% { color: magenta; }
     }
 
     @media (max-width: 768px) {
@@ -282,28 +308,6 @@
         max-height: 300px;
         aspect-ratio: 16 / 9;
       }
-#channelCount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-#channelCountText,
-#channelCount i {
-  animation: rgbText 3s linear infinite;
-  font-size: 1.2rem;
-}
-
-@keyframes rgbText {
-  0% { color: red; }
-  25% { color: orange; }
-  50% { color: lime; }
-  75% { color: cyan; }
-  100% { color: magenta; }
-}
     }
   </style>
 </head>
@@ -330,49 +334,32 @@
         <span id="clearSearch" class="clear-btn">&times;</span>
       </div>
       <div class="channel-list" id="channelList"></div>
-      
-<div id="channelCount">
-  <i class="fas fa-tv"></i>
-  <span id="channelCountText">0 channels found</span>
-</div>
+      <div id="channelCount">
+        <i class="fas fa-tv"></i>
+        <span id="channelCountText">0 channels found</span>
+      </div>
+    </div>
   </main>
 
   <footer class="contact-footer">
     <div class="footer-content">
       <div class="left-section">
-        Contact Me:
         <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link">
           <i class="fab fa-facebook"></i>
         </a>
         <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
           <i class="fab fa-youtube"></i>
         </a>
-<footer class="footer">
-  <div class="footer-content">
-    <div class="social-links">
-      <!-- Gmail Compose Link -->
-      <a
-        href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-        title="Email Shakzz via Gmail"
-      >
-        <i class="fas fa-envelope"></i>
-      </a>
-
-      <!-- Fallback if Gmail doesn't work or JS is disabled -->
-      <noscript>
-        <a href="mailto:shakzz05.business@gmail.com" class="social-link">
+        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email Me">
           <i class="fas fa-envelope"></i>
         </a>
-      </noscript>
-    </div>
-  </div>
-</footer>
-        </a>
+        <noscript>
+          <a href="mailto:shakzz05.business@gmail.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </noscript>
       </div>
-      <div class="right-section">© All rights reserved 2025</div>
+      <div class="right-section">© 2025</div>
     </div>
   </footer>
 
