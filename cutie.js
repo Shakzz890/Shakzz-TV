@@ -1,21 +1,4 @@
 const channels = {
-  naruto: {
-  name: "Naruto",
-  type: "clearkey",
-  manifestUri: "https://abea5ymaaaaaaaamhlrg2yms6ka.../v1/f079aa23997d44d8b3730b5e8b5b4a28/cenc.mpd",
-  keyId: "NPI5S03TcufA_qPkj_A3Rw",
-  key: "5si9nHOMw4_Ldsi-uYPUXw",
-  logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRigN06bqjKAI5VjjvUGCeUgrwJD1c3SrQ1xUZt3VpS2bp0w6yyQRKta5zG&s=10", // Optional: replace with your preferred logo
-},
-
-pokemon: {
-  name: "Pokemon",
-  type: "clearkey",
-  manifestUri: "https://a153aivottlinear-a.akamaihd.../v1/bc7a58fc207e4b3f9ac862bd798521a3/cenc.mpd",
-  keyId: "85e598202aee21dd2be766740845cc66",
-  key: "82024f1667c874473f40bd895485b2a4",
-  logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEMKxP_xoE0hqtdIY5SirLdwtpxsTFQLQ2ARGFDbznh-rPrKd74m1Hn1Y&s=10", // Optional: replace with your preferred logo
-},
   tv5: {
     name: "TV 5 HD",
     type: "clearkey",
