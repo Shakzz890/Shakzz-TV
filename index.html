@@ -312,8 +312,23 @@
         <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" class="social-link">
-  <i class="fas fa-envelope"></i></a>
+        <a href="#" id="emailLink" class="social-link">
+  <i class="fas fa-envelope"></i>
+</a>
+<script>
+  document.getElementById("emailLink").addEventListener("click", function (e) {
+    e.preventDefault();
+    const gmailUrl = "https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com";
+    const width = screen.availWidth;
+    const height = screen.availHeight;
+
+    window.open(
+      gmailUrl,
+      "_blank",
+      `toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=${width},height=${height},top=0,left=0`
+    );
+  });
+</script>
         </a>
       </div>
       <div class="right-section">© All rights reserved 2025</div>
