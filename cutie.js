@@ -973,9 +973,9 @@ function renderChannelButtons(filter = "") {
 
   // ✅ Update channel count with RGB animation
   const countDisplay = document.getElementById("channelCountText");
-  if (countDisplay) {
-    countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
-  }
+if (countDisplay) {
+  countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
+}
 }
 
 function loadChannel(key) {
