@@ -1,5 +1,5 @@
 const channels = {
-  gma7 = {
+  gma7: = {
   name: "GMA 7",
   type: "dash",
   manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001093/manifest.mpd?virtualDomain=001.live_hls.zte.com",
