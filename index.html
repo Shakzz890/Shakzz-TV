@@ -5,7 +5,7 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
   <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
@@ -44,7 +44,7 @@
     .top-nav {
       width: 100%;
       background-color: #000;
-      border-bottom: 1px solid white; /* White line */
+      border-bottom: 1px solid white;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -173,8 +173,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0;
-      margin: 0;
     }
 
     #channelInfo {
@@ -206,7 +204,7 @@
       background-color: #000;
       padding: 10px 20px;
       color: #ccc;
-      border-top: 1px solid white; /* White line */
+      border-top: 1px solid white;
       width: 100%;
       font-size: 0.85em;
     }
@@ -343,28 +341,17 @@
 
   <footer class="contact-footer">
     <div class="footer-content">
-     <div class="left-section">
+      <div class="left-section">
         Contact Me:
-        <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Email Me">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <noscript>
-          <a href="mailto:shakzz05.business@gmail.com" class="social-link">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </noscript>
+        <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fas fa-envelope"></i></a>
+        <noscript><a href="mailto:shakzz05.business@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a></noscript>
       </div>
       <div class="right-section">© All rights reserved 2025</div>
     </div>
   </footer>
 
-  <script src="cutie.js"></script>
   <script>
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
@@ -378,5 +365,7 @@
       clearBtn.style.display = 'none';
       searchInput.dispatchEvent(new Event('input'));
     });
+  </script>
+  <script src="cutie.js"></script>
 </body>
 </html>
