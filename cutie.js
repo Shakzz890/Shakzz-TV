@@ -1,4 +1,14 @@
 const channels = {
+  gma7 = {
+  name: "GMA 7",
+  type: "dash",
+  manifestUri: "http://143.44.136.110:6910/001/2/ch00000090990000001093/manifest.mpd?virtualDomain=001.live_hls.zte.com",
+  logo: "https://i.imgur.com/Cu1tAY8.png",
+  group: "Converge",
+  drm: {
+    type: "widevine",
+    licenseUri: "http://143.44.136.74:9443/widevine/?deviceId=02:00:00:00:00:00"
+  },
   tv5: {
     name: "TV 5 HD",
     type: "clearkey",
