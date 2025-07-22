@@ -919,7 +919,7 @@ dreamworks_tagalized: {
     logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png",
   },
   cartoonChannelPH: {
-    name: "Cartoon Channel PH        (10 AM - 8 PM)",
+    name: "Cartoon Channel PH (10 AM - 8 PM)",
     type: "hls",
     manifestUri:
       "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
@@ -944,6 +944,10 @@ let currentChannelKey = "kapamilya"; // Default channel key
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
+
+  // ✅ Store current scroll position
+  const scrollTop = list.scrollTop;
+
   list.innerHTML = "";
 
   const sortedChannels = Object.entries(channels).sort(([, a], [, b]) =>
@@ -971,11 +975,14 @@ function renderChannelButtons(filter = "") {
     shownCount++;
   });
 
-  // ✅ Update channel count with RGB animation
+  // ✅ Restore scroll position
+  list.scrollTop = scrollTop;
+
+  // ✅ Update channel count
   const countDisplay = document.getElementById("channelCountText");
-if (countDisplay) {
-  countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
-}
+  if (countDisplay) {
+    countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
+  }
 }
 
 function loadChannel(key) {
@@ -997,7 +1004,6 @@ function loadChannel(key) {
     };
   }
 
-
   const player = jwplayer("video");
 
   player.setup({
@@ -1007,7 +1013,7 @@ function loadChannel(key) {
     autostart: true,
     width: "100%",
     aspectratio: "16:9",
-    stretching: "fill", // ✅ Removes side black bars
+    stretching: "fill",
   });
 
   player.on("error", function (err) {
