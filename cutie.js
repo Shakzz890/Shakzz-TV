@@ -943,7 +943,7 @@ dreamworks_tagalized: {
     type: "hls",
     manifestUri: "https://jungotvstream.chanall.tv/jungotv/jungopinoytv/stream.m3u8",
     logo: "https://yt3.googleusercontent.com/oT4LFcdusmWboxy8ZC9c6NS0riqRi6_96U-gXLT7C-NarXKKFjLDbyko6iFJVfr743e4eTnv=s900-c-k-c0x00ffffff-no-rj",
-};
+},
 
  };
  
