@@ -944,12 +944,15 @@ let currentChannelKey = "kapamilya"; // Default channel key
 
 function renderChannelButtons(filter = "") {
   const list = document.getElementById("channelList");
+  const countDisplay = document.getElementById("channelCount"); // <- new
   list.innerHTML = "";
 
   // ✅ Sort channels alphabetically by name
   const sortedChannels = Object.entries(channels).sort(([, a], [, b]) =>
     a.name.localeCompare(b.name)
   );
+
+  let shownCount = 0;
 
   sortedChannels.forEach(([key, channel]) => {
     // ✅ Filter based on search input
@@ -968,7 +971,14 @@ function renderChannelButtons(filter = "") {
 
     btn.onclick = () => loadChannel(key);
     list.appendChild(btn);
+
+    shownCount++;
   });
+
+  // ✅ Show channel count
+  if (countDisplay) {
+    countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
+  }
 }
 
 function loadChannel(key) {
