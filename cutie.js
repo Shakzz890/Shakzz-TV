@@ -960,7 +960,7 @@ dreamworks_tagalized: {
     name: "Front Row",
     type: "hls",
     manifestUri: "https://jungotvstream.chanall.tv/jungotv/frontrow/stream.m3u8",
-    logo: "https://play-lh.googleusercontent.com/9sC0YMjRkOGf5pY6RCZzSx08SKGCdH_gI6cwqxD6plb_E-rhyoSDd5KDfQfHV8ldsdA", 
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRneG2hIDzQS75A9KHg2FJTbE76qj9fX301dA&s", 
   },
   combatgo: {
     name: "Combat Go",
@@ -968,11 +968,11 @@ dreamworks_tagalized: {
     manifestUri: "https://jungotvstream.chanall.tv/jungotv/combatgo/stream.m3u8",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYm23zkJn2ZVrGTMUfLULxPtcAycgK-zb96A&s", 
   },
-  jungoWorld: {
-    name: "Jungo TV (Amagi)",
+  awsn: {
+    name: "AWSN",
     type: "hls",
     manifestUri: "https://amg02188-amg02188c2-jungotv-northamerica-5717.playouts.now.amagi.tv/playlist.m3u8",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/JungoTV_logo.png/320px-JungoTV_logo.png", 
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScrgyuzyxnS4PB5zqcMI9MyZwjgxsEwr4lpg&s", 
   },
 
  };
