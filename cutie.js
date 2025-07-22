@@ -919,8 +919,7 @@ dreamworks_tagalized: {
     logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png",
   },
   cartoonChannelPH: {
-    name: "Cartoon Channel PH
-      (10 AM - 8 PM)",
+    name: "Cartoon Channel PH (10 AM - 8 PM)",
     type: "hls",
     manifestUri:
       "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
