@@ -273,6 +273,28 @@
         max-height: 300px;
         aspect-ratio: 16 / 9;
       }
+#channelCount {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  animation: rgbText 3s linear infinite;
+}
+
+#channelCount i {
+  font-size: 1.2rem;
+}
+
+@keyframes rgbText {
+  0% { color: red; }
+  25% { color: orange; }
+  50% { color: lime; }
+  75% { color: cyan; }
+  100% { color: magenta; }
+}
     }
   </style>
 </head>
@@ -299,7 +321,10 @@
         <span id="clearSearch" class="clear-btn">&times;</span>
       </div>
       <div class="channel-list" id="channelList"></div>
-      <div id="channelCount" style="color: #aaa; margin-top: 5px; font-size: 0.9em;"></div>
+      <div id="channelCount">
+  <i class="fas fa-tv"></i>
+  <span id="channelCountText"></span>
+</div>
     </div>
   </main>
 
