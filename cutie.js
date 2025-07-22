@@ -978,11 +978,65 @@ one_sports_plus: {
     logo:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png/v1/fill/w_1192,h_670/cartoon_channel_ph_logo__2020___present__by_kierariel_de71xo3-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYjU4YmJjODgtMDAzMC00NDQ3LWI5OWUtMTllN2RiYzUxYjE0XC9kZTcxeG8zLTI2NjQ2OWE0LTNiZDUtNGJkNy04OTBlLTE5MmM3Nzk4ZTBiYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2FyUXQBaLF5j9GldZMJAM1ltGPFq7pMwwr6V7wyGpFs",
   },
+ spongebob: {
+    name: "SpongeBob SquarePants",
+    type: "hls",
+    manifestUri: "https://jmp2.uk/plu-63f87d057533d80008ab9549.m3u8",
+    logo: "https://images.pluto.tv/channels/63f87d057533d80008ab9549/colorLogoPNG.png",
+  },
+  avatar: {
+    name: "Avatar",
+    type: "hls",
+    manifestUri: "https://jmp2.uk/plu-656df599c0fc8800089c75ab.m3u8",
+    logo: "https://images.pluto.tv/channels/656df599c0fc8800089c75ab/colorLogoPNG.png",
+  },
+  garfield: {
+    name: "Garfield and Friends",
+    type: "hls",
+    manifestUri: "http://service-stitcher.clusters.pluto.tv/stitch/hls/channel/60faf9ddfcc1f200070a5932/master.m3u8",
+    logo: "http://images.pluto.tv/channels/60faf9ddfcc1f200070a5932/colorLogoPNG.png",
+  },
+  mrbean: {
+    name: "MR BEAN",
+    type: "hls",
+    manifestUri: "https://amg00627-amg00627c30-rakuten-es-3990.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanescc-rakutenes/playlist.m3u8",
+    logo: "https://i.imgur.com/zKGnFe4.png",
+  },
+  naruto: {
+    name: "Naruto",
+    type: "hls",
+    manifestUri: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5da0c85bd2c9c10009370984/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
+    logo: "https://i.ibb.co/k89NQ92/Naruto-logo-svg.png",
+  },
+  animeAllDay: {
+    name: "Anime All Day",
+    type: "hls",
+    manifestUri: "https://jmp2.uk/sam-USAJ3504502A.m3u8",
+    logo: "https://i.ibb.co/Y78QGb2/USAJ3504502-A-20240520-T214506-SQUARE-removebg-preview.png",
+  },
   transformers: {
     name: "Transformers TV",
-     type: "hls",
-    logo: "https://www.pngarts.com/files/10/Bumble-Bee-Logo-Transformer-Transparent.png",
+    type: "hls",
     manifestUri: "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/60fb053712f22a0007ff14d2/master.m3u8",
+    logo: "https://www.pngarts.com/files/10/Bumble-Bee-Logo-Transformer-Transparent.png",
+  },
+  onepiece: {
+    name: "One Piece",
+    type: "hls",
+    manifestUri: "http://stitcher-ipv4.pluto.tv/v1/stitch/embed/hls/channel/5f7790b3ed0c88000720b241/master.m3u8?deviceType=samsung-tvplus&deviceMake=samsung&deviceModel=samsung&deviceVersion=unknown&appVersion=unknown&deviceLat=0&deviceLon=0&deviceDNT=%7BTARGETOPT%7D&deviceId=%7BPSID%7D&advertisingId=%7BPSID%7D&us_privacy=1YNY&samsung_app_domain=%7BAPP_DOMAIN%7D&samsung_app_name=%7BAPP_NAME%7D&profileLimit=&profileFloor=&embedPartner=samsung-tvplus",
+    logo: "https://i.ibb.co/qm2Qz2b/945-9451491-one-piece-official-logo.png",
+  },
+  crunchyroll: {
+    name: "CRUNCHYROLL | EN AUDIO",
+    type: "hls",
+    manifestUri: "https://bit.ly/Crunchyroll-ph",
+    logo: "https://i.imgur.com/ZG9pqFw.png",
+  },
+  supertoons: {
+    name: "SuperToons TV",
+    type: "hls",
+    manifestUri: "https://jmp2.uk/sam-GBBD5100001HL.m3u8",
+    logo: "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD5100001HL_20241030T142601SQUARE.png",
   },
 };
 
