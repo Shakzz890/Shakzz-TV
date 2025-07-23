@@ -985,18 +985,17 @@ dreamworks_tagalized: {
  };
 
 
-let currentChannelKey = "kapamilya"; // Default channel key
+let currentChannelKey = null;
+let currentSearchFilter = "";
 
 function renderChannelButtons(filter = "") {
+  currentSearchFilter = filter; // Save the current filter for reuse
   const list = document.getElementById("channelList");
-
-  // ✅ Store current scroll position
   const scrollTop = list.scrollTop;
-
   list.innerHTML = "";
 
-  const sortedChannels = Object.entries(channels).sort(([, a], [, b]) =>
-    a.name.localeCompare(b.name)
+  const sortedChannels = Object.entries(channels).sort((a, b) =>
+    a[1].name.localeCompare(b[1].name)
   );
 
   let shownCount = 0;
@@ -1015,7 +1014,7 @@ function renderChannelButtons(filter = "") {
       btn.innerHTML += `<span style="color: #00FF00; font-weight: bold;">Now Playing...</span>`;
     }
 
-    btn.onclick = () => loadChannel(key);
+    btn.onclick = () => loadChannel(key); // No filter reset
     list.appendChild(btn);
     shownCount++;
   });
@@ -1033,7 +1032,8 @@ function renderChannelButtons(filter = "") {
 function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
-  renderChannelButtons();
+
+  renderChannelButtons(currentSearchFilter); // ⬅️ Use saved filter!
 
   const channelInfo = document.getElementById("channelInfo");
   channelInfo.textContent = `${channel.name} is playing...`;
@@ -1049,9 +1049,7 @@ function loadChannel(key) {
     };
   }
 
-  const player = jwplayer("video");
-
-  player.setup({
+  jwplayer("video").setup({
     file: channel.manifestUri,
     type: channel.type === "hls" ? "hls" : "dash",
     drm: Object.keys(drmConfig).length ? drmConfig : undefined,
@@ -1059,19 +1057,21 @@ function loadChannel(key) {
     width: "100%",
     aspectratio: "16:9",
     stretching: "fill",
-  });
-
-  player.on("error", function (err) {
+  }).on("error", function (err) {
     channelInfo.textContent = `${channel.name} is Unavailable...`;
     channelInfo.style.color = "#FF3333";
     console.error(`Error playing ${channel.name}:`, err.message || err);
   });
 }
 
+// ✅ Search input handling
 document.getElementById("search").addEventListener("input", function () {
   renderChannelButtons(this.value);
 });
 
+// ✅ Initial setup
 document.getElementById("search").value = "";
 renderChannelButtons();
-loadChannel(currentChannelKey);
+if (currentChannelKey) {
+  loadChannel(currentChannelKey);
+}
