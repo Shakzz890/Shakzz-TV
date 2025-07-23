@@ -987,10 +987,14 @@ dreamworks_tagalized: {
 
 let shownCount = 0;
 let currentSearchFilter = "";
-let currentChannelKey = null;
+let currentChannelKey = "kapamilya";
+let focusIndex = 0;
+let focusableButtons = [];
+let tabs = ["live", "movies", "series"];
+let currentTabIndex = 0;
 
 function renderChannelButtons(filter = "") {
-  currentSearchFilter = filter; // Store filter globally
+  currentSearchFilter = filter;
 
   const list = document.getElementById("channelList");
   const scrollTop = list.scrollTop;
@@ -1002,12 +1006,16 @@ function renderChannelButtons(filter = "") {
   );
 
   sortedChannels.forEach(([key, channel]) => {
-    if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
+    if (
+      !channel.name.toLowerCase().includes(filter.toLowerCase()) ||
+      (channel.group && channel.group.toLowerCase() !== tabs[currentTabIndex])
+    ) return;
 
     const btn = document.createElement("button");
     btn.className = "channel-button";
+    btn.setAttribute("data-key", key);
     btn.innerHTML = `
-      <img src="${channel.logo}" class="channel-logo" alt="${channel.name} logo">
+      <img src="${channel.logo}" class="channel-logo" alt="${channel.name}">
       <span>${channel.name}</span>
     `;
 
@@ -1020,10 +1028,10 @@ function renderChannelButtons(filter = "") {
     shownCount++;
   });
 
-  // Restore scroll position
+  focusableButtons = Array.from(document.querySelectorAll(".channel-button"));
   list.scrollTop = scrollTop;
+  updateFocus();
 
-  // Update channel count
   const countDisplay = document.getElementById("channelCountText");
   if (countDisplay) {
     countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
@@ -1034,7 +1042,7 @@ function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
 
-  renderChannelButtons(currentSearchFilter); // Maintain current filter when re-rendering
+  renderChannelButtons(currentSearchFilter);
 
   const channelInfo = document.getElementById("channelInfo");
   channelInfo.textContent = `${channel.name} is playing...`;
@@ -1050,9 +1058,7 @@ function loadChannel(key) {
     };
   }
 
-  const player = jwplayer("video");
-
-  player.setup({
+  jwplayer("video").setup({
     file: channel.manifestUri,
     type: channel.type === "hls" ? "hls" : "dash",
     drm: Object.keys(drmConfig).length ? drmConfig : undefined,
@@ -1061,25 +1067,69 @@ function loadChannel(key) {
     aspectratio: "16:9",
     stretching: "fill",
   });
+}
 
-  player.on("error", function (err) {
-    channelInfo.textContent = `${channel.name} is Unavailable...`;
-    channelInfo.style.color = "#FF3333";
-    console.error(`Error playing ${channel.name}:`, err.message || err);
+// TV remote + keyboard nav
+document.addEventListener("keydown", function (e) {
+  if (e.target.tagName === "INPUT") return;
+
+  if (focusableButtons.length === 0) return;
+
+  if (e.key === "ArrowDown") {
+    focusIndex = (focusIndex + 1) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "ArrowUp") {
+    focusIndex = (focusIndex - 1 + focusableButtons.length) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "Enter") {
+    focusableButtons[focusIndex].click();
+    e.preventDefault();
+  } else if (e.key === "ArrowLeft") {
+    switchTab(-1);
+    e.preventDefault();
+  } else if (e.key === "ArrowRight") {
+    switchTab(1);
+    e.preventDefault();
+  } else if (e.key === "Backspace") {
+    document.getElementById("search").focus();
+    e.preventDefault();
+  }
+});
+
+function updateFocus() {
+  focusableButtons.forEach((btn, i) => {
+    if (i === focusIndex) {
+      btn.classList.add("focused");
+      btn.scrollIntoView({ block: "center" });
+    } else {
+      btn.classList.remove("focused");
+    }
   });
 }
 
-// Handle search input
-document.getElementById("search").addEventListener("input", function () {
-  renderChannelButtons(this.value);
-});
+function switchTab(direction) {
+  currentTabIndex = (currentTabIndex + direction + tabs.length) % tabs.length;
 
-// Initial render
-document.getElementById("search").value = "";
-renderChannelButtons();
+  tabs.forEach((tab, i) => {
+    const el = document.getElementById(`tab-${tab}`);
+    if (el) el.classList.toggle("active", i === currentTabIndex);
+  });
 
-// Load first channel if available
-if (currentChannelKey) {
-  loadChannel(currentChannelKey);
+  focusIndex = 0;
+  renderChannelButtons(currentSearchFilter);
 }
 
+// Search input
+document.getElementById("search").addEventListener("input", function () {
+  renderChannelButtons(this.value);
+  focusIndex = 0;
+  updateFocus();
+});
+
+// Initial setup
+renderChannelButtons();
+if (currentChannelKey && channels[currentChannelKey]) {
+  loadChannel(currentChannelKey);
+}
