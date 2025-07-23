@@ -5,7 +5,7 @@
   <link rel="icon" type="image/x-icon" href="Jinwoo.png" />
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
   <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
@@ -59,6 +59,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      cursor: pointer;
     }
 
     .nav-logo img {
@@ -122,23 +123,23 @@
     }
 
     .clear-btn {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  font-size: 1.5em; /* Slightly bigger */
-  color: #666;
-  cursor: pointer;
-  display: none;
-  user-select: none;
-  line-height: 1;
-  z-index: 10;
-}
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      font-size: 1.5em;
+      color: #666;
+      cursor: pointer;
+      display: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 10;
+    }
 
-.channel-button:focus {
-  outline: 3px solid #00FF00;
-  background-color: #222;
-}
+    .channel-button:focus {
+      outline: 3px solid #00FF00;
+      background-color: #222;
+    }
 
     .channel-list {
       overflow-y: auto;
@@ -159,7 +160,6 @@
       align-items: center;
       gap: 15px;
       cursor: pointer;
-      transition: background 0.3s;
       transition: background-color 0.3s, outline 0.3s;
     }
 
@@ -319,7 +319,7 @@
 </head>
 <body>
   <nav class="top-nav">
-    <div class="nav-logo">
+    <div class="nav-logo" onclick="location.reload()">
       <img src="Jinwoo.png" alt="Logo" />
       <span class="logo-text">Shakzz TV</span>
     </div>
