@@ -602,7 +602,7 @@ cartoonnetworkhd: {
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxvjeBIthYiEaZHeVeYpDicIlOTdv3G6lzoal3VM2xVzWu_J7XxM657oz&s=10",
   },
   pbo: {
-    name: "PBO",
+    name: "Pinoy Box Office",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/pbo_sd.mpd",
     keyId: "dcbdaaa6662d4188bdf97f9f0ca5e830",
