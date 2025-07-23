@@ -985,20 +985,21 @@ dreamworks_tagalized: {
  };
 
 
-let currentChannelKey = null;
+let shownCount = 0;
 let currentSearchFilter = "";
+let currentChannelKey = null;
 
 function renderChannelButtons(filter = "") {
-  currentSearchFilter = filter; // Save the current filter for reuse
+  currentSearchFilter = filter; // Store filter globally
+
   const list = document.getElementById("channelList");
   const scrollTop = list.scrollTop;
   list.innerHTML = "";
+  shownCount = 0;
 
   const sortedChannels = Object.entries(channels).sort((a, b) =>
     a[1].name.localeCompare(b[1].name)
   );
-
-  let shownCount = 0;
 
   sortedChannels.forEach(([key, channel]) => {
     if (!channel.name.toLowerCase().includes(filter.toLowerCase())) return;
@@ -1014,15 +1015,15 @@ function renderChannelButtons(filter = "") {
       btn.innerHTML += `<span style="color: #00FF00; font-weight: bold;">Now Playing...</span>`;
     }
 
-    btn.onclick = () => loadChannel(key); // No filter reset
+    btn.onclick = () => loadChannel(key);
     list.appendChild(btn);
     shownCount++;
   });
 
-  // ✅ Restore scroll position
+  // Restore scroll position
   list.scrollTop = scrollTop;
 
-  // ✅ Update channel count
+  // Update channel count
   const countDisplay = document.getElementById("channelCountText");
   if (countDisplay) {
     countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
@@ -1033,7 +1034,7 @@ function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
 
-  renderChannelButtons(currentSearchFilter); // ⬅️ Use saved filter!
+  renderChannelButtons(currentSearchFilter); // Maintain current filter when re-rendering
 
   const channelInfo = document.getElementById("channelInfo");
   channelInfo.textContent = `${channel.name} is playing...`;
@@ -1049,7 +1050,9 @@ function loadChannel(key) {
     };
   }
 
-  jwplayer("video").setup({
+  const player = jwplayer("video");
+
+  player.setup({
     file: channel.manifestUri,
     type: channel.type === "hls" ? "hls" : "dash",
     drm: Object.keys(drmConfig).length ? drmConfig : undefined,
@@ -1057,21 +1060,26 @@ function loadChannel(key) {
     width: "100%",
     aspectratio: "16:9",
     stretching: "fill",
-  }).on("error", function (err) {
+  });
+
+  player.on("error", function (err) {
     channelInfo.textContent = `${channel.name} is Unavailable...`;
     channelInfo.style.color = "#FF3333";
     console.error(`Error playing ${channel.name}:`, err.message || err);
   });
 }
 
-// ✅ Search input handling
+// Handle search input
 document.getElementById("search").addEventListener("input", function () {
   renderChannelButtons(this.value);
 });
 
-// ✅ Initial setup
+// Initial render
 document.getElementById("search").value = "";
 renderChannelButtons();
+
+// Load first channel if available
 if (currentChannelKey) {
   loadChannel(currentChannelKey);
 }
+
