@@ -349,6 +349,12 @@
   </footer>
 
   <script>
+  // Clear the search input on reload
+  window.onload = () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+  };
+
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
 
