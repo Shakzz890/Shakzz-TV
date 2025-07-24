@@ -1009,7 +1009,8 @@ function renderChannelButtons(filter = "") {
     if (
       !channel.name.toLowerCase().includes(filter.toLowerCase()) ||
       (channel.group && channel.group.toLowerCase() !== tabs[currentTabIndex])
-    ) return;
+    )
+      return;
 
     const btn = document.createElement("button");
     btn.className = "channel-button";
@@ -1020,7 +1021,7 @@ function renderChannelButtons(filter = "") {
     `;
 
     if (currentChannelKey === key) {
-      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold;">Now Playing...</span>`;
+      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold; margin-left: 8px;">Now Playing...</span>`;
     }
 
     btn.onclick = () => loadChannel(key);
@@ -1045,8 +1046,10 @@ function loadChannel(key) {
   renderChannelButtons(currentSearchFilter);
 
   const channelInfo = document.getElementById("channelInfo");
-  channelInfo.textContent = `${channel.name} is playing...`;
-  channelInfo.style.color = "#00FF00";
+  if (channelInfo) {
+    channelInfo.textContent = `${channel.name} is playing...`;
+    channelInfo.style.color = "#00FF00";
+  }
 
   const drmConfig = {};
   if (channel.type === "widevine") {
@@ -1072,7 +1075,6 @@ function loadChannel(key) {
 // TV remote + keyboard nav
 document.addEventListener("keydown", function (e) {
   if (e.target.tagName === "INPUT") return;
-
   if (focusableButtons.length === 0) return;
 
   if (e.key === "ArrowDown") {
@@ -1121,15 +1123,33 @@ function switchTab(direction) {
   renderChannelButtons(currentSearchFilter);
 }
 
-// Search input
-document.getElementById("search").addEventListener("input", function () {
-  renderChannelButtons(this.value);
-  focusIndex = 0;
-  updateFocus();
-});
+// Handle search bar input and clear button
+window.onload = () => {
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clearSearch");
 
-// Initial setup
-renderChannelButtons();
-if (currentChannelKey && channels[currentChannelKey]) {
-  loadChannel(currentChannelKey);
-}
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+
+  searchInput.addEventListener("input", () => {
+    const val = searchInput.value.trim();
+    clearBtn.style.display = val ? "block" : "none";
+    renderChannelButtons(val);
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+    renderChannelButtons("");
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  // Initial render
+  renderChannelButtons();
+  if (currentChannelKey && channels[currentChannelKey]) {
+    loadChannel(currentChannelKey);
+  }
+};
