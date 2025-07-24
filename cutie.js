@@ -990,8 +990,10 @@ let currentSearchFilter = "";
 let currentChannelKey = "kapamilya";
 let focusIndex = 0;
 let focusableButtons = [];
-let tabs = ["live", "movies", "series"];
-let currentTabIndex = 0;
+let tabs = ["favorites", "live", "movies", "series"];
+let currentTabIndex = 1;
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 function renderChannelButtons(filter = "") {
   currentSearchFilter = filter;
@@ -1006,11 +1008,15 @@ function renderChannelButtons(filter = "") {
   );
 
   sortedChannels.forEach(([key, channel]) => {
-    if (
-      !channel.name.toLowerCase().includes(filter.toLowerCase()) ||
-      (channel.group && channel.group.toLowerCase() !== tabs[currentTabIndex])
-    )
-      return;
+    const isFavorite = favorites.includes(key);
+
+    const matchesFilter = channel.name.toLowerCase().includes(filter.toLowerCase());
+    const matchesGroup =
+      tabs[currentTabIndex] === "favorites"
+        ? isFavorite
+        : channel.group && channel.group.toLowerCase() === tabs[currentTabIndex];
+
+    if (!matchesFilter || !matchesGroup) return;
 
     const btn = document.createElement("button");
     btn.className = "channel-button";
@@ -1018,15 +1024,27 @@ function renderChannelButtons(filter = "") {
     btn.innerHTML = `
       <img src="${channel.logo}" class="channel-logo" alt="${channel.name}">
       <span>${channel.name}</span>
+      <span class="star-icon" data-fav="${key}" style="float: right; font-size: 20px; color: ${isFavorite ? "#FFD700" : "#888"};">
+        ★
+      </span>
     `;
 
     if (currentChannelKey === key) {
-      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold; margin-left: 8px;">Now Playing...</span>`;
+      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold; display: block;">Now Playing...</span>`;
     }
 
     btn.onclick = () => loadChannel(key);
     list.appendChild(btn);
     shownCount++;
+  });
+
+  // Attach star (favorite) click listeners
+  list.querySelectorAll(".star-icon").forEach((star) => {
+    star.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const key = e.currentTarget.getAttribute("data-fav");
+      toggleFavorite(key);
+    });
   });
 
   focusableButtons = Array.from(document.querySelectorAll(".channel-button"));
@@ -1039,6 +1057,17 @@ function renderChannelButtons(filter = "") {
   }
 }
 
+function toggleFavorite(key) {
+  const index = favorites.indexOf(key);
+  if (index > -1) {
+    favorites.splice(index, 1);
+  } else {
+    favorites.push(key);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  renderChannelButtons(currentSearchFilter);
+}
+
 function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
@@ -1046,10 +1075,8 @@ function loadChannel(key) {
   renderChannelButtons(currentSearchFilter);
 
   const channelInfo = document.getElementById("channelInfo");
-  if (channelInfo) {
-    channelInfo.textContent = `${channel.name} is playing...`;
-    channelInfo.style.color = "#00FF00";
-  }
+  channelInfo.textContent = `${channel.name} is playing...`;
+  channelInfo.style.color = "#00FF00";
 
   const drmConfig = {};
   if (channel.type === "widevine") {
@@ -1072,7 +1099,6 @@ function loadChannel(key) {
   });
 }
 
-// TV remote + keyboard nav
 document.addEventListener("keydown", function (e) {
   if (e.target.tagName === "INPUT") return;
   if (focusableButtons.length === 0) return;
@@ -1123,33 +1149,14 @@ function switchTab(direction) {
   renderChannelButtons(currentSearchFilter);
 }
 
-// Handle search bar input and clear button
-window.onload = () => {
-  const searchInput = document.getElementById("search");
-  const clearBtn = document.getElementById("clearSearch");
+document.getElementById("search").addEventListener("input", function () {
+  renderChannelButtons(this.value);
+  focusIndex = 0;
+  updateFocus();
+});
 
-  searchInput.value = "";
-  clearBtn.style.display = "none";
-
-  searchInput.addEventListener("input", () => {
-    const val = searchInput.value.trim();
-    clearBtn.style.display = val ? "block" : "none";
-    renderChannelButtons(val);
-    focusIndex = 0;
-    updateFocus();
-  });
-
-  clearBtn.addEventListener("click", () => {
-    searchInput.value = "";
-    clearBtn.style.display = "none";
-    renderChannelButtons("");
-    focusIndex = 0;
-    updateFocus();
-  });
-
-  // Initial render
-  renderChannelButtons();
-  if (currentChannelKey && channels[currentChannelKey]) {
-    loadChannel(currentChannelKey);
-  }
-};
+// Initial setup
+renderChannelButtons();
+if (currentChannelKey && channels[currentChannelKey]) {
+  loadChannel(currentChannelKey);
+}
