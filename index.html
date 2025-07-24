@@ -355,8 +355,12 @@
     clearBtn.style.display = 'none';
   };
 
+    window.onload = () => {
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
+
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
 
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
