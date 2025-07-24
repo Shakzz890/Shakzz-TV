@@ -1061,15 +1061,15 @@ function loadChannel(key) {
     };
   }
 
-  jwplayer("video").setup({
-    file: channel.manifestUri,
-    type: channel.type === "hls" ? "hls" : "dash",
-    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-    autostart: true,
-    width: "100%",
-    aspectratio: "16:9",
-    stretching: "fill",
-  });
+  player = jwplayer("video").setup({
+  file: channel.manifestUri,
+  type: channel.type === "hls" ? "hls" : "dash",
+  drm: drmConfig,
+  autostart: true,
+  width: "100%",
+  height: "100%",
+  stretching: "fill", 
+});
 }
 
 // TV remote + keyboard nav
