@@ -126,7 +126,7 @@
     .clear-btn {
       position: absolute;
       top: 38%;
-      right: 12px;
+      right: 25px;
       transform: translateY(-50%);
       font-size: 1.5em;
       color: #666;
@@ -349,18 +349,8 @@
   </footer>
 
   <script>
-  // Clear the search input on reload
-  window.onload = () => {
-    searchInput.value = '';
-    clearBtn.style.display = 'none';
-  };
-
-    window.onload = () => {
     const searchInput = document.getElementById('search');
     const clearBtn = document.getElementById('clearSearch');
-
-    searchInput.value = '';
-    clearBtn.style.display = 'none';
 
     searchInput.addEventListener('input', () => {
       clearBtn.style.display = searchInput.value ? 'block' : 'none';
