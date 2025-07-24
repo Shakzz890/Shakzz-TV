@@ -25,8 +25,8 @@
       background-color: #222;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
       height: 100%;
+      overflow: hidden;
     }
 
     .search-container {
@@ -36,7 +36,7 @@
 
     .search-container input {
       width: 100%;
-      padding: 10px 40px 10px 10px; /* leaves space for the ❌ */
+      padding: 10px 40px 10px 10px;
       border: none;
       border-radius: 4px;
       background-color: #333;
@@ -98,16 +98,19 @@
     </div>
 
     <div class="channel-list" id="channelList">
-      <div class="channel-item">Channel 1</div>
-      <div class="channel-item">Channel 2</div>
-      <div class="channel-item">Channel 3</div>
-      <div class="channel-item">Channel 4</div>
-      <div class="channel-item">Channel 5</div>
+      <div class="channel-item">Cartoon Network</div>
+      <div class="channel-item">HBO</div>
+      <div class="channel-item">ESPN</div>
+      <div class="channel-item">Discovery</div>
+      <div class="channel-item">Nat Geo</div>
+      <div class="channel-item">CNN</div>
+      <div class="channel-item">BBC</div>
+      <div class="channel-item">AXN</div>
     </div>
 
     <div id="channelCount">
       <i class="fas fa-tv"></i>
-      <span id="channelCountText">5 channels found</span>
+      <span id="channelCountText">8 channels found</span>
     </div>
   </div>
 
@@ -119,6 +122,11 @@
 
     function updateCount(count) {
       channelCountText.textContent = `${count} channel${count !== 1 ? 's' : ''} found`;
+    }
+
+    function showAllChannels() {
+      channelItems.forEach(item => item.style.display = 'block');
+      updateCount(channelItems.length);
     }
 
     searchInput.addEventListener('input', () => {
@@ -141,11 +149,11 @@
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
       clearBtn.style.display = 'none';
-      channelItems.forEach(item => item.style.display = 'block');
-      updateCount(channelItems.length);
+      showAllChannels();
     });
 
-    updateCount(channelItems.length);
+    // Show all channels by default
+    showAllChannels();
   </script>
 
 </body>
