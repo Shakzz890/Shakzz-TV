@@ -2,7 +2,7 @@ const channels = {
   pbarush: {
     name: "PBA Rush",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-10-prod.akamaized.net/out/u/cg_pbarush_hd1.mpd",
+    manifestUri: "https://rumble.com/live-hls-dvr/6u5e2k/playlist.m3u8",
     keyId: "76dc29dd87a244aeab9e8b7c5da1e5f3",
     key: "95b2f2ffd4e14073620506213b62ac82",
     logo: "https://upload.wikimedia.org/wikipedia/en/c/cd/PBA_Rush_logo.png",
