@@ -1070,14 +1070,35 @@ function loadChannel(key) {
   }
 
   const drmConfig = {};
+  let playerType = "hls"; // default to HLS
+
   if (channel.type === "widevine") {
     drmConfig.widevine = { url: channel.licenseServerUri };
+    playerType = "dash";
   } else if (channel.type === "clearkey") {
     drmConfig.clearkey = {
       keyId: channel.keyId,
       key: channel.key,
     };
+    playerType = "dash";
+  } else if (channel.type === "dash") {
+    playerType = "dash";
   }
+
+  player = jwplayer("video").setup({
+    file: channel.manifestUri,
+    type: playerType,
+    drm: Object.keys(drmConfig).length > 0 ? drmConfig : undefined,
+    autostart: true,
+    width: "100%",
+    height: "100%",
+    stretching: "fill"
+  });
+
+  player.on("error", function (e) {
+    console.error("JWPlayer Error:", e.message);
+  });
+}
 
   player = jwplayer("video").setup({
   file: channel.manifestUri,
