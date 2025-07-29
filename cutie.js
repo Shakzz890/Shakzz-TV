@@ -1010,12 +1010,12 @@ let focusIndex = 0;
 let focusableButtons = [];
 let tabs = ["live", "movies", "series"];
 let currentTabIndex = 0;
-let preservedScrollTop = 0; // ✅ store scroll globally
 
-function renderChannelButtons(filter = "") {
+function renderChannelButtons(filter = "", preserveScroll = false) {
   currentSearchFilter = filter;
 
   const list = document.getElementById("channelList");
+  const scrollTop = preserveScroll ? list.scrollTop : 0;
   list.innerHTML = "";
   shownCount = 0;
 
@@ -1048,10 +1048,7 @@ function renderChannelButtons(filter = "") {
   });
 
   focusableButtons = Array.from(document.querySelectorAll(".channel-button"));
-
-  // ✅ Restore scroll position after rendering
-  list.scrollTop = preservedScrollTop;
-
+  list.scrollTop = scrollTop;
   updateFocus();
 
   const countDisplay = document.getElementById("channelCountText");
@@ -1061,13 +1058,10 @@ function renderChannelButtons(filter = "") {
 }
 
 function loadChannel(key) {
-  const list = document.getElementById("channelList");
-  preservedScrollTop = list.scrollTop; // ✅ Save scroll before rerender
-
   const channel = channels[key];
   currentChannelKey = key;
 
-  renderChannelButtons(currentSearchFilter); // ✅ Rerender, scroll preserved
+  renderChannelButtons(currentSearchFilter, true); // ✅ Preserve scroll
 
   const channelInfo = document.getElementById("channelInfo");
   if (channelInfo) {
@@ -1105,3 +1099,85 @@ function loadChannel(key) {
     console.error("JWPlayer Error:", e.message);
   });
 }
+
+// TV remote + keyboard nav
+document.addEventListener("keydown", function (e) {
+  if (e.target.tagName === "INPUT") return;
+  if (focusableButtons.length === 0) return;
+
+  if (e.key === "ArrowDown") {
+    focusIndex = (focusIndex + 1) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "ArrowUp") {
+    focusIndex = (focusIndex - 1 + focusableButtons.length) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "Enter") {
+    focusableButtons[focusIndex].click();
+    e.preventDefault();
+  } else if (e.key === "ArrowLeft") {
+    switchTab(-1);
+    e.preventDefault();
+  } else if (e.key === "ArrowRight") {
+    switchTab(1);
+    e.preventDefault();
+  } else if (e.key === "Backspace") {
+    document.getElementById("search").focus();
+    e.preventDefault();
+  }
+});
+
+function updateFocus() {
+  focusableButtons.forEach((btn, i) => {
+    if (i === focusIndex) {
+      btn.classList.add("focused");
+      btn.scrollIntoView({ block: "center" });
+    } else {
+      btn.classList.remove("focused");
+    }
+  });
+}
+
+function switchTab(direction) {
+  currentTabIndex = (currentTabIndex + direction + tabs.length) % tabs.length;
+
+  tabs.forEach((tab, i) => {
+    const el = document.getElementById(`tab-${tab}`);
+    if (el) el.classList.toggle("active", i === currentTabIndex);
+  });
+
+  focusIndex = 0;
+  renderChannelButtons(currentSearchFilter);
+}
+
+// Handle search bar input and clear button
+window.onload = () => {
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clearSearch");
+
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+
+  searchInput.addEventListener("input", () => {
+    const val = searchInput.value.trim();
+    clearBtn.style.display = val ? "block" : "none";
+    renderChannelButtons(val);
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+    renderChannelButtons("");
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  // Initial render
+  renderChannelButtons();
+  if (currentChannelKey && channels[currentChannelKey]) {
+    loadChannel(currentChannelKey);
+  }
+};
