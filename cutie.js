@@ -1002,155 +1002,181 @@ dreamworks_tagalized: {
  };
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('video');
-  const searchInput = document.getElementById('search');
-  const clearBtn = document.getElementById('clearSearch');
-  const channelList = document.getElementById('channelList');
-  const channelCountText = document.getElementById('channelCountText');
-  const channelInfo = document.getElementById('channelInfo');
+let shownCount = 0;
+let currentSearchFilter = "";
+let currentChannelKey = "kapamilya";
+let focusIndex = 0;
+let focusableButtons = [];
+let tabs = ["live", "movies", "series"];
+let currentTabIndex = 0;
 
-// cutie.js
+function renderChannelButtons(filter = "", preserveScroll = false) {
+  currentSearchFilter = filter;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('video');
-  const searchInput = document.getElementById('search');
-  const clearBtn = document.getElementById('clearSearch');
-  const channelList = document.getElementById('channelList');
-  const channelCountText = document.getElementById('channelCountText');
-  const channelInfo = document.getElementById('channelInfo');
+  const list = document.getElementById("channelList");
+  const scrollTop = preserveScroll ? list.scrollTop : 0;
+  list.innerHTML = "";
+  shownCount = 0;
 
-  // Define your channels here:
-  // Each channel needs at least: name, logo, url (stream manifest),
-  // optionally drm info and description.
-  const channels = [
-    {
-      name: 'Sample DASH Channel',
-      logo: 'https://via.placeholder.com/50x50?text=DASH',
-      url: 'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd',
-      drm: {
-        // Clear streams don't need DRM, so leave drm null or undefined if none
-        // Example DRM config (commented for now):
-        // servers: {
-        //   'com.widevine.alpha': 'https://license-server-url',
-        // },
-        // advanced: {},
-      },
-      description: 'Sample DASH stream without DRM',
-    },
-    {
-      name: 'Sample HLS Channel',
-      logo: 'https://via.placeholder.com/50x50?text=HLS',
-      url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-      drm: null,
-      description: 'Sample HLS stream',
-    },
-    // Add more channels here...
-  ];
+  const sortedChannels = Object.entries(channels).sort((a, b) =>
+    a[1].name.localeCompare(b[1].name)
+  );
 
-  // Initialize Shaka Player
-  function initPlayer() {
-    shaka.polyfill.installAll();
-    if (!shaka.Player.isBrowserSupported()) {
-      alert('Shaka Player is not supported on this browser.');
-      return null;
+  sortedChannels.forEach(([key, channel]) => {
+    if (
+      !channel.name.toLowerCase().includes(filter.toLowerCase()) ||
+      (channel.group && channel.group.toLowerCase() !== tabs[currentTabIndex])
+    )
+      return;
+
+    const btn = document.createElement("button");
+    btn.className = "channel-button";
+    btn.setAttribute("data-key", key);
+    btn.innerHTML = `
+      <img src="${channel.logo}" class="channel-logo" alt="${channel.name}">
+      <span>${channel.name}</span>
+    `;
+
+    if (currentChannelKey === key) {
+      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold; margin-left: 8px;">Now Playing...</span>`;
     }
 
-    const player = new shaka.Player(video);
-
-    // Optional: Listen for error events.
-    player.addEventListener('error', onErrorEvent);
-
-    return player;
-  }
-
-  function onErrorEvent(event) {
-    console.error('Error code', event.detail.code, 'object', event.detail);
-  }
-
-  // Load a channel's stream with DRM support if available
-  async function loadChannel(player, channel) {
-    try {
-      // Clear previous video src to reset
-      video.pause();
-      video.removeAttribute('src');
-      video.load();
-
-      // Configure DRM if any
-      if (channel.drm && channel.drm.servers) {
-        player.configure({
-          drm: channel.drm,
-        });
-      } else {
-        // Clear DRM config if no DRM on this channel
-        player.configure({ drm: {} });
-      }
-
-      await player.load(channel.url);
-
-      channelInfo.textContent = channel.description || '';
-      console.log('Channel loaded:', channel.name);
-    } catch (error) {
-      console.error('Error loading channel:', error);
-      channelInfo.textContent = 'Failed to load channel: ' + error.message;
-    }
-  }
-
-  // Render channel buttons in sidebar
-  function renderChannels(list) {
-    channelList.innerHTML = '';
-
-    if (list.length === 0) {
-      channelList.innerHTML = '<p>No channels found.</p>';
-    }
-
-    list.forEach(channel => {
-      const btn = document.createElement('button');
-      btn.className = 'channel-button';
-      btn.innerHTML = `
-        <img src="${channel.logo}" alt="${channel.name} logo" class="channel-logo" />
-        <span>${channel.name}</span>
-      `;
-      btn.addEventListener('click', () => {
-        loadChannel(player, channel);
-      });
-      channelList.appendChild(btn);
-    });
-
-    channelCountText.textContent = `${list.length} channel${list.length !== 1 ? 's' : ''} found`;
-  }
-
-  // Filter channels by search query
-  function filterChannels(query) {
-    const lowerQuery = query.toLowerCase();
-    return channels.filter(c => c.name.toLowerCase().includes(lowerQuery));
-  }
-
-  // Event handlers
-  searchInput.addEventListener('input', () => {
-    const filtered = filterChannels(searchInput.value);
-    renderChannels(filtered);
+    btn.onclick = () => loadChannel(key);
+    list.appendChild(btn);
+    shownCount++;
   });
 
-  clearBtn.addEventListener('click', () => {
-    searchInput.value = '';
-    clearBtn.style.display = 'none';
-    renderChannels(channels);
+  focusableButtons = Array.from(document.querySelectorAll(".channel-button"));
+  list.scrollTop = scrollTop;
+  updateFocus();
+
+  const countDisplay = document.getElementById("channelCountText");
+  if (countDisplay) {
+    countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
+  }
+}
+
+function loadChannel(key) {
+  const channel = channels[key];
+  currentChannelKey = key;
+
+  renderChannelButtons(currentSearchFilter, true); // ✅ Preserve scroll
+
+  const channelInfo = document.getElementById("channelInfo");
+  if (channelInfo) {
+    channelInfo.textContent = `${channel.name} is playing...`;
+    channelInfo.style.color = "#00FF00";
+  }
+
+  const drmConfig = {};
+  let playerType = "hls";
+
+  if (channel.type === "widevine") {
+    drmConfig.widevine = { url: channel.licenseServerUri };
+    playerType = "dash";
+  } else if (channel.type === "clearkey") {
+    drmConfig.clearkey = {
+      keyId: channel.keyId,
+      key: channel.key,
+    };
+    playerType = "dash";
+  } else if (channel.type === "dash") {
+    playerType = "dash";
+  }
+
+  jwplayer("video").setup({
+    file: channel.manifestUri,
+    type: playerType,
+    drm: Object.keys(drmConfig).length ? drmConfig : undefined,
+    autostart: true,
+    width: "100%",
+    aspectratio: "16:9",
+    stretching: "fill",
   });
 
-  // Show or hide clear button on input
-  searchInput.addEventListener('input', () => {
-    clearBtn.style.display = searchInput.value ? 'block' : 'none';
+  jwplayer("video").on("error", function (e) {
+    console.error("JWPlayer Error:", e.message);
   });
+}
 
-  // Initialize player and render all channels at start
-  const player = initPlayer();
-  if (player) {
-    renderChannels(channels);
-    // Optionally auto-load first channel
-    if (channels.length > 0) {
-      loadChannel(player, channels[0]);
-    }
+// TV remote + keyboard nav
+document.addEventListener("keydown", function (e) {
+  if (e.target.tagName === "INPUT") return;
+  if (focusableButtons.length === 0) return;
+
+  if (e.key === "ArrowDown") {
+    focusIndex = (focusIndex + 1) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "ArrowUp") {
+    focusIndex = (focusIndex - 1 + focusableButtons.length) % focusableButtons.length;
+    updateFocus();
+    e.preventDefault();
+  } else if (e.key === "Enter") {
+    focusableButtons[focusIndex].click();
+    e.preventDefault();
+  } else if (e.key === "ArrowLeft") {
+    switchTab(-1);
+    e.preventDefault();
+  } else if (e.key === "ArrowRight") {
+    switchTab(1);
+    e.preventDefault();
+  } else if (e.key === "Backspace") {
+    document.getElementById("search").focus();
+    e.preventDefault();
   }
 });
 
+function updateFocus() {
+  focusableButtons.forEach((btn, i) => {
+    if (i === focusIndex) {
+      btn.classList.add("focused");
+      btn.scrollIntoView({ block: "center" });
+    } else {
+      btn.classList.remove("focused");
+    }
+  });
+}
+
+function switchTab(direction) {
+  currentTabIndex = (currentTabIndex + direction + tabs.length) % tabs.length;
+
+  tabs.forEach((tab, i) => {
+    const el = document.getElementById(`tab-${tab}`);
+    if (el) el.classList.toggle("active", i === currentTabIndex);
+  });
+
+  focusIndex = 0;
+  renderChannelButtons(currentSearchFilter);
+}
+
+// Handle search bar input and clear button
+window.onload = () => {
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clearSearch");
+
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+
+  searchInput.addEventListener("input", () => {
+    const val = searchInput.value.trim();
+    clearBtn.style.display = val ? "block" : "none";
+    renderChannelButtons(val);
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    clearBtn.style.display = "none";
+    renderChannelButtons("");
+    focusIndex = 0;
+    updateFocus();
+  });
+
+  // Initial render
+  renderChannelButtons();
+  if (currentChannelKey && channels[currentChannelKey]) {
+    loadChannel(currentChannelKey);
+  }
+};
