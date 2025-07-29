@@ -1088,6 +1088,7 @@ function loadChannel(key) {
     aspectratio: "16:9",
     stretching: "fill",
   });
+}
 // TV remote + keyboard nav
 document.addEventListener("keydown", function (e) {
   if (e.target.tagName === "INPUT") return;
