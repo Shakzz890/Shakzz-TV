@@ -1,4 +1,13 @@
 const channels = {
+ gma: {
+  "name": "GMA",
+  "type": "drm",
+  "manifestUri": "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
+  "keyId": "31363231383438333031323033393138",
+  "key": "38694e34324d543478316b7455753437",
+  "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png"
+},
+  
   pbarush: {
     name: "PBA Rush",
     type: "clearkey",
