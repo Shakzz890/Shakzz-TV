@@ -1011,11 +1011,11 @@ let focusableButtons = [];
 let tabs = ["live", "movies", "series"];
 let currentTabIndex = 0;
 
-function renderChannelButtons(filter = "") {
+function renderChannelButtons(filter = "", preserveScroll = false) {
   currentSearchFilter = filter;
 
   const list = document.getElementById("channelList");
-  const scrollTop = list.scrollTop;
+  const scrollTop = preserveScroll ? list.scrollTop : 0;
   list.innerHTML = "";
   shownCount = 0;
 
@@ -1061,7 +1061,7 @@ function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
 
-  renderChannelButtons(currentSearchFilter);
+  renderChannelButtons(currentSearchFilter, true); // ✅ Preserve scroll
 
   const channelInfo = document.getElementById("channelInfo");
   if (channelInfo) {
@@ -1070,25 +1070,36 @@ function loadChannel(key) {
   }
 
   const drmConfig = {};
+  let playerType = "hls";
+
   if (channel.type === "widevine") {
     drmConfig.widevine = { url: channel.licenseServerUri };
+    playerType = "dash";
   } else if (channel.type === "clearkey") {
     drmConfig.clearkey = {
       keyId: channel.keyId,
       key: channel.key,
     };
+    playerType = "dash";
+  } else if (channel.type === "dash") {
+    playerType = "dash";
   }
 
- jwplayer("video").setup({
+  jwplayer("video").setup({
     file: channel.manifestUri,
-    type: channel.type === "hls" ? "hls" : "dash",
+    type: playerType,
     drm: Object.keys(drmConfig).length ? drmConfig : undefined,
     autostart: true,
     width: "100%",
     aspectratio: "16:9",
     stretching: "fill",
   });
+
+  jwplayer("video").on("error", function (e) {
+    console.error("JWPlayer Error:", e.message);
+  });
 }
+
 // TV remote + keyboard nav
 document.addEventListener("keydown", function (e) {
   if (e.target.tagName === "INPUT") return;
