@@ -1,5 +1,5 @@
 const channels = {
-gma = {
+gma: = {
   name: "GMA",
   type: "drm",
   manifestUri: "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
