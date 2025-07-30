@@ -34,7 +34,11 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-y: hidden;
     }
 
     .top-nav {
@@ -89,13 +93,6 @@
       flex: 1;
       display: flex;
       overflow: hidden;
-    }
-
-    .main {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: 100%;
     }
 
     .sidebar {
@@ -173,12 +170,12 @@
       background-color: white;
     }
 
-    .video-container {
-      flex: 1;
+    .main {
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 10px;
     }
 
@@ -265,10 +262,6 @@
         flex-direction: column;
       }
 
-      .main {
-        flex-direction: column;
-      }
-
       .sidebar {
         width: 100%;
         border-right: none;
@@ -324,21 +317,19 @@
 
   <main>
     <div class="main">
-      <div class="sidebar">
-        <div class="search-container">
-          <input type="text" id="search" placeholder="Search channel..." />
-          <span id="clearSearch" class="clear-btn">&times;</span>
-        </div>
-        <div class="channel-list" id="channelList"></div>
-        <div id="channelCount">
-          <i class="fas fa-tv"></i>
-          <span id="channelCountText">0 channels found</span>
-        </div>
-      </div>
+      <div id="video"></div>
+      <div id="channelInfo"></div>
+    </div>
 
-      <div class="video-container">
-        <div id="video"></div>
-        <div id="channelInfo"></div>
+    <div class="sidebar">
+      <div class="search-container">
+        <input type="text" id="search" placeholder="Search channel..." />
+        <span id="clearSearch" class="clear-btn">&times;</span>
+      </div>
+      <div class="channel-list" id="channelList"></div>
+      <div id="channelCount">
+        <i class="fas fa-tv"></i>
+        <span id="channelCountText">0 channels found</span>
       </div>
     </div>
   </main>
@@ -371,7 +362,7 @@
     });
   </script>
 
-  <!-- JS logic file -->
+  <!-- Your updated cutie.js should handle all logic -->
   <script src="cutie.js"></script>
 </body>
 </html>
