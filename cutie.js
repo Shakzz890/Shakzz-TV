@@ -1,7 +1,6 @@
 const channels = {
    gma: {
     name: "GMA",
-    category: "Local",
     type: "clearkey",
     manifestUri: "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
     keyId: "31363231383438333031323033393138",
