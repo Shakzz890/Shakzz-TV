@@ -1,6 +1,7 @@
 const channels = {
    gma: {
     name: "GMA",
+    category: "Local",
     type: "clearkey",
     manifestUri: "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
     keyId: "31363231383438333031323033393138",
@@ -1033,13 +1034,13 @@ function renderChannelButtons(filter = "", preserveScroll = false) {
     const btn = document.createElement("button");
     btn.className = "channel-button";
     btn.setAttribute("data-key", key);
-    btn.innerHTML = 
+    btn.innerHTML = `
       <img src="${channel.logo}" class="channel-logo" alt="${channel.name}">
       <span>${channel.name}</span>
-    ;
+    `;
 
     if (currentChannelKey === key) {
-      btn.innerHTML += <span style="color: #00FF00; font-weight: bold; margin-left: 8px;">Now Playing...</span>;
+      btn.innerHTML += `<span style="color: #00FF00; font-weight: bold; margin-left: 8px;">Now Playing...</span>`;
     }
 
     btn.onclick = () => loadChannel(key);
@@ -1053,7 +1054,7 @@ function renderChannelButtons(filter = "", preserveScroll = false) {
 
   const countDisplay = document.getElementById("channelCountText");
   if (countDisplay) {
-    countDisplay.textContent = ${shownCount} channel${shownCount !== 1 ? "s" : ""} found;
+    countDisplay.textContent = `${shownCount} channel${shownCount !== 1 ? "s" : ""} found`;
   }
 }
 
@@ -1065,7 +1066,7 @@ function loadChannel(key) {
 
   const channelInfo = document.getElementById("channelInfo");
   if (channelInfo) {
-    channelInfo.textContent = ${channel.name} is playing...;
+    channelInfo.textContent = `${channel.name} is playing...`;
     channelInfo.style.color = "#00FF00";
   }
 
@@ -1143,7 +1144,7 @@ function switchTab(direction) {
   currentTabIndex = (currentTabIndex + direction + tabs.length) % tabs.length;
 
   tabs.forEach((tab, i) => {
-    const el = document.getElementById(tab-${tab});
+    const el = document.getElementById(`tab-${tab}`);
     if (el) el.classList.toggle("active", i === currentTabIndex);
   });
 
