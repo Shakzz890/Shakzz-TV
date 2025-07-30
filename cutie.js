@@ -1,11 +1,18 @@
+onst CONVRG_MANIFEST_BASE = "https://convrgelive.nathcreqtives.com/001/2/";
+const CONVRG_MANIFEST_SUFFIX =
+  "/manifest.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT";
+const CONVRG_LICENSE_URI =
+  "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00";
+
+
 const channels = {
    gma: {
     name: "GMA",
-    category: "Local",
     type: "clearkey",
-    manifestUri: "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
-    keyId: "31363231383438333031323033393138",
-    key: "38694e34324d543478316b7455753437",
+    manifestUri: "https://converge.nathcreqtives.com/001/2/ch00000090990000001093/manifest.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT3974720250730082721000535",
+drm: {
+      type: "widevine",
+      serverURL: CONVRG_LICENSE_URI,
     logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png"
   },
  
