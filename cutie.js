@@ -1005,11 +1005,23 @@ dreamworks_tagalized: {
 
 let shownCount = 0;
 let currentSearchFilter = "";
-let currentChannelKey = "kapamilya";
+let currentChannelKey = "gma"; // default to GMA for testing
 let focusIndex = 0;
 let focusableButtons = [];
 let tabs = ["live", "movies", "series"];
 let currentTabIndex = 0;
+
+const channels = {
+  gma: {
+    name: "GMA",
+    category: "Local",
+    type: "clearkey",
+    manifestUri: "https://bunproxy.azurewebsites.net/...nifest.mpd?virtualDomain=001.live_hls.zte.com",
+    keyId: "31363231383438333031323033393138",
+    key: "38694e34324d543478316b7455753437",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png"
+  }
+};
 
 function renderChannelButtons(filter = "", preserveScroll = false) {
   currentSearchFilter = filter;
@@ -1061,7 +1073,7 @@ function loadChannel(key) {
   const channel = channels[key];
   currentChannelKey = key;
 
-  renderChannelButtons(currentSearchFilter, true); // ✅ Preserve scroll
+  renderChannelButtons(currentSearchFilter, true);
 
   const channelInfo = document.getElementById("channelInfo");
   if (channelInfo) {
@@ -1077,8 +1089,7 @@ function loadChannel(key) {
     playerType = "dash";
   } else if (channel.type === "clearkey") {
     drmConfig.clearkey = {
-      keyId: channel.keyId,
-      key: channel.key,
+      [channel.keyId]: channel.key, // ✅ correct clearkey format
     };
     playerType = "dash";
   } else if (channel.type === "dash") {
@@ -1098,9 +1109,12 @@ function loadChannel(key) {
   jwplayer("video").on("error", function (e) {
     console.error("JWPlayer Error:", e.message);
   });
+
+  jwplayer("video").on("setupError", function (e) {
+    console.error("Setup Error:", e.message);
+  });
 }
 
-// TV remote + keyboard nav
 document.addEventListener("keydown", function (e) {
   if (e.target.tagName === "INPUT") return;
   if (focusableButtons.length === 0) return;
@@ -1151,7 +1165,6 @@ function switchTab(direction) {
   renderChannelButtons(currentSearchFilter);
 }
 
-// Handle search bar input and clear button
 window.onload = () => {
   const searchInput = document.getElementById("search");
   const clearBtn = document.getElementById("clearSearch");
