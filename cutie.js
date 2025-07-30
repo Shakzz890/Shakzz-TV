@@ -1,8 +1,6 @@
-onst CONVRG_MANIFEST_BASE = "https://convrgelive.nathcreqtives.com/001/2/";
-const CONVRG_MANIFEST_SUFFIX =
-  "/manifest.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT";
-const CONVRG_LICENSE_URI =
-  "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00";
+const CONVRG_MANIFEST_BASE = "https://convrgelive.nathcreqtives.com/001/2/";
+const CONVRG_MANIFEST_SUFFIX = "/manifest.mpd?virtualDomain=001.live_hls.zte.com&IASHttpSessionId=OTT";
+const CONVRG_LICENSE_URI = "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00";
 
 
 const channels = {
