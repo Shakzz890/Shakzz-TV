@@ -6,6 +6,35 @@ const channels = {
     manifestUri: "https://ott.udptv.xyz/stream/udptvu...ee46d3167cbb669dddcd7f2e9f877b9ed7ee2bcc5bdfd",
   },
 
+ pbarush: {
+    name: "PBA Rush",
+    type: "clearkey",
+    manifestUri: "https://rumble.com/live-hls-dvr/6u5e2k/playlist.m3u8",
+    keyId: "76dc29dd87a244aeab9e8b7c5da1e5f3",
+    key: "95b2f2ffd4e14073620506213b62ac82",
+    logo: "https://upload.wikimedia.org/wikipedia/en/c/cd/PBA_Rush_logo.png",
+},
+
+  tv5: {
+    name: "TV 5 HD",
+    type: "clearkey",
+    manifestUri:
+      "https://qp-pldt-live-grp-02-prod.akamaized.net/out/u/tv5_hd.mpd",
+    keyId: "2615129ef2c846a9bbd43a641c7303ef",
+    key: "07c7f996b1734ea288641a68e1cfdc4d",
+    logo: "https://vignette.wikia.nocookie.net/russel/images/f/f9/TV5_Logo_2011.png/revision/latest?cb=20161204035016",
+  },
+
+  kapamilya: {
+    name: "Kapamilya Channel HD",
+    type: "clearkey",
+    manifestUri:
+      "https://d1uf7s78uqso1e.cloudfront.net/out/v1/efa01372657648be830e7c23ff68bea2/index.mpd",
+    keyId: "bd17afb5dc9648a39be79ee3634dd4b8",
+    key: "3ecf305d54a7729299b93a3d69c02ea5",
+    logo: "https://cms.cignal.tv/Upload/Images/Kapamilya%20Channel%20Logo%20alpha.png",
+  },
+
   hbo: {
     name: "HBO",
     type: "clearkey",
@@ -525,7 +554,7 @@ cartoonnetworkhd: {
     logo: "https://i.imgur.com/Wv0K5Yc.png",
   },
   sari_sari: {
-    name: "SARIâ€‘SARI",
+    name: "SARI‑SARI",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/cg_sari_sari_sd.mpd",
     keyId: "0a7ab3612f434335aa6e895016d8cd2d",
@@ -970,7 +999,6 @@ dreamworks_tagalized: {
   },
 
  };
-
 
 let shownCount = 0;
 let currentSearchFilter = "";
