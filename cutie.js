@@ -1,10 +1,9 @@
 const channels = {
    gma: {
-    name: "GMA Network",
+    name: "GMA",
     logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/GMA_Network_Logo_2011.svg", // You can change this
     type: "hls",
     manifestUri: "https://ott.udptv.xyz/stream/udptvu...ee46d3167cbb669dddcd7f2e9f877b9ed7ee2bcc5bdfd",
-    group: "live"
   },
 
   hbo: {
