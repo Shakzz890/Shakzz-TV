@@ -1,7 +1,7 @@
 const channels = {
    gma: {
     name: "GMA",
-    logo: "upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png8", // You can change this
+    logo: "upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png", // You can change this
     type: "hls",
     manifestUri: "https://ott.m3u8.nathcreqtives.com/gma/stream/manifest.m3u8",
   },
