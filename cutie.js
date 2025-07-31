@@ -1,9 +1,9 @@
 const channels = {
    gma: {
     name: "GMA",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/GMA_Network_Logo_2011.svg", // You can change this
+    logo: "upload.wikimedia.org/wikipedia/en/thumb/c/c0/GMA_Network_Logo_Vector.svg/1200px-GMA_Network_Logo_Vector.svg.png8", // You can change this
     type: "hls",
-    manifestUri: "https://ott.udptv.xyz/stream/udptvu...ee46d3167cbb669dddcd7f2e9f877b9ed7ee2bcc5bdfd",
+    manifestUri: "https://ott.m3u8.nathcreqtives.com/gma/stream/manifest.m3u8",
   },
 
  pbarush: {
