@@ -137,6 +137,51 @@
       z-index: 10;
     }
 
+    .category-bar {
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 10px;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333;
+
+      /* Responsive horizontal scroll */
+      overflow-x: auto;
+      gap: 8px;
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: var(--accent-color) #333;
+    }
+
+    .category-bar::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .category-bar::-webkit-scrollbar-thumb {
+      background-color: var(--accent-color);
+      border-radius: 3px;
+    }
+
+    .category-button {
+      background-color: #333;
+      color: #ccc;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
+      white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .category-button:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .category-button.active {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
     .channel-list {
       overflow-y: auto;
       flex: 1;
@@ -301,6 +346,17 @@
         max-height: 300px;
         aspect-ratio: 16 / 9;
       }
+
+      /* Category bar tweaks for small screens */
+      .category-bar {
+        justify-content: flex-start;
+      }
+
+      .category-button {
+        flex: 0 0 auto; /* prevent growing, enable scrolling */
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -326,7 +382,19 @@
         <input type="text" id="search" placeholder="Search channel..." />
         <span id="clearSearch" class="clear-btn">&times;</span>
       </div>
+
+      <div class="category-bar">
+  <button class="category-button active" data-category="all">All</button>
+  <button class="category-button" data-category="news">News</button>
+  <button class="category-button" data-category="entertainment">Entertainment</button>
+  <button class="category-button" data-category="cartoons-animations">Cartoons & Animations</button>
+  <button class="category-button" data-category="sports">Sports</button>
+  <button class="category-button" data-category="documentary">Documentary</button>
+  <button class="category-button" data-category="movies">Movies</button>
+      </div>
+
       <div class="channel-list" id="channelList"></div>
+
       <div id="channelCount">
         <i class="fas fa-tv"></i>
         <span id="channelCountText">0 channels found</span>
@@ -340,29 +408,13 @@
         Contact Me:
         <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
         <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
-        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" class="social-link"><i class="fas fa-envelope"></i></a>
         <noscript><a href="mailto:shakzz05.business@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a></noscript>
       </div>
       <div class="right-section">© All rights reserved 2025</div>
     </div>
   </footer>
 
-  <script>
-    const searchInput = document.getElementById('search');
-    const clearBtn = document.getElementById('clearSearch');
-
-    searchInput.addEventListener('input', () => {
-      clearBtn.style.display = searchInput.value ? 'block' : 'none';
-    });
-
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      clearBtn.style.display = 'none';
-      searchInput.dispatchEvent(new Event('input'));
-    });
-  </script>
-
-  <!-- Your updated cutie.js should handle all logic -->
   <script src="cutie.js"></script>
 </body>
 </html>
