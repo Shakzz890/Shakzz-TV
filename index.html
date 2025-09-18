@@ -364,6 +364,17 @@
     </div>
   </nav>
 
+  <main><body>
+  <nav class="top-nav">
+    <div class="nav-logo" onclick="location.reload()">
+      <img src="Jinwoo.png" alt="Logo" />
+      <span class="logo-text">Shakzz TV</span>
+    </div>
+    <div class="nav-links">
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">DON'T CLICK</a>
+    </div>
+  </nav>
+
   <main>
     <div class="main">
       <div id="video"></div>
@@ -437,10 +448,16 @@
     })();
   </script>
 
-  <!-- Load cutie.js with error handling -->
-  <script src="cutie.js"
-          onerror="console.error('❌ Failed to load cutie.js — check the file path or name!');
-                   document.body.insertAdjacentHTML('beforeend','<div style=&quot;background:red;color:white;text-align:center;padding:10px;font-weight:bold;&quot;>❌ Failed to load cutie.js — check the file path!</div>');">
+  <!-- Load cutie.js safely -->
+  <script src="cutie.js"></script>
+  <script>
+    if (typeof renderChannelButtons !== "function") {
+      console.error("❌ cutie.js failed to load or function missing!");
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        "<div style='background:red;color:white;text-align:center;padding:10px;font-weight:bold;'>❌ Failed to load cutie.js — check the file path!</div>"
+      );
+    }
   </script>
 </body>
 </html>
