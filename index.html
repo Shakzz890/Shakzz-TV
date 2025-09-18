@@ -6,11 +6,9 @@
   <title>Shakzz TV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- JW Player -->
   <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
   <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=";</script>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
@@ -94,7 +92,27 @@
       display: flex;
       overflow: hidden;
     }
+    
+    /* --- MODIFIED STYLES START HERE --- */
+    .intro {
+      padding: 12px 20px; /* Increased padding */
+      text-align: center;
+      font-size: 1.2em;   /* Increased font size */
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333;
+    }
 
+    .intro p {
+        margin: 0; /* Removes default paragraph margin */
+    }
+
+    .intro span.highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    /* --- MODIFIED STYLES END HERE --- */
+    
     .sidebar {
       width: 300px;
       background-color: #222;
@@ -143,9 +161,11 @@
       padding: 8px 10px;
       background-color: #1a1a1a;
       border-bottom: 1px solid #333;
+
+      /* Responsive horizontal scroll */
       overflow-x: auto;
       gap: 8px;
-      scrollbar-width: thin;
+      scrollbar-width: thin; /* Firefox */
       scrollbar-color: var(--accent-color) #333;
     }
 
@@ -167,10 +187,14 @@
       cursor: pointer;
       font-weight: bold;
       transition: background-color 0.3s, color 0.3s;
-      white-space: nowrap;
+      white-space: nowrap; /* Prevent wrapping */
     }
 
-    .category-button:hover,
+    .category-button:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
     .category-button.active {
       background-color: var(--accent-color);
       color: white;
@@ -213,9 +237,6 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
     }
 
     #channelInfo {
@@ -304,7 +325,7 @@
       .sidebar {
         width: 100%;
         border-right: none;
-        border-bottom: 2px solid #333;
+        border-bottom: 1px solid #333;
         max-height: 50vh;
       }
 
@@ -341,20 +362,22 @@
         aspect-ratio: 16 / 9;
       }
 
+      /* Category bar tweaks for small screens */
       .category-bar {
         justify-content: flex-start;
       }
 
       .category-button {
-        flex: 0 0 auto;
+        flex: 0 0 auto; /* prevent growing, enable scrolling */
         padding: 6px 10px;
         font-size: 0.9rem;
-      }
+         }
     }
   </style>
 </head>
 <body>
-  <nav class="top-nav">
+
+ <nav class="top-nav">
     <div class="nav-logo" onclick="location.reload()">
       <img src="Jinwoo.png" alt="Logo" />
       <span class="logo-text">Shakzz TV</span>
@@ -363,6 +386,10 @@
       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">DON'T CLICK</a>
     </div>
   </nav>
+
+  <section class="intro">
+    <p>Welcome to <span class="highlight">SHAKZZ TV</span> – stream live TV, movies, sports, anime, and more.</p>
+  </section>
 
   <main>
     <div class="main">
@@ -373,17 +400,16 @@
     <div class="sidebar">
       <div class="search-container">
         <input type="text" id="search" placeholder="Search channel..." />
-        <span id="clearSearch" class="clear-btn">&times;</span>
+        <span id="clearSearch" class="clear-btn">×</span>
       </div>
-
       <div class="category-bar">
-        <button class="category-button active" data-category="all">All</button>
-        <button class="category-button" data-category="news">News</button>
-        <button class="category-button" data-category="entertainment">Entertainment</button>
-        <button class="category-button" data-category="cartoons-animations">Cartoons & Animations</button>
-        <button class="category-button" data-category="sports">Sports</button>
-        <button class="category-button" data-category="documentary">Documentary</button>
-        <button class="category-button" data-category="movies">Movies</button>
+  <button class="category-button active" data-category="all">All</button>
+  <button class="category-button" data-category="news">News</button>
+  <button class="category-button" data-category="entertainment">Entertainment</button>
+  <button class="category-button" data-category="cartoons & animations">cartoons & Animations</button>
+  <button class="category-button" data-category="sports">Sports</button>
+ <button class="category-button" data-category="documentary">Documentary</button>
+  <button class="category-button" data-category="movies">Movies</button>
       </div>
 
       <div class="channel-list" id="channelList"></div>
@@ -401,41 +427,12 @@
         Contact Me:
         <a href="https://facebook.com/profile.php?id=100083316728361" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
         <a href="https://youtube.com/@Shakzz05" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shakzz05.business@gmail.com" target="_blank" class="social-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&to=shakzz05.business@gmail.com" target="_blank" class="social-link"><i class="fas fa-envelope"></i></a>
         <noscript><a href="mailto:shakzz05.business@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a></noscript>
       </div>
       <div class="right-section">© All rights reserved 2025</div>
     </div>
   </footer>
-
-  <!-- DevTools Disable Script -->
-  <script>
-    document.addEventListener('contextmenu', event => event.preventDefault());
-
-    document.addEventListener('keydown', function (e) {
-      if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && e.key.toLowerCase() === 'u')
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    });
-
-    (function () {
-      const threshold = 160;
-      const checkDevTools = () => {
-        const widthDiff = window.outerWidth - window.innerWidth;
-        const heightDiff = window.outerHeight - window.innerHeight;
-        if (widthDiff > threshold || heightDiff > threshold) {
-          document.body.innerHTML = "<h1 style='color: red; text-align:center;'>DevTools is disabled on this site.</h1>";
-        }
-      };
-      setInterval(checkDevTools, 1000);
-    })();
-  </script>
 
   <script src="cutie.js"></script>
 </body>
