@@ -353,7 +353,7 @@
     }
   </style>
 </head>
-  <main><body>
+<body>
   <nav class="top-nav">
     <div class="nav-logo" onclick="location.reload()">
       <img src="Jinwoo.png" alt="Logo" />
@@ -380,7 +380,7 @@
         <button class="category-button active" data-category="all">All</button>
         <button class="category-button" data-category="news">News</button>
         <button class="category-button" data-category="entertainment">Entertainment</button>
-        <button class="category-button" data-category="cartoons & animations">Cartoons & Animations</button>
+        <button class="category-button" data-category="cartoons-animations">Cartoons & Animations</button>
         <button class="category-button" data-category="sports">Sports</button>
         <button class="category-button" data-category="documentary">Documentary</button>
         <button class="category-button" data-category="movies">Movies</button>
@@ -437,16 +437,6 @@
     })();
   </script>
 
-  <!-- Load cutie.js safely -->
   <script src="cutie.js"></script>
-  <script>
-    if (typeof renderChannelButtons !== "function") {
-      console.error("❌ cutie.js failed to load or function missing!");
-      document.body.insertAdjacentHTML(
-        "beforeend",
-        "<div style='background:red;color:white;text-align:center;padding:10px;font-weight:bold;'>❌ Failed to load cutie.js — check the file path!</div>"
-      );
-    }
-  </script>
 </body>
 </html>
