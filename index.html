@@ -93,17 +93,17 @@
       overflow: hidden;
     }
     
-    /* --- MODIFIED STYLES START HERE --- */
+    /* --- INTRO --- */
     .intro {
-      padding: 12px 20px; /* Increased padding */
+      padding: 12px 20px;
       text-align: center;
-      font-size: 1.2em;   /* Increased font size */
+      font-size: 1.2em;
       background-color: #1a1a1a;
       border-bottom: 1px solid #333;
     }
 
     .intro p {
-        margin: 0; /* Removes default paragraph margin */
+      margin: 0;
     }
 
     .intro span.highlight {
@@ -111,7 +111,6 @@
       font-weight: bold;
       letter-spacing: 1px;
     }
-    /* --- MODIFIED STYLES END HERE --- */
     
     .sidebar {
       width: 300px;
@@ -161,11 +160,9 @@
       padding: 8px 10px;
       background-color: #1a1a1a;
       border-bottom: 1px solid #333;
-
-      /* Responsive horizontal scroll */
       overflow-x: auto;
       gap: 8px;
-      scrollbar-width: thin; /* Firefox */
+      scrollbar-width: thin;
       scrollbar-color: var(--accent-color) #333;
     }
 
@@ -187,7 +184,7 @@
       cursor: pointer;
       font-weight: bold;
       transition: background-color 0.3s, color 0.3s;
-      white-space: nowrap; /* Prevent wrapping */
+      white-space: nowrap;
     }
 
     .category-button:hover {
@@ -243,16 +240,21 @@
       display: none;
     }
 
+    /* --- VIDEO PLAYER FIX --- */
     #video {
+      flex-grow: 1;
       width: 100%;
-      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .jwplayer {
       width: 100% !important;
-      height: 100% !important;
-      aspect-ratio: unset !important;
-      object-fit: fill !important;
+      height: auto !important;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: contain !important;
+      background: black;
     }
 
     #channelCount {
@@ -317,6 +319,7 @@
       color: var(--accent-color);
     }
 
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -362,16 +365,20 @@
         aspect-ratio: 16 / 9;
       }
 
-      /* Category bar tweaks for small screens */
+      .jwplayer {
+        max-height: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+      }
+
       .category-bar {
         justify-content: flex-start;
       }
 
       .category-button {
-        flex: 0 0 auto; /* prevent growing, enable scrolling */
+        flex: 0 0 auto;
         padding: 6px 10px;
         font-size: 0.9rem;
-         }
+      }
     }
   </style>
 </head>
@@ -403,13 +410,13 @@
         <span id="clearSearch" class="clear-btn">×</span>
       </div>
       <div class="category-bar">
-  <button class="category-button active" data-category="all">All</button>
-  <button class="category-button" data-category="news">News</button>
-  <button class="category-button" data-category="entertainment">Entertainment</button>
-  <button class="category-button" data-category="cartoons & animations">cartoons & Animations</button>
-  <button class="category-button" data-category="sports">Sports</button>
- <button class="category-button" data-category="documentary">Documentary</button>
-  <button class="category-button" data-category="movies">Movies</button>
+        <button class="category-button active" data-category="all">All</button>
+        <button class="category-button" data-category="news">News</button>
+        <button class="category-button" data-category="entertainment">Entertainment</button>
+        <button class="category-button" data-category="cartoons & animations">Cartoons & Animations</button>
+        <button class="category-button" data-category="sports">Sports</button>
+        <button class="category-button" data-category="documentary">Documentary</button>
+        <button class="category-button" data-category="movies">Movies</button>
       </div>
 
       <div class="channel-list" id="channelList"></div>
