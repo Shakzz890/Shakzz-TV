@@ -17,11 +17,6 @@ export default async function handler(req, res) {
     const now = Date.now();
 
     // Use a Redis "set" command with an expiration time
-    // This atomically sets the key and a time-to-live (TTL).
-    // The 'NX' option means "only if the key does not exist".
-    // This is useful to avoid unnecessary writes, though not strictly required.
-    // The 'EX' option sets the expiration time in seconds.
-    // We'll set it to 60s, so the session is active for 1 minute.
     await redis.set(sessionKey, now, { ex: 60 });
 
     // Get all session keys that match "viewer:*"
@@ -29,6 +24,11 @@ export default async function handler(req, res) {
 
     // The number of viewers is the count of active keys
     const viewers = viewerKeys.length;
+    
+    // Add these headers to disable caching
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     
     // Send the correct data format
     res.status(200).json({ count: viewers });
