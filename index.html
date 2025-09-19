@@ -41,7 +41,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* --- NAVBAR --- */
 .top-nav {
   width: 100%;
   background-color: #000;
@@ -91,7 +90,6 @@ body {
   color: var(--accent-color);
 }
 
-/* --- LAYOUT --- */
 main {
   flex: 1;
   display: flex;
@@ -123,6 +121,7 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden; /* Fix: prevent cropping */
 }
 
 .search-container {
@@ -130,6 +129,7 @@ main {
   display: flex;
   align-items: center;
   margin: 10px;
+  flex-shrink: 0;
 }
 
 .search-container input {
@@ -167,6 +167,7 @@ main {
   gap: 6px;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) #333;
+  flex-shrink: 0;
 }
 
 .category-bar::-webkit-scrollbar {
@@ -206,13 +207,14 @@ main {
   overflow-y: auto;
   padding: 0;
   background-color: #1a1a1a;
+  min-height: 0; /* Fix: allow flexbox to shrink properly */
 }
 
 .channel-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 10px; /* equal padding on all sides */
+  padding: 10px;
 }
 
 .channel-button {
@@ -253,11 +255,9 @@ main {
   display: none;
 }
 
-/* --- VIDEO PLAYER --- */
 #video {
   width: 100%;
   height: 100vh;
-  background: black;
 }
 
 .jwplayer {
@@ -267,7 +267,6 @@ main {
   background: black;
 }
 
-/* --- FOOTER --- */
 #channelCount {
   display: flex;
   justify-content: center;
@@ -280,6 +279,7 @@ main {
   line-height: 1.2;
   margin-top: auto;
   border-top: 1px solid #333;
+  flex-shrink: 0;
 }
 
 #channelCountText,
@@ -351,12 +351,12 @@ main {
   #video {
     order: -1;
     width: 100%;
-    max-height: 45vh; /* mobile video height */
+    max-height: 45vh;
     background: black;
   }
 
   .jwplayer {
-    object-fit: fill !important; /* exact fit mobile */
+    object-fit: fill !important; /* exact fit on mobile */
   }
 
   .sidebar {
@@ -370,8 +370,17 @@ main {
     background-color: #1a1a1a;
   }
 
+  .scrollable-list {
+    padding: 0;
+  }
+
   .channel-list {
-    padding: 10px; /* even padding */
+    padding: 10px;
+  }
+
+  .channel-button {
+    padding: 12px;
+    font-size: 0.9rem;
   }
 
   .category-bar {
@@ -432,6 +441,7 @@ main {
       <input type="text" id="search" placeholder="Search channel...">
       <span id="clearSearch" class="clear-btn">×</span>
     </div>
+
     <div class="category-bar">
       <button class="category-button active" data-category="all">All</button>
       <button class="category-button" data-category="news">News</button>
