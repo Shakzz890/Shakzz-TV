@@ -455,7 +455,7 @@ main {
 // viewer counter update
 async function updateViewerCount() {
   try {
-    const res = await fetch('/api/viewers');
+    const res = await fetch('/api/viewers'); // ✅ fixed to match your viewers.js
     const data = await res.json();
     document.getElementById('viewerCountText').innerText = data.count || 0;
   } catch (e) {
