@@ -789,3 +789,10 @@ a {
 @media (max-width: 600px) {
   /* This media query can be removed or left empty if not needed */
 }
+
+@media (max-width: 420px) {
+  .modal-heading {
+    font-size: 1.3rem; /* Slightly smaller font size */
+    white-space: nowrap; /* Prevents the text from wrapping to a new line */
+  }
+}
