@@ -57,6 +57,7 @@ a {
   width: 100%;
   z-index: 1000;
   background-color: var(--bg-color);
+  /* Height is now controlled by its content (nav + banner) */
 }
 
 .top-nav {
@@ -184,13 +185,39 @@ a {
   opacity: 1;
 }
 
+/* --- MAINTENANCE ALERT BANNER STYLING (NOW PART OF THE FLOW) --- */
+.maintenance-alert {
+    width: 100%;
+    /* Removed fixed positioning, it inherits fixed from the header */
+    background-color: #e74c3c; 
+    color: #ffffff; 
+    padding: 10px 20px; 
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1.4;
+    z-index: 999; 
+}
+
+.maintenance-alert strong {
+    font-weight: 700;
+    text-decoration: underline;
+}
+/* -------------------------------------------------------- */
+
+
 /* Main Content */
 #main-content-area {
   display: flex;
   gap: 10px;
   flex-grow: 1;
-  height: calc(100vh - var(--header-height));
-  margin-top: var(--header-height); /* fixed header offset */
+  /* Default margin-top is zero (for mobile) or set by media query below */
+  
+  /* THIS LINE IS THE OVERLAP FIX. Adjust this value (e.g., to 110px, 115px) 
+     if the video still overlaps the banner after applying the HTML change. */
+  margin-top: 105px; 
+  
+  height: calc(100vh - 105px); /* Set height based on the total fixed elements */
   overflow: hidden;
 }
 
@@ -225,7 +252,7 @@ a {
   display: flex;
   align-items: center;
   margin: 10px;
-  margin: 15px 10px 5px; /* 15px top, 10px sides, 5px bottom */
+  margin: 15px 10px 5px; 
 }
 
 .search-container input {
@@ -286,6 +313,36 @@ a {
   transform: scale(1.08);
   box-shadow: 0 0 12px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
 }
+
+/* --- FAVORITES FEATURE --- */
+.category-button[data-category="favorites"] {
+  background: linear-gradient(135deg, gold, orange);
+  color: black;
+  font-weight: bold;
+}
+
+.category-button[data-category="favorites"]:hover,
+.category-button[data-category="favorites"].active {
+  background: linear-gradient(135deg, orange, gold);
+  color: black;
+  box-shadow: 0 0 12px rgba(255, 200, 0, 0.9), 0 0 20px rgba(255, 165, 0, 0.7);
+}
+
+.channel-button.favorite {
+  border-color: gold;
+  background-color: #3b2b00;
+  position: relative;
+}
+
+.channel-button.favorite::after {
+  content: "★";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: gold;
+  font-size: 1rem;
+}
+/* ------------------------- */
 
 /* Channel List */
 #channelCount {
@@ -383,6 +440,44 @@ a {
   gap: 2rem;
   margin: 2rem 0 4rem;
 }
+
+/* --- UPDATES SCROLLABLE --- */
+.updates-scroll {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-top: 1rem;
+}
+
+.updates-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.updates-scroll::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+.updates-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.update-item {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #333;
+}
+
+.update-item:last-child {
+  border-bottom: none;
+}
+
+.update-date {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: 6px;
+}
+/* ------------------------- */
 
 #contact.info-section {
   padding: 2rem 15px;
@@ -643,6 +738,8 @@ a {
     flex-direction: column;
     height: auto;
     flex-grow: 1;
+    /* Reset fixed height/margin rules for tablet/desktop layout */
+    margin-top: 0; 
   }
   #video {
     height: auto;
@@ -668,8 +765,8 @@ a {
     position: static;
   }
   #main-content-area {
-  margin-top: 0;
-}
+    margin-top: 0;
+  }
   .nav-pages {
     display: none;
   }
@@ -693,6 +790,7 @@ a {
     margin-bottom: 10px;
   }
 }
+
 
 /* Get in Touch section spacing */
 #contact {
@@ -739,11 +837,11 @@ a {
   }
 }
 
-/* --- QR CODE MODAL & CLICKABILITY (UPDATED) --- */
+/* --- QR CODE MODAL & CLICKABILITY --- */
 .donation-qr-code {
   max-width: 200px;
   height: auto;
-  border-radius: 6px; /* border and padding removed as requested */
+  border-radius: 6px; 
   background-color: white;
   margin-top: 4px;
   cursor: pointer;
@@ -755,12 +853,12 @@ a {
 }
 
 .qr-modal-content {
-  background: white; /* Restored white background */
-  border-radius: 12px; /* Added rounded corners */
+  background: white; 
+  border-radius: 12px; 
   padding: 20px;
-  max-width: 500px; /* Set a max-width for the content box */
+  max-width: 500px; 
   width: 90%;
-  position: relative; /* Crucial for positioning the close button */
+  position: relative; 
 }
 
 #zoomedQrImage {
@@ -786,13 +884,9 @@ a {
   text-shadow: none;
 }
 
-@media (max-width: 600px) {
-  /* This media query can be removed or left empty if not needed */
-}
-
 @media (max-width: 420px) {
   .modal-heading {
-    font-size: 1.3rem; /* Slightly smaller font size */
-    white-space: nowrap; /* Prevents the text from wrapping to a new line */
+    font-size: 1.3rem; 
+    white-space: nowrap; 
   }
 }
