@@ -208,16 +208,12 @@ a {
 
 /* Main Content */
 #main-content-area {
-  display: flex;
-  gap: 10px;
-  flex-grow: 1;
-  /* Default margin-top is zero (for mobile) or set by media query below */
+  /* ... other styles ... */
   
-  /* THIS LINE IS THE OVERLAP FIX. Adjust this value (e.g., to 110px, 115px) 
-     if the video still overlaps the banner after applying the HTML change. */
-  margin-top: 105px; 
+  /* CRITICAL FIX: Ensure this value matches your header height (around 56px for nav + any padding) */
+  margin-top: 110px; 
   
-  height: calc(100vh - 105px); /* Set height based on the total fixed elements */
+  height: calc(100vh - 110px); /* Adjust height to match the new margin */
   overflow: hidden;
 }
 
