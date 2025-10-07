@@ -46,7 +46,16 @@ We are committed to delivering a stable and high-quality streaming experience. T
 
 ## 🙏 How to Contribute
 
-Shakzz TV is a community-focused project and we welcome contributions! Whether you're a developer, a content curator, or just a helpful viewer, here are a few ways you can help:
+Shakzz TV is a community-focused project, and we welcome contributions! Whether you're a developer, a content curator, or just a helpful viewer, here are a few ways you can help:
+
+### 💰 Financial Support (Buy Me a Coffee!)
+This project is a labor of love, and your support helps cover development costs, bandwidth, and the time required to keep the streams stable and updated.
+
+You can show your appreciation by making a secure donation using the BPI QR code:
+
+* **View the QR Code:** [**BPI QR Code for Shakzz TV**](https://github.com/Shakzz890/Shakzz-TV/blob/main/BPIQR_Shakzz.png)
+
+Every contribution helps keep the stream running 24/7!
 
 ### 🐛 Report Bugs
 If you encounter any broken streams, buffering issues, or errors on the site, please [**Open a Bug Report**](https://github.com/Shakzz890/Shakzz-TV/issues/new?template=bug_report.md) on our repository with clear steps to reproduce the problem.
