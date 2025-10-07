@@ -49,10 +49,10 @@ We are committed to delivering a stable and high-quality streaming experience. T
 Shakzz TV is a community-focused project and we welcome contributions! Whether you're a developer, a content curator, or just a helpful viewer, here are a few ways you can help:
 
 ### 🐛 Report Bugs
-If you encounter any broken streams, buffering issues, or errors on the site, please [Open a new Issue](LINK_TO_ISSUES_PAGE_HERE) on our repository with clear steps to reproduce the problem.
+If you encounter any broken streams, buffering issues, or errors on the site, please [**Open a Bug Report**](https://github.com/Shakzz890/Shakzz-TV/issues/new?template=bug_report.md) on our repository with clear steps to reproduce the problem.
 
 ### 💡 Suggest Features & Channels
-We love feedback! Use the [Issues page](LINK_TO_ISSUES_PAGE_HERE) to suggest new features or recommend local and international channels you'd like to see added to the platform.
+We love feedback! Please [**Submit a Feature Request**](https://github.com/Shakzz890/Shakzz-TV/issues/new?template=feature_request.md) to suggest new features or recommend local and international channels you'd like to see added.
 
 ### 🧑‍💻 Code Contributions
 If you want to contribute to the code (HTML, CSS, JS, or API logic):
