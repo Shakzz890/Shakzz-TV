@@ -1,6 +1,6 @@
 {
-  "show": false,
-  "id": "notif-004",
+  "show": true,
+  "id": "notif-001",
   "type": "info",
-  "message": "<strong>Welcome!</strong> We've just added 5 new channels to the 'Movies' category."
+  "message": "<strong>Update!</strong> Live banner added & Smart TV/Android support. See latest updates for details."
 }
