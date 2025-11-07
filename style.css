@@ -890,7 +890,7 @@ a {
 @media (min-width: 993px) {
   /* FIX: Widen sidebar and adjust content */
   .sidebar {
-    width: 360px;
+    width: 400px; /* --- ADJUSTMENT: Increased from 360px --- */
   }
 
   .category-bar {
@@ -979,5 +979,140 @@ a {
   .contact-social {
     min-width: 400px;
     flex-shrink: 0;
+  }
+/* --- Universal Notification Banner (Fixed for Mobile Gradient Rendering) --- */
+.notification-banner {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-40px);
+  width: 92%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  background-color: rgba(0, 0, 0, 0.85); /* fallback only */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Show / Hide Animation */
+.notification-banner.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.notification-banner.hide {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-40px);
+  pointer-events: none;
+}
+
+/* --- Type Variants (Gradient restored for all devices) --- */
+.notification-banner.info {
+  background-image: linear-gradient(90deg, #00bcd4 0%, #2196f3 100%);
+}
+
+.notification-banner.success {
+  background-image: linear-gradient(90deg, #43a047 0%, #2e7d32 100%);
+}
+
+.notification-banner.alert {
+  background-image: linear-gradient(90deg, #ff7043 0%, #e53935 100%);
+}
+
+/* --- Adaptive for Dark/Light Mode --- */
+@media (prefers-color-scheme: light) {
+  .notification-banner {
+    color: #111;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .notification-banner.info {
+    background-image: linear-gradient(90deg, #4dd0e1 0%, #64b5f6 100%);
+  }
+
+  .notification-banner.success {
+    background-image: linear-gradient(90deg, #81c784 0%, #388e3c 100%);
+  }
+
+  .notification-banner.alert {
+    background-image: linear-gradient(90deg, #ff8a65 0%, #f4511e 100%);
+  }
+}
+
+/* --- Content --- */
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.notification-content i {
+  font-size: 1.1rem;
+}
+
+/* --- Close Button --- */
+.close-notification-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.close-notification-btn:hover {
+  transform: scale(1.2);
+}
+
+/* --- Mobile Adjustments (no blend mode, brighter colors) --- */
+@media (max-width: 768px) {
+  .notification-banner {
+    width: 96%;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    filter: brightness(1.1);
+    background-blend-mode: normal !important; /* prevent gradient loss */
+  }
+  /* TV Remote Focus Glow (soft blue ring) */
+.focused {
+  outline: 3px solid #00aaff;
+  box-shadow: 0 0 14px #00aaff;
+  border-radius: 8px;
+  transition: box-shadow 0.12s, outline 0.12s, transform 0.08s;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+/* Slight focus scale so TV remote feels responsive */
+.focused.scale {
+  transform: scale(1.02);
+}
+
+/* Make focusable elements visibly focusable for mouse users too */
+button:focus, a:focus, input:focus, textarea:focus {
+  outline: none;
+}
+
+/* Ensure modal focus is obvious */
+.modal-overlay .focused {
+  outline-color: #00aaff;
+  box-shadow: 0 0 18px #00aaff;
   }
 }
