@@ -56,7 +56,9 @@
     <div id="liveNotificationBanner" class="notification-banner info hide">
         <div class="notification-content" style="display:flex; align-items:center; gap:10px; flex:1;">
             <i class="fas fa-broadcast-tower" style="color:#38bdf8;"></i>
-            <span id="notificationMessage" style="font-weight:500; font-size:0.9rem;">🎥 LIVE: New channels added to 'Movies'!</span>
+            <span id="notificationMessage" style="font-weight:500; font-size:0.9rem;">
+                <strong>Big Update!</strong> Complete UI Overhaul live now & 2 New Channels added.
+            </span>
         </div>
         <button id="closeNotificationBtn" class="close-notification-btn focusable-element" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;">&times;</button>
     </div>
@@ -288,18 +290,5 @@
 
     <button id="backToTopBtn" title="Go to top" class="focusable-element"><i class="fas fa-arrow-up"></i></button>
     <script src="cutie.js"></script>
-
-    <script>
-        window.addEventListener('load', () => {
-            // Wait 1.5 seconds to simulate loading, then remove skeleton from nav/search
-            setTimeout(() => {
-                document.querySelectorAll('.skeleton-effect').forEach(el => {
-                    el.classList.remove('skeleton-effect'); // Removes the shimmer class
-                    el.classList.add('skeleton'); // Temporarily add base skeleton class to fade out clean (optional)
-                    setTimeout(() => el.classList.remove('skeleton'), 50); // Remove completely
-                });
-            }, 1500);
-        });
-    </script>
 </body>
 </html>
