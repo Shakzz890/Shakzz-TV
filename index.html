@@ -5,14 +5,14 @@
     <link rel="icon" type="image/x-icon" href="Jinwoo.png">
     <title>Shakzz TV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ssl.p.jwpcdn.com/player/v/8.36.6/jwplayer.js"></script>
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.38.10/jwplayer.js"></script>
     <script>jwplayer.key = "ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc="</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
-  <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" data-cfasync="false">
+    <link rel="stylesheet" href="style.css">
+      <script type="text/javascript" data-cfasync="false">
 /*<![CDATA[/* */
 (function(){var i=window,u="e59c70fa8471ecf5f8d6f624fc15cee6",e=[["siteId",75+415*763+4904842],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],v=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS9BU1kvamZqc29uLm1pbi5qcw==","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvZUJ1L2pPVC9jZGluZXJvLm1pbi5jc3M="],g=-1,q,z,c=function(){clearTimeout(z);g++;if(v[g]&&!(1785765465000<(new Date).getTime()&&1<g)){q=i.document.createElement("script");q.type="text/javascript";q.async=!0;var t=i.document.getElementsByTagName("script")[0];q.src="https://"+atob(v[g]);q.crossOrigin="anonymous";q.onerror=c;q.onload=function(){clearTimeout(z);i[u.slice(0,16)+u.slice(0,16)]||c()};z=setTimeout(c,5E3);t.parentNode.insertBefore(q,t)}};if(!i[u]){try{Object.freeze(i[u]=e)}catch(e){}c()}})();
 /*]]>/* */
@@ -24,6 +24,20 @@
  <script type='text/javascript' src='//sillinessshoplifting.com/d4/b4/ed/d4b4edc504310bbb4d001ce8bb5f8ef4.js'></script>
 </head>
 <body>
+
+    <div id="maintenanceOverlay" class="maintenance-overlay">
+        <div class="maintenance-content">
+            <div class="maintenance-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h2>System Maintenance</h2>
+            <p id="maintenanceMessage">Our servers are currently undergoing scheduled maintenance.</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <span class="maintenance-status">Auto-reconnecting...</span>
+        </div>
+    </div>
     <header class="page-header">
         <nav class="top-nav">
             <div class="nav-left">
@@ -174,6 +188,9 @@
         <div class="container">
             <h2 class="lg-heading scroll-reveal reveal-init pop-up">Latest Updates</h2>
           <div class="updates-container">
+                <h3 class="scroll-reveal reveal-init slide-left">Live Maintenance Mode <span class="update-date" style="font-size:0.8em; opacity:0.7;">[2025-11-22]</span></h3>
+                <p class="scroll-reveal reveal-init slide-right">Added a real-time system to ensure smooth server upgrades. If we need to fix something, you'll see a beautiful maintenance screen instantly.</p>
+
                 <h3 class="scroll-reveal reveal-init slide-left">Complete UI Overhaul <span class="update-date" style="font-size:0.8em; opacity:0.7;">[2025-11-22]</span></h3>
                 <p class="scroll-reveal reveal-init slide-right">We have totally redesigned the interface! Experience the new modern <strong>Glassmorphism dark theme</strong>, a fully optimized mobile layout with larger, easier-to-tap inputs, and a fixed, glitch-free sidebar. Plus, enjoy smoother animations and improved visual stability across the entire app.</p>
 
@@ -299,6 +316,7 @@
     </div>
 
     <button id="backToTopBtn" title="Go to top" class="focusable-element"><i class="fas fa-arrow-up"></i></button>
+     <script src="channels.js"></script>
     <script src="cutie.js"></script>
 </body>
 </html>
