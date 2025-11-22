@@ -500,7 +500,7 @@ a {
     height: auto;
     overflow-y: auto;
     background-color: transparent;
-    padding: 15px 15px 15px; /* Fixed Top Padding */
+    padding: 15px 15px 15px;
     -webkit-overflow-scrolling: touch;
     transform: translateZ(0);
     will-change: transform;
@@ -1193,4 +1193,14 @@ a {
 /* Helper to hide real icons inside pure skeleton buttons */
 .skeleton i, .skeleton img, .skeleton span {
     opacity: 0; 
+}
+
+/* Smooth Fade Out Animation */
+.skeleton-fade-out {
+    animation: fadeOut 0.5s ease-out forwards !important;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 1; }
 }
