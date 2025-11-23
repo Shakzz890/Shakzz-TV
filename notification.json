@@ -1,6 +1,6 @@
 {
   "show": true,
-  "id": "notif-003",
+  "id": "notif-004",
   "type": "info",
-  "message": "<strong>System Update!</strong> We've fixed the infinite loading issue & squashed minor bugs for a smoother experience"
+  "message": "<strong>Update Notice</strong><br>We are working on new features for you! Stay tuned and happy watching."
 }
