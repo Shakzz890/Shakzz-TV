@@ -303,7 +303,7 @@ const channels = {
     group: ["entertainment"]
   },
   cnn: {
-    name: "CNN",
+    name: "CNN International",
     type: "clearkey",
     manifestUri: `https://stream.shakzz.workers.dev/?id=cnn`,
     logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png",
