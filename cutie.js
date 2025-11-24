@@ -291,20 +291,19 @@ function renderChannelButtons(filter = "") {
     });
 }
 
-// --- 7. LOAD CHANNEL (MERGED LOGIC) ---
 async function loadChannel(key) {
-    if (typeof channels === 'undefined') return;
+    if (typeof channels === "undefined") return;
     const channel = channels[key];
     if (!channel) return;
-    
+
     currentChannelKey = key;
     localStorage.setItem("lastPlayedChannel", key);
-    
-    document.querySelectorAll('.channel-button').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-key') === key) btn.classList.add('active');
+
+    document.querySelectorAll(".channel-button").forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.getAttribute("data-key") === key) btn.classList.add("active");
     });
-    
+
     const nowPlayingEl = document.getElementById("nowPlayingChannel");
     if (nowPlayingEl) {
         nowPlayingEl.textContent = channel.name;
@@ -315,54 +314,49 @@ async function loadChannel(key) {
         }
     }
 
-    const drmConfig = {};
-    let playerType = "hls"; 
-
-    // --- WORKER KEY FETCHING LOGIC ---
+    let playerType = "hls";
+    let drmConfig = undefined;
     if (channel.type === "clearkey") {
         playerType = "dash";
-        try {
-            const keyUrl = channel.manifestUri + "&req=key";
-            const response = await fetch(keyUrl);
-            const keyData = await response.json();
-            if (keyData.keyId && keyData.key) {
-                drmConfig.clearkey = { 
-                    keyId: keyData.keyId, 
-                    key: keyData.key 
-                };
-            } 
-        } catch (err) {
-            console.error("Failed to fetch keys from proxy:", err);
+
+        if (channel.keyId && channel.key) {
+            drmConfig = {
+                clearkey: {
+                    keyId: channel.keyId,
+                    key: channel.key
+                }
+            };
+        } else {
+            console.error("ClearKey channel missing 'keyId' or 'key'");
         }
-    } 
-    else if (channel.type === "widevine") {
-        drmConfig.widevine = { url: channel.licenseServerUri };
-        playerType = "dash";
-    } else if (channel.type === "dash") {
-        playerType = "dash";
-    } else if (channel.type === "mp4") { 
-        playerType = "mp4";
     }
 
-    if (window.jwplayer) {
-        const videoSkeleton = document.querySelector('#video .skeleton');
-        if(videoSkeleton) videoSkeleton.style.display = 'none';
-        
-        try {
-            jwplayer("video").setup({
+    if (channel.type === "widevine") {
+        playerType = "dash";
+        drmConfig = {
+            widevine: { url: channel.licenseServerUri }
+        };
+    }
+
+    if (channel.type === "hls") playerType = "hls";
+    if (channel.type === "mp4") playerType = "mp4";
+    try {
+        jwplayer("video").setup({
+            autostart: true,
+            width: "100%",
+            aspectratio: "16:9",
+            stretching: "exactfit",
+            sources: [{
                 file: channel.manifestUri,
-                type: playerType, 
-                drm: Object.keys(drmConfig).length ? drmConfig : undefined,
-                autostart: true,
-                width: "100%",
-                aspectratio: "16:9",
-                stretching: "exactfit",
-            });
-        } catch(e) {
-            console.error("JW Player setup failed:", e);
-        }
+                type: playerType,
+                drm: drmConfig
+            }]
+        });
+    } catch (e) {
+        console.error("JWPlayer setup error:", e);
     }
 }
+
 
 // --- 8. UI SETUP ---
 function setupSearch() {
