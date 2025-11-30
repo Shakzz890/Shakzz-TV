@@ -112,7 +112,7 @@ const channels = {
     name: "SineManila",
     type: "hls",
     manifestUri: "https://live20.bozztv.com/giatv/giatv-sinemanila/sinemanila/chunks.m3u8",
-    logo: "https://raw.githubusercontent.com/Shakzz890/LoidForger/main/SineManila.png",
+    logo: "https://ibb.co/MkBSF0Rc",
     group: ["movies", "entertainment"],
   },
   pbarush: {
