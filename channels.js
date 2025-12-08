@@ -5,7 +5,7 @@ const channels = {
     manifestUri: "https://converse.nathcreqtives.com/1093/manifest.mpd",
     key: "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00",
     logo: "https://ottepg8.comclark.com:8443/iptvepg/images/markurl/mark_1723126306082.png",
-    group: ["news"' "entertainment"],
+    group: ["news", "entertainment"],
 },
 
 GTV: {
