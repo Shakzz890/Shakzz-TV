@@ -418,10 +418,11 @@ async function loadChannel(key) {
             console.error("ClearKey channel missing 'keyId' or 'key'");
         }
     }
-    if (channel.type === "widevine") {
+        if (channel.type === "widevine") {
         playerType = "dash";
-        drmConfig = { widevine: { url: channel.licenseServerUri } };
+        drmConfig = { widevine: { url: channel.key } }; 
     }
+
     if (channel.type === "hls") playerType = "hls";
     if (channel.type === "mp4") playerType = "mp4";
 
