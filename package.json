@@ -1,11 +1,16 @@
 {
   "name": "shakzz-tv-viewer-counter",
   "version": "1.0.1",
-  "dependencies": {
-    "@upstash/redis": "latest"
-  },
+  "type": "module",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
-  "type": "module"
+  "dependencies": {
+    "@upstash/redis": "^1.28.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
 }
