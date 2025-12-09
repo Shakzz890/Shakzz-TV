@@ -4,17 +4,37 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(req, context) {
-  // --- UNIVERSAL ENV CHECK ---
-  // Vercel uses 'process.env'. Cloudflare passes env in the 2nd argument (context).
-  // We check if 'process' exists to avoid crashing on Cloudflare.
-  const env = (typeof process !== 'undefined' && process.env) ? process.env : context;
+// This is the universal handler
+export default async function handler(req, ctx) {
+  // -------------------------------------------------------------
+  // 1. SAFE ENVIRONMENT CHECK (The Fix)
+  // -------------------------------------------------------------
+  let redisUrl, redisToken;
+
+  if (typeof process !== 'undefined' && process.env) {
+    // We are on Vercel
+    redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+    redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+  } else if (ctx && ctx.UPSTASH_REDIS_REST_URL) {
+    // We are on Cloudflare (ctx is the 'env' object here)
+    redisUrl = ctx.UPSTASH_REDIS_REST_URL;
+    redisToken = ctx.UPSTASH_REDIS_REST_TOKEN;
+  }
+
+  // Debugging: If this logs "Missing", we know the vars aren't set in the dashboard
+  if (!redisUrl || !redisToken) {
+    console.error("CRITICAL: Redis Credentials not found.");
+    return new Response(JSON.stringify({ error: "Server Configuration Error" }), { status: 500 });
+  }
 
   const redis = new Redis({
-    url: env.UPSTASH_REDIS_REST_URL,
-    token: env.UPSTASH_REDIS_REST_TOKEN,
+    url: redisUrl,
+    token: redisToken,
   });
 
+  // -------------------------------------------------------------
+  // 2. STANDARD LOGIC
+  // -------------------------------------------------------------
   try {
     const url = new URL(req.url);
     const deviceId = url.searchParams.get('deviceId');
@@ -40,6 +60,7 @@ export default async function handler(req, context) {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0',
+        'Access-Control-Allow-Origin': '*', // Added CORS for safety
       },
     });
 
