@@ -1,27 +1,15 @@
 import { Redis } from '@upstash/redis';
 
-// Vercel Config (Cloudflare ignores this)
-export const config = {
-  runtime: 'edge',
-};
+// Cloudflare Pages specific entry point
+export async function onRequest(context) {
+  const { env, request } = context;
 
-export default async function handler(context) {
-  // 1. Handle Differences between Vercel and Cloudflare
-  // On Vercel, the request is the first arg. On Cloudflare, it's inside the context object.
-  // We normalize this so it works everywhere.
-  
-  const req = context instanceof Request ? context : context.request; 
-  
-  // 2. Get Environment Variables Safely
-  // Vercel uses process.env. Cloudflare uses context.env.
-  const env = (typeof process !== 'undefined' && process.env) 
-    ? process.env 
-    : (context.env || context);
-
-  // 3. Check for API Keys
+  // 1. Check if keys are loaded
   if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
-    console.error("Missing Redis Credentials");
-    return new Response(JSON.stringify({ error: "Server Configuration Error" }), { status: 500 });
+    return new Response(JSON.stringify({ error: "Missing API Keys" }), { 
+      status: 500, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
   }
 
   const redis = new Redis({
@@ -30,7 +18,7 @@ export default async function handler(context) {
   });
 
   try {
-    const url = new URL(req.url);
+    const url = new URL(request.url);
     const deviceId = url.searchParams.get('deviceId');
 
     if (!deviceId) {
@@ -45,23 +33,18 @@ export default async function handler(context) {
 
     await redis.set(sessionKey, now, { ex: 60 });
     const viewerKeys = await redis.keys("viewer:*");
-    const viewers = viewerKeys.length;
     
-    return new Response(JSON.stringify({ count: viewers }), {
+    // 2. Standard Response for Cloudflare
+    return new Response(JSON.stringify({ count: viewerKeys.length }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
+        'Access-Control-Allow-Origin': '*',
       },
     });
 
   } catch (error) {
-    console.error("Error:", error);
-    return new Response(JSON.stringify({ error: "Failed to update viewer count" }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(JSON.stringify({ error: "Failed to update" }), { status: 500 });
   }
 }
