@@ -1,18 +1,18 @@
 import { Redis } from '@upstash/redis';
 
-// CLOUDFLARE PAGES REQUIREMENT:
-// You must use "onRequest", not "export default"
+// ✅ CORRECT: Must be named 'onRequest' for Cloudflare Pages
 export async function onRequest(context) {
   const { env, request } = context;
 
-  // 1. Safety Check for Keys
+  // 1. Safe Variable Check
   if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
-    return new Response(JSON.stringify({ error: "Missing API Keys on Cloudflare" }), { 
+    return new Response(JSON.stringify({ error: "Server Error: Missing API Keys" }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
   }
 
+  // 2. Initialize Redis
   const redis = new Redis({
     url: env.UPSTASH_REDIS_REST_URL,
     token: env.UPSTASH_REDIS_REST_TOKEN,
@@ -23,7 +23,7 @@ export async function onRequest(context) {
     const deviceId = url.searchParams.get('deviceId');
 
     if (!deviceId) {
-      return new Response(JSON.stringify({ error: "Device ID is required" }), {
+      return new Response(JSON.stringify({ error: "Device ID is required." }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
@@ -32,21 +32,22 @@ export async function onRequest(context) {
     const sessionKey = `viewer:${deviceId}`;
     const now = Date.now();
 
-    // 2. Update Redis
+    // 3. Redis Logic
     await redis.set(sessionKey, now, { ex: 60 });
     const viewerKeys = await redis.keys("viewer:*");
     
-    // 3. Return Response
     return new Response(JSON.stringify({ count: viewerKeys.length }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Access-Control-Allow-Origin': '*', // Allows your frontend to talk to it
+        'Access-Control-Allow-Origin': '*',
       },
     });
 
   } catch (error) {
-    return new Response(JSON.stringify({ error: "Redis Error" }), { status: 500 });
+    // This logs the actual error to your Cloudflare Dashboard > Logs
+    console.error("Worker Error:", error);
+    return new Response(JSON.stringify({ error: "Worker failed to execute" }), { status: 500 });
   }
 }
