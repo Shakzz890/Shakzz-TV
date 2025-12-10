@@ -1,53 +1,59 @@
-import { Redis } from '@upstash/redis';
+import { Redis } from "@upstash/redis/cloudflare";
 
-// ✅ CORRECT: Must be named 'onRequest' for Cloudflare Pages
 export async function onRequest(context) {
   const { env, request } = context;
 
-  // 1. Safe Variable Check
-  if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
-    return new Response(JSON.stringify({ error: "Server Error: Missing API Keys" }), { 
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
-
-  // 2. Initialize Redis
+  // 1. Initialize Redis using the Environment Variables
+  // (Do not hardcode keys here for security!)
   const redis = new Redis({
     url: env.UPSTASH_REDIS_REST_URL,
     token: env.UPSTASH_REDIS_REST_TOKEN,
   });
 
   try {
+    // 2. Get the Device ID from the URL
     const url = new URL(request.url);
-    const deviceId = url.searchParams.get('deviceId');
+    const deviceId = url.searchParams.get("deviceId");
 
     if (!deviceId) {
-      return new Response(JSON.stringify({ error: "Device ID is required." }), {
+      return new Response(JSON.stringify({ error: "Device ID required" }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" },
       });
     }
 
+    // 3. Active Viewer Logic
     const sessionKey = `viewer:${deviceId}`;
     const now = Date.now();
 
-    // 3. Redis Logic
+    // Mark this device as active for 60 seconds
     await redis.set(sessionKey, now, { ex: 60 });
-    const viewerKeys = await redis.keys("viewer:*");
-    
-    return new Response(JSON.stringify({ count: viewerKeys.length }), {
+
+    // Count how many active keys exist (Using `SCAN` instead of `KEYS` is more production-friendly)
+    let cursor = 0;
+    let count = 0;
+    do {
+      const result = await redis.scan(cursor, {
+        match: "viewer:*",
+        count: 100,  // You can adjust this based on your expected number of keys
+      });
+      cursor = result.cursor;
+      count += result.keys.length;
+    } while (cursor !== "0");
+
+    // 4. Return the result
+    return new Response(JSON.stringify({ count }), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Access-Control-Allow-Origin': '*',
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, max-age=0",
+        "Access-Control-Allow-Origin": "*",
       },
     });
-
   } catch (error) {
-    // This logs the actual error to your Cloudflare Dashboard > Logs
-    console.error("Worker Error:", error);
-    return new Response(JSON.stringify({ error: "Worker failed to execute" }), { status: 500 });
+    console.error("Redis Error:", error);
+    return new Response(JSON.stringify({ error: "Failed to update" }), {
+      status: 500,
+    });
   }
 }
