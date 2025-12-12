@@ -1,0 +1,21 @@
+{
+  "name": "Shakzz TV",
+  "short_name": "Shakzz TV",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a0b2e", 
+  "theme_color": "#1a0b2e",
+  "icons": [
+    {
+      "src": "assets/Shakzz05.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/Shakzz05.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

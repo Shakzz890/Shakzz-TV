@@ -7,12 +7,12 @@
     
     <meta name="description" content="Shakzz TV delivers a premier, curated portfolio of local and international networks, providing a seamless, high-quality streaming experience available 24/7.">
 
-    <link rel="icon" type="image/png" href="Jinwoo.png">
-    <link rel="apple-touch-icon" href="Jinwoo.png">
+    <link rel="icon" type="image/png" href="assets/Jinwoo.png">
+    <link rel="apple-touch-icon" href="assets/Jinwoo.png">
 
     <meta property="og:title" content="Shakzz TV">
     <meta property="og:description" content="Watch local and international channels for free, 24/7.">
-    <meta property="og:image" content="https://shakzz.online/Jinwoo.png">
+    <meta property="og:image" content="https://shakzz.online/assets/Jinwoo.png">
     <meta property="og:url" content="https://shakzz.online">
     <meta property="og:type" content="website">
 

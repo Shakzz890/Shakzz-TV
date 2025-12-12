@@ -1485,6 +1485,49 @@ a {
     display: block;
 }
 
+ .media-preview-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000000;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .media-preview-modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .media-preview-header {
+            padding: 15px;
+            text-align: right;
+        }
+        .media-preview-btn {
+            background: #333; color: white; border: none;
+            width: 40px; height: 40px; border-radius: 50%;
+            font-size: 18px; cursor: pointer;
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-preview-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+        .media-preview-content img,
+        .media-preview-content video {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .hidden { display: none !important; }
+
 /* ========= Messenger ============ */
 
 /* === MAIN WRAPPER (POSITION FIXED) === */
@@ -2920,45 +2963,129 @@ body.mm-open {
 #mm-messages-container > :first-child {
     margin-top: auto !important;
 }
-media-preview-modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000000;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        .media-preview-modal.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .media-preview-header {
-            padding: 15px;
-            text-align: right;
-        }
-        .media-preview-btn {
-            background: #333; color: white; border: none;
-            width: 40px; height: 40px; border-radius: 50%;
-            font-size: 18px; cursor: pointer;
-            margin-left: 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .media-preview-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: auto;
-        }
-        .media-preview-content img,
-        .media-preview-content video {
-            max-width: 95%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        .hidden { display: none !important; }
+/* Cookie Banner Styling */
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(15, 15, 15, 0.98); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 2147483647 !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    animation: slideUp 0.5s ease-out;
+}
+
+
+.cookie-banner.hidden {
+    display: none;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 280px;
+}
+
+.cookie-text h4 { margin: 0 0 5px 0; color: #fff; }
+.cookie-text p { margin: 0; font-size: 0.9rem; color: #ccc; line-height: 1.4; }
+
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.cookie-actions button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.cookie-actions button:hover { transform: scale(1.05); }
+
+.btn-primary { background: #3b82f6; color: white; }
+.btn-secondary { background: rgba(255, 255, 255, 0.1); color: white; }
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 100%); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+    .cookie-banner { flex-direction: column; align-items: flex-start; bottom: 0; width: 100%; border-radius: 12px 12px 0 0; }
+    .cookie-actions { width: 100%; justify-content: flex-end; }
+}
+
+/* =========================================
+   PWA TOP BANNER (Styled Like Cookie Banner)
+   ========================================= */
+
+/* 1. Container: Position at the top, allow clicks through the empty space */
+#installModal.active {
+    align-items: flex-start !important; /* Pushes content to the TOP */
+    padding-top: 20px;                  /* Spacing from top edge */
+    background: transparent !important; /* Remove dark overlay */
+    pointer-events: none;               /* Allow clicking on the site behind the banner */
+}
+
+/* 2. Content: The exact 'Cookie Style' Glassmorphism */
+#installModal .modal-content {
+    pointer-events: auto; /* Re-enable clicks on the banner itself */
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;       /* Center horizontally */
+    
+    /* Visuals Copied from .cookie-banner */
+    background: rgba(15, 15, 15, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8) !important;
+
+    /* Animation: Slide Down from Above */
+    animation: slideDownBanner 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 3. The Animation Keyframes */
+@keyframes slideDownBanner {
+    0% {
+        opacity: 0;
+        transform: translateY(-150%); /* Starts above the screen */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);     /* Lands in position */
+    }
+}
+
+/* 4. Mobile Tweak: Flush to top on small screens */
+@media (max-width: 600px) {
+    #installModal.active {
+        padding-top: 0; /* No gap on mobile */
+    }
+    #installModal .modal-content {
+        width: 100%;
+        border-radius: 0 0 12px 12px !important; /* Round ONLY the bottom corners */
+        border-top: none !important;
+    }
+}
+
