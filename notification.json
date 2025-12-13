@@ -1,6 +1,15 @@
 {
   "show": true,
-  "id": "notif-010",
-  "type": "info",
-  "message": "<strong>Love the updates?</strong><br>Head to the Contact section to donate and keep the site running!"
+  "notifications": [
+    {
+      "id": "notif-install",
+      "type": "info",
+      "message": "<strong>App Install Available!</strong><br>Check the Updates section to add our site to your home screen."
+    },
+    {
+      "id": "notif-donate",
+      "type": "success",
+      "message": "<strong>Love the updates?</strong><br>Head to the Contact section to donate and keep the site running!"
+    }
+  ]
 }
