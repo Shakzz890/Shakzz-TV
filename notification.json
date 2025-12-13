@@ -8,7 +8,7 @@
     },
     {
       "id": "notif-donate",
-      "type": "success",
+      "type": "info",
       "message": "<strong>Love the updates?</strong><br>Head to the Contact section to donate and keep the site running!"
     }
   ]
