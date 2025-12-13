@@ -191,16 +191,26 @@ function removeSkeletonLoader() {
 
 async function updateViewerCount() {
     if (document.getElementById('maintenanceOverlay')?.classList.contains('active')) return;
+
     const controller = new AbortController();
-    setTimeout(() => controller.abort(), 3000);
+    setTimeout(() => controller.abort(), 8000);
+
     try {
         const deviceId = getOrCreateDeviceId();
         const res = await fetch(`/api/viewers?deviceId=${deviceId}`, { signal: controller.signal });
+        if (!res.ok) {
+            throw new Error(`Server returned ${res.status}`);
+        }
+
         const data = await res.json();
         const viewerCountEl = document.getElementById('viewerCountText');
         if (viewerCountEl) viewerCountEl.innerText = data.count || 0;
-    } catch (e) {}
+
+    } catch (e) {
+        console.warn("Viewer Count Error:", e); 
+    }
 }
+
 
 function loadFavoritesFromStorage() {
     try {
@@ -556,9 +566,10 @@ function setupHamburgerMenu() {
 }
 
 function setupWelcomeModal() {
-    // If already shown, we just tell PWA it's okay to show whenever
+    // Check if already shown this session
     if (sessionStorage.getItem('welcomeModalShown')) {
-        setTimeout(() => window.dispatchEvent(new Event('welcomeClosed')), 500);
+        // If welcome is done, immediately trigger the next step (Cookies)
+        window.dispatchEvent(new Event('welcomeClosed'));
         return;
     }
 
@@ -576,10 +587,8 @@ function setupWelcomeModal() {
         clearInterval(countdownInterval);
         sessionStorage.setItem('welcomeModalShown', 'true');
         
-        // --- TRIGGER PWA AFTER CLOSE ---
-        setTimeout(() => {
-            window.dispatchEvent(new Event('welcomeClosed'));
-        }, 300); // Small delay for smoothness
+        // 🔥 STEP 1 COMPLETE: Tell the app to show Cookies now
+        window.dispatchEvent(new Event('welcomeClosed'));
     };
 
     const startCountdown = () => {
@@ -592,6 +601,8 @@ function setupWelcomeModal() {
     };
 
     closeBtn.addEventListener('click', closeModal);
+    
+    // Show Modal
     modal.classList.add('active');
     startCountdown();
     setTimeout(() => { setTvFocus(closeBtn); }, 100);
@@ -617,46 +628,85 @@ function setupNotificationSystem() {
     const banner = document.getElementById('liveNotificationBanner');
     const msgEl = document.getElementById('notificationMessage');
     const closeBtn = document.getElementById('closeNotificationBtn');
+    
     const NOTIFICATION_URL = 'notification.json';
-    const SESSION_KEY = 'notificationClosed';
-    let currentNotificationId = null;
+    const SESSION_KEY = 'closedNotifications'; // New key for storing a list of closed IDs
+    
+    let activeNotificationId = null;
+    let cycleIndex = 0; // Keeps track of which message to show next
 
     if (!banner) return;
 
+    // --- HANDLE CLOSE BUTTON ---
     closeBtn.addEventListener('click', () => {
         banner.classList.remove('show');
         banner.classList.add('hide');
-        sessionStorage.setItem(SESSION_KEY, currentNotificationId || 'true');
+        
+        // Add the current ID to the "Ignored" list in session storage
+        if (activeNotificationId) {
+            let closedList = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "[]");
+            if (!closedList.includes(activeNotificationId)) {
+                closedList.push(activeNotificationId);
+                sessionStorage.setItem(SESSION_KEY, JSON.stringify(closedList));
+            }
+        }
     });
 
+    // --- FETCH & SHOW LOGIC ---
     async function fetchNotification() {
-        if (document.getElementById('maintenanceOverlay')?.classList.contains('active') || document.getElementById('welcomeModal')?.classList.contains('active')) return;
+        // Don't show if Maintenance or Welcome Modal is open
+        if (document.getElementById('maintenanceOverlay')?.classList.contains('active') || 
+            document.getElementById('welcomeModal')?.classList.contains('active')) return;
+
         const controller = new AbortController();
         setTimeout(() => controller.abort(), 2000);
+
         try {
             const response = await fetch(`${NOTIFICATION_URL}?t=${Date.now()}`, { signal: controller.signal });
             if (!response.ok) return;
+            
             const data = await response.json();
-            const lastClosed = sessionStorage.getItem(SESSION_KEY);
-            const shouldShow = data.show && (lastClosed !== data.id);
-            currentNotificationId = data.id;
 
-            if (shouldShow) {
-                msgEl.innerHTML = data.message;
-                banner.classList.remove('info', 'success', 'alert', 'hide');
-                banner.classList.add(data.type || 'alert');
-                banner.style.display = 'flex';
-                setTimeout(() => banner.classList.add('show'), 10);
-                setTimeout(() => {
-                    banner.classList.remove('show');
-                    banner.classList.add('hide');
-                }, 8000);
-            }
-        } catch (error) {}
+            // Check if system is enabled and has messages
+            if (!data.show || !data.notifications || data.notifications.length === 0) return;
+
+            // 1. Filter out messages the user has already closed
+            const closedList = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "[]");
+            const validNotifications = data.notifications.filter(n => !closedList.includes(n.id));
+
+            if (validNotifications.length === 0) return;
+
+            // 2. Pick the next message in the cycle
+            const currentNotif = validNotifications[cycleIndex % validNotifications.length];
+            cycleIndex++; // Increment for next time
+
+            // 3. Update UI
+            activeNotificationId = currentNotif.id;
+            msgEl.innerHTML = currentNotif.message;
+            
+            banner.classList.remove('info', 'success', 'alert', 'hide');
+            banner.classList.add(currentNotif.type || 'alert');
+            banner.style.display = 'flex';
+            
+            // 4. Show Banner
+            setTimeout(() => banner.classList.add('show'), 10);
+            
+            // 5. Hide Banner after 8 seconds (allows gap before next one)
+            setTimeout(() => {
+                banner.classList.remove('show');
+                banner.classList.add('hide');
+            }, 8000);
+
+        } catch (error) {
+            // Silent fail is fine for notifications
+        }
     }
+
+    // Start delay, then run every 15 seconds (8s show + 7s pause)
     setTimeout(fetchNotification, 2000);
     notificationInterval = setInterval(fetchNotification, 15000);
 }
+
 
 function setupScrollSpy() {
     const sections = document.querySelectorAll('section[id]');
@@ -837,34 +887,35 @@ function setupPwaInstall() {
     const installModal = document.getElementById('installModal');
     const installBtn = document.getElementById('pwaInstallBtn');
     const cancelBtn = document.getElementById('pwaCancelBtn');
-    let isWelcomeClosed = !!sessionStorage.getItem('welcomeModalShown');
+    
+    // Track if the cookie step is finished
+    let areCookiesResolved = !!localStorage.getItem('shakzzCookieConsent');
 
     if (!installModal || !installBtn || !cancelBtn) return;
 
-    // Helper to actually show the modal
     const showModal = () => {
-        if (!sessionStorage.getItem('installDeclined')) {
+        // Only show if not previously declined AND Cookies are done
+        if (!sessionStorage.getItem('installDeclined') && areCookiesResolved) {
             installModal.classList.add('active');
             setTimeout(() => setTvFocus(installBtn), 100);
         }
     };
 
-    // 1. Listen for browser install event
+    // 1. Browser says "App is installable" (This happens anytime)
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
         
-        // Only show if Welcome is ALREADY closed. 
-        // If Welcome is open, we wait for the event below.
-        if (isWelcomeClosed) {
+        // If cookies are already done, show now. If not, wait.
+        if (areCookiesResolved) {
             showModal();
         }
     });
 
-    // 2. Listen for Welcome Modal closing
-    window.addEventListener('welcomeClosed', () => {
-        isWelcomeClosed = true;
-        // If the browser already gave us the prompt while we were waiting
+    // 2. LISTENER: Wait for "cookiesResolved" event
+    window.addEventListener('cookiesResolved', () => {
+        areCookiesResolved = true;
+        // If browser already sent the prompt while we were waiting
         if (deferredPrompt) {
             showModal();
         }
@@ -887,7 +938,6 @@ function setupPwaInstall() {
     });
 }
 
-
 function setupCookieConsent() {
     const banner = document.getElementById('cookieBanner');
     const necessaryBtn = document.getElementById('cookieNecessaryBtn');
@@ -895,22 +945,33 @@ function setupCookieConsent() {
     
     if (!banner || !necessaryBtn || !allowBtn) return;
 
-    if (localStorage.getItem('shakzzCookieConsent')) return;
-
-    setTimeout(() => {
-        banner.classList.remove('hidden');
-    }, 2000);
-
-    necessaryBtn.addEventListener('click', () => {
-        localStorage.setItem('shakzzCookieConsent', 'necessary');
+    // Helper to finish cookies and start PWA
+    const finishCookies = (type) => {
+        if (type) localStorage.setItem('shakzzCookieConsent', type);
         banner.classList.add('hidden');
+        
+        // 🔥 STEP 2 COMPLETE: Tell the app to show PWA Install now
+        window.dispatchEvent(new Event('cookiesResolved'));
+    };
+
+    // Check if already consented
+    if (localStorage.getItem('shakzzCookieConsent')) {
+        // If already consented, skip UI and go straight to PWA check
+        finishCookies(null); 
+        return;
+    }
+
+    // LISTENER: Only show banner after "welcomeClosed" event fires
+    window.addEventListener('welcomeClosed', () => {
+        setTimeout(() => {
+            banner.classList.remove('hidden');
+        }, 500); // Small delay for smooth transition
     });
 
-    allowBtn.addEventListener('click', () => {
-        localStorage.setItem('shakzzCookieConsent', 'all');
-        banner.classList.add('hidden');
-    });
+    necessaryBtn.addEventListener('click', () => finishCookies('necessary'));
+    allowBtn.addEventListener('click', () => finishCookies('all'));
 }
+
 
 
 
