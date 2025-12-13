@@ -84,6 +84,7 @@ const DEFAULT_CHANNEL_ID = "Kapamilya";
 let shownCount = 0;
 let currentSearchFilter = "";
 let currentChannelKey = "";
+let deferredPrompt;
 
 const tabs = ["all", "favorites", "news", "entertainment", "movies", "sports", "documentary", "cartoons & animations", "anime tagalog dubbed"];
 
@@ -418,11 +419,10 @@ async function loadChannel(key) {
             console.error("ClearKey channel missing 'keyId' or 'key'");
         }
     }
-        if (channel.type === "widevine") {
+    if (channel.type === "widevine") {
         playerType = "dash";
-        drmConfig = { widevine: { url: channel.key } }; 
+        drmConfig = { widevine: { url: channel.licenseServerUri } };
     }
-
     if (channel.type === "hls") playerType = "hls";
     if (channel.type === "mp4") playerType = "mp4";
 
@@ -556,7 +556,12 @@ function setupHamburgerMenu() {
 }
 
 function setupWelcomeModal() {
-    if (sessionStorage.getItem('welcomeModalShown')) return;
+    // If already shown, we just tell PWA it's okay to show whenever
+    if (sessionStorage.getItem('welcomeModalShown')) {
+        setTimeout(() => window.dispatchEvent(new Event('welcomeClosed')), 500);
+        return;
+    }
+
     const modal = document.getElementById('welcomeModal');
     const closeBtn = document.getElementById('closeModalBtn');
     const countdownSpan = document.getElementById('modalCountdown');
@@ -570,6 +575,11 @@ function setupWelcomeModal() {
         modal.classList.remove('active');
         clearInterval(countdownInterval);
         sessionStorage.setItem('welcomeModalShown', 'true');
+        
+        // --- TRIGGER PWA AFTER CLOSE ---
+        setTimeout(() => {
+            window.dispatchEvent(new Event('welcomeClosed'));
+        }, 300); // Small delay for smoothness
     };
 
     const startCountdown = () => {
@@ -587,25 +597,6 @@ function setupWelcomeModal() {
     setTimeout(() => { setTvFocus(closeBtn); }, 100);
 }
 
-function setupQrCodeModal() {
-    const qrCodeImage = document.querySelector('.donation-qr-code');
-    const qrModal = document.getElementById('qrModal');
-    const zoomedQrImage = document.getElementById('zoomedQrImage');
-    const closeQrModalBtn = document.getElementById('closeQrModalBtn');
-
-    if (!qrCodeImage || !qrModal || !zoomedQrImage || !closeQrModalBtn) return;
-
-    qrCodeImage.addEventListener('click', () => {
-        qrModal.classList.add('active');
-        zoomedQrImage.src = qrCodeImage.src;
-        setTimeout(() => setTvFocus(closeQrModalBtn), 50);
-    });
-
-    closeQrModalBtn.addEventListener('click', () => {
-        qrModal.classList.remove('active');
-        clearTvFocus();
-    });
-}
 
 function setupBackToTopButton() {
     const backToTopButton = document.getElementById('backToTopBtn');
@@ -757,7 +748,7 @@ function findNextSpatialFocus(direction) {
 
 function setupTvRemoteLogic() {
     window.addEventListener('keydown', (e) => {
-        const focused = document.activeElement; // Get currently focused item
+        const focused = document.activeElement;
         const isInputActive = focused.tagName === 'INPUT' || focused.tagName === 'TEXTAREA';
 
         // --- 1. BACK / EXIT LOGIC ---
@@ -765,7 +756,9 @@ function setupTvRemoteLogic() {
             if (e.key === 'Backspace' && isInputActive) return;
             e.preventDefault();
             
-            // Modal Closing Logic
+            if (document.getElementById('installModal')?.classList.contains('active')) {
+                document.getElementById('pwaCancelBtn').click(); return;
+            }
             if (document.getElementById('qrModal')?.classList.contains('active')) {
                 document.getElementById('closeQrModalBtn').click(); return;
             }
@@ -783,29 +776,7 @@ function setupTvRemoteLogic() {
             }
         }
 
-        // --- 2. SPECIAL CASE: CHANNEL LIST SCROLL FIX ---
-        if (focused && focused.classList.contains('channel-button')) {
-            if (e.key === 'ArrowDown') {
-                e.preventDefault(); 
-                const next = focused.nextElementSibling;
-                if (next && next.classList.contains('channel-button')) {
-                    next.focus();
-                    next.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                return; // STOP here so general logic doesn't fire
-            } 
-            if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                const prev = focused.previousElementSibling;
-                if (prev && prev.classList.contains('channel-button')) {
-                    prev.focus();
-                    prev.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                return; // STOP here
-            }
-        }
-
-        // --- 3. GENERAL SPATIAL NAVIGATION ---
+        // --- 2. NAVIGATION LOGIC (Spatial) ---
         let direction = null;
         switch (e.key) {
             case 'ArrowUp': direction = 'up'; break;
@@ -825,15 +796,119 @@ function setupTvRemoteLogic() {
             e.preventDefault();
             const nextElement = findNextSpatialFocus(direction); 
             if (nextElement) {
-                nextElement.focus(); 
+                setTvFocus(nextElement);
+                nextElement.focus();
             }
         }
     });
 
-    // Initial Focus
     window.addEventListener('load', () => {
         const searchInput = document.getElementById('search');
         if (searchInput) searchInput.focus(); 
+    });
+}
+
+function setupQrCodeModal() {
+    const qrCodeImage = document.querySelector('.donation-qr-code');
+    const qrModal = document.getElementById('qrModal');
+    const zoomedQrImage = document.getElementById('zoomedQrImage');
+    const closeQrModalBtn = document.getElementById('closeQrModalBtn');
+
+    if (!qrCodeImage || !qrModal || !zoomedQrImage || !closeQrModalBtn) return;
+
+    qrCodeImage.addEventListener('click', () => {
+        qrModal.classList.add('active');
+        zoomedQrImage.src = qrCodeImage.src;
+        // Focus for TV remote accessibility
+        setTimeout(() => setTvFocus(closeQrModalBtn), 50);
+    });
+
+    closeQrModalBtn.addEventListener('click', () => {
+        qrModal.classList.remove('active');
+        clearTvFocus();
+    });
+}
+
+
+// ==========================================
+// 4. PWA & COOKIE LOGIC
+// ==========================================
+function setupPwaInstall() {
+    const installModal = document.getElementById('installModal');
+    const installBtn = document.getElementById('pwaInstallBtn');
+    const cancelBtn = document.getElementById('pwaCancelBtn');
+    let isWelcomeClosed = !!sessionStorage.getItem('welcomeModalShown');
+
+    if (!installModal || !installBtn || !cancelBtn) return;
+
+    // Helper to actually show the modal
+    const showModal = () => {
+        if (!sessionStorage.getItem('installDeclined')) {
+            installModal.classList.add('active');
+            setTimeout(() => setTvFocus(installBtn), 100);
+        }
+    };
+
+    // 1. Listen for browser install event
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Only show if Welcome is ALREADY closed. 
+        // If Welcome is open, we wait for the event below.
+        if (isWelcomeClosed) {
+            showModal();
+        }
+    });
+
+    // 2. Listen for Welcome Modal closing
+    window.addEventListener('welcomeClosed', () => {
+        isWelcomeClosed = true;
+        // If the browser already gave us the prompt while we were waiting
+        if (deferredPrompt) {
+            showModal();
+        }
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response: ${outcome}`);
+            deferredPrompt = null;
+        }
+        installModal.classList.remove('active');
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        installModal.classList.remove('active');
+        sessionStorage.setItem('installDeclined', 'true');
+        clearTvFocus();
+    });
+}
+
+
+function setupCookieConsent() {
+    const banner = document.getElementById('cookieBanner');
+    const necessaryBtn = document.getElementById('cookieNecessaryBtn');
+    const allowBtn = document.getElementById('cookieAllowBtn');
+    
+    if (!banner || !necessaryBtn || !allowBtn) return;
+
+    if (localStorage.getItem('shakzzCookieConsent')) return;
+
+    setTimeout(() => {
+        banner.classList.remove('hidden');
+    }, 2000);
+
+    necessaryBtn.addEventListener('click', () => {
+        localStorage.setItem('shakzzCookieConsent', 'necessary');
+        banner.classList.add('hidden');
+    });
+
+    allowBtn.addEventListener('click', () => {
+        localStorage.setItem('shakzzCookieConsent', 'all');
+        banner.classList.add('hidden');
     });
 }
 
@@ -854,7 +929,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             setupMaintenanceMode(),
             new Promise((_, reject) => setTimeout(() => reject('Maintenance check timeout'), 4000))
         ]);
-
+         
+        setupPwaInstall();
+        setupCookieConsent();
         setupScrollReveal();
         setupSearch();
         setupCategoryTabs();
@@ -901,7 +978,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// ... (Keep all your existing code above the messenger section) ...
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('✅ ServiceWorker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.log('❌ ServiceWorker registration failed:', error);
+            });
+    });
+}
+
+
+
 
 // ==========================================
 // SHAKZZ TV MINI MESSENGER (Final - All Fixes Applied + Messenger Logic)
@@ -2500,9 +2590,4 @@ function initMiniMessenger() {
     }
     els.mentionList = mentionListEl;
 
-} // End initMiniMessenger
-
-document.addEventListener('DOMContentLoaded', () => {
-    initMiniMessenger();
-});
-
+} 

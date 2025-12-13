@@ -494,6 +494,31 @@
 
     <button id="backToTopBtn" title="Go to top" class="focusable-element"><i class="fas fa-arrow-up"></i></button>
 
+<div id="installModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <div class="modal-icon" style="font-size: 3rem; margin-bottom: 15px;">📲</div>
+        <h2 class="modal-heading">Install Shakzz TV</h2>
+        <p class="modal-text">Install our app for a better streaming experience, fullscreen viewing, and faster access!</p>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+            <button id="pwaCancelBtn" class="focusable-element" style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cancel</button>
+            <button id="pwaInstallBtn" class="focusable-element" style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Install App</button>
+        </div>
+    </div>
+</div>
+
+<div id="cookieBanner" class="cookie-banner hidden">
+    <div class="cookie-content">
+        <i class="fas fa-cookie-bite" style="font-size: 1.5rem; color: #fbbf24;"></i>
+        <div class="cookie-text">
+            <h4>We value your privacy</h4>
+            <p>We use cookies to enhance your experience. "Necessary" cookies keep the site working, while "Allow All" helps us understand viewer preferences.</p>
+        </div>
+    </div>
+    <div class="cookie-actions">
+        <button id="cookieNecessaryBtn" class="focusable-element btn-secondary">Necessary Only</button>
+        <button id="cookieAllowBtn" class="focusable-element btn-primary">Allow All</button>
+    </div>
+</div>
 
 
     <script src="channels.js"></script>
