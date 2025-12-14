@@ -418,6 +418,21 @@ async function loadChannel(key) {
         }
     }
 
+    // ==========================================
+    // 🔥 TOKEN INJECTION LOGIC (ADDED)
+    // ==========================================
+    const AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJTaGFrenoiLCJleHAiOjE3NjY5NTgzNTN9.RSc_LQ11txXXI0d7gZ8GvMOAwoHrWzUUr3CCQCM0Hco";
+    
+    let finalManifest = channel.manifestUri;
+    
+    // Check if the URL belongs to the tokenized provider
+    if (finalManifest.includes("converse.nathcreqtives.com")) {
+        // Check if query params already exist to decide between '?' or '&'
+        const separator = finalManifest.includes('?') ? '&' : '?';
+        finalManifest = `${finalManifest}${separator}token=${AUTH_TOKEN}`;
+    }
+    // ==========================================
+
     let playerType = "hls";
     let drmConfig = undefined;
 
@@ -429,10 +444,12 @@ async function loadChannel(key) {
             console.error("ClearKey channel missing 'keyId' or 'key'");
         }
     }
+    
     if (channel.type === "widevine") {
         playerType = "dash";
-        drmConfig = { widevine: { url: channel.licenseServerUri } };
+        drmConfig = { widevine: { url: channel.licenseServerUri || channel.key } }; // Fallback to channel.key if licenseServerUri is missing
     }
+    
     if (channel.type === "hls") playerType = "hls";
     if (channel.type === "mp4") playerType = "mp4";
 
@@ -443,7 +460,7 @@ async function loadChannel(key) {
             aspectratio: "16:9",
             stretching: "exactfit",
             sources: [{
-                file: channel.manifestUri,
+                file: finalManifest, // ✅ Uses the new tokenized URL
                 type: playerType,
                 drm: drmConfig
             }]
@@ -452,6 +469,7 @@ async function loadChannel(key) {
         console.error("JWPlayer setup error:", e);
     }
 }
+
 
 function setupSearch() {
     const searchInput = document.getElementById("search");
