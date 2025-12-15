@@ -1086,7 +1086,7 @@ GTV: {
 // ==========================================
 
 const animeData = {
-    "One Punch Man (Tagalog Dub)": [
+    "One Punch Man": [
         { 
             name: "Episode 1", 
             type: "mp4", 
@@ -1160,7 +1160,7 @@ const animeData = {
             logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi0ERYHfvI8s0UnX2n1TZCEVZMxwTCMJcLF9IAolKFsNvjtptVCzaN4TFK&s=10" 
         }
     ],
-    "My Hero Academia (Tagalog Dub)": [
+    "My Hero Academia": [
         // Season 1
         { name: "Season 1 Ep 1", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=12rBQ2zQw4tSi2Fmii2lzRamR4233ads3", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 1 Ep 2", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1uA5SGVEXleO6figHixpepeASmsjyK2EF", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
@@ -1189,7 +1189,7 @@ const animeData = {
         { name: "Season 2 Ep 11", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1lK1PwzznvwhirYfRTHdPl5BTh6VwQvU2", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 12", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1KsXUu1n7Bm15zY2cbJZGietG6mz1kimS", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 13", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1nR2ETX_u8Mch6lDY5clhbwLBFeq9ujh2", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
-        { name: "Season 2 Ep 14", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1x2j5 t1JaP1gRQKgLpP-sYoCR2lVunHl", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+        { name: "Season 2 Ep 14", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1x2j5t1JaP1gRQKgLpP-sYoCR2lVunHl", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 15", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1cVxIbOwKK7TYvRstyGvdJ5F2GpvQBZQS", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 16", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1Aqbdczjcfeh5VcMAgRnAI35DpABmLnn8", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 17", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1OFRtSbJ-sy5IuYvawr8g3uY4_s3oprz9", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
@@ -1201,5 +1201,32 @@ const animeData = {
         { name: "Season 2 Ep 23", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1yx4IfznTz3NVK2qL3puKxM0SmX_M_idO", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 24", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1GwJEkU53MU032YCiP-NlKDZZ0J-0mEac", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
         { name: "Season 2 Ep 25", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1EGDy6dtNO6M3Nx59Sc-jeO7YP1nOIZF6", logo: "https://m.media-amazon.com/images/M/MV5BY2QzODA5OTQtYWJlNi00ZjIzLThhNTItMDMwODhlYzYzMjA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" }
+    ],
+    "Jujutsu Kaisen": [
+        // Season 1
+        { name: "Season 1 Ep 1", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1MqXmWHDwaM839JKKgEJ9Lfxt8Na7Tq7A", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 2", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=16WAj5skJcMF9Sk58YPF2k-iDFYlzZGip", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 3", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1g8SzR5WTTv3bEY7D5jkcyVA-14kFbyZP", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 4", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1QsBmC9UbYUyKT-SEzGCsGx-vduYVtgvo", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 5", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1IPoCmFf4f_5JheMgSaf9lwoXGwqqqFz3", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 6", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1J-0g222Y40UbP2kUOQpcM8U_bRqSidhG", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 7", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1ZpPpDPZXQFrfi7SqvIqC3ejjFZg2fAyM", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 8", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1BL2ZUr9FzG9MgFAq2Rk_0m_KDKQnUJXx", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 9", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1D0ccpp2FDssQEGYShbpWsCoMaAngtKl5", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 10", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1Un6urHblUyrHvflVYASm-Z8OIASPw2rf", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 11", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1jBxyk7t8nDfNXfd8z0eMmAHIO2VTflxh", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 12", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1uE9xtGIDdiW66YXwWyRGlZvCJDraOHCw", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 13", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1_7JR6UPJ2v6aLHooeyFviOv6nm9GfPB0", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 14", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1plZu8-VRQ38uOAYLkcTEAVwSMBfbtt6p", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 15", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=13ik1Xe_o6Wnrk-iu7FMCH01bDYl1ZmO_", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 16", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1Sgtd_d1vIzZJJxTXBqerIx_5HE-Eu2Oi", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 17", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=11qwrRdj0lNhGz3-aNX3pgnaSPpewjzM1", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 18", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1tDHjCmfsiaYim5CCtEJJupQdpupByeQV", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 19", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1O6qcWIcl5zP6hwb0hO1vRszkkDoboSay", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 20", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1DqjHleJSJzixKigbXypVIgf_WKZL38VM", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 21", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1O82mA68p0nBjV-gJOGZPmmoL5IVDELiF", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 22", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1nuutzJUv2rMdDKoescP6Bq_iRAZ-I0_N", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 23", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1ggiV_aq6Bky-W1DHjRIn5FwV3NpXM15o", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" },
+        { name: "Season 1 Ep 24", type: "mp4", manifestUri: "https://series.shakzz.workers.dev/?id=1260OmmY6K32-I-AEGFa1Z8W3aAU_DCBU", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRjuvmcnTukhzjYjeLI3j4yTNdUa_MUW4oJn5Fcge_jQ&s" }
     ]
 };
