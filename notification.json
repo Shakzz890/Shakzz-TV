@@ -2,9 +2,9 @@
   "show": true,
   "notifications": [
     {
-      "id": "notif-install",
+      "id": "notif-update",
       "type": "info",
-      "message": "<strong>App Install Available!</strong><br>Check the Updates section to add our site to your home screen."
+      "message": "<strong>Update Alert!</strong><br>Jujutsu Kaisen added to Anime Tagalog Dubbed section."
     },
     {
       "id": "notif-donate",
