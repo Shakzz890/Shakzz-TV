@@ -107,30 +107,45 @@ function validateRequirements() {
 function setupMaintenanceMode() {
     const CHECK_INTERVAL = 5000;
     let isUnderMaintenance = false;
+
     return new Promise((resolve) => {
         async function checkStatus() {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 2000);
+
             try {
+                // Add timestamp to prevent caching of config file
                 const response = await fetch(`config.json?t=${Date.now()}`, {
                     cache: "no-store",
                     signal: controller.signal,
                     headers: { 'Cache-Control': 'no-cache' }
                 });
+                
                 clearTimeout(timeoutId);
                 if (!response.ok) { resolve(); return; }
+                
                 const config = await response.json();
                 const overlay = document.getElementById('maintenanceOverlay');
                 const msgEl = document.getElementById('maintenanceMessage');
+
+                // List of selectors to hide/show
+                const selectorsToToggle = [
+                    '.page-header', '#liveNotificationBanner', '#main-content-area', 
+                    '#about-us', '#updates', '#privacy-policy', '#contact', 
+                    '#welcomeModal', '#qrModal', '#categoryModal', '#backToTopBtn'
+                ];
+
                 if (config.maintenanceMode === true) {
+                    
                     if (msgEl) msgEl.textContent = config.message;
+                    
                     if (!isUnderMaintenance) {
                         isUnderMaintenance = true;
                         window.stop();
                         if (window.jwplayer) { try { jwplayer().stop(); jwplayer().remove(); } catch (e) {} }
                         if (viewerInterval) clearInterval(viewerInterval);
                         if (notificationInterval) clearInterval(notificationInterval);
-                        ['.page-header', '#liveNotificationBanner', '#main-content-area', '#about-us', '#updates', '#privacy-policy', '#contact', '#welcomeModal', '#qrModal', '#categoryModal', '#backToTopBtn'].forEach(sel => {
+                        selectorsToToggle.forEach(sel => {
                             const el = document.querySelector(sel);
                             if (el) el.style.display = 'none';
                         });
@@ -140,15 +155,36 @@ function setupMaintenanceMode() {
                         }
                     }
                 } else if (isUnderMaintenance) {
-                    location.reload();
+                    isUnderMaintenance = false;
+
+                    console.log("Maintenance over. Resetting environment...");
+
+                    selectorsToToggle.forEach(sel => {
+                        const el = document.querySelector(sel);
+                        if (el) el.style.display 
+                    });
+
+                    if (overlay) overlay.classList.remove('active');
+                    document.body.style.overflow = ''; Data" issue)
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                            for(let registration of registrations) {
+                                registration.update();
+                            }
+                        });
+                    }
+                        window.location.reload(true); 
+                    }, 500);
                 }
             } catch (error) {}
             resolve();
         }
+
         checkStatus().then(resolve);
         maintenanceInterval = setInterval(checkStatus, CHECK_INTERVAL);
     });
 }
+
 
 function setupScrollReveal() {
     if (document.getElementById('maintenanceOverlay')?.classList.contains('active')) return;
