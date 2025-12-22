@@ -1,4 +1,21 @@
-// ======================================
+// === 0. GLOBAL ERROR CATCHER (DEBUGGING) ===
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    // 1. Force remove the skeleton loader so you can see the error
+    const skeletons = document.querySelectorAll('.skeleton-effect, .skeleton');
+    skeletons.forEach(el => el.classList.remove('skeleton', 'skeleton-effect'));
+    
+    // 2. Show the error on the screen
+    const errorBox = document.createElement('div');
+    errorBox.style.cssText = "position:fixed; top:10px; left:10px; right:10px; background:red; color:white; z-index:999999; padding:20px; font-family:monospace; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5);";
+    errorBox.innerHTML = `<strong>⚠️ CRASH DETECTED:</strong><br>${msg}<br><br>Line: ${lineNo}`;
+    document.body.appendChild(errorBox);
+
+    console.error("Global Error Caught:", msg, error);
+    return false;
+};
+
+
+// ==========================================
 // 1. FIREBASE CONFIGURATION
 // ==========================================
 const firebaseConfig = {
@@ -81,19 +98,19 @@ const CutieLoader = {
 // 3. PLAYER & CHANNEL LOGIC
 // ==========================================
 const DEFAULT_CHANNEL_ID = "Kapamilya";
+const tabs = ["all", "favorites", "news", "entertainment", "movies", "sports", "documentary", "cartoons & animations", "anime tagalog dubbed"];
+
 let shownCount = 0;
 let currentSearchFilter = "";
 let currentChannelKey = "";
 let deferredPrompt;
-
-const tabs = ["all", "favorites", "news", "entertainment", "movies", "sports", "documentary", "cartoons & animations", "anime tagalog dubbed"];
-
 let currentTabIndex = 0;
 let sortedChannels = [];
 let focusedElement = null;
 let viewerInterval = null;
 let notificationInterval = null;
 let maintenanceInterval = null;
+let globalDeferredPrompt = null;
 
 function validateRequirements() {
     const errors = [];
@@ -106,11 +123,28 @@ function validateRequirements() {
 
 function setupMaintenanceMode() {
     const CHECK_INTERVAL = 5000;
-    let isUnderMaintenance = false;
+    let wasUnderMaintenance = sessionStorage.getItem('wasInMaintenance') === 'true';
+
+    // Helper to wipe cookies (Fixes Popunder Ads)
+    const clearAllCookies = () => {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i];
+            const eqPos = cookie.indexOf("=");
+            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=" + window.location.hostname;
+        }
+    };
+
     return new Promise((resolve) => {
+        let isResolved = false;
+        const finishSetup = () => { if (!isResolved) { isResolved = true; resolve(); } };
+
         async function checkStatus() {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 2000);
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+
             try {
                 const response = await fetch(`config.json?t=${Date.now()}`, {
                     cache: "no-store",
@@ -118,37 +152,85 @@ function setupMaintenanceMode() {
                     headers: { 'Cache-Control': 'no-cache' }
                 });
                 clearTimeout(timeoutId);
-                if (!response.ok) { resolve(); return; }
+
+                if (!response.ok) { finishSetup(); return; }
+
                 const config = await response.json();
                 const overlay = document.getElementById('maintenanceOverlay');
                 const msgEl = document.getElementById('maintenanceMessage');
+                
+                const selectorsToToggle = [
+                    '.page-header', '#liveNotificationBanner', '#main-content-area', 
+                    '#about-us', '#updates', '#privacy-policy', '#contact', 
+                    '#welcomeModal', '#qrModal', '#categoryModal', '#backToTopBtn'
+                ];
+
                 if (config.maintenanceMode === true) {
-                    if (msgEl) msgEl.textContent = config.message;
-                    if (!isUnderMaintenance) {
-                        isUnderMaintenance = true;
-                        window.stop();
-                        if (window.jwplayer) { try { jwplayer().stop(); jwplayer().remove(); } catch (e) {} }
-                        if (viewerInterval) clearInterval(viewerInterval);
-                        if (notificationInterval) clearInterval(notificationInterval);
-                        ['.page-header', '#liveNotificationBanner', '#main-content-area', '#about-us', '#updates', '#privacy-policy', '#contact', '#welcomeModal', '#qrModal', '#categoryModal', '#backToTopBtn'].forEach(sel => {
-                            const el = document.querySelector(sel);
-                            if (el) el.style.display = 'none';
-                        });
-                        if (overlay) {
-                            overlay.classList.add('active');
-                            document.body.style.overflow = 'hidden';
-                        }
+                    // === ENABLE MAINTENANCE ===
+                    if (!wasUnderMaintenance) {
+                        sessionStorage.setItem('wasInMaintenance', 'true');
+                        wasUnderMaintenance = true;
                     }
-                } else if (isUnderMaintenance) {
-                    location.reload();
+                    if (msgEl) msgEl.textContent = config.message || "System under maintenance";
+                    
+                    window.stop(); 
+                    if (window.jwplayer) { try { jwplayer().stop(); jwplayer().remove(); } catch (e) {} }
+                    if (viewerInterval) clearInterval(viewerInterval);
+                    if (notificationInterval) clearInterval(notificationInterval);
+                    
+                    selectorsToToggle.forEach(sel => {
+                        const el = document.querySelector(sel);
+                        if (el) el.style.display = 'none';
+                    });
+
+                    if (overlay) {
+                        overlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                } else {
+                    // === DISABLE MAINTENANCE (Popunder Fix) ===
+                    if (wasUnderMaintenance) {
+                        console.log("Maintenance ended. Nuking Cookies & Storage for Ads...");
+                        
+                        // 1. SAVE Critical User Data (Favorites will be safe!)
+                        const savedFavorites = localStorage.getItem("favoriteChannels");
+                        const savedDeviceId = localStorage.getItem("deviceId");
+                        const savedConsent = localStorage.getItem("shakzzCookieConsent");
+
+                        // 2. CLEAR EVERYTHING (Cookies + Storage)
+                        localStorage.clear();
+                        sessionStorage.clear();
+                        clearAllCookies(); 
+
+                        // 3. RESTORE Critical Data
+                        if (savedFavorites) localStorage.setItem("favoriteChannels", savedFavorites);
+                        if (savedDeviceId) localStorage.setItem("deviceId", savedDeviceId);
+                        if (savedConsent) localStorage.setItem("shakzzCookieConsent", savedConsent);
+
+                        // 4. Kill Service Worker
+                        if ('serviceWorker' in navigator) {
+                            const registrations = await navigator.serviceWorker.getRegistrations();
+                            for(let registration of registrations) {
+                                await registration.unregister();
+                            }
+                        }
+
+                        // 5. Hard Reload
+                        window.location.reload(true);
+                        return;
+                    }
                 }
-            } catch (error) {}
-            resolve();
+            } catch (error) { /* Ignore */ } finally {
+                finishSetup();
+            }
         }
-        checkStatus().then(resolve);
+
+        checkStatus();
         maintenanceInterval = setInterval(checkStatus, CHECK_INTERVAL);
+        setTimeout(finishSetup, 4000);
     });
 }
+
 
 function setupScrollReveal() {
     if (document.getElementById('maintenanceOverlay')?.classList.contains('active')) return;
@@ -353,47 +435,6 @@ function renderChannelButtons(filter = "") {
     });
 }
 
-// === ANIME RENDERER (FIXED MP4 SUPPORT) ===
-function renderAnimeEpisodes(episodes) {
-    const list = document.getElementById("channelList");
-    list.innerHTML = "";
-    
-    if(!episodes) return;
-
-    episodes.forEach((ep, index) => {
-        const div = document.createElement('div');
-        div.className = 'channel-button focusable-element';
-        div.innerHTML = `
-            <div class="channel-logo">
-                <img src="${ep.logo}" alt="${ep.name}" style="object-fit:cover;">
-            </div>
-            <div class="channel-name">${ep.name}</div>
-        `;
-        
-        div.onclick = () => {
-             // [FIX] Uses the correct manifestUri and type (hls or mp4)
-             jwplayer("video").setup({
-                autostart: true,
-                width: "100%",
-                aspectratio: "16:9",
-                stretching: "exactfit",
-                playlist: [{
-                    file: ep.manifestUri, 
-                    type: ep.type || "hls" 
-                }]
-            });
-            document.getElementById('nowPlayingChannel').innerText = ep.name;
-            
-            document.querySelectorAll('.channel-button').forEach(b => b.classList.remove('active'));
-            div.classList.add('active');
-        };
-        
-        list.appendChild(div);
-    });
-
-    const countDisplay = document.getElementById("channelCountText");
-    if (countDisplay) countDisplay.textContent = `${episodes.length} episodes`;
-}
 
 async function loadChannel(key) {
     if (typeof channels === "undefined") return;
@@ -470,7 +511,6 @@ async function loadChannel(key) {
     }
 }
 
-
 function setupSearch() {
     const searchInput = document.getElementById("search");
     const clearBtn = document.getElementById("clearSearch");
@@ -544,6 +584,7 @@ function setupCategoryTabs() {
         document.getElementById('closeCategoryModal')?.addEventListener('click', () => document.getElementById('categoryModal')?.classList.remove('active'));
     }
 }
+
 
 function setupHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
@@ -648,31 +689,44 @@ function setupNotificationSystem() {
     const closeBtn = document.getElementById('closeNotificationBtn');
     
     const NOTIFICATION_URL = 'notification.json';
-    const SESSION_KEY = 'closedNotifications'; // New key for storing a list of closed IDs
     
-    let activeNotificationId = null;
-    let cycleIndex = 0; // Keeps track of which message to show next
-
+    // Reset closed list on every reload (Temporary Memory)
+    let closedSessionIds = []; 
+    
+    let activeNotification = null; 
+    let cycleIndex = 0; 
+    
     if (!banner) return;
 
-    // --- HANDLE CLOSE BUTTON ---
-    closeBtn.addEventListener('click', () => {
-        banner.classList.remove('show');
-        banner.classList.add('hide');
-        
-        // Add the current ID to the "Ignored" list in session storage
-        if (activeNotificationId) {
-            let closedList = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "[]");
-            if (!closedList.includes(activeNotificationId)) {
-                closedList.push(activeNotificationId);
-                sessionStorage.setItem(SESSION_KEY, JSON.stringify(closedList));
+    // --- HANDLE CLICKING THE BANNER ---
+    banner.addEventListener('click', async (e) => {
+        if (e.target.closest('#closeNotificationBtn')) return;
+
+        if (activeNotification && activeNotification.isPwa && globalDeferredPrompt) {
+            globalDeferredPrompt.prompt();
+            const { outcome } = await globalDeferredPrompt.userChoice;
+            console.log(`User response: ${outcome}`);
+            
+            if (outcome === 'accepted') {
+                globalDeferredPrompt = null;
+                banner.classList.remove('show');
             }
         }
     });
 
-    // --- FETCH & SHOW LOGIC ---
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        banner.classList.remove('show');
+        banner.classList.add('hide');
+        
+        if (activeNotification && activeNotification.id) {
+            if (!closedSessionIds.includes(activeNotification.id)) {
+                closedSessionIds.push(activeNotification.id);
+            }
+        }
+    });
+
     async function fetchNotification() {
-        // Don't show if Maintenance or Welcome Modal is open
         if (document.getElementById('maintenanceOverlay')?.classList.contains('active') || 
             document.getElementById('welcomeModal')?.classList.contains('active')) return;
 
@@ -684,46 +738,69 @@ function setupNotificationSystem() {
             if (!response.ok) return;
             
             const data = await response.json();
+            
+            let validNotifications = (data.notifications || []).filter(n => !closedSessionIds.includes(n.id));
 
-            // Check if system is enabled and has messages
-            if (!data.show || !data.notifications || data.notifications.length === 0) return;
-
-            // 1. Filter out messages the user has already closed
-            const closedList = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "[]");
-            const validNotifications = data.notifications.filter(n => !closedList.includes(n.id));
+            // --- INJECT PWA NOTIFICATION (SHAKZZ THEME) ---
+            if (globalDeferredPrompt && !closedSessionIds.includes('pwa-install')) {
+                validNotifications.push({
+                    id: 'pwa-install',
+                    type: 'info', 
+                    isPwa: true,     
+                    message: `
+                        <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+                            <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
+                                <strong style="font-size: 0.95rem; line-height: 1.2;">Install Shakzz TV</strong>
+                                <span style="font-size: 0.75rem; opacity: 0.85; margin-top: 2px;">Add to home screen</span>
+                            </div>
+                            <button style="
+                                background: #3b82f6; /* CHANGED: Shakzz Theme Blue */
+                                color: white; 
+                                border: none; 
+                                padding: 8px 16px; 
+                                border-radius: 20px; 
+                                font-weight: 600; 
+                                font-size: 0.85rem; 
+                                white-space: nowrap; 
+                                cursor: pointer; 
+                                box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4); /* Blue Shadow */
+                                margin-left: 10px;
+                            ">Install</button>
+                        </div>
+                    `
+                });
+            }
 
             if (validNotifications.length === 0) return;
 
-            // 2. Pick the next message in the cycle
             const currentNotif = validNotifications[cycleIndex % validNotifications.length];
-            cycleIndex++; // Increment for next time
+            cycleIndex++; 
 
-            // 3. Update UI
-            activeNotificationId = currentNotif.id;
+            activeNotification = currentNotif;
+            
+            msgEl.style.width = '100%';
+            msgEl.style.display = 'block'; 
             msgEl.innerHTML = currentNotif.message;
             
-            banner.classList.remove('info', 'success', 'alert', 'hide');
+            banner.className = 'notification-banner hide'; 
             banner.classList.add(currentNotif.type || 'alert');
+            banner.style.cursor = currentNotif.isPwa ? 'pointer' : 'default';
+
             banner.style.display = 'flex';
-            
-            // 4. Show Banner
             setTimeout(() => banner.classList.add('show'), 10);
             
-            // 5. Hide Banner after 8 seconds (allows gap before next one)
             setTimeout(() => {
                 banner.classList.remove('show');
                 banner.classList.add('hide');
             }, 8000);
 
-        } catch (error) {
-            // Silent fail is fine for notifications
-        }
+        } catch (error) { }
     }
 
-    // Start delay, then run every 15 seconds (8s show + 7s pause)
     setTimeout(fetchNotification, 2000);
     notificationInterval = setInterval(fetchNotification, 15000);
 }
+
 
 
 function setupScrollSpy() {
@@ -902,59 +979,15 @@ function setupQrCodeModal() {
 // 4. PWA & COOKIE LOGIC
 // ==========================================
 function setupPwaInstall() {
-    const installModal = document.getElementById('installModal');
-    const installBtn = document.getElementById('pwaInstallBtn');
-    const cancelBtn = document.getElementById('pwaCancelBtn');
-    
-    // Track if the cookie step is finished
-    let areCookiesResolved = !!localStorage.getItem('shakzzCookieConsent');
-
-    if (!installModal || !installBtn || !cancelBtn) return;
-
-    const showModal = () => {
-        // Only show if not previously declined AND Cookies are done
-        if (!sessionStorage.getItem('installDeclined') && areCookiesResolved) {
-            installModal.classList.add('active');
-            setTimeout(() => setTvFocus(installBtn), 100);
-        }
-    };
-
-    // 1. Browser says "App is installable" (This happens anytime)
     window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the immediate native browser bar
         e.preventDefault();
-        deferredPrompt = e;
-        
-        // If cookies are already done, show now. If not, wait.
-        if (areCookiesResolved) {
-            showModal();
-        }
-    });
-
-    // 2. LISTENER: Wait for "cookiesResolved" event
-    window.addEventListener('cookiesResolved', () => {
-        areCookiesResolved = true;
-        // If browser already sent the prompt while we were waiting
-        if (deferredPrompt) {
-            showModal();
-        }
-    });
-
-    installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`User response: ${outcome}`);
-            deferredPrompt = null;
-        }
-        installModal.classList.remove('active');
-    });
-
-    cancelBtn.addEventListener('click', () => {
-        installModal.classList.remove('active');
-        sessionStorage.setItem('installDeclined', 'true');
-        clearTvFocus();
+        // Save the event to the global variable
+        globalDeferredPrompt = e;
+        console.log("PWA Event captured for Notification System");
     });
 }
+
 
 function setupCookieConsent() {
     const banner = document.getElementById('cookieBanner');
@@ -989,7 +1022,6 @@ function setupCookieConsent() {
     necessaryBtn.addEventListener('click', () => finishCookies('necessary'));
     allowBtn.addEventListener('click', () => finishCookies('all'));
 }
-
 
 
 
@@ -1036,6 +1068,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
+                // === 🛡️ IMPROVED WATCHDOG ===
+        setTimeout(() => {
+            const skeletons = document.querySelectorAll('.skeleton-effect, .skeleton');
+            // Check if skeletons exist AND no channels are shown yet
+            if (skeletons.length > 0 && shownCount === 0) {
+                console.warn("⚠️ Watchdog: App stuck on skeleton loader.");
+                
+                removeSkeletonLoader(); // Try to fade them out
+                
+                const list = document.getElementById("channelList");
+                if(list) {
+                    list.innerHTML = `
+                        <div class="cutie-error-msg" style="color: #ef4444; text-align: center; margin-top: 20px;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem;"></i><br><br>
+                            <strong>Connection Timeout</strong><br>
+                            The channels took too long to load.<br><br>
+                            <button onclick="location.reload()" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:5px;">Reload Page</button>
+                        </div>`;
+                }
+            }
+        }, 5000); // 5 Seconds Limit
+        // ==================================================
+
+
         renderChannelButtons();
         resetChannelListScroll();
 
@@ -1046,6 +1102,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (typeof CutieLoader !== 'undefined') CutieLoader.hide();
         console.log("✅ Cutie.js initialization complete");
+        
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker Registered!', reg))
+        .catch(err => console.log('Service Worker Failed', err));
+    });
+  }
+
 
         // Load Messenger safely
         initMiniMessenger();
@@ -1056,19 +1121,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (typeof CutieLoader !== 'undefined') CutieLoader.error(error.message || "Failed to load.");
     }
 });
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(registration => {
-                console.log('✅ ServiceWorker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-                console.log('❌ ServiceWorker registration failed:', error);
-            });
-    });
-}
-
 
 
 

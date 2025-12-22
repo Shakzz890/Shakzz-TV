@@ -3033,59 +3033,69 @@ body.mm-open {
     .cookie-actions { width: 100%; justify-content: flex-end; }
 }
 
-/* =========================================
-   PWA TOP BANNER (Styled Like Cookie Banner)
-   ========================================= */
-
-/* 1. Container: Position at the top, allow clicks through the empty space */
-#installModal.active {
-    align-items: flex-start !important; /* Pushes content to the TOP */
-    padding-top: 20px;                  /* Spacing from top edge */
-    background: transparent !important; /* Remove dark overlay */
-    pointer-events: none;               /* Allow clicking on the site behind the banner */
-}
-
-/* 2. Content: The exact 'Cookie Style' Glassmorphism */
-#installModal .modal-content {
-    pointer-events: auto; /* Re-enable clicks on the banner itself */
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;       /* Center horizontally */
+/* --- PWA Install Banner Styles --- */
+/* 1. APPLY BLUR TO THE FULL SCREEN CONTAINER */
+#installModal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center; /* Center it vertically for better look */
+    z-index: 10000;
     
-    /* Visuals Copied from .cookie-banner */
-    background: rgba(15, 15, 15, 0.98) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 12px !important;
+    /* Move background & blur here so the WHOLE screen gets it */
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(8px);          /* Standard */
+    -webkit-backdrop-filter: blur(8px);  /* Safari/Mobile support */
+    
+    pointer-events: auto; /* Make sure users can't click background items */
+}
+#installModal.active {
+    transform: translateX(-50%) translateY(0); /* Slide down into view */
+    pointer-events: auto; /* Enable clicks */
+}
+
+/* 2. REMOVE BLUR FROM THE SMALL CARD */
+#installModal .modal-content {
+    width: 90%;
+    max-width: 400px;
+    background: #1e1e1e; /* Keep the card solid or slightly transparent */
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8) !important;
-
-    /* Animation: Slide Down from Above */
-    animation: slideDownBanner 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* REMOVE backdrop-filter lines from here */
+    
+    animation: slideDownPWA 0.5s ease forwards;
 }
 
-/* 3. The Animation Keyframes */
-@keyframes slideDownBanner {
-    0% {
-        opacity: 0;
-        transform: translateY(-150%); /* Starts above the screen */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);     /* Lands in position */
-    }
+#installModal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: auto;
 }
 
-/* 4. Mobile Tweak: Flush to top on small screens */
-@media (max-width: 600px) {
-    #installModal.active {
-        padding-top: 0; /* No gap on mobile */
-    }
-    #installModal .modal-content {
-        width: 100%;
-        border-radius: 0 0 12px 12px !important; /* Round ONLY the bottom corners */
-        border-top: none !important;
-    }
+#installModal.active {
+    display: flex;
 }
 
+#installModal .modal-content {
+    width: 90%;
+    max-width: 400px;
+    background: #1e1e1e;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideDownPWA 0.5s ease forwards;
+}
