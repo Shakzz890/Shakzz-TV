@@ -66,11 +66,12 @@
             </div>
             <div class="nav-links">
                 <div id="viewerCounter" class="skeleton-effect">
-                    <i class="fas fa-eye"></i>
-                    <span id="viewerCountText">0</span>
-                    <div class="view-count">
-   <i class="fa fa-eye"></i> <span id="visit-count">...</span>
+                    
+<div class="view-count">
+   <i class="fa fa-eye"></i> <span id="live-counter">...</span>
 </div>
+<div id="debug-log" style="color: yellow; font-size: 10px; margin-top: 5px;">Status: Loading...</div>
+
 
                 </div>
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="click-here-link focusable-element skeleton-effect">CLICK HERE</a>
@@ -539,6 +540,53 @@ document.onkeydown = (e) => {
   // *** CONFIGURATION ***
   // Ping every 5 seconds (5000ms)
   // This is safe because 5s is faster than the 10s cleanup
+  setInterval(updateOnlineCount, 5000);
+</script>
+<script>
+  // DEBUGGER FUNCTION
+  function log(msg) {
+    const el = document.getElementById('debug-log');
+    if (el) el.innerText = msg;
+  }
+
+  // 1. Get/Create Unique ID
+  let userId = localStorage.getItem('visitor_uid');
+  if (!userId) {
+    userId = Math.random().toString(36).substring(7);
+    localStorage.setItem('visitor_uid', userId);
+  }
+
+  async function updateOnlineCount() {
+    try {
+      log("Pinging...");
+      
+      // We add 't=' to force the browser to not use cached old data
+      const response = await fetch(`/api/visit?uid=${userId}&t=${Date.now()}`);
+      
+      if (!response.ok) {
+        log("Error: " + response.status); // e.g., Error: 500
+        return;
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        log("Server Error: " + data.error);
+      } else {
+        log("Connected. Users: " + data.count);
+        
+        // Update the big number
+        const counterElement = document.getElementById('live-counter');
+        if (counterElement) counterElement.innerText = data.count;
+      }
+      
+    } catch (err) {
+      log("Network Fail: " + err.message);
+    }
+  }
+
+  // Run immediately, then every 5 seconds
+  updateOnlineCount();
   setInterval(updateOnlineCount, 5000);
 </script>
 
