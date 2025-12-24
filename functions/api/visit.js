@@ -1,35 +1,36 @@
 import { Redis } from '@upstash/redis/cloudflare'
 
 export async function onRequest(context) {
+  const { env, request } = context;
+  const redis = Redis.fromEnv(env);
+
+  const url = new URL(request.url);
+  const userId = url.searchParams.get('uid') || 'anonymous';
+  
+  const now = Date.now();
+  
+  // *** CONFIGURATION ***
+  // Delete users who haven't pinged in 10 seconds
+  const timeoutLimit = now - 10000; 
+
   try {
-    const { env } = context;
+    // 1. Update this user's "Last Seen" time
+    await redis.zadd('online_users', { score: now, member: userId });
 
-    // CHECK: Are the secrets actually there?
-    if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
-      throw new Error("Missing Upstash API Keys in Cloudflare Settings!");
-    }
+    // 2. Remove anyone older than 10 seconds
+    await redis.zremrangebyscore('online_users', 0, timeoutLimit);
 
-    // Initialize Redis
-    const redis = Redis.fromEnv(env);
+    // 3. Count who is left
+    const activeCount = await redis.zcard('online_users');
 
-    // Count the visit
-    const newCount = await redis.incr('shakzz_tv_views');
-
-    return new Response(JSON.stringify({ 
-      success: true, 
-      count: newCount 
-    }), {
-      headers: { 'Content-Type': 'application/json' }
+    return new Response(JSON.stringify({ count: activeCount }), {
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*' 
+      }
     });
 
   } catch (err) {
-    // If it fails, PRINT the error so we can read it
-    return new Response(JSON.stringify({
-      error: err.message,
-      stack: err.stack
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
   }
 }
