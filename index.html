@@ -68,6 +68,10 @@
                 <div id="viewerCounter" class="skeleton-effect">
                     <i class="fas fa-eye"></i>
                     <span id="viewerCountText">0</span>
+                    <div class="view-count">
+   <i class="fa fa-eye"></i> <span id="visit-count">...</span>
+</div>
+
                 </div>
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="click-here-link focusable-element skeleton-effect">CLICK HERE</a>
                 <div class="hamburger focusable-element" id="hamburger">
@@ -504,6 +508,38 @@ document.onkeydown = (e) => {
   )
     return false;
 };
+</script>
+<script>
+  let userId = localStorage.getItem('visitor_uid');
+  if (!userId) {
+    userId = Math.random().toString(36).substring(7);
+    localStorage.setItem('visitor_uid', userId);
+  }
+
+  async function updateOnlineCount() {
+    const counterElement = document.getElementById('live-counter'); 
+
+    try {
+      const response = await fetch(`/api/visit?uid=${userId}`);
+      if (!response.ok) throw new Error('Network error');
+      
+      const data = await response.json();
+      
+      if (counterElement) {
+        counterElement.innerText = data.count;
+      }
+    } catch (err) {
+      console.log("Ping failed", err);
+    }
+  }
+
+  // Run immediately
+  updateOnlineCount();
+
+  // *** CONFIGURATION ***
+  // Ping every 5 seconds (5000ms)
+  // This is safe because 5s is faster than the 10s cleanup
+  setInterval(updateOnlineCount, 5000);
 </script>
 
     
