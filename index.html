@@ -509,11 +509,7 @@ document.onkeydown = (e) => {
 </script>
 
 <script>
-  function log(msg) {
-    const el = document.getElementById('debug-log');
-    if (el) el.innerText = msg;
-  }
-
+  // 1. Get or Create Unique ID
   let userId = localStorage.getItem('visitor_uid');
   if (!userId) {
     userId = Math.random().toString(36).substring(7);
@@ -522,34 +518,30 @@ document.onkeydown = (e) => {
 
   async function updateOnlineCount() {
     try {
-      log("Pinging...");
-      
+      // 2. Ping the server silently
+      // We add 't=' to stop the browser from saving an old version of the number
       const response = await fetch(`/api/visit?uid=${userId}&t=${Date.now()}`);
       
-      if (!response.ok) {
-        log("Error: " + response.status);
-        return;
-      }
-
-      const data = await response.json();
-      
-      if (data.error) {
-        log("Server Error: " + data.error);
-      } else {
-        log("Connected. Users: " + data.count);
+      if (response.ok) {
+        const data = await response.json();
         
+        // 3. Update ONLY the number next to the eye
         const counterElement = document.getElementById('live-counter');
-        if (counterElement) counterElement.innerText = data.count;
+        if (counterElement) {
+          counterElement.innerText = data.count.toLocaleString();
+        }
       }
-      
     } catch (err) {
-      log("Network Fail: " + err.message);
+      // If error, do nothing (keep design clean)
+      console.error("Silent Sync Error:", err);
     }
   }
 
+  // Run immediately and then every 5 seconds
   updateOnlineCount();
   setInterval(updateOnlineCount, 5000);
 </script>
+
 
 </body>
 </html>
