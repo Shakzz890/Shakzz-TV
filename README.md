@@ -75,6 +75,6 @@ If you want to contribute to the code (HTML, CSS, JS, or API logic):
 
 ## 🚀 Get Started
 
-https://shakzz.vercel.app
+https://shakzz.online
 
 If you have feedback, channel suggestions, or encounter any issues, please feel free to reach out or open an issue!
