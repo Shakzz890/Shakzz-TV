@@ -37,22 +37,23 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// 3. Fetch Event: Serve from cache, but use Network for streams
 self.addEventListener('fetch', (event) => {
-    // Check if the request is for a video stream or an external API
-    const isStream = event.request.url.includes('.m3u8') || 
-                     event.request.url.includes('.ts') || 
-                     event.request.url.includes('jwplayer');
+    const url = event.request.url;
 
-    if (isStream) {
-        // If it's a stream, go directly to the network (NEVER CACHE STREAMS)
+    // 1. ALWAYS Bypass cache for Streams and the Upstash API
+    const isDynamic = url.includes('.m3u8') || 
+                      url.includes('.ts') || 
+                      url.includes('jwplayer') ||
+                      url.includes('/api/'); // <--- ADD THIS LINE
+
+    if (isDynamic) {
+        // Network Only strategy for dynamic/real-time data
         event.respondWith(fetch(event.request));
     } else {
-        // For everything else (UI, CSS, Images), try the cache first
+        // Cache-First strategy for static assets (UI, CSS, Images)
         event.respondWith(
             caches.match(event.request)
                 .then((response) => {
-                    // Return cache if found, otherwise go to network
                     return response || fetch(event.request);
                 })
         );
