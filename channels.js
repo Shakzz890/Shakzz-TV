@@ -1,8 +1,8 @@
 const channels = {
 GMA: { 
 	name: "GMA 7",
-    type: "widevine",
-    manifestUri: "https://converse.nathcreqtives.com/1093/manifest.mpd?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJTaGFrenoiLCJpYXQiOjE3NjY3NjU1OTMsImV4cCI6MTc2NzE5NzU5MywiYWNjb3VudEV4cGlyZWQiOmZhbHNlLCJhY2NvdW50RXhwaXJlc0F0IjoxNzY3MTk3NTkzfQ.E16yfF2ojH2_veXdv7H-ZUC5S6_54SLAYbqhlhrlepU",
+    type: "hls",
+    manifestUri: "https://gsattv.akamaized.net/live/media0/gma7/Fairplay/gma7.m3u8",
     key: "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00",
     logo: "https://ottepg8.comclark.com:8443/iptvepg/images/markurl/mark_1723126306082.png",
     group: ["news", "entertainment"],
@@ -10,9 +10,7 @@ GMA: {
 
 GTV: {
     name: "GTV",
-    type: "widevine",
-    manifestUri: "https://converse.nathcreqtives.com/1143/manifest.mpd?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJTaGFrenoiLCJpYXQiOjE3NjY3NjU1OTMsImV4cCI6MTc2NzE5NzU5MywiYWNjb3VudEV4cGlyZWQiOmZhbHNlLCJhY2NvdW50RXhwaXJlc0F0IjoxNzY3MTk3NTkzfQ.E16yfF2ojH2_veXdv7H-ZUC5S6_54SLAYbqhlhrlepU",
-    key: "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00",
+    type: "hls",
     logo: "https://ottepg8.comclark.com:8443/iptvepg/images/markurl/mark_1723126332757.png",
     group: ["news", "entertainment"],
 },
