@@ -145,7 +145,6 @@ GTV: {
     group: ["documentary"],
   },
 
-
 celmoviepinoy: {
     name: "Celestial Movies Pinoy",
     type: "clearkey",
@@ -627,15 +626,6 @@ celmoviepinoy: {
     logo: "https://mcdn.wallpapersafari.com/medium/43/73/OC5BrI.png",
     group: ["sports"],
   },
-  onesports: {
-    name: "One Sports +",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_onesportsplus_hd1/default/index.mpd",
-    keyId: "322d06e9326f4753a7ec0908030c13d8",
-    key: "1e3e0ca32d421fbfec86feced0efefda",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/OneSportsPlus_logo.svg/300px-OneSportsPlus_logo.svg.png",
-    group: ["sports", "entertainment"],
-  },
   onesportshd: {
     name: "One Sports HD",
     type: "clearkey",
@@ -714,15 +704,7 @@ celmoviepinoy: {
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/BBC_Earth.svg",
     group: ["documentary"],
   },
-  rckentr: {
-    name: "Rock Entertainment",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_rockentertainment/default/index.mpd",
-    keyId: "e4ee0cf8ca9746f99af402ca6eed8dc7",
-    key: "be2a096403346bc1d0bb0f812822bb62",
-    logo: "https://assets-global.website-files.com/64e81e52acfdaa1696fd623f/652f763c600497122b122df0_logo_ent_red_web.png",
-    group: ["news", "entertainment"],
-  },
+
   amznmovie: {
     name: "Amazon Movies",
     type: "clearkey",
@@ -732,7 +714,7 @@ celmoviepinoy: {
     logo: "https://the-bithub.com/amznmovies",
     group: ["movies"],
   },
-  hitsnow: {
+  hitshd: {
     name: "Hits HD",
     type: "clearkey",
     manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/606/default_ott.mpd",
@@ -1145,15 +1127,7 @@ celmoviepinoy: {
     logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Moonbug2ndLogo.png",
     group: ["cartoons & animations"],
   },
-  cnn_ph: {
-    name: "CNN Philippines",
-    type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_cnnhd.mpd",
-    keyId: "900c43f0e02742dd854148b7a75abbec",
-    key: "da315cca7f2902b4de23199718ed7e90",
-    logo: "https://laguia.tv/_nuxt/img/CNN_512.0e91aae.png",
-    group: ["news", "entertainment"],
-  },
+
   cartoonChannelPH: {
     name: "Cartoon Channel PH (10 - 8)",
     type: "hls",
