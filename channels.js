@@ -453,6 +453,15 @@ celmoviepinoy: {
     logo: "https://logos-world.net/wp-content/uploads/2021/08/Cartoon-Network-Logo-2010-present.png",
     group: ["cartoons & animations"],
   },
+  animaxhd: {
+    name: "Animax HD",
+    type: "clearkey",
+    manifestUri: "https://unifi-live2.secureswiftcontent.com/Content/DASH/Live/channel(animax)/master.mpd",
+    keyId: "4bd30e54571144eb9168a1a7e5915f75",
+    key: "f8cb24e54d555381a326c157b5dfaa59",
+    logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
+    group: ["cartoons & animations"],
+  },
   animax: {
     name: "Animax",
     type: "clearkey",
