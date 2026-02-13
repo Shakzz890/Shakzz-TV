@@ -25,16 +25,15 @@ GTV: {
     group: ["entertainment"],
   },
   
-  hitsnow: {
+hitsnow: {
     name: "Hits Now",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_hitsnow/default/index.mpd",
-    keyId: "14439a1b7afc4527bb0ebc51cf11cbc1",
-    key: "92b0287c7042f271b266cc11ab7541f1",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hitsnow/default/index.mpd",
+    keyId: "f9c3d6b18a2e4d7f9e453b1a8c6d2f70",
+    key: "ce8874347ec428c624558dcdc3575dd4",
     logo: "https://i.imgur.com/Ck0ad9b.png",
     group: ["entertainment"],
   },
-  
   ibc: {
     name: "IBC 13",
     type: "clearkey",
@@ -55,22 +54,22 @@ GTV: {
     group: ["entertainment", "news"],
   },
   
-  globaltrekker: {
+globaltrekker: {
     name: "Global Trekker",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_tapedge/default/index.mpd",
-    keyId: "4553f7e8011f411fb625cefc39274300",
-    key: "98f2f1d153367e84b5d559dc9dfb9a35",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/globaltrekker/default/index.mpd",
+    keyId: "b7a6c5d23f1e4a9d8c721e5d9f4a6b13",
+    key: "63ca9ad0d88fccb8c667b028f47287ba",
     logo: "https://accion.com.ph/wp-content/uploads/2023/02/GT-Thumbnail-New.jpg",
     group: ["documentary", "entertainment"],
   },
   
-  hitsmovies: {
+ hitsmovies: {
     name: "HITS Movies",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_hitsmovies/default/index.mpd",
-    keyId: "f56b57b32d7e4b2cb21748c0b56761a7",
-    key: "3df06a89aa01b32655a77d93e09e266f",
+    keyId: "2c8a5f1e7b9d4c6a9e55f1d7b2a8c360",
+    key: "c9f622dff27e9e1c1f78617ba3b81a62",
     logo: "https://i.imgur.com/xjyDTMr.png",
     group: ["movies"],
   },
@@ -287,12 +286,12 @@ celmoviepinoy: {
     logo: "https://static.wikia.nocookie.net/russel/images/0/00/PBA_Rush_Logo_2016.png/revision/latest/scale-to-width-down/250?cb=20250217140355",
     group: ["entertainment"],
   },
-  animalplanet: {
+animalplanet: {
     name: "Animal Planet",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_animal_planet_sd/default/index.mpd",
-    keyId: "436b69f987924fcbbc06d40a69c2799a",
-    key: "c63d5b0d7e52335b61aeba4f6537d54d",
+    keyId: "1c9f7a6d3b2e4e5d8a61f4d0c2b9e813",
+    key: "b8f52451c67a2b54f272543eef45b621",
     logo: "https://i.imgur.com/SkpFpW4.png",
     group: ["documentary"],
   },
@@ -363,13 +362,13 @@ celmoviepinoy: {
     keyId: "7ef7e913ce85a1131b27036069169a10",
     key: "77d98ed71db7524c27875a09a975f9e6"
   },
-  tv5: {
+tv5: {
     name: "TV 5 HD",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/tv5_hd/default1/index.mpd",
     keyId: "2615129ef2c846a9bbd43a641c7303ef",
     key: "07c7f996b1734ea288641a68e1cfdc4d",
-    logo: "https://vignette.wikia.nocookie.net/russel/images/f/f9/TV5_Logo_2011.png/revision/latest?cb=20161204035016",
+    logo: "https://vignette.wikia.nocookie.net/russel/images/f/f9/TV5_Logo_2011.png",
     group: ["news", "entertainment"],
   },
   Kapamilya: {
@@ -381,12 +380,12 @@ celmoviepinoy: {
     logo: "https://cms.cignal.tv/Upload/Images/Kapamilya Channel Logo alpha.png",
     group: ["news", "entertainment"],
   },
-  hbo: {
+hbo: {
     name: "HBO",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohd/default/index.mpd",
-    keyId: "d47ebabf7a21430b83a8c4b82d9ef6b1",
-    key: "54c213b2b5f885f1e0290ee4131d425b",
+    keyId: "c2b7a1e95d4f4c3a8e617f9d0a2b6c18",
+    key: "27fca1ab042998b0c2f058b0764d7ed4",
     logo: "https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg",
     group: ["movies"],
   },
@@ -644,12 +643,12 @@ celmoviepinoy: {
     logo: "https://i.imgur.com/imI97L2.png",
     group: ["sports", "entertainment"],
   },
-  nbaph: {
+nbaph: {
     name: "NBA TV PH",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cgnl_nba/default/index.mpd",
-    keyId: "c5e51f41ceac48709d0bdcd9c13a4d88",
-    key: "20b91609967e472c27040716ef6a8b9a",
+    keyId: "d1f8a0c97b3d4e529a6f2c4b8d7e1f90",
+    key: "58ab331d14b66bf31aca4284e0a3e536",
     logo: "https://pngset.com/images/nba-tv-philippines-nba-tv-philippines-cignal-person-text-label-logo-transparent-png-2509143.png",
     group: ["sports", "entertainment"],
   },
@@ -723,12 +722,12 @@ celmoviepinoy: {
     logo: "https://the-bithub.com/amznmovies",
     group: ["movies"],
   },
-  hitshd: {
+hitshd: {
     name: "Hits HD",
     type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/606/default_ott.mpd",
-    keyId: "1fe92685a75844dc54c9dac124802510",
-    key: "36cb2063bf5338d18d31657371b15817",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hits_hd1/default/index.mpd",
+    keyId: "6d2f8a1c9b5e4c7da1f03e7b9d6c2a55",
+    key: "37c9835795779f8d848a6119d3270c69",
     logo: "https://medianet.mv/media/channel/229x0-icon.png",
     group: ["movies"],
   },
@@ -741,12 +740,12 @@ celmoviepinoy: {
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/KIX_logo.svg/1200px-KIX_logo.svg.png",
     group: ["entertainment"],
   },
-  history: {
+history: {
     name: "History",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_historyhd/default/index.mpd",
-    keyId: "a7724b7ca2604c33bb2e963a0319968a",
-    key: "6f97e3e2eb2bade626e0281ec01d3675",
+    keyId: "e2a8c7d15b9f4d6a9c101f7e3b2d8a44",
+    key: "397ca914a73b1e00bc94ed9eccf9c258",
     logo: "https://logos-world.net/wp-content/uploads/2023/07/History-Logo.jpg",
     group: ["documentary"],
   },
@@ -822,21 +821,21 @@ celmoviepinoy: {
     logo: "https://tse3.mm.bing.net/th/id/OIP.lMLVpSGutDFitqvokkgp6AHaHT?w=774&h=764&rs=1&pid=ImgDetMain&o=7&rm=3",
     group: ["entertainment"],
   },
-  one_ph: {
+	one_ph: {
     name: "One PH",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/oneph_sd/default/index.mpd",
-    keyId: "92834ab4a7e1499b90886c5d49220e46",
-    key: "a7108d9a6cfcc1b7939eb111daf09ab3",
+    keyId: "b1c7e9d24f8a4d6c9e337a2f1c5b8d60",
+    key: "8ff2e524cc1e028f2a4d4925e860c796",
     logo: "https://i.imgur.com/gkluDe9.png",
     group: ["news", "entertainment"],
   },
-  buko: {
+buko: {
     name: "BuKO",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_buko_sd/default/index.mpd",
-    keyId: "d273c085f2ab4a248e7bfc375229007d",
-    key: "7932354c3a84f7fc1b80efa6bcea0615",
+    manifestUri: "https://live-streaming.live.pldt.quickplay.com/plsdi5/buko.isml/.mpd",
+    keyId: "4ebfa6bf03fc4377ad0adee4cd12b298",
+    key: "d4676c3b23e818b5286ede30ffaa4c2d",
     logo: "https://i.imgur.com/Wv0K5Yc.png",
     group: ["news", "entertainment"],
   },
@@ -885,18 +884,18 @@ celmoviepinoy: {
     logo: "https://static.wikia.nocookie.net/russel/images/f/fb/RPTV_Alternative_Logo_2024.png",
     group: ["news", "entertainment"],
   },
-  a2z: {
+a2z: {
     name: "A2Z",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_a2z/default/index.mpd",
-    keyId: "f703e4c8ec9041eeb5028ab4248fa094",
-    key: "c22f2162e176eee6273a5d0b68d19530",
+    keyId: "3f6d8a2c1b7e4c9f8d52a7e1b0c6f93d",
+    key: "4019f9269b9054a2b9e257b114ebbaf2",
     logo: "https://static.wikia.nocookie.net/russel/images/8/85/A2Z_Channel_11_without_Channel_11_3D_Logo_2020.png",
   },
-  bilyonaryo: {
+ bilyonaryo: {
     name: "Bilyonaryo Channel",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/bilyonaryoch/default1/index.mpd",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/bilyonaryoch/default/index.mpd",
     keyId: "227ffaf09bec4a889e0e0988704d52a2",
     key: "b2d0dce5c486891997c1c92ddaca2cd2",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxvjeBIthYiEaZHeVeYpDicIlOTdv3G6lzoal3VM2xVzWu_J7XxM657oz&s=10",
@@ -947,12 +946,12 @@ celmoviepinoy: {
     logo: "https://cms.cignal.tv/Upload/Images/TVUP Logo .png",
     group: ["news", "entertainment"],
   },
-  rock_action: {
+rock_action: {
     name: "Rock Action",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_rockextreme/default/index.mpd",
-    keyId: "0f852fb8412b11edb8780242ac120002",
-    key: "4cbc004d8c444f9f996db42059ce8178",
+    keyId: "8d2a6f1c9b7e4c3da5f01e7b9c6d2f44",
+    key: "23841651ebf49fa03fdfcd7b43337f87",
     logo: "https://uploads-ssl.webflow.com/64e961c3862892bff815289d/64f57100366fe5c8cb6088a7_logo_ext_web.png",
     group: ["movies"],
   },
@@ -1010,13 +1009,13 @@ celmoviepinoy: {
     key: "6e0f50a12f36599a55073868f814e81e",
     group: ["sports"],
   },
-  truefm: {
+truefm: {
     name: "TrueFM TV",
-    logo: "https://upload.wikimedia.org/wikipedia/en/4/40/Radyo5truefmlogo.webp",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/truefm_tv/default/index.mpd",
-    keyId: "0559c95496d44fadb94105b9176c3579",
-    key: "40d8bb2a46ffd03540e0c6210ece57ce",
+    keyId: "a4e2b9d61c754f3a8d109b6c2f1e7a55",
+    key: "1d8d975f0bc2ed90eda138bd31f173f4",
+    logo: "https://upload.wikimedia.org/wikipedia/en/4/40/Radyo5truefmlogo.webp",
     group: ["news", "entertainment"],
   },
   tvMaria: {
@@ -1082,12 +1081,12 @@ celmoviepinoy: {
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Food_Network_logo.svg/1200px-Food_Network_logo.svg.png",
     group: ["entertainment"],
   },
-  abcAustralia: {
+ abcAustralia: {
     name: "ABC Australia",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/abc_aus/default/index.mpd",
-    keyId: "389497f9f8584a57b234e27e430e04b7",
-    key: "3b85594c7f88604adf004e45c03511c0",
+    keyId: "d6f1a8c29b7e4d5a8f332c1e9d7b6a90",
+    key: "790bd17b9e623e832003a993a2de1d87",
     logo: "https://i.pinimg.com/736x/5a/66/65/5a666508bc5851a6a9c1151e7eefff3d.jpg",
     group: ["documentary"],
   },
