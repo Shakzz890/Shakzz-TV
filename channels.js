@@ -1,31 +1,31 @@
 const channels = {
-GMA: { 
-	name: "GMA 7",
+  GMA: {
+    name: "GMA 7",
     type: "hls",
     manifestUri: "https://gsattv.akamaized.net/live/media0/gma7/Fairplay/gma7.m3u8",
     key: "https://key.nathcreqtives.com/widevine/?deviceId=02:00:00:00:00:00",
     logo: "https://ottepg8.comclark.com:8443/iptvepg/images/markurl/mark_1723126306082.png",
     group: ["news", "entertainment"],
-},
+  },
 
-GTV: {
+  GTV: {
     name: "GTV",
     type: "hls",
     logo: "https://ottepg8.comclark.com:8443/iptvepg/images/markurl/mark_1723126332757.png",
     group: ["news", "entertainment"],
-},
+  },
 
   lotusmacau: {
     name: "Lotus Macau",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/lotusmacau_prd/default/index.mpd",
-    keyId: "60dc692e64ea443a8fb5ac186c865a9b",
-    key: "01bdbe22d59b2a4504b53adc2f606cc1",
+    keyId: "9a7c2d1f4e8b4a6d8f301b5c9e7d2a44",
+    key: "ca88469cabc18aa33d1f2e46a6efb4f7",
     logo: "https://i.imgur.com/5G72qjx.png",
     group: ["entertainment"],
   },
-  
-hitsnow: {
+
+  hitsnow: {
     name: "Hits Now",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hitsnow/default/index.mpd",
@@ -43,7 +43,7 @@ hitsnow: {
     logo: "https://i.imgur.com/CTHhr3Q.png",
     group: ["news", "entertainment"],
   },
-  
+
   kbsworld: {
     name: "KBS World",
     type: "clearkey",
@@ -53,8 +53,8 @@ hitsnow: {
     logo: "https://i.imgur.com/aFDRmtm.png",
     group: ["entertainment", "news"],
   },
-  
-globaltrekker: {
+
+  globaltrekker: {
     name: "Global Trekker",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/globaltrekker/default/index.mpd",
@@ -63,8 +63,8 @@ globaltrekker: {
     logo: "https://accion.com.ph/wp-content/uploads/2023/02/GT-Thumbnail-New.jpg",
     group: ["documentary", "entertainment"],
   },
-  
- hitsmovies: {
+
+  hitsmovies: {
     name: "HITS Movies",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_hitsmovies/default/index.mpd",
@@ -73,7 +73,7 @@ globaltrekker: {
     logo: "https://i.imgur.com/xjyDTMr.png",
     group: ["movies"],
   },
-  
+
   premiersports: {
     name: "Premier Sports",
     type: "clearkey",
@@ -83,7 +83,7 @@ globaltrekker: {
     logo: "https://i.imgur.com/GTfUEnU.png",
     group: ["sports"],
   },
-  
+
   cctv4: {
     name: "CCTV-4",
     type: "clearkey",
@@ -93,7 +93,7 @@ globaltrekker: {
     logo: "https://i.imgur.com/TuwJPPz.png",
     group: ["news", "entertainment"],
   },
-  
+
   france24: {
     name: "France 24",
     type: "clearkey",
@@ -103,7 +103,7 @@ globaltrekker: {
     logo: "https://i.imgur.com/d8doNpe.png",
     group: ["news"],
   },
-  
+
   tv5monde: {
     name: "TV5 Monde",
     type: "clearkey",
@@ -113,7 +113,7 @@ globaltrekker: {
     logo: "https://qp-pldt-image-resizer-cloud-prod.akamaized.net/image/E55ADB5E-C9E1-11EC-9D64-0242AC120002/0-16x9.jpg?width=1980",
     group: ["news", "entertainment"],
   },
-  
+
   asianfoodnetwork: {
     name: "Asian Food Network",
     type: "clearkey",
@@ -123,17 +123,17 @@ globaltrekker: {
     logo: "https://i.imgur.com/PUe61Ov.png",
     group: ["entertainment"],
   },
-  
+
   hgtv: {
     name: "HGTV",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hgtv_hd1/default/index.mpd",
-    keyId: "f0e3ab943318471abc8b47027f384f5a",
-    key: "13802a79b19cc3485d2257165a7ef62a",
+    keyId: "f1e8c2d97a3b4f5d8c669d1a2b7e4c30",
+    key: "03aaa7dcf893e6b934aeb3c46f9df5b9",
     logo: "https://i.imgur.com/a6gRxAV.png",
     group: ["entertainment"],
   },
-  
+
   crimeinvestigation: {
     name: "Crime & Investigation",
     type: "clearkey",
@@ -144,7 +144,7 @@ globaltrekker: {
     group: ["documentary"],
   },
 
-celmoviepinoy: {
+  celmoviepinoy: {
     name: "Celestial Movies Pinoy",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/celmovie_pinoy_sd/default/index.mpd",
@@ -209,7 +209,7 @@ celmoviepinoy: {
     manifestUri: "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Discoveryscience2/default/manifest.mpd",
     keyId: "5458f45efedb4d6f8aa6ac76c85b621b",
     key: "dbf8a0a306a64525ba3012fd225370c0",
-    logo: "  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkA_8vr9UZUhtkaFi6AshM83zQwhPWBGWX-Q&s",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkA_8vr9UZUhtkaFi6AshM83zQwhPWBGWX-Q&s",
     group: ["documentary"],
   },
   KidoodleTV: {
@@ -281,12 +281,12 @@ celmoviepinoy: {
     name: "PBA Rush",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_pbarush_hd1/default/index.mpd",
-    keyId: "76dc29dd87a244aeab9e8b7c5da1e5f3",
-    key: "95b2f2ffd4e14073620506213b62ac82",
+    keyId: "d7f1a9c36b2e4f8d9a441c5e7b2d8f60",
+    key: "fb83c86f600ab945e7e9afed8376eb1e",
     logo: "https://static.wikia.nocookie.net/russel/images/0/00/PBA_Rush_Logo_2016.png/revision/latest/scale-to-width-down/250?cb=20250217140355",
     group: ["entertainment"],
   },
-animalplanet: {
+  animalplanet: {
     name: "Animal Planet",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_animal_planet_sd/default/index.mpd",
@@ -362,7 +362,7 @@ animalplanet: {
     keyId: "7ef7e913ce85a1131b27036069169a10",
     key: "77d98ed71db7524c27875a09a975f9e6"
   },
-tv5: {
+  tv5: {
     name: "TV 5 HD",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/tv5_hd/default1/index.mpd",
@@ -377,10 +377,10 @@ tv5: {
     manifestUri: "https://d1uf7s78uqso1e.cloudfront.net/out/v1/efa01372657648be830e7c23ff68bea2/index.mpd",
     keyId: "bd17afb5dc9648a39be79ee3634dd4b8",
     key: "3ecf305d54a7729299b93a3d69c02ea5",
-    logo: "https://cms.cignal.tv/Upload/Images/Kapamilya Channel Logo alpha.png",
+    logo: "https://cms.cignal.tv/Upload/Images/Kapamilya  Channel Logo alpha.png",
     group: ["news", "entertainment"],
   },
-hbo: {
+  hbo: {
     name: "HBO",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohd/default/index.mpd",
@@ -401,10 +401,10 @@ hbo: {
   hbohits: {
     name: "HBO Hits",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohits/default1/index.mpd",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_hbohits/default/index.mpd",
     keyId: "b04ae8017b5b4601a5a0c9060f6d5b7d",
     key: "a8795f3bdb8a4778b7e888ee484cc7a1",
-    logo: "https://cms.cignal.tv/Upload/Images/HBO Hits-1.jpg",
+    logo: "https://cms.cignal.tv/Upload/Images/HBO  Hits-1.jpg",
     group: ["movies"],
   },
   hbosig: {
@@ -465,8 +465,8 @@ hbo: {
     name: "Animax",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_animax_sd_new/default/index.mpd",
-    keyId: "92032b0e41a543fb9830751273b8debd",
-    key: "03f8b65e2af785b10d6634735dbe6c11",
+    keyId: "1e7b9d2c6a4f4d8c9f33b5c1a8d7e260",
+    key: "67336c0c5b24fb4b8caac248dad3c55d",
     logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
     group: ["cartoons & animations"],
   },
@@ -501,7 +501,7 @@ hbo: {
     manifestUri: "https://uselector.cdn.intigral-ott.net/DIS/DIS.isml/manifest.mpd",
     keyId: "72800c62fcf2bfbedd9af27d79ed35d6",
     key: "b6ccb9facb2c1c81ebe4dfaab8a45195",
-    logo: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/20768ccf-f5b0-4b5e-bd31-ad33d6cf6a35/dei91io-5b3a14cb-c0c8-4033-b487-3574252333bd.jpg/v1/fill/w_1191,h_671,q_70,strp/disney_channel_logo__blue__by_littlekj20_dei91io-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzMwIiwicGF0aCI6IlwvZlwvMjA3NjhjY2YtZjViMC00YjVlLWJkMzEtYWQzM2Q2Y2Y2YTM1XC9kZWk5MWlvLTViM2ExNGNiLWMwYzgtNDAzMy1iNDg3LTM1NzQyNTIzMzNiZC5qcGciLCJ3aWR0aCI6Ijw9MTI5NiJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.CDhwbyrZ7hWQVXvarfBL8eDRzfm1mjqVps1IqVo2j3g",
+    logo: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/20768ccf-f5b0-4b5e-bd31-ad33d6cf6a35/dei91io-5b3a14cb-c0c8-4033-b487-3574252333bd.jpg/v1/fill/w_1191 ,h_671,q_70,strp/disney_channel_logo__blue__by_littlekj20_dei91io-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzMwIiwicGF0aCI6IlwvZlwvMjA3NjhjY2YtZjViMC00YjVlLWJkMzEtYWQzM2Q2Y2Y2YTM1XC9kZWk5MWlvLTViM2ExNGNiLWMwYzgtNDAzMy1iNDg3LTM1NzQyNTIzMzNiZC5qcGciLCJ3aWR0aCI6Ijw9MTI5NiJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.CDhwbyrZ7hWQVXvarfBL8eDRzfm1mjqVps1IqVo2j3g",
     group: ["cartoons & animations"],
   },
   disneyxdd: {
@@ -546,19 +546,19 @@ hbo: {
     manifestUri: "https://d3cjss68xc4sia.cloudfront.net/out/v1/89ea8db23cb24a91bfa5d0795f8d759e/index.mpd",
     keyId: "4bbdc78024a54662854b412d01fafa16",
     key: "6039ec9b213aca913821677a28bd78ae",
-    logo: "https://data-corporate.abs-cbn.com/corp/medialibrary/dotcom/corp news sports 2020/anc station id/anc goes global_2.jpg",
+    logo: "https://data-corporate.abs-cbn.com/corp/medialibrary/dotcom/corp  news sports 2020/anc station id/anc goes global_2.jpg",
     group: ["news", "entertainment"],
   },
   axn: {
     name: "AXN",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_axn_sd/default/index.mpd",
-    keyId: "fd5d928f5d974ca4983f6e9295dfe410",
-    key: "3aaa001ddc142fedbb9d5557be43792f",
+    keyId: "8a6c2f1e9d7b4c5aa1f04d2b7e9c1f88",
+    key: "05e6bfa4b6805c46b772f35326b26b36",
     logo: "https://icon2.cleanpng.com/20180702/pfc/kisspng-axn-television-channel-sony-channel-television-sho-axn-5b3a0ac39f5e85.1062681315305304996528.jpg",
     group: ["news", "entertainment"],
   },
- 
+
   cinemo: {
     name: "Cinemo",
     type: "clearkey",
@@ -643,7 +643,7 @@ hbo: {
     logo: "https://i.imgur.com/imI97L2.png",
     group: ["sports", "entertainment"],
   },
-nbaph: {
+  nbaph: {
     name: "NBA TV PH",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cgnl_nba/default/index.mpd",
@@ -718,11 +718,11 @@ nbaph: {
     type: "clearkey",
     manifestUri: "https://abbfefcaaaaaaaamd5xd44ij4vbyj.a17d0dfbc05b48999f461f3f6cff0eb6.emt.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/oynu8tcxfa/out/v1/ab567b96658c4d84ae1fc6c67110987c/cenc.mpd",
     keyId: "3e429eb91a1791d55df2a554dc58dda7",
-	key: "2f688f94ef580a61eada6932598137e4",
+    key: "2f688f94ef580a61eada6932598137e4",
     logo: "https://the-bithub.com/amznmovies",
     group: ["movies"],
   },
-hitshd: {
+  hitshd: {
     name: "Hits HD",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hits_hd1/default/index.mpd",
@@ -734,13 +734,13 @@ hitshd: {
   kix: {
     name: "Kix HD",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-06-prod.akamaized.net/out/u/kix_hd1.mpd",
-    keyId: "a8d5712967cd495ca80fdc425bc61d6b",
-    key: "f248c29525ed4c40cc39baeee9634735",
+    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/kix_hd1/default/index.mpd",
+    keyId: "c9d4b7a18e2f4d6c9a103f5b7e1c2d88",
+    key: "7f3139092bf87d8aa51ee40e6294d376",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/KIX_logo.svg/1200px-KIX_logo.svg.png",
     group: ["entertainment"],
   },
-history: {
+  history: {
     name: "History",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_historyhd/default/index.mpd",
@@ -761,9 +761,9 @@ history: {
   warner: {
     name: "Warner TV",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_warnertvhd.mpd",
-    keyId: "4503cf86bca3494ab95a77ed913619a0",
-    key: "afc9c8f627fb3fb255dee8e3b0fe1d71",
+    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_warnerhd/default/index.mpd",
+    keyId: "7f2a9c6d1e5b4c8a8d10a2b7e1c9f344",
+    key: "ae3d135d5ddd9e8f3a7bbfbfae0e40d1",
     logo: "https://tse2.mm.bing.net/th/id/OIP.7d6tiaMYWpWIGI6iAN47zAHaG3?rs=1&pid=ImgDetMain&o=7&rm=3",
     group: ["movies", "entertainment"],
   },
@@ -788,18 +788,18 @@ history: {
   alja: {
     name: "Al jazeera",
     type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2110/default_ott.mpd",
-    keyId: "sfvQh055I/WwWSmgQqoGEA",
-    key: "bDxJgROr/99FTck1MZp5TQ",
+    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_aljazeera/default/index.mpd",
+    keyId: "7f3d900a04d84492b31fe9f79ac614e3",
+    key: "d33ff14f50beac42969385583294b8f2",
     logo: "https://www.liblogo.com/img-logo/al1049a118-al-jazeera-logo-al-jazeera-to-deliver-bloomberg-news-content-for-expanded-global.png",
     group: ["news", "entertainment"],
   },
   channelnwasia: {
     name: "Channel News Asia",
     type: "clearkey",
-    manifestUri: "https://tglmp03.akamaized.net/out/v1/43856347987b4da3890360b0d18b5dc5/manifest.mpd",
-    keyId: "4ee336861eed4840a555788dc54aea6e",
-    key: "f1f53644d4941d4ed31b4bb2478f8cf4",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/channelnewsasia/default/index.mpd",
+    keyId: "b259df9987364dd3b778aa5d42cb9acd",
+    key: "753e3dba96ab467e468269e7e33fb813",
     logo: "https://logowik.com/content/uploads/images/cna-channel-news-asia9392.jpg",
     group: ["news", "entertainment"],
   },
@@ -821,7 +821,7 @@ history: {
     logo: "https://tse3.mm.bing.net/th/id/OIP.lMLVpSGutDFitqvokkgp6AHaHT?w=774&h=764&rs=1&pid=ImgDetMain&o=7&rm=3",
     group: ["entertainment"],
   },
-	one_ph: {
+  one_ph: {
     name: "One PH",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/oneph_sd/default/index.mpd",
@@ -830,7 +830,7 @@ history: {
     logo: "https://i.imgur.com/gkluDe9.png",
     group: ["news", "entertainment"],
   },
-buko: {
+  buko: {
     name: "BuKO",
     type: "clearkey",
     manifestUri: "https://live-streaming.live.pldt.quickplay.com/plsdi5/buko.isml/.mpd",
@@ -860,7 +860,7 @@ buko: {
   one_sports: {
     name: "One Sports",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_onesports_hd.mpd",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_onesports_hd/default/index.mpd",
     keyId: "53c3bf2eba574f639aa21f2d4409ff11",
     key: "3de28411cf08a64ea935b9578f6d0edd",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/One_Sports_logo.svg/2560px-One_Sports_logo.svg.png",
@@ -870,8 +870,8 @@ buko: {
     name: "One News",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/onenews_hd1/default/index.mpd",
-    keyId: "d39eb201ae494a0b98583df4d110e8dd",
-    key: "6797066880d344422abd3f5eda41f45f",
+    keyId: "2e6a9d7c1f4b4c8a8d33c7b1f0a5e924",
+    key: "4c71e178d090332fbfe72e023b59f6d2",
     logo: "https://i.imgur.com/bpRiu54.png",
     group: ["news", "entertainment"],
   },
@@ -884,7 +884,7 @@ buko: {
     logo: "https://static.wikia.nocookie.net/russel/images/f/fb/RPTV_Alternative_Logo_2024.png",
     group: ["news", "entertainment"],
   },
-a2z: {
+  a2z: {
     name: "A2Z",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_a2z/default/index.mpd",
@@ -892,7 +892,7 @@ a2z: {
     key: "4019f9269b9054a2b9e257b114ebbaf2",
     logo: "https://static.wikia.nocookie.net/russel/images/8/85/A2Z_Channel_11_without_Channel_11_3D_Logo_2020.png",
   },
- bilyonaryo: {
+  bilyonaryo: {
     name: "Bilyonaryo Channel",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/bilyonaryoch/default/index.mpd",
@@ -932,8 +932,8 @@ a2z: {
     name: "Tap Sports",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_tapsports/default/index.mpd",
-    keyId: "eabd2d95c89e42f2b0b0b40ce4179ea0",
-    key: "0e7e35a07e2c12822316c0dc4873903f",
+    keyId: "5e7c1b9a2d8f4a6c9f30b1d6e2a8c744",
+    key: "6178d9d177689eec5028e2dd608ae7b6",
     logo: "https://i.imgur.com/ZsWDiRF.png",
     group: ["sports"],
   },
@@ -941,12 +941,12 @@ a2z: {
     name: "TVUP!",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/tvup_prd/default/index.mpd",
-    keyId: "83e813ccd4ca4837afd611037af02f63",
-    key: "a97c515dbcb5dcbc432bbd09d15afd41",
-    logo: "https://cms.cignal.tv/Upload/Images/TVUP Logo .png",
+    keyId: "e6d1f4a82b9c4f7e9a135c8d7b0e1f26",
+    key: "a5ec27f2fd8e81e7ca224b22a326c8f2",
+    logo: "https://cms.cignal.tv/Upload/Images/TVUP  Logo .png",
     group: ["news", "entertainment"],
   },
-rock_action: {
+  rock_action: {
     name: "Rock Action",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_rockextreme/default/index.mpd",
@@ -959,8 +959,8 @@ rock_action: {
     name: "Tap TV",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_taptv_sd/default/index.mpd",
-    keyId: "f6804251e90b4966889b7df94fdc621e",
-    key: "55c3c014f2bd12d6bd62349658f24566",
+    keyId: "5c1e7b9d2f6a4d8c8a55e9d2c7b1a344",
+    key: "e72d21a22e89660ff0ec33627eb4ef35",
     logo: "https://i.imgur.com/KJaSftF.png",
     group: ["news", "entertainment"],
   },
@@ -986,8 +986,8 @@ rock_action: {
     name: "Fashion TV",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/fashiontvhd/default/index.mpd",
-    keyId: "971ebbe2d887476398e97c37e0c5c591",
-    key: "472aa631b1e671070a4bf198f43da0c7",
+    keyId: "9d7c1f2a6b4e4a8d8f33c1e5b7d2a960",
+    key: "3a18c535c52db7c79823f59036a9d195",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fashion_TV_logo_2017.svg/1200px-Fashion_TV_logo_2017.svg.png",
     group: ["entertainment"],
   },
@@ -995,8 +995,8 @@ rock_action: {
     name: "HITS",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/hits_hd1/default/index.mpd",
-    keyId: "dac605bc197e442c93f4f08595a95100",
-    key: "975e27ffc1b7949721ee3ccb4b7fd3e5",
+    keyId: "6d2f8a1c9b5e4c7da1f03e7b9d6c2a55",
+    key: "37c9835795779f8d848a6119d3270c69",
     logo: "https://i.imgur.com/YeqyD9W.png",
     group: ["movies"],
   },
@@ -1009,7 +1009,7 @@ rock_action: {
     key: "6e0f50a12f36599a55073868f814e81e",
     group: ["sports"],
   },
-truefm: {
+  truefm: {
     name: "TrueFM TV",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/truefm_tv/default/index.mpd",
@@ -1032,8 +1032,8 @@ truefm: {
     logo: "https://i.imgur.com/fx1Y2Eh.png",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_rockentertainment/default/index.mpd",
-    keyId: "e4ee0cf8ca9746f99af402ca6eed8dc7",
-    key: "be2a096403346bc1d0bb0f812822bb62",
+    keyId: "a8b2d6f14c9e4d7a8f552c1e9b7d6a30",
+    key: "b61a33a4281e7c8e68b24b9af466f7b4",
     group: ["entertainment"],
   },
   spotv: {
@@ -1049,7 +1049,7 @@ truefm: {
     name: "SPOTV2",
     logo: "https://ownassetsmysky.blob.core.windows.net/assetsmysky/production/media-upload/1634257305_thumb-spotv-2.png",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_spotv2hd/default/index.mpd",
+    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/dr_spotv2hd/default/index.mpd",
     keyId: "7eea72d6075245a99ee3255603d58853",
     key: "6848ef60575579bf4d415db1032153ed",
     group: ["entertainment"],
@@ -1075,13 +1075,13 @@ truefm: {
   foodNetwork: {
     name: "Food Network",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/asianfoodnetwork_sd/default/index.mpd",
-    keyId: "b7299ea0af8945479cd2f287ee7d530e",
-    key: "b8ae7679cf18e7261303313b18ba7a14",
+    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_foodnetwork_hd1/default/index.mpd",
+    keyId: "4a9d2f7c1e6b4c8d8a55d7b1e3f0c926",
+    key: "2e62531bdb450480a18197b14f4ebc77",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Food_Network_logo.svg/1200px-Food_Network_logo.svg.png",
     group: ["entertainment"],
   },
- abcAustralia: {
+  abcAustralia: {
     name: "ABC Australia",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/abc_aus/default/index.mpd",
@@ -1103,17 +1103,17 @@ truefm: {
     name: "Bloomberg",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/bloomberg_sd/default/index.mpd",
-    keyId: "ef7d9dcfb99b406cb79fb9f675cba426",
-    key: "b24094f6ca136af25600e44df5987af4",
+    keyId: "3b8e6d1f2c9a4f7d9a556c1e7b2d8f90",
+    key: "09f0bd803966c4befbd239cfa75efe23",
     logo: "https://thumbs.dreamstime.com/b/bloomberg-logo-editorial-illustrative-white-background-logo-icon-vector-logos-icons-set-social-media-flat-banner-vectors-svg-210442338.jpg",
     group: ["news", "entertainment"],
   },
   bbc_news: {
     name: "BBC News",
     type: "clearkey",
-    manifestUri: "https://atemeshield1-voe.sysln.id/live/eds/BBCWorldNewsHD/mpd/BBCWorldNewsHD.mpd",
-    keyId: "975ef0f16ca94eee8aa5c3a6ff9149e7",
-    key: "2b69f4bdc9e4aa4f6ec03220b0c89dd1",
+    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/bbcworld_news_sd/default/index.mpd",
+    keyId: "f59650be475e4c34a844d4e2062f71f3",
+    key: "119639e849ddee96c4cec2f2b6b09b40",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/BBC_News_2022_(Alt).svg/1200px-BBC_News_2022_(Alt).svg.png",
     group: ["news", "entertainment"],
   },
@@ -1121,8 +1121,8 @@ truefm: {
     name: "DreamWorks HD",
     type: "clearkey",
     manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_dreamworks_hd1/default/index.mpd",
-    keyId: "4ab9645a2a0a47edbd65e8479c2b9669",
-    key: "8cb209f1828431ce9b50b593d1f44079",
+    keyId: "7b1e9c4d5a2f4d8c9f106d3a8b2c1e77",
+    key: "8b2904224c6cee13d2d4e06c0a3b2887",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDPoIb5G0splDYh5wCQY_vWyooZSSjfalhaQ&s",
     group: ["cartoons & animations"],
   },
@@ -1135,12 +1135,11 @@ truefm: {
     logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Moonbug2ndLogo.png",
     group: ["cartoons & animations"],
   },
-
   cartoonChannelPH: {
     name: "Cartoon Channel PH (10 - 8)",
     type: "hls",
     manifestUri: "https://live20.bozztv.com/giatv/giatv-cartoonchannelph/cartoonchannelph/playlist.m3u8",
-    logo: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png/v1/fill/w_1192,h_670/cartoon_channel_ph_logo__2020___present__by_kierariel_de71xo3-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYjU4YmJjODgtMDAzMC00NDQ3LWI5OWUtMTllN2RiYzUxYjE0XC9kZTcxeG8zLTI2NjQ2OWE0LTNiZDUtNGJkNy04OTBlLTE5MmM3Nzk4ZTBiYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2FyUXQBaLF5j9GldZMJAM1ltGPFq7pMwwr6V7wyGpFs",
+    logo: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b58bbc88-0030-4447-b99e-19e7dbc51b14/de71xo3-266469a4-3bd5-4bd7-890e-192c7798e0bb.png/v1/fill/w_1192 ,h_670/cartoon_channel_ph_logo__2020___present__by_kierariel_de71xo3-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYjU4YmJjODgtMDAzMC00NDQ3LWI5OWUtMTllN2RiYzUxYjE0XC9kZTcxeG8zLTI2NjQ2OWE0LTNiZDUtNGJkNy04OTBlLTE5MmM3Nzk4ZTBiYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2FyUXQBaLF5j9GldZMJAM1ltGPFq7pMwwr6V7wyGpFs",
     group: ["cartoons & animations"],
   },
   mrbean: {
@@ -1199,9 +1198,7 @@ truefm: {
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScrgyuzyxnS4PB5zqcMI9MyZwjgxsEwr4lpg&s",
     group: ["sports"],
   },
-    
 };
-
 
 // ==========================================
 // ANIME SERIES DATA
