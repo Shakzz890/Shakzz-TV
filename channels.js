@@ -1,5 +1,14 @@
 const channels = {
-  // Existing channels with updated keys where needed
+  celestialMovies: {
+  name: "Celestial Movies",
+  type: "clearkey",
+  manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/506/default_ott.mpd",
+  keyId: "c5c1ba26907291afec11a9a78d513410",
+  key: "361197805d0149c29801946cf2dde67c",
+  logo: "https://i.imgur.com/Mb5ssnu.png",
+  group: ["movies"],
+},
+
   GMA: {
     name: "GMA 7",
     type: "hls",
