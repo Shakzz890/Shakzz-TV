@@ -59,8 +59,8 @@ const channels = {
     name: "Animal Planet",
     type: "clearkey",
     manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_animal_planet_sd/default/index.mpd",
-    keyId: "436b69f987924fcbbc06d40a69c2799a",
-    key: "c63d5b0d7e52335b61aeba4f6537d54d",
+    keyId: "1c9f7a6d3b2e4e5d8a61f4d0c2b9e813",
+    key: "b8f52451c67a2b54f272543eef45b621",
     logo: "https://i.imgur.com/SkpFpW4.png",
     group: ["documentary"],
   },
@@ -69,8 +69,8 @@ const channels = {
     name: "Animax",
     type: "clearkey",
     manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_animax_sd_new/default/index.mpd",
-    keyId: "92032b0e41a543fb9830751273b8debd",
-    key: "03f8b65e2af785b10d6634735dbe6c11",
+    keyId: "1e7b9d2c6a4f4d8c9f33b5c1a8d7e260",
+    key: "67336c0c5b24fb4b8caac248dad3c55d",
     logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
     group: ["cartoons & animations"],
   },
@@ -378,9 +378,9 @@ const channels = {
   hitsmovies: {
     name: "HITS Movies",
     type: "clearkey",
-    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_hitsnow/default/index.mpd",
-    keyId: "f9c3d6b18a2e4d7f9e453b1a8c6d2f70",
-    key: "ce8874347ec428c624558dcdc3575dd4",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/dr_hitsmovies/default/index.mpd",
+    keyId: "2c8a5f1e7b9d4c6a9e55f1d7b2a8c360",
+    key: "c9f622dff27e9e1c1f78617ba3b81a62",
     logo: "https://i.imgur.com/xjyDTMr.png",
     group: ["movies"],
   },
@@ -658,7 +658,7 @@ const channels = {
   tapmovies: {
     name: "Tap Movies HD",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/cg_tapmovies_hd1/default/index.mpd",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_tapmovies_hd1/default/index.mpd",
     keyId: "71cbdf02b595468bb77398222e1ade09",
     key: "c3f2aa420b8908ab8761571c01899460",
     logo: "https://cms.cignal.tv/Upload/Images/Tap-movies.jpg",
@@ -678,7 +678,7 @@ const channels = {
   taptv: {
     name: "Tap TV",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-01-prod.akamaized.net/bpk-tv/cg_taptv_sd/default/index.mpd",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_taptv_sd/default/index.mpd",
     keyId: "5c1e7b9d2f6a4d8c8a55e9d2c7b1a344",
     key: "e72d21a22e89660ff0ec33627eb4ef35",
     logo: "https://i.imgur.com/KJaSftF.png",
@@ -728,9 +728,9 @@ const channels = {
   tv5monde: {
     name: "TV5 Monde",
     type: "clearkey",
-    manifestUri: "https://qp-pldt-live-bpk-02-prod.akamaized.net/bpk-tv/tv5monde_sd/default/index.mpd",
-    keyId: "8d7c2f1a6b4e4a9d8f33c1e5b7d2a960",
-    key: "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/dr_tv5_monde/default/index.mpd",
+    keyId: "fba5a720b4a541b286552899ba86e38b",
+    key: "f63fa50423148bfcbaa58c91dfcffd0e",
     logo: "https://qp-pldt-image-resizer-cloud-prod.akamaized.net/image/E55ADB5E-C9E1-11EC-9D64-0242AC120002/0-16x9.jpg?width=1980",
     group: ["news", "entertainment"],
   },
@@ -1101,9 +1101,9 @@ const channels = {
   tvnmovies: {
     name: "TVN Movies",
     type: "clearkey",
-    manifestUri: "https://linearjitp-playback.astro.com.my/dash-wv/linear/2406/default_ott.mpd",
-    keyId: "8e269c8aa32ad77eb83068312343d610",
-    key: "d12ccebafbba2a535d88a3087f884252",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_tvnmovie/default/index.mpd",
+    keyId: "2e53f8d8a5e94bca8f9a1e16ce67df33",
+    key: "3471b2464b5c7b033a03bb8307d9fa35",
     logo: "https://yt3.ggpht.com/a/AATXAJy1C8c3pOmn9lAsPovaRcKqIvw2OAAfHK-HtA=s900-c-k-c0xffffffff-no-rj-mo",
     group: ["movies"],
   },
@@ -1228,8 +1228,10 @@ const channels = {
 
   warner: {
     name: "Warner TV",
-    type: "hls",
-    manifestUri: "https://cdn4.skygo.mn/live/disk1/Warner/HLSv3-FTA/Warner.m3u8",
+    type: "clearkey",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_warnerhd/default/index.mpd",
+    keyId: "7f2a9c6d1e5b4c8a8d10a2b7e1c9f344",
+    key: "ae3d135d5ddd9e8f3a7bbfbfae0e40d1",
     logo: "https://tse2.mm.bing.net/th/id/OIP.7d6tiaMYWpWIGI6iAN47zAHaG3?rs=1&pid=ImgDetMain&o=7&rm=3",
     group: ["movies", "entertainment"],
   },
@@ -1355,7 +1357,7 @@ const channels = {
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScrgyuzyxnS4PB5zqcMI9MyZwjgxsEwr4lpg&s",
     group: ["sports"],
   },
-  
+
   cinemaone: {
     name: "Cinema One",
     type: "clearkey",
@@ -1396,7 +1398,6 @@ const channels = {
     group: ["movies", "entertainment"]
   }
 };
-
 const animeData = {
     "One Punch Man": [
         { 
