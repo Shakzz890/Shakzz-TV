@@ -67,10 +67,8 @@ const channels = {
 
   animax: {
     name: "Animax",
-    type: "clearkey",
-    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_animax_sd_new/default/index.mpd",
-    keyId: "1e7b9d2c6a4f4d8c9f33b5c1a8d7e260",
-    key: "67336c0c5b24fb4b8caac248dad3c55d",
+    type: "hls",
+    manifestUri: "https://amg02159-amg02159c9-amgplt0352.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg02159-amg02159c9-amgplt0352/playlist.m3u8",
     logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
     group: ["cartoons & animations"],
   },
