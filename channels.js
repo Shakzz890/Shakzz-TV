@@ -65,8 +65,18 @@ const channels = {
     group: ["documentary"],
   },
 
-  animax: {
+animax: {
     name: "Animax",
+    type: "clearkey",
+    manifestUri: "https://ucdn.mediaquest.com.ph/bpk-tv/cg_animax_sd_new/default/index.mpd",
+    keyId: "92032b0e41a543fb9830751273b8debd",
+    key: "03f8b65e2af785b10d6634735dbe6c11",
+    logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
+    group: ["cartoons & animations"],
+  },
+
+  animaxhd: {
+    name: "Animax HD",
     type: "hls",
     manifestUri: "https://amg02159-amg02159c9-amgplt0352.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg02159-amg02159c9-amgplt0352/playlist.m3u8",
     logo: "https://iconape.com/wp-content/files/px/285466/svg/animax-logo-logo-icon-png-svg.png",
