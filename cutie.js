@@ -1110,7 +1110,7 @@ function initMiniMessenger() {
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpqxlMdj4TCrCq3cfTeO8QGFggNBVuQk78ZgDpRjnXNrXpB0JZeM3-rswc4va5zOiI/exec";
     const MAX_FILE_SIZE = 10 * 1024 * 1024;
     const ADMIN_NICKNAME = "Shakzz";
-    const SHAKZZ_ADMIN_AVATAR = "Shakzz.jpg";
+    const SHAKZZ_ADMIN_AVATAR = "assets/Shakzz.jpg";
     const GEMINI_API_KEY = "AIzaSyC4d_EJzw3glHqUKRt4CYfzHVOAb9d9Cs4";
     const AI_NICKNAME = "Shakzz AI";
     const AI_AVATAR = "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg";
