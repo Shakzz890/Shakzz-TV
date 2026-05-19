@@ -1,0 +1,15 @@
+{
+  "show": true,
+  "notifications": [
+    {
+      "id": "notif-update",
+      "type": "info",
+      "message": "<strong>Update Alert!</strong><br>Jujutsu Kaisen added to Anime Tagalog Dubbed section."
+    },
+    {
+      "id": "notif-donate",
+      "type": "info",
+      "message": "<strong>Love the updates?</strong><br>Head to the Contact section to donate and keep the site running!"
+    }
+  ]
+}
