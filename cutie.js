@@ -602,6 +602,7 @@ async function loadChannel(key) {
         finalManifest = `${finalManifest}${separator}token=${AUTH_TOKEN}`;
     }
 
+    // 1. Determine player type based on the original stream details
     let playerType = "hls"; 
     let drmConfig = undefined;
 
@@ -615,8 +616,15 @@ async function loadChannel(key) {
     } else if (channel.type === "widevine") {
         playerType = "dash";
         drmConfig = { widevine: { url: channel.licenseServerUri || channel.key } };
-    } else if (channel.type === "mp4" || finalManifest.includes('.mp4') || finalManifest.includes('workers.dev')) {
+    } else if (channel.type === "mp4" || finalManifest.includes('.mp4')) {
         playerType = "mp4";
+    }
+
+    if (finalManifest.startsWith("http://") && window.location.protocol === "https:") {
+        const workerProxyUrl = "https://m3u8interpreter.hmjustine890.workers.dev/";
+        finalManifest = `${workerProxyUrl}?proxyUrl=${encodeURIComponent(finalManifest)}`;
+        
+        console.log(`🔒 Securely routing [${playerType.toUpperCase()}] stream through Worker proxy:`, finalManifest);
     }
 
     const playerWrapper = document.getElementById('playerWrapper');
