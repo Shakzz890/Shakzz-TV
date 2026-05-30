@@ -3,7 +3,6 @@ import { Redis } from '@upstash/redis/cloudflare'
 export async function onRequest(context) {
   const { env, request } = context;
   
-  // CORS Headers allow your site to talk to this API
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -14,26 +13,31 @@ export async function onRequest(context) {
     const redis = Redis.fromEnv(env);
     const url = new URL(request.url);
     
-    // Get the User ID from the browser
     const userId = url.searchParams.get('uid') || 'anonymous';
     const now = Date.now();
-    
-    // CLEANUP RULE: Delete anyone who hasn't pinged in 10 seconds
     const timeoutLimit = now - 10000; 
 
-    // 1. Register this user as "Online" right now
-    await redis.zadd('online_users', { score: now, member: userId });
-
+    // 🔥 OPTIMIZATION: Use a Pipeline to reduce latency
+    const pipeline = redis.pipeline();
+    
+    // 1. Add/Update the user
+    pipeline.zadd('online_users', { score: now, member: userId });
+    
     // 2. Remove old users
-    await redis.zremrangebyscore('online_users', 0, timeoutLimit);
-
-    // 3. Count who is left
-    const activeCount = await redis.zcard('online_users');
+    pipeline.zremrangebyscore('online_users', 0, timeoutLimit);
+    
+    // 3. Count remaining
+    pipeline.zcard('online_users');
+    
+    // Execute all three commands at once
+    const results = await pipeline.exec();
+    
+    // results[2] is the output of the zcard command
+    const activeCount = results[2];
 
     return new Response(JSON.stringify({ count: activeCount }), { headers: corsHeaders });
 
   } catch (err) {
-    // If it crashes, tell the frontend WHY
     return new Response(JSON.stringify({ error: err.message }), { 
       status: 500, 
       headers: corsHeaders 

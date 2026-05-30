@@ -388,6 +388,28 @@ function getOrCreateDeviceId() {
     return deviceId;
 }
 
+// Function to ping the viewer API
+async function pingViewerCount() {
+    const deviceId = getDeviceId(); // Using your localStorage logic
+    try {
+        // We use a relative path so it works on both localhost and your live site
+        const response = await fetch(`/api/viewers?deviceId=${deviceId}`);
+        const data = await response.json();
+        
+        const viewerEl = document.getElementById('viewer-count');
+        if (viewerEl) {
+            viewerEl.innerText = data.count;
+        }
+    } catch (e) {
+        console.error("Viewer count ping failed:", e);
+    }
+}
+
+// Ping every 30 seconds
+setInterval(pingViewerCount, 30000);
+pingViewerCount();
+
+
 function removeSkeletonLoader() {
     const skeletonElements = document.querySelectorAll('.skeleton-effect');
     skeletonElements.forEach(el => {
@@ -579,11 +601,13 @@ async function loadChannel(key) {
     currentChannelKey = key;
     localStorage.setItem("lastPlayedChannel", key);
 
+    // Update active state in sidebar
     document.querySelectorAll(".channel-button").forEach(btn => {
         btn.classList.remove("active");
         if (btn.getAttribute("data-key") === key) btn.classList.add("active");
     });
 
+    // Update 'Now Playing' UI
     const nowPlayingEl = document.getElementById("nowPlayingChannel");
     if (nowPlayingEl) {
         nowPlayingEl.textContent = channel.name;
@@ -597,14 +621,21 @@ async function loadChannel(key) {
     const AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJTaGFremciLCJleHAiOjE3NjY5NTgzNTN9.RSc_LQ11txXXI0d7gZ8GvMOAwoHrWzUUr3CCQCM0Hco";
     let finalManifest = channel.manifestUri;
 
+    // Handle tokenized streams
     if (finalManifest.includes("converse.nathcreqtives.com")) {
         const separator = finalManifest.includes('?') ? '&' : '?';
         finalManifest = `${finalManifest}${separator}token=${AUTH_TOKEN}`;
     }
 
-    // 1. Determine player type based on the original stream details
+ // 1. Determine player type and DRM config BEFORE proxying
     let playerType = "hls"; 
     let drmConfig = undefined;
+    const workerBaseUrl = "https://m3u8interpreter.hmjustine890.workers.dev/proxy/";
+
+    // 🚨 FIX: Force DASH mode for any .mpd URL, regardless of DRM presence
+    if (finalManifest.includes('.mpd')) {
+        playerType = "dash";
+    }
 
     if (channel.type === "clearkey") {
         playerType = "dash";
@@ -615,18 +646,27 @@ async function loadChannel(key) {
         }
     } else if (channel.type === "widevine") {
         playerType = "dash";
-        drmConfig = { widevine: { url: channel.licenseServerUri || channel.key } };
+        let licenseUrl = channel.licenseServerUri || channel.key;
+        
+        // Proxy the DRM License Request if it exists
+        if (licenseUrl && licenseUrl.startsWith("http")) {
+            licenseUrl = workerBaseUrl + licenseUrl.replace("://", "/");
+            console.log("🔐 Proxying Widevine DRM Request:", licenseUrl);
+        }
+        
+        drmConfig = { widevine: { url: licenseUrl } };
+
     } else if (channel.type === "mp4" || finalManifest.includes('.mp4')) {
         playerType = "mp4";
     }
 
+    // 2. 🔥 PATH-BASED PROXY INTERCEPTOR (For the video stream) 🔥
     if (finalManifest.startsWith("http://") && window.location.protocol === "https:") {
-        const workerProxyUrl = "https://m3u8interpreter.hmjustine890.workers.dev/";
-        finalManifest = `${workerProxyUrl}?proxyUrl=${encodeURIComponent(finalManifest)}`;
-        
-        console.log(`🔒 Securely routing [${playerType.toUpperCase()}] stream through Worker proxy:`, finalManifest);
+        finalManifest = workerBaseUrl + finalManifest.replace("://", "/");
+        console.log(`🔒 Securely tunneling stream segments via path-proxy:`, finalManifest);
     }
 
+    // Setup custom loader UI
     const playerWrapper = document.getElementById('playerWrapper');
     const oldLoader = document.querySelector('.custom-stream-loader');
     if (oldLoader) oldLoader.remove();
@@ -640,6 +680,7 @@ async function loadChannel(key) {
     `;
     playerWrapper.appendChild(manualLoader);
 
+    // Initialize JWPlayer
     try {
         const playerInstance = jwplayer("video").setup({
             autostart: true,
@@ -654,6 +695,7 @@ async function loadChannel(key) {
             }]
         });
 
+        // Remove loader when first frame plays
         playerInstance.on('firstFrame', () => {
             if (manualLoader.parentNode && !manualLoader.classList.contains('fade-out')) {
                 manualLoader.classList.add('fade-out');
@@ -663,6 +705,7 @@ async function loadChannel(key) {
             }
         });
 
+        // Handle errors gracefully
         const killLoader = () => { if (manualLoader.parentNode) manualLoader.remove(); };
         playerInstance.on('setupError', killLoader);
         playerInstance.on('error', killLoader);

@@ -1,30 +1,30 @@
-import { Redis } from '@upstash/redis';
+import { Redis } from '@upstash/redis/cloudflare';
 
-// Force the function to use Edge Runtime
-export const config = {
-  runtime: 'edge',
-};
+export default {
+  async fetch(request, env) {
+    const redis = Redis.fromEnv(env);
+    const { searchParams } = new URL(request.url);
+    const deviceId = searchParams.get('deviceId');
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+    if (!deviceId) {
+      return new Response(JSON.stringify({ error: "Missing deviceId" }), { status: 400 });
+    }
 
-export default async function handler(req) {
-  // Edge functions use standard Web Request objects, not (req, res)
-  const { searchParams } = new URL(req.url);
-  const deviceId = searchParams.get('deviceId');
-
-  if (!deviceId) {
-    return new Response(JSON.stringify({ error: "Missing deviceId" }), { status: 400 });
-  }
-
-  const sessionKey = `viewer:${deviceId}`;
-  await redis.set(sessionKey, Date.now(), { ex: 60 });
-  const keys = await redis.keys('viewer:*');
-  
-  return new Response(JSON.stringify({ count: keys.length }), {
+    // Use deviceId to count 1 per device
+    const sessionKey = `viewer:${deviceId}`;
+    
+    // Set expiry to 60s (if they don't ping within 60s, they are 'offline')
+    await redis.set(sessionKey, "active", { ex: 60 });
+    
+    // Efficiently count keys (SCAN is better than KEYS for production)
+    const { keys } = await redis.scan(0, { match: 'viewer:*', count: 1000 });
+    
+   return new Response(JSON.stringify({ count: keys.length }), {
     status: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*' 
+    },
   });
-}
+} 
+}; 
