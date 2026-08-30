@@ -1423,25 +1423,24 @@ async function handleAdminLogin() {
                     uid: "master_admin_shakzz"
                 };
 
-                localStorage.setItem("chat_user", JSON.stringify({
-                    uid: currentUser.uid,
-                    nickname: ADMIN_NICKNAME,
-                    avatarUrl: SHAKZZ_ADMIN_AVATAR,
-                    isAdmin: true
-                }));
+               localStorage.setItem("chat_user", JSON.stringify({
+    uid: currentUser.uid, 
+    nickname: ADMIN_NICKNAME,
+    avatarUrl: SHAKZZ_ADMIN_AVATAR,
+    isAdmin: true
+}));
 
-                await db.ref(`users/${currentUser.uid}`).update({
-                    uid: currentUser.uid,
-                    nickname: ADMIN_NICKNAME,
-                    avatarUrl: SHAKZZ_ADMIN_AVATAR,
-                    isAdmin: true
-                });
+await db.ref(`users/${currentUser.uid}`).update({
+    nickname: ADMIN_NICKNAME,
+    avatarUrl: SHAKZZ_ADMIN_AVATAR,
+    isAdmin: true
+});
 
-                cachedUserData = {
-                    nickname: ADMIN_NICKNAME,
-                    avatarUrl: SHAKZZ_ADMIN_AVATAR,
-                    isAdmin: true
-                };
+cachedUserData = {
+    nickname: ADMIN_NICKNAME,
+    avatarUrl: SHAKZZ_ADMIN_AVATAR,
+    isAdmin: true
+};
 
                 showAdminWelcome();
                 showChat();
