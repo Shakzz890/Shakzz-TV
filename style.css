@@ -209,10 +209,10 @@ a { text-decoration: none; color: inherit; }
 .modal-heading { font-size: 1.5rem; margin-bottom: 20px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .modal-countdown { position: absolute; top: 15px; left: 15px; background: var(--accent-gradient); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-.mobile-category-list { display: flex; flex-direction: column; gap: 10px; width: 100%; overflow-y: auto; scrollbar-width: none; }
-.mobile-category-list::-webkit-scrollbar { display: none; }
-.mobile-cat-option { background: rgba(255, 255, 255, 0.08); color: white; padding: 16px; border-radius: 16px; font-weight: 600; text-align: left; cursor: pointer; transition: 0.2s; border: none; display: flex; justify-content: space-between; align-items: center; }
-.mobile-cat-option:hover, .mobile-cat-option.active { background: var(--accent-gradient); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3); }
+.mobile-nav-pages{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;background-color:rgba(5,5,10,.98);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:35px;padding-top:var(--header-height);padding-bottom:20px;overflow-y:auto;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}
+.mobile-nav-pages.active{opacity:1;visibility:visible;pointer-events:auto}
+.mobile-nav-pages a{font-size:1.8rem;font-weight:800;text-transform:uppercase;color:#fff;padding:10px 20px;text-align:center;transition:transform .3s,color .3s}
+.mobile-nav-pages a:active,.mobile-nav-pages a:hover{color:var(--accent-color);transform:scale(1.1)}.page-header{z-index:1000!important}body.mobile-menu-active .main-player-section{z-index:-1}
 
 /* QR & Install Modals */
 .qr-modal-content { background: white !important; color: #000 !important; padding: 35px 20px 20px 20px; max-width: 400px; }
